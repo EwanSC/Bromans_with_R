@@ -8,7 +8,19 @@ library(tidyverse) #installing tidyvery
 
 library(RColorBrewer) #installing colour package for plot, used by DAACS
 
-library(ggplot2)
+library(ggplot2) #installing package for plotting data
+
+library(sf) #geographic plotting package
+
+library(maps) #maps
+
+library(mapdata) #higher res maps
+
+library(rnaturalearth) #more maps stuff - for map origins instead of (maps)
+
+library(rnaturalearthdata)
+
+default_crs = sf::st_crs(4326)
 
 AllDalmatiaEpig <- read.csv('whole_dalmatia_epigr_scrape.csv') # Importing our first dataframe (df)
 
@@ -27,7 +39,7 @@ AllDalmatiaPlace <- AllDalmatiaEpig %>% #makes a df that provides counts of dist
 # make a sample df that only has places with 30+ inscriptions
 DPSampleThirty <- AllDalmatiaPlace[which(AllDalmatiaPlace$n >= 30),]
 
-# bar plot attempt with angled x-axis names for the list of plces with 30+ inscriptions
+# bar plot attempt with angled x-axis names for the list of places with 30+ inscriptions
 ggplot(DPSampleThirty, aes(x=place, y=n, fill=place)) +
   geom_bar(stat="identity", show.legend=F, width = 1) +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -35,7 +47,7 @@ ggplot(DPSampleThirty, aes(x=place, y=n, fill=place)) +
 # thats still a lot of values so lets try 50+
 DPSampleFifty <- AllDalmatiaPlace[which(AllDalmatiaPlace$n >= 50),]
 
-# bar plot attempt with angled x-axis names for the list of plces with 50+ inscriptions
+# bar plot attempt with angled x-axis names for the list of places with 50+ inscriptions
 ggplot(DPSampleFifty, aes(x=place, y=n, fill=place)) +
   geom_bar(stat="identity", show.legend=F, width = 1) +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
@@ -49,4 +61,71 @@ theme_set(theme_bw(base_size = 10))
 ggplot(DPSampleThirtyToThousand, aes(x=place, y=n, fill=place)) +
   geom_bar(stat="identity", show.legend=F, width = 1) +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
-        
+
+# Now lets try get all the lat long
+AllDalmatiaLatLon <- (AllDalmatiaEpig %>%
+  select(place,Longitude,Latitude)) %>%
+  group_by(place) %>%
+  count(place,Longitude,Latitude) %>%
+  arrange(desc(n))
+
+#now lets ignore nulls/NAs
+DLatLonNoNULL <- na.omit(AllDalmatiaEpig %>%
+  select(place,Longitude,Latitude)) %>%
+  group_by(place) %>%
+  count(place,Longitude,Latitude) %>%
+  arrange(desc(n))
+
+# lets make it into sf for mapping
+(DLatLonNNAll <- st_as_sf(DLatLonNoNULL, coords = c('Longitude', 'Latitude'), 
+                           crs = 4326, agr = "constant"))
+
+(DLatLonNN30plus <- st_as_sf(DLatLonNoNULL[which(AllDalmatiaPlace$n >= 30),], coords = c('Longitude', 'Latitude'), 
+                          crs = 4326, agr = "constant"))
+
+# now lets try and plot with this with only places between 30-1000 inscriptions
+(DLatLonNNPlot <- st_as_sf(DLatLonNoNULL, coords = c('Longitude', 'Latitude'), 
+                          crs = 4326, agr = "constant") %>%
+                          filter (n %in% (30:1000)))
+
+# now plot it
+ggplot(DLatLonNNPlot) + 
+  geom_sf(aes(color = n)) 
+  
+# now plot it on a map
+# first, get world map
+world <- ne_countries(scale = "medium", returnclass = "sf")
+class(world)
+
+# First plot all locations on a map
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightblue") +
+  geom_sf(data = DLatLonNNAll, size = 1, colour = "orange", fill = "orange") + 
+  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+
+# now 30-1000
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightblue") +
+  geom_sf(data = DLatLonNNPlot, size = 1, colour = "orange", fill = "orange") + 
+  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+
+# now plot on map with gradient and key and zoomed
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_sf(data = DLatLonNNPlot, aes(color = n), size = 2) + 
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+# now a plot with scaled points and zoomed
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_sf(data = DLatLonNNPlot, aes(size = n), alpha=0.6) + 
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+# now with Salona
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_sf(data = DLatLonNN30plus, aes(size = n), alpha=0.6) + 
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+# these maps are bad for the islands though, so lets try a more detailed one
+

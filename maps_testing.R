@@ -1,0 +1,83 @@
+# New approach at maps using R, sf and ggplot2 from https://r-spatial.org/r/2018/10/25/ggplot2-sf.html
+library(tidyverse) #installing tidyvery
+
+library("ggplot2")
+
+theme_set(theme_bw())
+
+library("sf")
+
+library("rnaturalearth")
+
+library("rnaturalearthdata")
+
+# bring world geo data from rnatural earth
+world <- ne_countries(scale = "medium", returnclass = "sf")
+class(world)
+
+# generate world map
+ggplot(data = world) +
+  geom_sf()
+
+# generate one with titles etc
+ggplot(data = world) +
+  geom_sf() +
+  xlab("Longitude") + ylab("Latitude") +
+  ggtitle("World map", subtitle = paste0("(", length(unique(world$name)), " countries)"))
+
+# make one with colour
+ggplot(data = world) + 
+  geom_sf(color = "black", fill = "lightgreen")
+
+# set a confined map with colour
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  coord_sf(xlim = c(-102.15, -74.12), ylim = c(7.65, 33.97), expand = FALSE)
+
+# make one with just Balkan countries
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+
+# make a lat long df of locations of epigraphy
+DLatLon <- na.omit(AllDalmatiaEpig %>%
+                        select(Latitude,Longitude))
+# plot it the simple way (as point data)
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_point(data = DLatLon, aes(x = Longitude, y = Latitude), size = 1, 
+             fill = "darkred") +
+  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+
+# plot it the more complex way - as sf
+(DLatLonsf <- st_as_sf(DLatLon, coords = c("Longitude", "Latitude"), 
+                    crs = 4326, agr = "constant"))
+
+ggplot(data = world) +
+  geom_sf() +
+  geom_sf(data = DLatLonsf, size = 1) +
+  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+
+# now to do this with a range of inscriptions
+(DLatLonNNPlot <- st_as_sf(DLatLonNoNULL, coords = c('Longitude', 'Latitude'), 
+                          crs = 4326, agr = "constant") %>%
+  filter (n %in% (30:1000)))
+
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightblue") +
+  geom_sf(data = DLatLonNNPlot, size = 1, colour = "orange", fill = "orange") + 
+  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+
+mapdatadf <- map_data("worldHires")
+class(mapdatadf)
+
+mapdatasf <- st_as_sf(mapdatadf, coords = c('long', 'lat'), 
+                      crs = 4326, agr = "constant")
+
+# these maps are bad for the islands though, so lets try a more detailed one
+ggplot(data = mapdatasf) +
+  geom_sf(color = "black", fill = "lightblue") +
+  geom_sf(data = DLatLonNNAll, size = 1, colour = "orange", fill = "orange") + 
+  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+
+# this one works but takes ages and its an outdated map (yay)
