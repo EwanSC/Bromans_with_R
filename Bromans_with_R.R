@@ -1,6 +1,6 @@
 # Ewan Trying out R Code for Cleaning Epigraphic Data
 # Created by: EC 2021/11/05
-# Last Edit: EC 2021/11/05
+# Last Edit: EC 2021/11/16
 
 # first, lets load packages
 
