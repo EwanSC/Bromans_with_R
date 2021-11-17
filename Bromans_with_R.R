@@ -20,6 +20,8 @@ library(rnaturalearth) #more maps stuff - for map origins instead of (maps)
 
 library(rnaturalearthdata)
 
+library(readr)
+
 default_crs = sf::st_crs(4326)
 
 AllDalmatiaEpig <- read.csv('whole_dalmatia_epigr_scrape.csv') # Importing our first dataframe (df)
@@ -129,3 +131,53 @@ ggplot(data = world) +
 
 # these maps are bad for the islands though, so lets try a more detailed one
 
+# lets add eastern Italy's epigraphy too!
+ItalyDalEpig <- read_tsv("2021-11-17-EDCS_via_Lat_Epig-prov_5(ApetCa,Da,PiRe,SaRe,UmRe)-31286.tsv")
+
+str(ItalyDalEpig)
+head(ItalyDalEpig)
+
+ItalyDalEpigPlace <-  na.omit(ItalyDalEpig %>%
+  select(place,Longitude,Latitude)) %>%
+  group_by(place) %>%
+  count(place,Longitude,Latitude) %>%
+  arrange(desc(n))
+
+#with Salona
+(IDEPthirty <- st_as_sf(ItalyDalEpigPlace[which(ItalyDalEpigPlace$n >= 30),], coords = c('Longitude', 'Latitude'), 
+                        crs = 4326, agr = "constant"))
+
+# without Salona
+(IDEPthirtythousand <- st_as_sf(ItalyDalEpigPlace, coords = c('Longitude', 'Latitude'), 
+                        crs = 4326, agr = "constant") %>%
+                        filter (n %in% (30:1000)))
+
+# now on a map with Salona
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_sf(data = IDEPthirty, aes(size = n), alpha=0.6) + 
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+# now on a map without Salona
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_sf(data = IDEPthirtythousand, aes(size = n), alpha=0.6) + 
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+# now only those dating between -30 - 150 CE
+IDE1cent <- ItalyDalEpig %>%
+  filter(ItalyDalEpig$`dating from` %in% (-30:100), ItalyDalEpig$`dating to` %in% (9:150))
+
+IDE1centplace <- na.omit(IDE1cent %>% #makes a df that provides counts of distinct places
+                               select(place,Longitude,Latitude) %>%
+                               group_by(place) %>%
+                               count(place,Longitude,Latitude) %>%
+                               arrange(desc(n))) 
+
+(IDE1centplacesf <- st_as_sf(IDE1centplace, coords = c('Longitude', 'Latitude'), 
+                                 crs = 4326, agr = "constant"))
+
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_sf(data = IDE1centplacesf, aes(size = n), alpha=0.6) + 
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
