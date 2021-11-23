@@ -22,27 +22,31 @@ library(rnaturalearthdata)
 
 library(ggmap)
 
-default_crs = sf::st_crs(4326) # setting the defaul map projection to 4326
+library(dplyr)
+
+library(stringr)
+
+default_crs = sf::st_crs(4326) # setting the default map projection to 4326
 
 # now the data, all epigraphy from 'Dalmatia'
 
-AllDalmatiaEpig <- read.csv('whole_dalmatia_epigr_scrape.csv') # Importing our first dataframe (df)
+AllDalmatiaEpig <- read_tsv('2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.tsv') # Importing our first dataframe (df)
 
 str(AllDalmatiaEpig) # lets have a look at the structure of the data
 
 head(AllDalmatiaEpig) # what are the first 6 rows
 
 AllDalmatiaByDate <- AllDalmatiaEpig %>% #makes a df arranged by date
-  arrange(dating.from, dating.to)
+  arrange("dating from", "dating to")
 
 # now to limit the data by date range date-to being 1-100 CE
 AD1cent <- AllDalmatiaByDate %>%
-  filter(dating.from %in% (1:100), dating.to %in% (1:100))
+  filter(`dating from` %in% (1:100), `dating to` %in% (1:100))
 
 # but what if it is 1-150 date range?
 AD1centrange <- AllDalmatiaByDate %>%
-  filter(dating.from %in% (-30:100), dating.to %in% (9:150)) %>%
-  arrange(dating.to, dating.from)
+  filter(`dating from` %in% (-30:100), `dating to` %in% (9:150)) %>%
+  arrange("dating to", "dating from")
 
 # lets see what the distribution looks like on a map
 # first, group by place and then make df into an sf
@@ -67,5 +71,5 @@ ggplot(data = world) +
 
 # now lets try filter the inscriptions to include military keywords
 AD1centrangemilit <- AD1centrange %>%
-  select(inscription.interpretive.cleaning, contains("milit"))
-# this doesn't work... why?
+  select(`inscription interpretive cleaning`, contains("mil"))
+# this doesn't work... why? 

@@ -4,7 +4,7 @@
 
 # first, lets load packages
 
-library(tidyverse) #installing tidyvery
+library(tidyverse) #installing tidyverse
 
 library(RColorBrewer) #installing colour package for plot, used by DAACS
 
@@ -22,16 +22,18 @@ library(rnaturalearthdata)
 
 library(readr)
 
+library(dplyr)
+
 default_crs = sf::st_crs(4326)
 
-AllDalmatiaEpig <- read.csv('whole_dalmatia_epigr_scrape.csv') # Importing our first dataframe (df)
+AllDalmatiaEpig <- read_tsv('2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.tsv') # Importing our first dataframe (df)
 
 str(AllDalmatiaEpig) # lets have a look at the structure of the data
 
 head(AllDalmatiaEpig) # what are the first 6 rows
 
 AllDalmatiaByDate <- AllDalmatiaEpig %>% #makes a df arranged by date
-  arrange(dating.from, dating.to)
+  arrange("dating from", "dating to")
 
 AllDalmatiaPlace <- AllDalmatiaEpig %>% #makes a df that provides counts of distinct places
   group_by(place) %>%
