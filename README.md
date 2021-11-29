@@ -8,7 +8,7 @@ Desktop: Dell Inspiron 15 7000 <br/>
 
 ## Some of the outputs so far:
 
-![Scatter map of all locations where Roman epigraphy has been found in Dalmatia. The modern regions conprising Dalmatia are blue on this map, and the inscriptions are marked by orange dots which scatter the landscape, clustering along the adriatic coastline](output_images/30-1000_Dalmatia_map.png)
+![Scatter map of all locations where Roman epigraphy has been found in Dalmatia. The modern regions conprising Dalmatia are blue on this map, and the inscriptions are marked by orange dots which scatter the landscape, clustering along the adriatic coastline](output_images/Dalmatia_map.png)
 <figcaption> Scatter map of all locations where Roman epigraphy has been found in Dalmatia. CC BY-SA 4.0</figcaption>
 
 <p> <p/>

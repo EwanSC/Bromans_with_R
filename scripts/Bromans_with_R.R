@@ -5,23 +5,14 @@
 # first, lets load packages
 
 library(tidyverse) #installing tidyverse
-
 library(RColorBrewer) #installing colour package for plot, used by DAACS
-
 library(ggplot2) #installing package for plotting data
-
 library(sf) #geographic plotting package
-
 library(maps) #maps
-
 library(mapdata) #higher res maps
-
 library(rnaturalearth) #more maps stuff - for map origins instead of (maps)
-
 library(rnaturalearthdata)
-
 library(readr)
-
 library(dplyr)
 
 default_crs = sf::st_crs(4326)
@@ -48,15 +39,7 @@ ggplot(DPSampleThirty, aes(x=place, y=n, fill=place)) +
   geom_bar(stat="identity", show.legend=F, width = 1) +
   theme(axis.text.x = element_text(angle = 45, hjust=1))
 
-# thats still a lot of values so lets try 50+
-DPSampleFifty <- AllDalmatiaPlace[which(AllDalmatiaPlace$n >= 50),]
-
-# bar plot attempt with angled x-axis names for the list of places with 50+ inscriptions
-ggplot(DPSampleFifty, aes(x=place, y=n, fill=place)) +
-  geom_bar(stat="identity", show.legend=F, width = 1) +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
-
-# lets make a bar plot that removes the noise of Salona (5000ish inscriptions gets in the way)
+# thats still a lot lets make remove the noise of Salona (5000ish inscriptions gets in the way)
 # to do so I will make a df that has a range between 30-1000 and then make this into a barplot
 DPSampleThirtyToThousand <- AllDalmatiaPlace %>%
   filter(n %in% (30:1000))
@@ -80,13 +63,6 @@ png(filename = "output_images/30-1000_Dalmatia_Places_columngraph.png",
       ylab("Number of inscriptions")
 dev.off()
 
-# Now lets try get all the lat long
-AllDalmatiaLatLon <- (AllDalmatiaEpig %>%
-  select(place,Longitude,Latitude)) %>%
-  group_by(place) %>%
-  count(place,Longitude,Latitude) %>%
-  arrange(desc(n))
-
 #now lets ignore nulls/NAs
 DLatLonNoNULL <- na.omit(AllDalmatiaEpig %>%
   select(place,Longitude,Latitude)) %>%
@@ -95,57 +71,57 @@ DLatLonNoNULL <- na.omit(AllDalmatiaEpig %>%
   arrange(desc(n))
 
 # lets make it into sf for mapping
+# all
 (DLatLonNNAll <- st_as_sf(DLatLonNoNULL, coords = c('Longitude', 'Latitude'), 
                            crs = 4326, agr = "constant"))
 
+# sites with more than 30 inscriptions
 (DLatLonNN30plus <- st_as_sf(DLatLonNoNULL[which(AllDalmatiaPlace$n >= 30),], coords = c('Longitude', 'Latitude'), 
                           crs = 4326, agr = "constant"))
 
-# now lets try and plot with this with only places between 30-1000 inscriptions
+# places with between 30-1000 inscriptions
 (DLatLonNNPlot <- st_as_sf(DLatLonNoNULL, coords = c('Longitude', 'Latitude'), 
                           crs = 4326, agr = "constant") %>%
                           filter (n %in% (30:1000)))
 
-# now plot it
+# plot DLatLonNNPlot
 ggplot(DLatLonNNPlot) + 
   geom_sf(aes(color = n)) 
   
-# now plot it on a map
+# now n a map
 # first, get world map
 world <- ne_countries(scale = "medium", returnclass = "sf")
 class(world)
 
-# First plot all locations on a map
+# First plot all locations on a map and save the output
 ggplot(data = world) +
-  geom_sf(color = "black", fill = "lightblue") +
-  geom_sf(data = DLatLonNNAll, size = 1, colour = "orange", fill = "orange") + 
-  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+  geom_sf(color = "black", fill = "navy") +
+  geom_sf(data = DLatLonNNAll, size = 0.5, colour = "red") + 
+  coord_sf(xlim = c(12, 24), ylim = c(40, 49), expand = FALSE)
 
-# now 30-1000
-ggplot(data = world) +
-  geom_sf(color = "black", fill = "lightblue") +
-  geom_sf(data = DLatLonNNPlot, size = 1, colour = "orange", fill = "orange") + 
-  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+png(filename = "output_images/Dalmatia_map.png",
+    res = 150, width = 1000, height = 1000)
+  ggplot(data = world) +
+    geom_sf(color = "black", fill = "navy") +
+    geom_sf(data = DLatLonNNAll, size = 0.5, colour = "red") + 
+    coord_sf(xlim = c(12, 24), ylim = c(40, 49), expand = FALSE)
+dev.off()
 
-# now plot on map with gradient and key and zoomed
+# now plot on map with gradient and key and zoomed 
+# and only site with between 30-1000 inscriptions
+
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
   geom_sf(data = DLatLonNNPlot, aes(color = n), size = 2) + 
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
 
-# now a plot with scaled points and zoomed
-ggplot(data = world) +
-  geom_sf(color = "black", fill = "lightgreen") +
-  geom_sf(data = DLatLonNNPlot, aes(size = n), alpha=0.6) + 
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
-
-# now with Salona
+# now a plot with scaled points and zoomed with Salona
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
   geom_sf(data = DLatLonNN30plus, aes(size = n), alpha=0.6) + 
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
 
-# these maps are bad for the islands though, so lets try a more detailed one
+# these maps are bad for the islands, lets try a more detailed one...
 
 # lets add eastern Italy's epigraphy too!
 ItalyDalEpig <- read_tsv("data/2021-11-17-EDCS_via_Lat_Epig-prov_5(ApetCa,Da,PiRe,SaRe,UmRe)-31286.tsv")
@@ -159,28 +135,7 @@ ItalyDalEpigPlace <-  na.omit(ItalyDalEpig %>%
   count(place,Longitude,Latitude) %>%
   arrange(desc(n))
 
-#with Salona
-(IDEPthirty <- st_as_sf(ItalyDalEpigPlace[which(ItalyDalEpigPlace$n >= 30),], coords = c('Longitude', 'Latitude'), 
-                        crs = 4326, agr = "constant"))
-
-# without Salona
-(IDEPthirtythousand <- st_as_sf(ItalyDalEpigPlace, coords = c('Longitude', 'Latitude'), 
-                        crs = 4326, agr = "constant") %>%
-                        filter (n %in% (30:1000)))
-
-# now on a map with Salona
-ggplot(data = world) +
-  geom_sf(color = "black", fill = "lightgreen") +
-  geom_sf(data = IDEPthirty, aes(size = n), alpha=0.6) + 
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
-
-# now on a map without Salona
-ggplot(data = world) +
-  geom_sf(color = "black", fill = "lightgreen") +
-  geom_sf(data = IDEPthirtythousand, aes(size = n), alpha=0.6) + 
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
-
-# now only those dating between -30 - 150 CE
+# now all inscriptions dating between -30/100 - 9/150 CE
 IDE1cent <- ItalyDalEpig %>%
   filter(ItalyDalEpig$`dating from` %in% (-30:100), ItalyDalEpig$`dating to` %in% (9:150))
 
@@ -193,7 +148,7 @@ IDE1centplace <- na.omit(IDE1cent %>% #makes a df that provides counts of distin
 (IDE1centplacesf <- st_as_sf(IDE1centplace, coords = c('Longitude', 'Latitude'), 
                                  crs = 4326, agr = "constant"))
 
-## lets plot this with labels
+## lets plot this with labels and save the output
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
   geom_sf(data = IDE1centplacesf, aes(size = n), alpha=0.6) + 
