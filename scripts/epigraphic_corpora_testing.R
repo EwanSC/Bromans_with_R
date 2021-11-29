@@ -63,7 +63,7 @@ AD1centrangeplace <- na.omit(AD1centrange %>% #makes a df that provides counts o
 world <- ne_countries(scale = "medium", returnclass = "sf")
 class(world)
 
-# now to plot with scaled points and zoomed in
+# now to plot with scaled points and zoomed in 
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
   geom_sf(data = AD1centrangeplacesf, aes(size = n), alpha=0.6) + 

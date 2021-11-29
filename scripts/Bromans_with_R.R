@@ -179,7 +179,13 @@ IDE1centplace <- na.omit(IDE1cent %>% #makes a df that provides counts of distin
 (IDE1centplacesf <- st_as_sf(IDE1centplace, coords = c('Longitude', 'Latitude'), 
                                  crs = 4326, agr = "constant"))
 
+## lets plot this with labels
+
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
   geom_sf(data = IDE1centplacesf, aes(size = n), alpha=0.6) + 
+  labs(size = 'Epigraphic Monuments') +
+  ggtitle("Dalmatia and Eastern Italy", 
+          subtitle = "Epigraphic Distribution in the First Century CE") + 
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
