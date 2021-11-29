@@ -1,6 +1,6 @@
 # Ewan Trying out R Code for Cleaning Epigraphic Data
 # Created by: EC 2021/11/05
-# Last Edit: EC 2021/11/16
+# Last Edit: EC 2021/11/30
 
 # first, lets load packages
 
@@ -64,7 +64,21 @@ DPSampleThirtyToThousand <- AllDalmatiaPlace %>%
 theme_set(theme_bw(base_size = 10))
 ggplot(DPSampleThirtyToThousand, aes(x=place, y=n, fill=place)) +
   geom_bar(stat="identity", show.legend=F, width = 1) +
-  theme(axis.text.x = element_text(angle = 45, hjust=1))
+  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+  ggtitle("Dalmatian sites with 30-1000 inscriptions") +
+  xlab("Site: Modern/Ancient") + 
+  ylab("Number of inscriptions")
+
+png(filename = "output_images/30-1000_Dalmatia_Places_columngraph.png",
+    res = 150, width = 1100, height = 1100)
+    theme_set(theme_bw(base_size = 10))
+    ggplot(DPSampleThirtyToThousand, aes(x=place, y=n, fill=place)) +
+      geom_bar(stat="identity", show.legend=F, width = 1) +
+      theme(axis.text.x = element_text(angle = 45, hjust=1)) +
+      ggtitle("Dalmatian sites with 30-1000 inscriptions") +
+      xlab("Site: Modern/Ancient") + 
+      ylab("Number of inscriptions")
+dev.off()
 
 # Now lets try get all the lat long
 AllDalmatiaLatLon <- (AllDalmatiaEpig %>%
