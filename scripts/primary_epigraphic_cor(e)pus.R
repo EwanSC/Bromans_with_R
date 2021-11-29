@@ -1,0 +1,17 @@
+library(rjson) #https://www.datacamp.com/community/tutorials/r-data-import-tutorial#javascript
+
+library(tibble)
+
+library(data.table)
+
+json_filename <- "data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json"
+
+json_data <- fromJSON(file= json_filename )
+
+json_epig_data <- json_data$data
+
+epig_data <- data.table::rbindlist(json_epig_data, fill = TRUE) #https://stackoverflow.com/questions/53037844/multiple-list-json-to-data-frame-in-r
+
+firstcent_epig_data <- epig_data %>%
+  filter(`dating from` %in% (-30:100), `dating to` %in% (9:150)) %>%
+  arrange("dating to", "dating from")
