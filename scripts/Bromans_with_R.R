@@ -26,7 +26,7 @@ library(dplyr)
 
 default_crs = sf::st_crs(4326)
 
-AllDalmatiaEpig <- read_tsv('2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.tsv') # Importing our first dataframe (df)
+AllDalmatiaEpig <- read_tsv('data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.tsv') # Importing our first dataframe (df)
 
 str(AllDalmatiaEpig) # lets have a look at the structure of the data
 
@@ -134,7 +134,7 @@ ggplot(data = world) +
 # these maps are bad for the islands though, so lets try a more detailed one
 
 # lets add eastern Italy's epigraphy too!
-ItalyDalEpig <- read_tsv("2021-11-17-EDCS_via_Lat_Epig-prov_5(ApetCa,Da,PiRe,SaRe,UmRe)-31286.tsv")
+ItalyDalEpig <- read_tsv("data/2021-11-17-EDCS_via_Lat_Epig-prov_5(ApetCa,Da,PiRe,SaRe,UmRe)-31286.tsv")
 
 str(ItalyDalEpig)
 head(ItalyDalEpig)
@@ -180,7 +180,6 @@ IDE1centplace <- na.omit(IDE1cent %>% #makes a df that provides counts of distin
                                  crs = 4326, agr = "constant"))
 
 ## lets plot this with labels
-
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
   geom_sf(data = IDE1centplacesf, aes(size = n), alpha=0.6) + 
@@ -189,3 +188,13 @@ ggplot(data = world) +
           subtitle = "Epigraphic Distribution in the First Century CE") + 
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
 
+png(filename = "output_images/dalm_italy_1stAD.png",
+    res = 150, width = 1100, height = 1100)
+ggplot(data = world) +
+  geom_sf(color = "black", fill = "lightgreen") +
+  geom_sf(data = IDE1centplacesf, aes(size = n), alpha=0.6) + 
+  labs(size = 'Epigraphic Monuments') +
+  ggtitle("Dalmatia and Eastern Italy", 
+          subtitle = "Epigraphic Distribution in the First Century CE") + 
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+dev.off()

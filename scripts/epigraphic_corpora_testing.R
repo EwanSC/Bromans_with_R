@@ -30,7 +30,7 @@ default_crs = sf::st_crs(4326) # setting the default map projection to 4326
 
 # now the data, all epigraphy from 'Dalmatia'
 
-AllDalmatiaEpig <- read_tsv('2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.tsv') # Importing our first dataframe (df)
+AllDalmatiaEpig <- read_tsv('data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.tsv') # Importing our first dataframe (df)
 
 str(AllDalmatiaEpig) # lets have a look at the structure of the data
 

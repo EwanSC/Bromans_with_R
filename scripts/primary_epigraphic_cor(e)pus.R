@@ -16,7 +16,8 @@ firstcent_epig_data <- epig_data %>%
   arrange("dating to", "dating from")
 
 # make into a function
-# function that imports, cleans and creates df for 
+# function that imports, cleans and creates df for 1st century epig in Dalmatia
+# following https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html
 
 load_epig_data <- function() {
   library(rjson)
