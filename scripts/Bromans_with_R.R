@@ -98,7 +98,7 @@ ggplot(data = world) +
   geom_sf(color = "black", fill = "navy") +
   geom_sf(data = DLatLonNNAll, size = 0.5, colour = "red") +
   ggtitle("Latin Epigraphy in Dalmatia", 
-          subtitle = "Epigraphic distribution of Latin epigraphy from the EDCS") + 
+          subtitle = "Distribution of Latin epigraphy from the EDCS") + 
   coord_sf(xlim = c(12, 24), ylim = c(40, 49), expand = FALSE)
 
 png(filename = "output_images/Dalmatia_map.png",
@@ -107,7 +107,7 @@ png(filename = "output_images/Dalmatia_map.png",
     geom_sf(color = "black", fill = "navy") +
     geom_sf(data = DLatLonNNAll, size = 0.5, colour = "red") + 
     ggtitle("Latin Epigraphy in Dalmatia", 
-            subtitle = "Epigraphic distribution of Latin epigraphy from the EDCS") + 
+            subtitle = "Distribution of Latin epigraphy from the EDCS") + 
     coord_sf(xlim = c(12, 24), ylim = c(40, 49), expand = FALSE)
 dev.off()
 
