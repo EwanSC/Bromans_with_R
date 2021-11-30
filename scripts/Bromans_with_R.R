@@ -174,7 +174,7 @@ dev.off()
 
 # trying out my load data function
 
-epigdatafirstcent <- load_epig_data() %>% #makes a df that provides counts of distinct place
+epigdatafirstcent <- load_epig_data("data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json") %>% #makes a df that provides counts of distinct place
   group_by(place) %>%
   count(place) %>%
   arrange(desc(n)) 
