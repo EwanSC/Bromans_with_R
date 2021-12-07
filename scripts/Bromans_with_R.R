@@ -11,6 +11,7 @@ library(sf) #geographic plotting package
 library(maps) #maps
 library(mapdata) #higher res maps
 library(rnaturalearth) #more maps stuff - for map origins instead of (maps)
+library(rnaturalearthhires)
 library(rnaturalearthdata)
 library(readr)
 library(dplyr)
@@ -90,7 +91,7 @@ ggplot(DLatLonNNPlot) +
   
 # now n a map
 # first, get world map
-world <- ne_countries(scale = "medium", returnclass = "sf")
+world <- ne_countries(scale = "large", returnclass = "sf")
 class(world)
 
 # First plot all locations on a map and save the output

@@ -15,9 +15,11 @@ library(OpenStreetMap) ## need to install Java - https://stackoverflow.com/quest
 
 library(osmdata)
 
+library("rnaturalearthhires")
+
 
 # bring world geo data from rnatural earth
-world <- ne_countries(scale = "medium", returnclass = "sf")
+world <- ne_countries(scale = "large", returnclass = "sf")
 class(world)
 
 # generate world map
@@ -30,23 +32,17 @@ ggplot(data = world) +
   xlab("Longitude") + ylab("Latitude") +
   ggtitle("World map", subtitle = paste0("(", length(unique(world$name)), " countries)"))
 
-# make one with colour
-ggplot(data = world) + 
-  geom_sf(color = "black", fill = "lightgreen")
-
-# set a confined map with colour
-ggplot(data = world) +
-  geom_sf(color = "black", fill = "lightgreen") +
-  coord_sf(xlim = c(-102.15, -74.12), ylim = c(7.65, 33.97), expand = FALSE)
-
 # make one with just Balkan countries
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
-  coord_sf(xlim = c(10, 24), ylim = c(35, 49), expand = FALSE)
+  coord_sf(xlim = c(12, 21), ylim = c(40, 49), expand = FALSE)
 
 # make a lat long df of locations of epigraphy
-DLatLon <- na.omit(AllDalmatiaEpig %>%
+epigdatafirstcent <- load_epig_data("data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json") #makes a df that provides counts of distinct place
+
+DLatLon <- na.omit(epigdatafirstcent %>%
                         select(Latitude,Longitude))
+
 # plot it the simple way (as point data)
 ggplot(data = world) +
   geom_sf(color = "black", fill = "lightgreen") +
