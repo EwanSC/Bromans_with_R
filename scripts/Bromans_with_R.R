@@ -172,19 +172,3 @@ ggplot(data = world) +
           subtitle = "Epigraphic Distribution in the First Century CE") + 
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
 dev.off()
-
-# trying out my load data function
-
-epigdatafirstcent <- load_epig_data("data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json") %>% #makes a df that provides counts of distinct place
-  group_by(place) %>%
-  count(place) %>%
-  arrange(desc(n)) 
-
-epigdatafirstcentsample <- epigdatafirstcent[which(epigdatafirstcent$n >= 10),]
-
-ggplot(epigdatafirstcentsample, aes(x=place, y=n, fill=place)) +
-  geom_bar(stat="identity", show.legend=F, width = 1) +
-  theme(axis.text.x = element_text(angle = 45, hjust=1)) +
-  ggtitle("1st Cent. CE Dalmatian sites with 10+ inscriptions") +
-  xlab("Site: Modern/Ancient") + 
-  ylab("Number of inscriptions")
