@@ -12,6 +12,12 @@ str(RawEpigData)
 
 head(RawEpigData)
 
+# lets count by place with the RwData
+
+SumRawED <-  RawEpigData %>% 
+group_by(place) %>% 
+  count(place)
+
 # lets remove unnecessary columns
 
 SelectEpigData <- RawEpigData %>%
@@ -51,7 +57,7 @@ SumCleanerEDPlace <-  CleanerEDPlace %>%
   count(`ancient place`)
 
 CleanEDPlace <- CleanerEDPlace %>%
-  select(`EDCS-ID`,publication,province,`ancient place`,`dating from`,`dating to`,status,inscription,`inscription interpretive cleaning`,Latitude,Longitude)
+  select(`EDCS-ID`,publication,province,`place`,`ancient place`,`dating from`,`dating to`,status,inscription,`inscription interpretive cleaning`,Latitude,Longitude)
 
 ##works, but there must be a quicker way...
 
