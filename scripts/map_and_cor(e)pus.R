@@ -1,4 +1,5 @@
 # trying out load data function and map
+# please first run primary_epigraphic_cor(e)pus.R and primary_map.R
 
 epigdatafirstcent <- load_epig_data("data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json") %>% #makes a df that provides counts of distinct place
   group_by(place) %>%
