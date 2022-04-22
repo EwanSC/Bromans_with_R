@@ -30,6 +30,6 @@ ggplot() +
   geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black') +
   geom_sf(data = epigdatafirstcentLLSF, aes(size = n), alpha=0.6) + 
-  labs(size = 'Epigraphic Monuments') +
+  labs(size = 'Monuments') +
   ggtitle("Dalmatia 1st c. CE", subtitle = "Epigraphic Distribution") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
