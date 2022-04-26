@@ -6,7 +6,7 @@ library(tidyverse)
 
 # get the data using premade function
 
-RawEpigData <- load_epig_data("data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+RawEpigData <- load_epig_data("data/2022-04-26-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 
 str(RawEpigData)
 
@@ -21,7 +21,7 @@ group_by(place) %>%
 # lets remove unnecessary columns
 
 SelectEpigData <- RawEpigData %>%
-  select(`EDCS-ID`,publication,province,place,`dating from`,`dating to`,status,inscription,`inscription interpretive cleaning`,Latitude,Longitude)
+  select(`EDCS-ID`,publication,province,place,`dating_from`,`dating_to`,status,inscription,`inscription_interpretive_cleaning`,latitude,longitude)
 
 # lets clean 'place'
 # first count it
@@ -33,7 +33,7 @@ SumEDPlace <-  SelectEpigData %>%
 #lets practice making all major sites one location with ifelse
 
 CleanerEDPlace <- SelectEpigData %>%
-  mutate(`ancient place`=ifelse(place %in% c('Burnum',
+  mutate(`ancient_place`=ifelse(place %in% c('Burnum',
                                              'Ivosevci / Burnum',
                                              'Karlovac / Karlstadt / Burnum',
                                              'Kistanje / Burnum','Knin / Burnum',
@@ -44,85 +44,85 @@ CleanerEDPlace <- SelectEpigData %>%
   mutate(`ancient place`=ifelse(place %in% c('Gardun / Tilurium',
                                              'Trilj / Tilurium',
                                              'Vojnic Sinjski / Tilurium'), 
-                                'Tilurium', `ancient place`)) %>%
+                                'Tilurium', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Kastel Sucurac / Salona',
                                              'Manastirine / Salona',
                                              'Pazdigrad / Pazdigrada / Salona',
                                              'Solin / Salona',
                                              'Vrlika / Vrlica / Salona',
                                              'Dugopolje / Salona'), 
-                                'Salona', `ancient place`)) %>%
+                                'Salona', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Asseria',
                                              'Benkovac / Asseria',
                                              'Podgrade / Asseria'),
-                                'Asseria', `ancient place`)) %>%
+                                'Asseria', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Beli / Caisole / Crexa',
                                              'Cres / Crexa'),
-                                'Crexa', `ancient place`)) %>%
+                                'Crexa', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Biograd na Moru / Zaravecchia / Nedinum',
                                              'Nadin / Nedinum',
                                              'Skabrnja / Nedinum'),
-                                'Nedinum', `ancient place`)) %>%
+                                'Nedinum', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Bastasi / Municipium Salvium',
                                              'Bosansko Grahovo / Municipium Salvium',
                                              'Glamoc / Municipium Salvium',
                                              'Glavica / Municipium Salvium','Podgradina / Municipium Salvium'),
-                                'Municipium Salvium', `ancient place`)) %>%
+                                'Municipium Salvium', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Gornji Muc / Andetrium'),
-                                'Andetrium', `ancient place`)) %>%
+                                'Andetrium', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Bigeste',
                                              'Hardomilje / Bigeste',
                                              'Humac / Bigeste',
                                              'Ljubuski / Mlade / Bigeste',
                                              'Veljaci / Bigeste'),
-                                'Bigeste', `ancient place`)) %>%
+                                'Bigeste', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Bihac / Raetinium',
                                              'Golubic / Raetinium',
                                              'Pritoka / Raetinium',
                                              'Ribic / Raetinium'),
-                                'Raetinium', `ancient place`)) %>%
+                                'Raetinium', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Brac, Otok / Brattia',
                                              'Skrip / Brattia'),
-                                'Brattia', `ancient place`)) %>%
+                                'Brattia', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Bribir / Bribirska Glavica / Varvaria',
                                              'Lastve, Bribir'),
-                                'Varvaria', `ancient place`)) %>%
+                                'Varvaria', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Budva / Buthoe'),
-                                'Buthoe', `ancient place`)) %>%
+                                'Buthoe', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Cacak / Malvesiatium'),
-                                'Malvesiatium', `ancient place`)) %>%
+                                'Malvesiatium', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Caska / Cissa'),
-                                'Cissa', `ancient place`)) %>%
+                                'Cissa', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Cavtat / Epidaurum'),
-                                'Epidaurum', `ancient place`)) %>%
+                                'Epidaurum', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Citluk / Aequum'),
-                                'Aequum', `ancient place`)) %>%
+                                'Aequum', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Danilo Gornje / Rider',
                                              'Sibenik / Rider',
                                              'Grusine, Sibenik'),
-                                'Rider', `ancient place`)) %>%
+                                'Rider', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Dol / Pharia',
                                              'Hvar / Lesina / Pharia'),
-                                'Pharia', `ancient place`)) %>%
+                                'Pharia', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Donje Biljane / Iader',
                                              'Galovac / Iader',
                                              'Zadar / Iader'),
-                                'Iader', `ancient place`)) %>%
+                                'Iader', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Dubrava / Diluntum',
                                              'Stolac / Rotimlja / Megjina / Diluntum'),
-                                'Diluntum', `ancient place`)) %>%
+                                'Diluntum', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Duklja / Duklje / Rusevine / Doclea'),
-                                'Doclea', `ancient place`)) %>%
+                                'Doclea', `ancient_place`)) %>%
   mutate(`ancient place`=ifelse(place %in% c('Gradina / Domavium'),
-                                'Domavium', `ancient place`))
+                                'Domavium', `ancient_place`))
 
 SumCleanerEDPlace <-  CleanerEDPlace %>% 
-  group_by(`ancient place`) %>% 
-  count(`ancient place`)
+  group_by(`ancient_place`) %>% 
+  count(`ancient_place`)
 
 CleanEDPlace <- CleanerEDPlace %>%
-  select(`EDCS-ID`,publication,province,`place`,`ancient place`,`dating from`,`dating to`,status,inscription,`inscription interpretive cleaning`,Latitude,Longitude) %>%
-  group_by(`ancient place`)
+  select(`EDCS-ID`,publication,province,`place`,`ancient_place`,`dating_from`,`dating_to`,status,inscription,`inscription_interpretive_cleaning`,latitude,longitude) %>%
+  group_by(`ancient_place`)
 
 ##works, but there must be a quicker way...
 

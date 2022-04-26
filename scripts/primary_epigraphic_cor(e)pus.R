@@ -17,11 +17,11 @@ load_epig_data <- function(datascrape) {
   json_epig_data <- json_data$data
   epig_data <- data.table::rbindlist(json_epig_data, fill = TRUE) 
   firstcent_epig_data <- epig_data %>%
-  filter(`dating from` %in% (-30:100), `dating to` %in% (1:150)) %>%
+  filter(`dating_from` %in% (-30:100), `dating_to` %in% (1:150)) %>%
   arrange("dating to", "dating from")
   return(firstcent_epig_data)
 }
 
 # example of deploying this in another script: 
 
-"df" <- load_epig_data("data/2021-11-16-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+"df" <- load_epig_data("data/2022-04-26-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
