@@ -1,5 +1,5 @@
 # Cleaning Epig Scrape Data
-# ESC 17/12/2021
+## ESC 27/04/2020
 # Aim is to clean the most recent data from EDCS via Lat-Epig scraper https://github.com/mqAncientHistory/Lat-Epig
 
 library(tidyverse)
@@ -240,13 +240,11 @@ SumCleanEDPlace <-  CleanEDPlace %>%
   group_by(`cleaned_place`) %>%
   count(`cleaned_place`)
 
+## Made the above (lines 35-237) into function which is now at scripts/primary_epigraphic_cor(e)pus.R
+
 ## now to export
 
 write.csv(CleanEDPlace,"data/clean_lat-epig_scrape-place.csv", row.names = FALSE)
 
-##works, but there must be a quicker way...
 
-## lets have a look at status
-SumEDStatus <-  SelectEpigData %>%
-  group_by(status) %>%
-  count(status)
+##works, but there must be a quicker way...
