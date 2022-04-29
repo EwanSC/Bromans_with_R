@@ -6,11 +6,18 @@
 library(sqldf)
 library(dplyr)
 
-## Get cleaned df
-clean_data <- load_clean_epig_data("data/2022-04-26-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+## Get df and cleaned df
+data <- load_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+dated_data <- load_first_cent_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+cleaned_place <- load_clean_place("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+clean_data <- load_clean_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+
+
 
 ## testing out using https://dept.stat.lsa.umich.edu/~jerrick/courses/stat701/notes/sql.html
 all_clean_data <- sqldf("SELECT * from clean_data")
+
+str(all_clean_data)
 
 # now analyse:
 ## 'all military'
@@ -32,13 +39,15 @@ all_military <- sqldf("Select * from clean_data
                     LIKE '%duplicari%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%veteran%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%centuri%'
                   OR cleaned_place = 'Tilurium'
                   OR cleaned_place = 'Burnum'
                   OR cleaned_place = 'Andetrium'
                   OR cleaned_place = 'Bigeste'
                   ")
 
-write.csv(all_military,"data/all_military_first_cent.csv", row.names = FALSE)
+write.csv(all_military,"output_tables/all_military_first_cent.csv", row.names = FALSE)
 
 all_military_place <- na.omit(all_military %>%
                                  select(cleaned_place,longitude,latitude) %>%
@@ -75,9 +84,11 @@ military_by_term <- sqldf("Select * from clean_data
                           OR inscription_interpretive_cleaning 
                           LIKE '%duplicari%'
                           OR inscription_interpretive_cleaning 
-                          LIKE '%veteran%'")
-
-write.csv(military_by_term,"data/military_by_term_first_cent.csv", row.names = FALSE)
+                          LIKE '%veteran%'
+                          or inscription_interpretive_cleaning
+                          LIKE '%centuri%'")
+  
+write.csv(military_by_term,"output_tables/military_by_term_first_cent.csv", row.names = FALSE)
 
 military_by_term_place <- na.omit(military_by_term %>%
                                 select(cleaned_place,longitude,latitude) %>%
@@ -104,7 +115,7 @@ military_by_place <- sqldf("Select * from clean_data
                   OR cleaned_place = 'Bigeste'
                   ")
 
-write.csv(military_by_place,"data/military_by_place_first_cent.csv", row.names = FALSE)
+write.csv(military_by_place,"output_tables/military_by_place_first_cent.csv", row.names = FALSE)
 
 military_by_place_place <- na.omit(military_by_place %>%
                                     select(cleaned_place,place,longitude,latitude) %>%
@@ -120,4 +131,79 @@ ggplot() +
   geom_sf(data = military_by_place_place_ll, aes(size = n), alpha=0.6, colour = '#cd2026') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia 30 BCE - 150 CE", subtitle = "Filtered Using Places") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 25), ylim = c(41.5, 48))
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+## all undated Dalmatia
+undated_dal <- sqldf("Select * from cleaned_place
+                        WHERE dating_to IS NULL
+                        OR dating_from IS NULL
+                        OR dating_from = ''
+                        OR dating_to = ''
+                  ")
+
+all_military_undated <- sqldf("Select * from undated_dal
+                  WHERE inscription_interpretive_cleaning 
+                    LIKE '%legio%' 
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%cohor%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '% ala %'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '% alae %'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%milit%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '% equ%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%duplicari%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%veteran%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%centuri%'
+                  OR cleaned_place = 'Tilurium'
+                  OR cleaned_place = 'Burnum'
+                  OR cleaned_place = 'Andetrium'
+                  OR cleaned_place = 'Bigeste'
+                  ")
+
+write.csv(all_military_undated,"output_tables/all_military_undated.csv", row.names = FALSE)
+
+all_military_undated_place <- na.omit(all_military_undated %>%
+                                     select(cleaned_place,place,longitude,latitude) %>%
+                                     group_by(cleaned_place) %>%
+                                     count(cleaned_place,place,longitude,latitude) %>%
+                                     arrange(desc(n)))
+
+(all_military_undated_place_ll <- st_as_sf(all_military_undated_place, coords = c('longitude', 'latitude'), 
+                                        crs = 4326, agr = "constant"))
+
+ggplot() + 
+  geom_sf(data = world, color = "black", fill = "lightgrey") + 
+  geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
+  geom_sf(data = all_military_undated_place_ll, aes(size = n), alpha=0.6, colour = '#cd2026') +
+  labs(size = 'Monuments') +
+  ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments in the EDCS") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+## now to combine undated all military with combined all military
+## from https://r-lang.com/how-to-append-data-frames-in-r/
+military_first_cent_and_undated <- rbind(all_military, all_military_undated)
+
+write.csv(military_first_cent_and_undated,"output_tables/military_first_cent_and_undated.csv", row.names = FALSE)
+
+military_first_cent_and_undated_place <- na.omit(military_first_cent_and_undated %>%
+                                        select(cleaned_place,place,longitude,latitude) %>%
+                                        group_by(cleaned_place) %>%
+                                        count(cleaned_place,place,longitude,latitude) %>%
+                                        arrange(desc(n)))
+
+(military_first_cent_and_undated_place_ll <- st_as_sf(military_first_cent_and_undated_place, coords = c('longitude', 'latitude'), 
+                                           crs = 4326, agr = "constant"))
+
+ggplot() + 
+  geom_sf(data = world, color = "black", fill = "lightgrey") + 
+  geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
+  geom_sf(data = military_first_cent_and_undated_place_ll, aes(size = n), alpha=0.6, colour = '#cd2026') +
+  labs(size = 'Monuments') +
+  ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments and Monuments from 30 BCE to 150 CE") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))

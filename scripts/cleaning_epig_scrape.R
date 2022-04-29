@@ -233,7 +233,7 @@ CleanerEDPlace <- SelectEpigData %>%
 
 
 CleanEDPlace <- CleanerEDPlace %>%
-  select(`EDCS-ID`,publication,province,`place`,`cleaned_place`,`dating_from`,`dating_to`,status,inscription,`inscription_interpretive_cleaning`,latitude,longitude) %>%
+  select(`EDCS-ID`,publication,province,`place`,`cleaned_place`,`dating_from`,`dating_to`,status,inscription,`inscription_interpretive_cleaning`,latitude,longitude,photo) %>%
   group_by(`cleaned_place`)
 
 SumCleanEDPlace <-  CleanEDPlace %>%
