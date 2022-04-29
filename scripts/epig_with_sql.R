@@ -2,9 +2,11 @@
 ## ESC 27/04/2020
 ## aim to try out and clean with SQL packages for R using previously developed skills
 
-## SQL packages
+## packages
 library(sqldf)
 library(dplyr)
+library(ggplot2)
+library(ggrepel)
 
 ## Get df and cleaned df
 data <- load_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
@@ -55,7 +57,7 @@ all_military_place <- na.omit(all_military %>%
                                  count(cleaned_place,longitude,latitude) %>%
                                  arrange(desc(n))) 
 
-(all_military_place_ll <- st_as_sf(all_military_place, coords = c('longitude', 'latitude'), 
+(all_military_place_ll <- st_as_sf(all_military_place, coords = c('longitude', 'latitude'), remove = FALSE,
                                    crs = 4326, agr = "constant"))
 
 ggplot() + 
