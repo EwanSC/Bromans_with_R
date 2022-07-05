@@ -5,7 +5,8 @@ library("rnaturalearthdata")
 library("rnaturalearth")
 library("rnaturalearthhires")
 
-
+# couldn't download rnaturalearthhires
+# fixed with https://stackoverflow.com/questions/66294044/rnaturalearthhires-package-installation-error
 # following https://datacarpentry.org/r-raster-vector-geospatial/06-vector-open-shapefile-in-r/index.html
 
 roman_69_map <- st_read(
