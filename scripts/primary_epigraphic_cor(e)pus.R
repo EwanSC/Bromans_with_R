@@ -1,7 +1,7 @@
 # Primary epigraphic Cor(e)pus
 # ESC 17/12/2021
 # Aim is to turn the LatEpig JSON files into a DF and then into a 1st century CE df
-# as a function function which does just this
+# as a function which does just this
 # Information from:
 # https://www.datacamp.com/community/tutorials/r-data-import-tutorial#javascript
 # https://stackoverflow.com/questions/53037844/multiple-list-json-to-data-frame-in-r

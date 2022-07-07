@@ -68,8 +68,9 @@ ggplot() +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia 30 BCE - 150 CE", subtitle = "Filtered Using Key Words and Places") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
 
-## 'military' by inscription terms
+ggsave("output_images/dated_military_scatter.png", dpi = 300)
 
+## filtering to 'military' by inscription terms
 military_by_term <- sqldf("Select * from clean_data
                           WHERE inscription_interpretive_cleaning 
                           LIKE '%legio%' 
@@ -207,5 +208,7 @@ ggplot() +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
   geom_sf(data = military_first_cent_and_undated_place_ll, aes(size = n), alpha=0.6, colour = '#cd2026') +
   labs(size = 'Monuments') +
-  ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments and Monuments from 30 BCE to 150 CE") +
+  ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments and Monuments Dated 30 BCE–150 CE") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
+
+ggsave("output_images/dated_undated_military_scatter.png", dpi = 300)
