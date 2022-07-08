@@ -1,5 +1,7 @@
 ## trying out sql packages
-## ESC 27/04/2020
+## Author: Ewan Coopey
+## Created: 27/04/2020
+## Last edit: 07/07/2022
 ## aim to try out and clean with SQL packages for R using previously developed skills
 
 ## packages
@@ -8,7 +10,8 @@ library(dplyr)
 library(ggplot2)
 library(ggrepel)
 
-## Get df and cleaned df
+## first, run scripts/primary_epigraphic_cor(e)pus and scripts/primary_map
+## Get df and cleaned df 
 data <- load_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 dated_data <- load_first_cent_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 cleaned_place <- load_clean_place("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
@@ -22,36 +25,127 @@ all_clean_data <- sqldf("SELECT * from clean_data")
 str(all_clean_data)
 
 # now analyse:
-## 'all military'
+## 'all military' by using 'where like' clause and wildcard
+# see here for more: https://www.w3schools.com/sql/sql_wildcards.asp#:~:text=SQL%20Wildcards,-%E2%9D%AE%20Previous%20Next&text=A%20wildcard%20character%20is%20used,specified%20pattern%20in%20a%20column.
+## filtering to 'military' by inscription terms and place
 
-all_military <- sqldf("Select * from clean_data
+all_military_1 <- sqldf("Select * from clean_data
                   WHERE inscription_interpretive_cleaning 
-                    LIKE '%legio%' 
+                    LIKE '%legio%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%cohor%'
                   OR inscription_interpretive_cleaning 
-                    LIKE '% ala %'
+                    LIKE '%ala%'
                   OR inscription_interpretive_cleaning 
-                    LIKE '% alae %'
+                    LIKE '%alae%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%milit%'
                   OR inscription_interpretive_cleaning 
-                    LIKE '% equ%'
+                    LIKE '%eques%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%equit%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%duplicari%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%veteran%'
                   or inscription_interpretive_cleaning
                     LIKE '%centuri%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%immun%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%miles%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%beneficiar%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%tesserari%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%signifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%aquilifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%imaginifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%corniculari%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%principalis%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primus pilus%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primo pilo%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primi pili%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%praefectus castrorum%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%optio %'
+                  or inscription_interpretive_cleaning
+                    LIKE '%option%'
                   OR cleaned_place = 'Tilurium'
                   OR cleaned_place = 'Burnum'
                   OR cleaned_place = 'Andetrium'
                   OR cleaned_place = 'Bigeste'
                   ")
 
-write.csv(all_military,"output_tables/all_military_first_cent.csv", row.names = FALSE)
+write.csv(all_military_1,"output_tables/all_military_first_cent1.csv", row.names = FALSE)
 
-all_military_place <- na.omit(all_military %>%
+# using brackets to find either/or: this one doesn't capture as many, why??
+all_military_2 <- sqldf("Select * from clean_data
+                  WHERE inscription_interpretive_cleaning 
+                    LIKE '%legio[ n]%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%cohor[st]%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%ala%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%alae%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%milit%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%eques%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%equit[ei]%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%duplicari[ouis]%'
+                  OR inscription_interpretive_cleaning 
+                     LIKE '%veteran%'
+                  OR inscription_interpretive_cleaning
+                    LIKE '%centuri[ao]%'
+                  OR inscription_interpretive_cleaning
+                    LIKE '%immun[ie]%'
+                  OR inscription_interpretive_cleaning
+                    LIKE '%miles%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%beneficiari[uoie]%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%tesserari[uio]%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%signifer%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%aquilifer%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%imaginifer%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%corniculari[uio]%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%principalis%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%primus pilus%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%prim[oi] pil[oi]%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%praefectus [ck]astrorum%'
+                   OR inscription_interpretive_cleaning
+                     LIKE '%optio[ n]%'
+                   OR cleaned_place = 'Tilurium'
+                   OR cleaned_place = 'Burnum'
+                   OR cleaned_place = 'Andetrium'
+                   OR cleaned_place = 'Bigeste'
+                ")
+
+write.csv(all_military_2,"output_tables/all_military_first_cent2.csv", row.names = FALSE)
+
+## now to plot #1
+all_military_place <- na.omit(all_military_1 %>%
                                  select(cleaned_place,longitude,latitude) %>%
                                  group_by(cleaned_place) %>%
                                  count(cleaned_place,longitude,latitude) %>%
@@ -70,26 +164,66 @@ ggplot() +
 
 ggsave("output_images/dated_military_scatter.png", dpi = 300)
 
-## filtering to 'military' by inscription terms
+## filtering to 'military' via 'milites' status column
+## Turns out table 1 above captures the same monuments and more, huzzah!
+all_military_by_status <- sqldf("SELECT * 
+                              FROM clean_data 
+                              WHERE status like '%milites%'")
+
+write.csv(military_by_status,"output_tables/military_by_edcs-status_first_cent.csv", row.names = FALSE)
+
+## filtering to 'military' by only inscription terms
 military_by_term <- sqldf("Select * from clean_data
                           WHERE inscription_interpretive_cleaning 
-                          LIKE '%legio%' 
-                          OR inscription_interpretive_cleaning 
-                          LIKE '%cohor%'
-                          OR inscription_interpretive_cleaning 
-                          LIKE '% ala %'
-                          OR inscription_interpretive_cleaning 
-                          LIKE '% alae %'
-                          OR inscription_interpretive_cleaning 
-                          LIKE '%milit%'
-                          OR inscription_interpretive_cleaning 
-                          LIKE '% equ%'
-                          OR inscription_interpretive_cleaning 
-                          LIKE '%duplicari%'
-                          OR inscription_interpretive_cleaning 
-                          LIKE '%veteran%'
-                          or inscription_interpretive_cleaning
-                          LIKE '%centuri%'")
+                    LIKE '%legio%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%cohor%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%ala%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%alae%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%milit%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%eques%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%equit%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%duplicari%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%veteran%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%centuri%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%immun%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%miles%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%beneficiar%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%tesserari%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%signifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%aquilifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%imaginifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%corniculari%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%principalis%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primus pilus%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primo pilo%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primi pili%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%praefectus castrorum%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%optio %'
+                  or inscription_interpretive_cleaning
+                    LIKE '%option%'")
   
 write.csv(military_by_term,"output_tables/military_by_term_first_cent.csv", row.names = FALSE)
 
@@ -146,23 +280,55 @@ undated_dal <- sqldf("Select * from cleaned_place
 
 all_military_undated <- sqldf("Select * from undated_dal
                   WHERE inscription_interpretive_cleaning 
-                    LIKE '%legio%' 
+                    LIKE '%legio%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%cohor%'
                   OR inscription_interpretive_cleaning 
-                    LIKE '% ala %'
+                    LIKE '%ala%'
                   OR inscription_interpretive_cleaning 
-                    LIKE '% alae %'
+                    LIKE '%alae%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%milit%'
                   OR inscription_interpretive_cleaning 
-                    LIKE '% equ%'
+                    LIKE '%eques%'
+                  OR inscription_interpretive_cleaning 
+                    LIKE '%equit%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%duplicari%'
                   OR inscription_interpretive_cleaning 
                     LIKE '%veteran%'
                   or inscription_interpretive_cleaning
                     LIKE '%centuri%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%immun%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%miles%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%beneficiar%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%tesserari%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%signifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%aquilifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%imaginifer%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%corniculari%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%principalis%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primus pilus%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primo pilo%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%primi pili%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%praefectus castrorum%'
+                  or inscription_interpretive_cleaning
+                    LIKE '%optio %'
+                  or inscription_interpretive_cleaning
+                    LIKE '%option%'
                   OR cleaned_place = 'Tilurium'
                   OR cleaned_place = 'Burnum'
                   OR cleaned_place = 'Andetrium'
