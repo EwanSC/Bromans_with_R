@@ -484,7 +484,7 @@ load_clean_epig_data <- function(datascrape) {
   json_epig_data <- json_data$data
   epig_data <- data.table::rbindlist(json_epig_data, fill = TRUE) 
   firstcent_epig_data <- epig_data %>%
-    filter(`dating_from` %in% (-30:100), `dating_to` %in% (29:150)) %>%
+    filter(`dating_from` %in% (-30:100), `dating_to` %in% (-29:150)) %>%
     arrange("dating to", "dating from")
   clean_firstcent_epig_data <- firstcent_epig_data %>%
     mutate(`cleaned_place`=ifelse(place %in% c('Burnum',

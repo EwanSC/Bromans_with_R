@@ -356,7 +356,7 @@ ggplot() +
 
 ## now to combine undated all military with combined all military
 ## from https://r-lang.com/how-to-append-data-frames-in-r/
-military_first_cent_and_undated <- rbind(all_military, all_military_undated)
+military_first_cent_and_undated <- rbind(all_military_1, all_military_undated)
 
 write.csv(military_first_cent_and_undated,"output_tables/military_first_cent_and_undated.csv", row.names = FALSE)
 
