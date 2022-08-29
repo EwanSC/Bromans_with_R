@@ -1,8 +1,9 @@
-## trying out sql packages
+## Using sql packages to create PhD corpus
 ## Author: Ewan Coopey
 ## Created: 27/04/2020
-## Last edit: 07/07/2022
-## aim to try out and clean with SQL packages for R using previously developed skills
+## Last edit: 29/08/2022
+## Clean with SQL packages for R using previously developed 
+## skills and come to final corpus for moving to database
 
 ## packages
 library(sqldf)
@@ -12,10 +13,10 @@ library(ggrepel)
 
 ## first, run scripts/primary_epigraphic_cor(e)pus and scripts/primary_map
 ## Get df and cleaned df 
-data <- load_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
-dated_data <- load_first_cent_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
-cleaned_place <- load_clean_place("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
-clean_data <- load_clean_epig_data("data/2022-04-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+data <- load_epig_data("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+dated_data <- load_first_cent_epig_data("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+cleaned_place <- load_clean_place("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
+clean_data <- load_clean_epig_data_30_150("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 
 
 
