@@ -480,7 +480,7 @@ load_clean_epig_data_30_150 <- function(datascrape) {
   library(dplyr)
   library(tidyverse)
   json_filename <- datascrape
-  json_data <- fromJSON(file=json_filename)
+  json_data <- fromJSON(file= json_filename)
   json_epig_data <- json_data$data
   epig_data <- data.table::rbindlist(json_epig_data, fill = TRUE) 
   firstcent_epig_data <- epig_data %>%

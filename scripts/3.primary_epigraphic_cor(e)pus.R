@@ -4,6 +4,8 @@
 # last edit: 29/08/2022
 # Create primary datasets for PhD research by combining 1st cent. CE and undated military inscriptions
 # and then plot both (separately and together)
+# sql: ## testing out using https://dept.stat.lsa.umich.edu/~jerrick/courses/stat701/notes/sql.html
+
 
 ## get packages
 library(sqldf)
@@ -17,17 +19,12 @@ library(ggrepel)
 cleaned_place <- load_clean_place("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 clean_dated_data <- load_clean_epig_data_30_150("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 
-## testing out using https://dept.stat.lsa.umich.edu/~jerrick/courses/stat701/notes/sql.html
-all_clean_data <- sqldf("SELECT * from clean_data")
-
-str(all_clean_data)
-
 # now analyse:
 ## 'all military' by using 'where like' clause and wildcard
 # see here for more: https://www.w3schools.com/sql/sql_wildcards.asp#:~:text=SQL%20Wildcards,-%E2%9D%AE%20Previous%20Next&text=A%20wildcard%20character%20is%20used,specified%20pattern%20in%20a%20column.
 ## filtering to 'military' by inscription terms and place and then plotting using ggplot
 
-dated_military <- sqldf("Select * from clean_data
+dated_military <- sqldf("Select * from clean_dated_data
                   WHERE inscription_interpretive_cleaning 
                     LIKE '%legio%'
                   OR inscription_interpretive_cleaning 
@@ -189,7 +186,7 @@ ggplot() +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments in the EDCS") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46))
 
-  ggsave("output_images/undated_military_scatter.png", dpi = 300)
+ggsave("output_images/undated_military_scatter.png", dpi = 300)
 
 ## now to combine undated dated_military with undated_military and plot
 ## combined using https://r-lang.com/how-to-append-data-frames-in-r/
