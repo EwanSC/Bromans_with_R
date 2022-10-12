@@ -93,7 +93,7 @@ dated_military_place <- na.omit(dated_military %>%
                                    crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "black", fill = "lightgrey") + 
+  geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
   geom_sf(data = dated_military_place_ll, aes(size = n), alpha=0.6, colour = '#cd2026') +
   labs(size = 'Monuments') +
@@ -179,7 +179,7 @@ undated_military_place <- na.omit(undated_military %>%
                                         crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "black", fill = "lightgrey") + 
+  geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
   geom_sf(data = undated_military_place_ll, aes(size = n), alpha=0.6, colour = '#cd2026') +
   labs(size = 'Monuments') +
@@ -205,7 +205,7 @@ military_dated_and_undated_place <- na.omit(military_dated_and_undated %>%
                                            crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "black", fill = "lightgrey") + 
+  geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
   geom_sf(data = military_dated_and_undated_place_ll, aes(size = n), alpha=0.6, colour = '#cd2026') +
   labs(size = 'Monuments') +
