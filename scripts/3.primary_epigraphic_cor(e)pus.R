@@ -1,7 +1,7 @@
 # Primary epigraph Cor(e)pus
 # Ewan Coopey
 # created 29/08/2022
-# last edit: 29/08/2022
+# last edit: 12/10/2022
 # Create primary datasets for PhD research by combining 1st cent. CE and undated military inscriptions
 # and then plot both (separately and together)
 # sql: ## testing out using https://dept.stat.lsa.umich.edu/~jerrick/courses/stat701/notes/sql.html

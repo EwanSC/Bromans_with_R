@@ -1,7 +1,7 @@
 # Primary epigraph Cor(e)pus function
 # Ewan Coopey
 # created 17/12/2021
-# last edit: 29/08/2022
+# last edit: 12/10/2022
 # Aim is to turn the LatEpig JSON files into a DF and then into a 1st century CE df
 # as a function which does just this
 # Information from:
