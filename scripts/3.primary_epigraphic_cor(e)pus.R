@@ -81,7 +81,7 @@ dated_military <- sqldf("Select * from clean_dated_data
                   OR cleaned_place = 'Bigeste'
                   ")
 
-write.csv(dated_military,"output_tables/dated_military.csv", row.names = FALSE)
+write.csv(dated_military,"output_tables/corpus/dated_military.csv", row.names = FALSE)
 
 dated_military_place <- na.omit(dated_military %>%
                                  select(cleaned_place,longitude,latitude) %>%
@@ -167,7 +167,7 @@ undated_military <- sqldf("Select * from undated_dal
                   OR cleaned_place = 'Bigeste'
                   ")
 
-write.csv(undated_military,"output_tables/undated_military.csv", row.names = FALSE)
+write.csv(undated_military,"output_tables/corpus/undated_military.csv", row.names = FALSE)
 
 undated_military_place <- na.omit(undated_military %>%
                             		select(cleaned_place,place,longitude,latitude) %>%
@@ -193,7 +193,7 @@ ggsave("output_images/undated_military_scatter.png", dpi = 300)
 
 military_dated_and_undated <- rbind(dated_military, undated_military)
 
-write.csv(military_dated_and_undated,"output_tables/military_dated_and_undated.csv", row.names = FALSE)
+write.csv(military_dated_and_undated,"output_tables/corpus/military_dated_and_undated.csv", row.names = FALSE)
 
 military_dated_and_undated_place <- na.omit(military_dated_and_undated %>%
                                         select(cleaned_place,place,longitude,latitude) %>%
