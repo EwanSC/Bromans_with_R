@@ -101,7 +101,7 @@ ggplot() +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-ggsave("output_images/dated_military_scatter.png", dpi = 300)
+ggsave("output_images/dated_military_scatter.jpeg", dpi = 300)
 
 ## now to get all undated Dalmatian inscriptions of military flavour and plot
 undated_dal <- sqldf("Select * from cleaned_place
@@ -188,7 +188,7 @@ ggplot() +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-ggsave("output_images/undated_military_scatter.png", dpi = 300)
+ggsave("output_images/undated_military_scatter.jpeg", dpi = 300)
 
 ## now to combine undated dated_military with undated_military and plot
 ## combined using https://r-lang.com/how-to-append-data-frames-in-r/
@@ -215,4 +215,4 @@ ggplot() +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-ggsave("output_images/dated_undated_military_scatter.png", dpi = 300)
+ggsave("output_images/dated_undated_military_scatter.jpeg", dpi = 300)
