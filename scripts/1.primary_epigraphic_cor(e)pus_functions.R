@@ -9,6 +9,11 @@
 # https://stackoverflow.com/questions/53037844/multiple-list-json-to-data-frame-in-r
 # https://swcarpentry.github.io/r-novice-inflammation/02-func-R/index.html
 
+library(rjson)
+library(tibble)
+library(data.table)
+library(dplyr)
+library(tidyverse)
 
 # 1. load all data from Json
 load_epig_data <- function(datascrape) {

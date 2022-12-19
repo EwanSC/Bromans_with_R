@@ -203,6 +203,8 @@ military_dated_and_undated_place <- na.omit(military_dated_and_undated %>%
                                         count(cleaned_place,place,longitude,latitude) %>%
                                         arrange(desc(n)))
 
+write.csv(military_dated_and_undated_place,"output_tables/corpus/military_dated_and_undated_place.csv", row.names = FALSE)
+
 (military_dated_and_undated_place_ll <- st_as_sf(military_dated_and_undated_place, coords = c('longitude', 'latitude'), 
                                            crs = 4326, agr = "constant"))
 
@@ -216,3 +218,5 @@ ggplot() +
   theme_void()
 
 ggsave("output_images/dated_undated_military_scatter.jpeg", dpi = 300)
+
+# now to clean and select only distinct place at lattitude data
