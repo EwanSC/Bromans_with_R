@@ -12,6 +12,8 @@ library(sqldf)
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
+library(sf)
+
 
 ## run scripts/1.primary_epigraphic_cor(e)pus_functions and 2.scripts/primary_map
 ## then, deploy function to get and clean df:
