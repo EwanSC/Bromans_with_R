@@ -40,9 +40,15 @@ head(roman_69_map)
 roman_69_provinces <- st_read(
   "shape_files/roman_empire_ad_69_provinces.shp")
 
+# adding road data from DARMC https://hub.arcgis.com/datasets/55a54a1350e14ca0b355d95633da3851_0
+
+roman_69_roads <- st_read(
+  "shape_files/Roman_roads.shp")
+
 ggplot() + 
   geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black') +
+  geom_sf(data = roman_69_roads, colour = 'brown') +
   ggtitle("Roman Empire 69 CE", subtitle = "Dalmatia") +
   coord_sf(xlim = c(13, 21), ylim = c(41.5, 46)) +
   theme_void()
