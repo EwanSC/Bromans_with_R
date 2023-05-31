@@ -98,37 +98,54 @@ ggplot(dated_military_new, aes(x = date_mean), fill = date_mean) +
   geom_histogram(binwidth = 10, position = "dodge") 
 
 # now for density (not working..) Work with https://cran.r-project.org/web/packages/datplot/vignettes/how-to.html
-dated_military_steps <- datsteps(dated_military_new, stepsize = 1)
+system.time(dated_military_steps <- datsteps(dated_military_new, stepsize = 1))[3]
+
+system.time(dated_military_steps <- datsteps(dated_military_new, stepsize = 25))[3]
 
 dated_military_steps <- datsteps(dated_military_new, stepsize = 25)
+ggplot(dated_military_steps, aes(x = DAT_step)) +
+  geom_histogram(binwidth = 25, position = "dodge")
 
-ggplot(data = dated_military_scale, aes(x = DAT_step, weight = weight)) +
-  geom_density(alpha = 0.5, fill = "darkorange") +
-  xlab("Dating")
-
-ggplot(data = dated_military_steps, aes(x = DAT_step)) +
-  geom_density(alpha = 0.5, fill = "darkorange") +
-  xlab("Dating")
-
-##Not entirely working...
-dated_military_steps <- datsteps(dated_military_new, stepsize = 25)
-dens <- dated_military_steps
-dens <- scaleweight(dated_military_steps, var = "all")
+dated_military_dens <- datsteps(dated_military_new, stepsize = 5)
+dens <- dated_military_dens
+dens <- scaleweight(dated_military_dens, var = "all")
 dens <- density(x = dens$DAT_step, weights = dens$weight)
 plot(dens)
 
-dated_military_scale <- scaleweight(dated_military_new, var = 2)
+dated_military_scale <- scaleweight(dated_military_dens, var = 2)
 
-ggplot(dated_military_scale, aes(x = DAT_step)) +
-  geom_histogram(binwidth = 25, position = "dodge")
+# with weight variable
+ggplot(data = dated_military_scale, aes(x = DAT_step, weight = weight)) +
+  geom_density(alpha = 0.5, fill = "darkorange") +
+  labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
+  ggtitle("Temporal Distribution", subtitle = "Scaled weighted density")
+
+
+# without weight variable
+ggplot(data = dated_military_scale, aes(x = DAT_step)) +
+  geom_density(alpha = 0.5, fill = "darkorange") +
+  labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
+  ggtitle("Temporal Distribution", subtitle = "Scaled density")
 
 # now to combine
 
-histogramscale <- get.histogramscale(dated_military_steps)
+histogramscale <- get.histogramscale(dated_military_scale)
 
-ggplot(dated_military_steps, aes(x = DAT_step)) +
-  stat_density(alpha = 0.5, position = "dodge",
+ggplot(dated_military_scale, aes(x = DAT_step)) +
+  stat_density(alpha = 0.5, position = "dodge", fill = "darkorange",
                aes(y = (..density.. * histogramscale), weight = weight)) +
-  geom_histogram(alpha = 0.5, binwidth = attributes(dated_military_steps)$stepsize,
-                 position = "dodge") +
-  labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE")
+  geom_histogram(alpha = 0.5, binwidth = attributes(dated_military_scale)$stepsize,
+                 position = "dodge", fill = "darkgrey") +
+  labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
+  ggtitle("Temporal Distribution", subtitle = "Scaled density and mean date")
+
+
+ggplot(dated_military_scale, aes(x = DAT_step)) +
+  stat_density(alpha = 0.5, position = "dodge", fill = "darkorange",
+               aes(y = (..density.. * histogramscale))) +
+  geom_histogram(alpha = 0.5, binwidth = attributes(dated_military_scale)$stepsize,
+                 position = "dodge", fill = "darkgrey") +
+  labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
+  ggtitle("Temporal Distribution", subtitle = "Scaled density and mean date")
+  
+
