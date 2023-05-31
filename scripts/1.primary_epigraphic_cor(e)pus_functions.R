@@ -906,7 +906,7 @@ load_clean_select_epig_data_30_150 <- function(datascrape) {
     mutate(`cleaned_place`=ifelse(place %in% c('Zaostrog / Zastrogh'),
                                   'Zaostrog', `cleaned_place`))
   clean_firstcent_data <- clean_firstcent_epig_data %>%
-    select(`EDCS-ID`,publication,province,`place`,`cleaned_place`,`dating_from`,`dating_to`,status,inscription,`inscription_interpretive_cleaning`,latitude,longitude,comment,photo) %>%
+    select(`EDCS-ID`,publication,`dating_from`,`dating_to`,`place`,province,`cleaned_place`,status,inscription,`inscription_interpretive_cleaning`,latitude,longitude,comment,photo) %>%
     group_by(`cleaned_place`)
   return(clean_firstcent_data)
 }
