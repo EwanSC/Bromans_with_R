@@ -42,13 +42,21 @@ roman_69_provinces <- st_read(
 
 # adding road data from DARMC https://hub.arcgis.com/datasets/55a54a1350e14ca0b355d95633da3851_0
 
-roman_69_roads <- st_read(
+roman_roads <- st_read(
   "shape_files/Roman_roads.shp")
+
+# adding settlements from Pleiades https://pleiades.stoa.org/downloads
+
+roman_settlements <- st_read(
+  "data/Roman_settlements_pleiades.gpkg")
+
+# making map
 
 ggplot() + 
   geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black') +
-  geom_sf(data = roman_69_roads, colour = 'brown') +
+  geom_sf(data = roman_roads, colour = 'brown') +
+  geom_sf(data = roman_settlement, colour = 'black', size = 0.8) +
   ggtitle("Roman Empire 69 CE", subtitle = "Dalmatia") +
   coord_sf(xlim = c(13, 21), ylim = c(41.5, 46)) +
   theme_void()

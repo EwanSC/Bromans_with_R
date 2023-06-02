@@ -96,9 +96,10 @@ dated_military_place <- na.omit(dated_military %>%
 
 ggplot() + 
   geom_sf(data = world, color = "darkgrey", fill = "grey") + 
-  geom_sf(data = roman_69_roads, colour = 'lightgrey', size = 0.8) +
+  geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
-  geom_sf(data = dated_military_place_ll, aes(size = n), alpha=0.6, colour = 'darkorange') +
+  geom_sf(data = roman_settlement, colour = 'black', alpha=0.6, size = 0.8) +
+  geom_sf(data = dated_military_place_ll, aes(size = n), alpha=0.8, colour = 'darkorange') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia 30 BCE - 150 CE", subtitle = "Filtered Using Key Words and Places") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
@@ -184,8 +185,9 @@ undated_military_place <- na.omit(undated_military %>%
 
 ggplot() + 
   geom_sf(data = world, color = "darkgrey", fill = "grey") + 
-  geom_sf(data = roman_69_roads, colour = 'lightgrey', size = 0.8) +
+  geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
+  geom_sf(data = roman_settlement, colour = 'black', size = 0.8) +
   geom_sf(data = undated_military_place_ll, aes(size = n), alpha=0.6, colour = 'red') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments in the EDCS") +
@@ -214,8 +216,9 @@ write.csv(military_dated_and_undated_place,"output_tables/corpus/military_dated_
 
 ggplot() + 
   geom_sf(data = world, color = "darkgrey", fill = "grey") + 
-  geom_sf(data = roman_69_roads, colour = 'lightgrey', size = 0.8) +
+  geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
+  geom_sf(data = roman_settlement, colour = 'black', size = 0.8) +
   geom_sf(data = military_dated_and_undated_place_ll, aes(size = n), alpha=0.6, colour = 'red') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments and Monuments Dated 30 BCE–150 CE") +

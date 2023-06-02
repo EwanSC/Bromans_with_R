@@ -3,7 +3,7 @@ Working with R to handle epigraphic and GIS data for my PhD project. Some relate
 
 ## Example outputs:
 
-![scaled scatter map of the distribution of military stelae in roman dalmatia. title reads Epigraphic Distribution of the Military in Dalmatia, subtitle reads Undated Monuments and Monuments Dated 30 BCE–150 CE. x-axis goes from 12 east to 22 east. y-axis goes from 41 north to 46 and a half north. map is of the eastern Adriatic coastline. the land mass is marked out in grey, with modern country lines marked out in black and the modern borders of countries in dark grey. red circles of varying sizes cluster along the coastline from north to south, with select small red dots in the hinterland. the key consists of 4 red circles increasing in size, with the smallest representing 25, the second 50, the thrid 75, and the last 100.](output_images/dated_military_scatter_new_colour.jpeg)
+![scaled scatter map of the distribution of military monuments in roman dalmatia. title reads Epigraphic Distribution of the Military in Dalmatia, subtitle reads Undated Monuments and Monuments Dated 30 BCE–150 CE. x-axis goes from 12 east to 22 east. y-axis goes from 41 north to 46 and a half north. map is of the eastern Adriatic coastline. Key consists of 4 orange circles increasing in size, with the smallest representing 25, the second 50, the third 75, and the last 100.](output_images/dated_military_scatter.jpeg)
 <figcaption> Map of the distribution of military epigraphic monuments in Dalmatia dating between 30BCE--150CE (-30/117--117/150). CC BY-SA 4.0</figcaption>
 
 <p> <p/>
