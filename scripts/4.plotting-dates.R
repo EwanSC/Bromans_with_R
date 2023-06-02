@@ -117,7 +117,7 @@ dated_military_scale <- scaleweight(dated_military_dens, var = 2)
 # with weight variable
 ggplot(data = dated_military_scale, aes(x = DAT_step, weight = weight)) +
   geom_density(alpha = 0.5, fill = "darkorange") +
-  labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
+  labs(x = "Date (BCE/CE)") +
   ggtitle("Temporal Distribution", subtitle = "Scaled weighted density")
 
 
@@ -146,6 +146,6 @@ ggplot(dated_military_scale, aes(x = DAT_step)) +
   geom_histogram(alpha = 0.5, binwidth = attributes(dated_military_scale)$stepsize,
                  position = "dodge", fill = "darkgrey") +
   labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
-  ggtitle("Temporal Distribution", subtitle = "Scaled density and mean date")
+  ggtitle("Temporal Distribution", subtitle = "Scaled density and histogram")
   
 
