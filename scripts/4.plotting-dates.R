@@ -1,7 +1,7 @@
 # Plotting dates
 # Ewan Coopey
 # created 29/08/2022
-# last edit: 12/10/2022
+# last edit: 29/01/2024
 # Create primary datasets for PhD research by combining 1st cent. CE and undated military inscriptions
 # and then plot both (separately and together)
 # sql: ## testing out using https://dept.stat.lsa.umich.edu/~jerrick/courses/stat701/notes/sql.html
@@ -80,7 +80,7 @@ dated_military <- sqldf("Select * from clean_dated_data
                   OR cleaned_place = 'Andetrium'
                   OR cleaned_place = 'Bigeste'
                   ")
-# need to change class of columns for dates as they are currently charecters no integer
+# need to change class of columns for dates as they are currently characters no integer
 # following https://statisticsglobe.com/change-classes-data-frame-columns-automatically-r
 
 dated_military_short <- na.omit(dated_military %>%
@@ -102,7 +102,8 @@ system.time(dated_military_steps <- datsteps(dated_military_new, stepsize = 1))[
 
 system.time(dated_military_steps <- datsteps(dated_military_new, stepsize = 25))[3]
 
-dated_military_steps <- datsteps(dated_military_new, stepsize = 25)
+dated_military_steps <- datsteps(dated_military_new, stepsize = 1)
+
 ggplot(dated_military_steps, aes(x = DAT_step)) +
   geom_histogram(binwidth = 25, position = "dodge")
 
@@ -147,5 +148,5 @@ ggplot(dated_military_scale, aes(x = DAT_step)) +
                  position = "dodge", fill = "darkgrey") +
   labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
   ggtitle("Temporal Distribution", subtitle = "Scaled density and histogram")
-  
 
+### all monuments

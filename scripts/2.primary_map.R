@@ -56,7 +56,7 @@ ggplot() +
   geom_sf(data = world, color = "darkgrey", fill = "lightgrey") + 
   geom_sf(data = roman_69_provinces, colour = 'black') +
   geom_sf(data = roman_roads, colour = 'brown') +
-  geom_sf(data = roman_settlement, colour = 'black', size = 0.8) +
+  geom_sf(data = roman_settlements, colour = 'black', size = 0.8) +
   ggtitle("Roman Empire 69 CE", subtitle = "Dalmatia") +
   coord_sf(xlim = c(13, 21), ylim = c(41.5, 46)) +
   theme_void()

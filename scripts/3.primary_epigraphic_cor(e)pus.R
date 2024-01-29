@@ -98,7 +98,7 @@ ggplot() +
   geom_sf(data = world, color = "darkgrey", fill = "grey") + 
   geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
-  geom_sf(data = roman_settlement, colour = 'black', alpha=0.6, size = 0.8) +
+  geom_sf(data = roman_settlements, colour = 'black', alpha=0.6, size = 0.8) +
   geom_sf(data = dated_military_place_ll, aes(size = n), alpha=0.8, colour = 'darkorange') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia 30 BCE - 150 CE", subtitle = "Filtered Using Key Words and Places") +
@@ -187,7 +187,7 @@ ggplot() +
   geom_sf(data = world, color = "darkgrey", fill = "grey") + 
   geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
-  geom_sf(data = roman_settlement, colour = 'black', size = 0.8) +
+  geom_sf(data = roman_settlements, colour = 'black', size = 0.8) +
   geom_sf(data = undated_military_place_ll, aes(size = n), alpha=0.6, colour = 'red') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments in the EDCS") +
@@ -218,7 +218,7 @@ ggplot() +
   geom_sf(data = world, color = "darkgrey", fill = "grey") + 
   geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
-  geom_sf(data = roman_settlement, colour = 'black', size = 0.8) +
+  geom_sf(data = roman_settlements, colour = 'black', size = 0.8) +
   geom_sf(data = military_dated_and_undated_place_ll, aes(size = n), alpha=0.6, colour = 'red') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments and Monuments Dated 30 BCE–150 CE") +
