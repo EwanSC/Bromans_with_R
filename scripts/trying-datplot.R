@@ -153,6 +153,8 @@ ggplot(result_dalm_25, aes(x = DAT_step)) +
   xlim(-50,400) +
   labs(y = "Maximum number of monuments", x = "Date (BCE/CE)")
 
+ggsave("output_images/epigraphic-distribution-dalmatia.jpeg", dpi = 300)
+
 # military with step size 25 and scale
 library(sqldf)
 Inscr_Military <- sqldf("Select * from Dalmatia
@@ -288,6 +290,8 @@ ggplot(result_milit_25, aes(x = DAT_step)) +
   xlim(-50,400) +
   labs(y = "Maximum number of monuments", x = "Date (BCE/CE)")
 
+ggsave("output_images/epigraphic-distribution-dalmatia-military.jpeg", dpi = 300)
+
 ggplot(result_milit_25, aes(x = DAT_step)) +
   geom_histogram(alpha = 1, fill = "darkgreen", binwidth = attributes(result_milit_25)$stepsize,
                  position = "dodge") +
@@ -317,14 +321,14 @@ ggplot(result_milit_10, aes(x = DAT_step)) +
   labs(y = "Maximum number of monuments", x = "Date (BCE/CE)") +
   ggtitle("'Military' Epigraphy Distribution", subtitle = "Scaled density and histogram with 10 stepsize")
 
-# combine military and non using 
+# combine military and non using (*still not scaling correctly...)
 #https://stackoverflow.com/questions/21192002/how-to-combine-2-plots-ggplot-into-one-plot?rq=3
 Inscr_Dalmatia$variable<- "All"
 Inscr_Military$variable<- "Military"
 
 Inscr_Dal_Mil <- rbind(Inscr_Dalmatia, Inscr_Military)
 
-Inscr_Dal_Mil <- Inscr_Dal_Mil[, c(1, 6, 3, 4, 5, 2)]
+Inscr_Dal_Mil <- Inscr_Dal_Mil[, c(1, 5, 3, 4, 2)]
 
 Inscr_Dal_Mil_25 <- scaleweight(datsteps(Inscr_Dal_Mil, 25),
                                var = "all")
