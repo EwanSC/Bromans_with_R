@@ -113,12 +113,6 @@ Inscr_Dalmatia %>%
 result_dalm <- scaleweight(datsteps(Inscr_Dalmatia, "auto"),
                            var = "all")
 
-ggplot(result_dalm, aes(x = DAT_step)) +
-  geom_density(alpha = 0.5, fill = "grey30") + xlab("Dating")
-
-ggplot(result_dalm, aes(x = DAT_step, weight = weight)) +
-  geom_density(alpha = 0.5, fill = "grey30") + xlab("Dating")
-
 ggplot(data = result_dalm, aes(x = DAT_step)) +
   geom_density(alpha = 0.5, fill = "darkorange") +
   xlim(-50,400) +
@@ -131,17 +125,35 @@ ggplot(data = result_dalm, aes(x = DAT_step, weight = weight)) +
   labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
   ggtitle("Temporal Distribution", subtitle = "weighted density")
 
-#with histogram
-
-histogramscale <- get.histogramscale(result_dalm)
-
 ggplot(data = result_dalm, aes(x = DAT_step, weight = weight)) +
   geom_density(alpha = 0.5, fill = "darkorange") +
-  xlim(-50,400) +
+  xlim(-50,150) +
   labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
-  ggtitle("Temporal Distribution", subtitle = "Scaled density")
+  ggtitle("50 BCE-150 CE Distribution", subtitle = "weighted density")
 
-# military 
+#with 25 step size
+result_dalm_25 <- scaleweight(datsteps(Inscr_Dalmatia, 25),
+                           var = "all")
+
+ggplot(data = result_dalm_25, aes(x = DAT_step, weight = weight)) +
+  geom_density(alpha = 0.5, fill = "darkorange") +
+  xlim(-50,400) +
+  labs(x = "Date (BCE/CE)", y = "Monument density") +
+  ggtitle("Temporal Distribution", subtitle = "Scaled density with 25 stepsize")
+
+#with histogram
+
+histogramscale25 <- get.histogramscale(result_dalm_25)
+
+ggplot(result_dalm_25, aes(x = DAT_step)) +
+  geom_histogram(alpha = 1, fill = "darkorange4", binwidth = attributes(result_dalm_25)$stepsize,
+                 position = "dodge") +
+  stat_density(alpha = 0.5, position = "dodge", color = "black", fill = "darkorange",
+               aes(y = (after_stat(density) * histogramscale25), weight = weight)) +
+  xlim(-50,400) +
+  labs(y = "Maximum number of monuments", x = "Date (BCE/CE)")
+
+# military with step size 25 and scale
 library(sqldf)
 Inscr_Military <- sqldf("Select * from Dalmatia
                   WHERE inscription_interpretive_cleaning 
@@ -213,25 +225,112 @@ Inscr_Military %>%
     DAT_max = dating_to
   )
 
+# run again, dont know why...
+Inscr_Military <- na.omit(Inscr_Military %>%
+                            select(`EDCS-ID`,cleaned_place,dating_to,dating_from))
+
+Inscr_Military <- type.convert(Inscr_Military, as.is = TRUE)    # Modify column classes
+Inscr_Military                                        # Print updated data frame
+
+Inscr_Military %>% 
+  rename(
+    ID = `EDCS-ID`,
+    DAT_min = dating_from,
+    DAT_max = dating_to
+  )
+
 result_milit <- scaleweight(datsteps(Inscr_Military, "auto"),
                            var = "all")
 
-ggplot(result_milit, aes(x = DAT_step)) +
-  geom_density(alpha = 0.5, fill = "grey30") + xlab("Dating")
-
-ggplot(result_milit, aes(x = DAT_step, weight = weight)) +
-  geom_density(alpha = 0.5, fill = "grey30") + xlab("Dating")
+result_milit_25 <- scaleweight(datsteps(Inscr_Military, 25),
+                            var = "all")
 
 ggplot(data = result_milit, aes(x = DAT_step)) +
-  geom_density(alpha = 0.5, fill = "darkgreen") +
+  geom_density(alpha = 0.5, fill = "chartreuse3") +
   xlim(-50,400) +
   labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
   ggtitle("Temporal Distribution", subtitle = "density")
 
 ggplot(data = result_milit, aes(x = DAT_step, weight = weight)) +
-  geom_density(alpha = 0.5, fill = "darkgreen") +
+  geom_density(alpha = 0.5, fill = "chartreuse3") +
   xlim(-50,400) +
   labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
   ggtitle("'Military' Temporal Distribution", subtitle = "weighted density")
 
-milit_histogramscale <- get.histogramscale(result_milit)
+ggplot(data = result_milit, aes(x = DAT_step, weight = weight)) +
+  geom_density(alpha = 0.5, fill = "chartreuse3") +
+  xlim(-50,150) +
+  labs(x = "Date (BCE/CE)", y = "Maximum monument density") +
+  ggtitle("'Military' Temporal Distribution", subtitle = "weighted density")
+
+# now step 25
+ggplot(data = result_milit_25, aes(x = DAT_step, weight = weight)) +
+  geom_density(alpha = 0.5, fill = "chartreuse3") +
+  xlim(-50,400) +
+  labs(x = "Date (BCE/CE)", y = "monument density") +
+  ggtitle("'Military' Epigraphy Distribution", subtitle = "Scaled density with 25 stepsize")
+
+ggplot(data = result_milit_25, aes(x = DAT_step, weight = weight)) +
+  geom_density(alpha = 0.5, fill = "chartreuse3") +
+  xlim(-50,150) +
+  labs(x = "Date (BCE/CE)", y = "monument density") +
+  ggtitle("'Military' Epigraphy Distribution", subtitle = "Scaled density with 25 stepsize")
+
+# now histogram
+
+milit_histogramscale_25 <- get.histogramscale(result_milit_25)
+
+ggplot(result_milit_25, aes(x = DAT_step)) +
+  geom_histogram(alpha = 1, fill = "darkgreen", binwidth = attributes(result_milit_25)$stepsize,
+                 position = "dodge") +
+  stat_density(alpha = 0.5, position = "dodge", color = "black", fill = "chartreuse3",
+               aes(y = (after_stat(density) * milit_histogramscale_25), weight = weight)) +
+  xlim(-50,400) +
+  labs(y = "Maximum number of monuments", x = "Date (BCE/CE)")
+
+ggplot(result_milit_25, aes(x = DAT_step)) +
+  geom_histogram(alpha = 1, fill = "darkgreen", binwidth = attributes(result_milit_25)$stepsize,
+                 position = "dodge") +
+  stat_density(alpha = 0.5, position = "dodge", color = "black", fill = "chartreuse3",
+               aes(y = (after_stat(density) * milit_histogramscale_25), weight = weight)) +
+  xlim(-50,150) +
+  labs(y = "Maximum number of monuments", x = "Date (BCE/CE)")
+
+# smaller scales historgram
+result_milit_10 <- scaleweight(datsteps(Inscr_Military, 10),
+                                              var = "all")
+
+milit_histogramscale_10 <- get.histogramscale(result_milit_10)
+
+ggplot(data = result_milit_10, aes(x = DAT_step, weight = weight)) +
+  geom_density(alpha = 0.5, fill = "chartreuse3") +
+  xlim(-50,150) +
+  labs(x = "Date (BCE/CE)", y = "monument density") +
+  ggtitle("'Military' Epigraphy Distribution", subtitle = "Scaled density with 10 stepsize")
+
+ggplot(result_milit_10, aes(x = DAT_step)) +
+  geom_histogram(alpha = 1, fill = "darkgreen", binwidth = attributes(result_milit_10)$stepsize,
+                 position = "dodge") +
+  stat_density(alpha = 0.5, position = "dodge", color = "black", fill = "chartreuse3",
+               aes(y = (after_stat(density) * milit_histogramscale_10), weight = weight)) +
+  xlim(-50,150) +
+  labs(y = "Maximum number of monuments", x = "Date (BCE/CE)") +
+  ggtitle("'Military' Epigraphy Distribution", subtitle = "Scaled density and histogram with 10 stepsize")
+
+# combine military and non using 
+#https://stackoverflow.com/questions/21192002/how-to-combine-2-plots-ggplot-into-one-plot?rq=3
+Inscr_Dalmatia$variable<- "All"
+Inscr_Military$variable<- "Military"
+
+Inscr_Dal_Mil <- rbind(Inscr_Dalmatia, Inscr_Military)
+
+Inscr_Dal_Mil <- Inscr_Dal_Mil[, c(1, 6, 3, 4, 5, 2)]
+
+Inscr_Dal_Mil_25 <- scaleweight(datsteps(Inscr_Dal_Mil, 25),
+                               var = "all")
+
+ggplot(data = Inscr_Dal_Mil_25, aes(x = DAT_step, weight=weight, group=variable, color=variable, fill=variable)) +
+  geom_density(alpha = 0.5) +
+  xlim(-50,400) +
+  labs(x = "Date (BCE/CE)", y = "Monument density") +
+  ggtitle("Temporal Distribution", subtitle = "Scaled density with 25 stepsize")
