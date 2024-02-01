@@ -1,4 +1,8 @@
 # mapping all dalmatia for csf conference
+# run 2.primary_map.R first
+library(sf)
+library(ggplot2)
+library(dplyr)
 
 Dalmatia <- load_clean_place("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 

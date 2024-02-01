@@ -77,6 +77,8 @@ dated_military <- sqldf("Select * from clean_dated_data
                     LIKE '%optio %'
                   or inscription_interpretive_cleaning
                     LIKE '%option%'
+                  or status
+                    LIKE '%milites%'
                   OR cleaned_place = 'Tilurium'
                   OR cleaned_place = 'Burnum'
                   OR cleaned_place = 'Andetrium'
@@ -85,6 +87,25 @@ dated_military <- sqldf("Select * from clean_dated_data
 
 write.csv(dated_military,"output_tables/corpus/dated_military.csv", row.names = FALSE)
 
+## count monument types
+dated_military$count<- 1
+
+military_tituli_sep <- sqldf("Select * from dated_military
+                              WHERE status 
+                                LIKE '%tituli Sepulcrales%'")
+
+military_tituli_sac <- sqldf ("Select * from dated_military
+                                Where status
+                                  LIKE '%tituli sacri%'")
+
+military_tituli_ss <- sqldf ("Select * from dated_military
+                                Where status
+                                  LIKE '%tituli sacri%'
+                                OR status
+                                  LIKE '%tituli sepulcrales%'")
+
+
+## plot on map
 dated_military_place <- na.omit(dated_military %>%
                                  select(cleaned_place,longitude,latitude) %>%
                                  group_by(cleaned_place) %>%
@@ -95,8 +116,8 @@ dated_military_place <- na.omit(dated_military %>%
                                    crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "darkgrey", fill = "grey") + 
-  geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
+  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = roman_roads, colour = 'grey30', size = 0.6) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
   geom_sf(data = roman_settlements, colour = 'black', alpha=0.6, size = 0.8) +
   geom_sf(data = dated_military_place_ll, aes(size = n), alpha=0.8, colour = 'darkorange') +
@@ -166,6 +187,8 @@ undated_military <- sqldf("Select * from undated_dal
                     LIKE '%optio %'
                   or inscription_interpretive_cleaning
                     LIKE '%option%'
+                  or status
+                    LIKE '%milites%'
                   OR cleaned_place = 'Tilurium'
                   OR cleaned_place = 'Burnum'
                   OR cleaned_place = 'Andetrium'
@@ -173,6 +196,22 @@ undated_military <- sqldf("Select * from undated_dal
                   ")
 
 write.csv(undated_military,"output_tables/corpus/undated_military.csv", row.names = FALSE)
+
+undated_military$count<- 1
+
+undated_tituli_sep <- sqldf("Select * from undated_military
+                              WHERE status 
+                                LIKE '%tituli Sepulcrales%'")
+
+undated_tituli_sac <- sqldf ("Select * from undated_military
+                                Where status
+                                  LIKE '%tituli sacri%'")
+
+undated_tituli_ss <- sqldf ("Select * from undated_military
+                                Where status
+                                  LIKE '%tituli sacri%'
+                                OR status
+                                  LIKE '%tituli sepulcrales%'")
 
 undated_military_place <- na.omit(undated_military %>%
                             		select(cleaned_place,place,longitude,latitude) %>%
@@ -184,11 +223,11 @@ undated_military_place <- na.omit(undated_military %>%
                                         crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "darkgrey", fill = "grey") + 
-  geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
+  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = roman_roads, colour = 'grey30', size = 0.6) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
-  geom_sf(data = roman_settlements, colour = 'black', size = 0.8) +
-  geom_sf(data = undated_military_place_ll, aes(size = n), alpha=0.6, colour = 'red') +
+  geom_sf(data = roman_settlements, colour = 'black', alpha=0.6, size = 0.8) +
+  geom_sf(data = undated_military_place_ll, aes(size = n), alpha=0.6, colour = 'darkorange4') +
   labs(size = 'Monuments') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments in the EDCS") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
@@ -198,15 +237,17 @@ ggsave("output_images/undated_military_scatter.jpeg", dpi = 300)
 
 ## now to combine undated dated_military with undated_military and plot
 ## combined using https://r-lang.com/how-to-append-data-frames-in-r/
+dated_military$group <- 'Dated'
+undated_military$group <- 'Undated'
 
 military_dated_and_undated <- rbind(dated_military, undated_military)
 
 write.csv(military_dated_and_undated,"output_tables/corpus/military_dated_and_undated.csv", row.names = FALSE)
 
 military_dated_and_undated_place <- na.omit(military_dated_and_undated %>%
-                                        select(cleaned_place,place,longitude,latitude) %>%
+                                        select(cleaned_place,place,longitude,latitude,group) %>%
                                         group_by(cleaned_place) %>%
-                                        count(cleaned_place,place,longitude,latitude) %>%
+                                        count(cleaned_place,place,longitude,latitude,group) %>%
                                         arrange(desc(n)))
 
 write.csv(military_dated_and_undated_place,"output_tables/corpus/military_dated_and_undated_place.csv", row.names = FALSE)
@@ -215,12 +256,13 @@ write.csv(military_dated_and_undated_place,"output_tables/corpus/military_dated_
                                            crs = 4326, agr = "constant"))
 
 ggplot() + 
-  geom_sf(data = world, color = "darkgrey", fill = "grey") + 
-  geom_sf(data = roman_roads, colour = 'lightgrey', size = 0.8) +
+  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = roman_roads, colour = 'grey30', size = 0.6) +
   geom_sf(data = roman_69_provinces, colour = 'black', size = 0.8) +
-  geom_sf(data = roman_settlements, colour = 'black', size = 0.8) +
-  geom_sf(data = military_dated_and_undated_place_ll, aes(size = n), alpha=0.6, colour = 'red') +
-  labs(size = 'Monuments') +
+  geom_sf(data = roman_settlements, colour = 'black', alpha=0.6, size = 0.8) +
+  geom_sf(data = military_dated_and_undated_place_ll, aes(size = n, group=group, color=group), alpha=0.6) +
+  scale_color_manual(values = c("red", "pink")) +
+  labs(size = 'Monuments', group= 'Date') +
   ggtitle("Epigraphic Distribution of the Military in Dalmatia", subtitle = "Undated Monuments and Monuments Dated 30 BCE–150 CE") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
   theme_void()

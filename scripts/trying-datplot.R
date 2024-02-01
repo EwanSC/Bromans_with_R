@@ -208,6 +208,8 @@ Inscr_Military <- sqldf("Select * from Dalmatia
                     LIKE '%optio %'
                   or inscription_interpretive_cleaning
                     LIKE '%option%'
+                  or status
+                    LIKE '%milites%'
                   OR cleaned_place = 'Tilurium'
                   OR cleaned_place = 'Burnum'
                   OR cleaned_place = 'Andetrium'
