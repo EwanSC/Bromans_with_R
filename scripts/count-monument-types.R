@@ -6,6 +6,22 @@ library(ggplot2)
 
 cleaned_place <- load_clean_place("data/2022-08-29-EDCS_via_Lat_Epig-prov_Dalmatia-10140.json")
 
+cleaned_place$count<- 1
+
+dal_tituli_sep <- sqldf("Select * from cleaned_place
+                  WHERE status 
+                    LIKE '%tituli Sepulcrales%'")
+
+dal_tituli_sac <- sqldf ("Select * from cleaned_place
+                                Where status
+                                  LIKE '%tituli sacri%'")
+
+dal_tituli_ss <- sqldf ("Select * from cleaned_place
+                                Where status
+                                  LIKE '%tituli sacri%'
+                                OR status
+                                  LIKE '%tituli sepulcrales%'")
+
 cleaned_military <- sqldf("Select * from cleaned_place
                   WHERE inscription_interpretive_cleaning 
                     LIKE '%legio%'
@@ -62,8 +78,6 @@ cleaned_military <- sqldf("Select * from cleaned_place
                   OR cleaned_place = 'Andetrium'
                   OR cleaned_place = 'Bigeste'
                   ")
-
-cleaned_military$count<- 1
 
 military_tituli_sep <- sqldf("Select * from cleaned_military
                   WHERE status 
