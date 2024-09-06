@@ -195,6 +195,11 @@ LIRE_Dal_corpus_clean <- LIRE_Dal_mil_clean %>%
 LIRE_Dal_corpus %>% count(type_of_monument_clean, type_of_inscription_clean)
 LIRE_Dal_corpus_clean %>% count(type_of_monument_clean, type_of_inscription_clean)
 
+#save data
+write.csv(LIRE_Dal_corpus, file = "data/LIRE_corpus_monuments.csv")
+write.csv(LIRE_Dal_corpus_clean, file = "data/LIRE_clean_corpus_monuments.csv")
+
+
 #add value for count
 LIRE_Dal_corpus$count<- 1
 LIRE_Dal_corpus_clean$count<- 1
