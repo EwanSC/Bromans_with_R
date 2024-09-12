@@ -1,0 +1,845 @@
+"","place","findspot_ancient_clean","findspot_modern_clean","Longitude","Latitude"
+"1","Jesenice / Assling / Nareste","Nareste","Dugi Rat",14.0623337,46.4323791
+"2","Drenova","NULL","Prijepolje",16.1809387,45.9353692
+"3","Gradac","NULL","Posušje",15.2452183,45.6142808
+"4","Gradac","NULL","Kiseljak",15.2452183,45.6142808
+"5","Karlovac / Karlstadt / Burnum","NULL","Čitluk",15.5486303,45.4892522
+"6","Dragovic","NULL","Vrlika",17.2766853,45.469965
+"7","Padova / Patavium","NULL","NULL",11.8734455,45.4077172
+"8","Luzac","NULL","Berane",18.9702316,45.3601825
+"9","Rijeka / Tarsatica","Tarsatica","Rijeka",14.4444,45.3278
+"10","Trsat / Tersatto / Tarsatica","Tarsatica","Rijeka",14.4444,45.3278
+"11","Aquileia","Tarsatica","Rijeka",14.4444,45.3278
+"12","Dolac","NULL","Omiš",17.5889536,45.3250365
+"13","Dolac","NULL","Travnik",17.5889536,45.3250365
+"14","Bakarac","NULL","Kraljevica",14.5827323,45.2794773
+"15","Carevo Polje","Metulum","Josipdol",15.2771,45.2255
+"16","Josipdol / Metulum","Metulum","Josipdol",15.2771,45.2255
+"17","Munjava / Metulum","Metulum","Josipdol",15.2771,45.2255
+"18","Krk, Otok / Curictae","Fulfinum","Omišalj",14.5441,45.204
+"19","Omisalj / Fulfinum","Fulfinum","Omišalj",14.5441,45.204
+"20","Velika Kladusa","NULL","Velika Kladuša",15.8070634,45.1854105
+"21","Krsan / Chersano / Flanona","NULL","Kršan",14.1379004,45.1754015
+"22","Crikvenica / Ad Turres","NULL","Konjic",14.6927906,45.1737049
+"23","Crikvenica / Ad Turres","NULL","Doboj",14.6927906,45.1737049
+"24","Senj / Segna / Zengg / Senia","Ad Turres","Crikvenica",14.6942,45.1716
+"25","Luzani","NULL","Zenica",17.7023171,45.1670752
+"26","Gornje Primislje / Primislje","NULL","Slunj",15.5074982,45.1620908
+"27","Velika Kopanica / Kopjenica","NULL","Ključ",18.3970392,45.1546005
+"28","Plomin / Flanona","Flanona","Kršan",14.1801,45.1382
+"29","Plomin / Flanona","NULL","Kršan",14.1801746,45.1380212
+"30","Beli / Caisole / Crexa","Crexa","Cres",14.3542,45.112
+"31","Mali Losinj / Apsorus","Crexa","Cres",14.3542,45.112
+"32","Osor / Opsorus","Crexa","Cres",14.3542,45.112
+"33","Labin / Alvona","Albona","Labin",14.1232,45.0949
+"34","Labin / Alvona","Albona","Raša",14.1232,45.0949
+"35","Labin / Alvona","Albona","Labin, bei",14.1232,45.0949
+"36","Labin / Alvona","Albona","S. Nedelja",14.1232,45.0949
+"37","Labin / Alvona","Albona","Labin - Raša, zwischen",14.1232,45.0949
+"38","Labin / Alvona","Albona","Raša, bei",14.1232,45.0949
+"39",NA,"Albona","Labin",14.1232,45.0949
+"40","Novi Grad","NULL","Novi Grad",16.3760681,45.0492984
+"41","Novi Vinodolski","Senia","Novi Vinodolski",14.902,44.9931
+"42","Senj / Segna / Zengg / Senia","Senia","Senj",14.902,44.9931
+"43","Sinj / Osinium","Senia","Senj",14.902,44.9931
+"44","Vratnik","Senia","Senj",14.902,44.9931
+"45","Dobricevo","NULL","Bileća",21.3558995,44.9899459
+"46","Prijedor","NULL","Prijedor",16.708363,44.9778475
+"47","Jurandvor","Curicum","Baška",14.7407,44.9742
+"48","Krk, Otok / Curictae","Curicum","Krk",14.7407,44.9742
+"49","Krk, Otok / Curictae","Curicum","Baška",14.7407,44.9742
+"50","Ljusina","NULL","Bosanska Krupa",16.1509087,44.9416614
+"51","Sveti Juraj / Lopsica","Lopsica","Senj",14.9201,44.9283
+"52","Gornji Agici / Agici Gornji","NULL","Novi Grad",16.4410422,44.9267812
+"53","Otocac / Ottoschatz / Avendo","Avendo","Otočac",15.1447,44.92
+"54","Ljubija","NULL","Prijedor",16.6067817,44.9142151
+"55","Celija / Municipium Splonistarum","NULL","Foča-Ustikolina",18.2183333,44.8813889
+"56","Otocac / Ottoschatz / Avendo","NULL","Perusić",15.2356029,44.8688525
+"57","Prozor / Arupium","NULL","Proložac",15.2647929,44.8499897
+"58","Licko Lesce","Arupium","Otočac",15.2789,44.8428
+"59","Pecina","Arupium","Otočac",15.2789,44.8428
+"60","Prozor / Arupium","Arupium","Otočac",15.2789,44.8428
+"61","Prozor / Prozor-Rama / Bistua Vetus","NULL","Prozor-Rama",15.2789,44.8428
+"62","Vitalj, Otocac / Arupium","Arupium","Otočac",15.2789,44.8428
+"63","Vrana","NULL","Pakoštane",14.4132039,44.8367826
+"64","Stari Majdan","NULL","Sanski Most",16.605865,44.8291443
+"65","Bihac / Raetinium","Raetinium","Bihać",15.9292,44.7885
+"66","Brekovica","Raetinium","Bihać",15.9292,44.7885
+"67","Cavkici / Raetinium","Raetinium","Bihać",15.9292,44.7885
+"68","Doljani / Raetinium","Raetinium","Bihać",15.9292,44.7885
+"69","Golubic / Raetinium","Raetinium","Bihać",15.9292,44.7885
+"70","Jezerine, Golubic","Raetinium","Bihać",15.9292,44.7885
+"71","Kapitul, Klokot - Bihac","Raetinium","Bihać",15.9292,44.7885
+"72","Pritoka / Raetinium","Raetinium","Bihać",15.9292,44.7885
+"73","Ribic / Raetinium","Raetinium","Bihać",15.9292,44.7885
+"74",NA,"Raetinium","Bihać",15.9292,44.7885
+"75","Banja Luka / Castra","Castra","Banja Luka",17.0998,44.785
+"76","Mramorje, Cokori","Castra","Banja Luka",17.0998,44.785
+"77","Kastelina, Otok / Arba","Arba","Rab",14.7596,44.7565
+"78","Rab, Otok / Arba","Arba","Rab",14.7596,44.7565
+"79","Rab, Otok / Arba","Arba","Rab, bei",14.7596,44.7565
+"80","Doboj","NULL","Kakanj",18.0847183,44.7313612
+"81","Gornji Kosinj / Kosinj / Kossin","NULL","Perušić",15.2753538,44.716409
+"82","Zabrde","NULL","Andrijevica",18.9882097,44.7073901
+"83","Makljenovac","NULL","Doboj",18.0640574,44.7072623
+"84","Jablanac / Iapydia","NULL","Perušić",14.8998112,44.706619
+"85","Osor / Opsorus","NULL","Mali Lošinj",14.3927571,44.6935722
+"86","Cres / Crexa","Apsorus","Mali Lošinj",14.3919,44.693
+"87","Mali Losinj / Apsorus","Apsorus","Mali Lošinj",14.3919,44.693
+"88","Mali Losinj / Apsorus","Apsorus","Mali Losinj",14.3919,44.693
+"89","Osor / Opsorus","Apsorus","Mali Lošinj",14.3919,44.693
+"90","Osor / Opsorus","Apsorus","Mali Losinj",14.3919,44.693
+"91","Punta Kriza","Apsorus","Mali Lošinj",14.3919,44.693
+"92","Krnjeusa","NULL","Bosanski Petrovac",16.2255311,44.6876805
+"93","Vrtoce","NULL","Drvar",16.1764005,44.6351728
+"94","Komic / Iapydia","NULL","Gospić",15.4557,44.6142
+"95","Siroka Kula","Epidotium - Ancus","Gospić",15.4557,44.6142
+"96","Siroka Kula","NULL","Gospić",15.4557,44.6142
+"97","Smoljana","NULL","Bosanski Petrovac",16.432128,44.6011377
+"98","Podlapaca / Hallaj","NULL","Udbina",15.6314144,44.5836375
+"99","Vele Srakane / Canidole Grande","NULL","Mali Lošinj",14.3162906,44.5759408
+"100","Maslovare","NULL","Novi Grad",17.5341165,44.5634184
+"101","Gorincani","NULL","Bosanski Petrovac, bei",16.369403,44.5560108
+"102","Laniste","NULL","Ključ",16.658285,44.553778
+"103","Bravsko","NULL","Bosanski Petrovac",16.5792045,44.549017
+"104","Visoki","NULL","Bosanski Petrovac",16.5792045,44.549017
+"105","Caska / Cissa","Cissa","Novalja",14.914,44.546
+"106","Novalja","Cissa","Novalja",14.914,44.546
+"107","Bravski Vaganac","NULL","Bosanski Petrovac",16.4927352,44.54348
+"108","Lukavac","NULL","Milići",18.5325309,44.5344136
+"109","Udbina","NULL","Udbina",15.766236,44.5327181
+"110","Udbina","NULL","Donji Lapac",15.766236,44.5327181
+"111","Karlobag","NULL","Karlobag",15.0728046,44.5277802
+"112","Komic / Iapydia","Ancus","Gospić",15.5014,44.5265
+"113","Medak / Avendo","Ancus - Ausancalio","Gospić",15.5014,44.5265
+"114","Vrebac / Ancus","Ancus","Gospić",15.5014,44.5265
+"115","Srednja Gora","NULL","Udbina",15.671934,44.5093655
+"116","Takovo","NULL","Ub",20.0510375,44.4985622
+"117","Gornja Ploca","NULL","Lovinac",15.6492241,44.4605051
+"118","Komic / Iapydia","NULL","Udbina",15.7403448,44.4509084
+"119","Komic / Iapydia","NULL","Karlobag",15.7403448,44.4509084
+"120","Komic / Iapydia","NULL","Gračac",15.7403448,44.4509084
+"121","Pocitelj","NULL","Gospić",15.44778,44.44889
+"122","Crvljivica","NULL","Bosanski Petrovac",16.3979316,44.431885
+"123","Gornji Ribnik","NULL","Ribnik",16.8178684,44.4195055
+"124","Mrkonjic Grad / Varcar Vakuf / Leusaba","NULL","Mrkonjić Grad",17.0840064,44.4165716
+"125","Divic","(Domavium) Ad Drinum","Zvornik",19.1032,44.3869
+"126","Zvornik / Ad Drinum / Domavium","(Domavium) Ad Drinum","Zvornik",19.1032,44.3869
+"127","Majdan","NULL","Mrkonjić Grad",17.1324492,44.3755883
+"128","Drvar","NULL","Drvar",16.3827291,44.374769
+"129","Krupanj / Domavium","NULL","Ljubovija - Mali Zvornik, zwischen",19.3633333,44.3675
+"130","Omsica","NULL","Gračac",15.9349073,44.3612153
+"131","Omsica","NULL","Lovinac",15.9349073,44.3612153
+"132","Jajce","NULL","Jajce, bei",17.2705155,44.3395173
+"133","Jajce","NULL","Jajce",17.2705155,44.3395173
+"134","Gornja Bukovica","NULL","Ljubovija",19.7828811,44.3374388
+"135","Pag","Cissa, insula","Pag",15.207,44.3262
+"136","Pag, Otok","Cissa, insula","Kolan",15.207,44.3262
+"137","Donja Pecka / Sarnade","NULL","Mrkonjić Grad",16.8628447,44.3205357
+"138","Gracac","NULL","Split",15.8465272,44.2985234
+"139","Resanovci","NULL","Bosansko Grahovo",16.3030945,44.296868
+"140","Obrovac / Clambetae","Argyruntum","Starigrad",15.4403,44.2951
+"141","Stari Grad / Argyruntum","Argyruntum","Starigrad",15.4403,44.2951
+"142","Stari Grad / Argyruntum","Argyruntum","Starigrad, bei",15.4403,44.2951
+"143","Gromile","NULL","Jajce",17.1008778,44.2850487
+"144","Gromile","NULL","Bosansko Grahovo",17.1008778,44.2850487
+"145","Gromile","Baloie","Šipovo",17.1009,44.285
+"146","Sipovo / Baloie","Baloie","Šipovo",17.1009,44.285
+"147","Brdo","NULL","Jajce",17.0630051,44.2826757
+"148","Uzovnica","NULL","Mačva",19.3416603,44.2459418
+"149","Sitarice","NULL","Valjevo",19.7028344,44.2443848
+"150","?","Aenona","Nin",15.1842,44.2435
+"151","Nin / Aenona","Aenona","Nin",15.1842,44.2435
+"152","Nin / Aenona","Aenona","Vir, Insel - Nin, zwischen",15.1842,44.2435
+"153","Nin / Aenona","Aenona","Privlaka",15.1842,44.2435
+"154","Nin / Aenona","Aenona","Privlaka, bei",15.1842,44.2435
+"155","Nin / Aenona","Aenona","Vrsi",15.1842,44.2435
+"156","Nin / Aenona","Aenona","Zadar",15.1842,44.2435
+"157","Solin / Salona","Aenona","Nin",15.1842,44.2435
+"158","Zadar / Iader","Aenona","Nin",15.1842,44.2435
+"159","Zadar / Iader","Aenona","Zadar",15.1842,44.2435
+"160","Nin / Aenona","NULL","Polača",15.1840255,44.2430736
+"161","Nin / Aenona","NULL","Benkovac",15.1840255,44.2430736
+"162","Travnik","Bersellum","Travnik",17.5765,44.241
+"163","Turbe","Bersellum","Travnik",17.5765,44.241
+"164","Stranjani","NULL","Zenica",17.838256,44.2311276
+"165","Travnik","NULL","Travnik",17.6661738,44.2259454
+"166","Zenica","NULL","Zenica",17.9055721,44.2010759
+"167","Zenica","NULL","Kakanj",17.9055721,44.2010759
+"168","Ljubovija","NULL","Ljubovija",19.3698163,44.1867893
+"169","Bratunac / Domavium","NULL","NULL",19.3321845,44.1849993
+"170","Bosansko Grahovo / Municipium Salvium","NULL","Livno",16.36568,44.1808174
+"171","Bosansko Grahovo / Municipium Salvium","NULL","Bosansko Grahovo - Glamoč, zwischen",16.36568,44.1808174
+"172","Bosansko Grahovo / Municipium Salvium","NULL","Bosansko Grahovo",16.36568,44.1808174
+"173","Gradina / Domavium","Ansium","Obrovac",15.666,44.179
+"174","Karin Gornji / Corinium","Ansium","Obrovac",15.666,44.179
+"175","Karin Gornji / Corinium","Ansium - Corinium","Obrovac",15.666,44.179
+"176","Krusevo / Clambetae","Ansium","Obrovac",15.666,44.179
+"177","Krushevo","Ansium","Obrovac",15.666,44.179
+"178","Obrovac / Clambetae","Ansium","Obrovac",15.666,44.179
+"179","Gradina / Domavium","Ansium","Obrovac",15.6655,44.1788
+"180","Mali Mosunj / Stanecli","NULL","Vitez",17.7496291,44.1742841
+"181","Doci","NULL","Vitez",17.7534084,44.1661984
+"182","Vagan","NULL","Šipovo",17.1746449,44.1539086
+"183","Vitez","NULL","Vitez",17.791462,44.150409
+"184","Bjelovac / Domavium","Domavium","Bratunac",19.3585,44.1375
+"185","Bratunac / Domavium","Domavium","Bratunac",19.3585,44.1375
+"186","Dzamija / Domavium","Domavium","Srebrenica",19.3585,44.1375
+"187","Golubic / Raetinium","Domavium","Srebrenica",19.3585,44.1375
+"188","Gradina / Domavium","Domavium","Srebrenica",19.3585,44.1375
+"189","Kamenjace, Bratunac / Domavium","Domavium","Bratunac",19.3585,44.1375
+"190","Krupanj / Domavium","Domavium","Krupanj",19.3585,44.1375
+"191","Obadi / Domavium","Domavium","Srebrenica",19.3585,44.1375
+"192","Pljevlja / Komini / Municipium Splonistarum","Domavium","Srebrenica",19.3585,44.1375
+"193","Srebrenica / Domavium","Domavium","Srebrenica",19.3585,44.1375
+"194","Srebrenica / Domavium","Domavium","Bratunac",19.3585,44.1375
+"195","Karin Gornji / Corinium","NULL","Posedarje",15.6335444,44.1358546
+"196","Karin Gornji / Corinium","NULL","Benkovac",15.6335444,44.1358546
+"197","Burnum","Sidrona","Benkovac",15.7481,44.1354
+"198","Gradina / Domavium","Sidrona","Benkovac",15.7481,44.1354
+"199","Gradina / Domavium","Sidrona","Obrovac",15.7481,44.1354
+"200","Karin Gornji / Corinium","Corinium","Obrovac",15.7481,44.1354
+"201","Medvida / Medvigge / Hadra / Sidrona","Sidrona","Benkovac",15.7481,44.1354
+"202","Kakanj","NULL","Kakanj",18.1189478,44.1301029
+"203","Glamoc / Municipium Salvium","Municipium Salvium","Glamoč",16.8281,44.1301
+"204","Glamoc / Municipium Salvium","Municipium Salvium","Glamoč, bei",16.8281,44.1301
+"205","Glavica / Municipium Salvium","Municipium Salvium","Glamoč",16.8281,44.1301
+"206","Jakir","Municipium Salvium","Glamoč",16.8281,44.1301
+"207","Kamen / Municipium Salvium","Municipium Salvium","Glamoč",16.8281,44.1301
+"208","Pankovic","Municipium Salvium","Glamoč",16.8281,44.1301
+"209","Podgradina / Municipium Salvium","Municipium Salvium","Glamoč",16.8281,44.1301
+"210","Staro Selo","Municipium Salvium","Glamoč",16.8281,44.1301
+"211","Vrba / Municipium Salvium","Municipium Salvium","Glamoč",16.8281,44.1301
+"212","Zadar / Iader","NULL","Karlobag",15.232136,44.1186078
+"213","Donje Biljane / Iader","NULL","Benkovac",15.4641845,44.1170532
+"214","Glavica / Municipium Salvium","NULL","Novi Grad",16.7852904,44.1102759
+"215","Benkovac / Asseria","Corinium","Novigrad",15.6256,44.1075
+"216","Karin Gornji / Corinium","Corinium","Benkovac",15.6256,44.1075
+"217","Karin Gornji / Corinium","Corinium","Novigrad",15.6256,44.1075
+"218","Karin Gornji / Corinium","Corinium","Benkovac - Novigrad, zwischen",15.6256,44.1075
+"219","Popovici","Corinium","Benkovac",15.6256,44.1075
+"220","Pridraga / Corinium","Corinium","Novigrad",15.6256,44.1075
+"221","Zadar / Iader","Corinium","Novigrad",15.6256,44.1075
+"222","Srebrenica / Domavium","NULL","Srebrenica",19.2952783,44.1063188
+"223","Berkovina","NULL","Han Pijesak",18.870278,44.086667
+"224","Han-Pijesak","NULL","Han Pijesak",18.9530643,44.0812895
+"225","Dautovac","NULL","Han Pijesak",18.9531326,44.0807209
+"226","Glamoc / Municipium Salvium","Salviae","Livno - Glamoč, zwischen",16.7894,44.0726
+"227","Glamoc / Municipium Salvium","Salviae","Glamoč",16.7894,44.0726
+"228","Halapic / Municipium Salvium","Salviae","Glamoč",16.7894,44.0726
+"229","Bicine / Bicina","Nedinum","Polača, bei",15.5095,44.0721
+"230","Biograd na Moru / Zaravecchia / Nedinum","Nedinum","Benkovac",15.5095,44.0721
+"231","Karin Gornji / Corinium","Nedinum - Corinium","Benkovac",15.5095,44.0721
+"232","Nadin / Nedinum","Nedinum","Benkovac",15.5095,44.0721
+"233","Rastevic / Nedinum","Nedinum","Benkovac",15.5095,44.0721
+"234","Skabrnja / Nedinum","Nedinum","Škabrnja",15.5095,44.0721
+"235","Zadar / Iader","Nedinum","Benkovac",15.5095,44.0721
+"236","Bastasi / Municipium Salvium","NULL","Bosansko Grahovo",16.6582352,44.0718561
+"237","Bugojno / Bistua Nova","NULL","Bugojno",17.4508821,44.0642198
+"238","Dabravine / Dabravina / Breza","NULL","Vareš",18.2976998,44.0548199
+"239","Knin / Burnum","NULL","Biskupija",16.199433,44.04085
+"240","Burnum","Ninia","Knin",16.1994,44.0408
+"241","Ivosevci / Burnum","Ninia","Knin",16.1994,44.0408
+"242","Knin / Burnum","Ninia","Knin",16.1994,44.0408
+"243","Knin / Burnum","Ninia","Knin, bei",16.1994,44.0408
+"244","Mokro Polje / Burnum","Ninia","Knin, bei",16.1994,44.0408
+"245","Strmca / Stermizza / Burnum","NULL","Knin",16.1994,44.0408
+"246","Tepljuh / Promona","Ninia","Knin",16.1994,44.0408
+"247",NA,"Ninia","Knin, bei",16.1994,44.0408
+"248","Kuti / Sokolac","NULL","Sokolac - Han Pijesak, zwischen",18.8657743,44.0354778
+"249","?","Burnum","Kistanje",15.9936,44.0317
+"250","Burnum","Burnum","Kistanje",15.9936,44.0317
+"251","Burnum","NULL","Kistanje",15.9936,44.0317
+"252","Ervenik","Burnum","Ervenik",15.9936,44.0317
+"253","Ivosevci / Burnum","Burnum","Kistanje",15.9936,44.0317
+"254","Ivosevci / Burnum","Burnum","Ervenik",15.9936,44.0317
+"255","Ivosevci / Burnum","Burnum","Ervenik - Kistanje",15.9936,44.0317
+"256","Karlovac / Karlstadt / Burnum","Burnum","Kistanje",15.9936,44.0317
+"257","Kistanje / Burnum","Burnum","Kistanje",15.9936,44.0317
+"258","Knin / Burnum","Burnum","Kistanje",15.9936,44.0317
+"259","Knin / Burnum","Burnum","Ervenik",15.9936,44.0317
+"260","Mokro Polje / Burnum","Burnum","Ervenik",15.9936,44.0317
+"261","Skradin / Scardona","Burnum","Kistanje",15.9936,44.0317
+"262","Skradin / Scardona","NULL","Kistanje",15.9936,44.0317
+"263","Suplja crkva","Burnum","Kistanje",15.9936,44.0317
+"264","Tepljuh / Promona","Burnum","Kistanje",15.9936,44.0317
+"265","Zadar / Iader","NULL","Kistanje",15.9936,44.0317
+"266","Bukovaca","NULL","Bosanski Petrovac",17.2675,44.0266667
+"267","Dugi Otok","NULL","Sali",15.0315195,44.0211315
+"268","Podgrade / Asseria","NULL","Pakoštane",15.669073,44.0203427
+"269","Podgrade / Asseria","NULL","Polača",15.669073,44.0203427
+"270","Podgrade / Asseria","NULL","Stankovci",15.669073,44.0203427
+"271","Podgrade / Asseria","NULL","Benkovac",15.669073,44.0203427
+"272","Breza","Hedum Castellum Daesitiatium","Breza",18.2634,44.0184
+"273","Burnum","NULL","Biskupija",16.0181762,44.0183606
+"274","Biskupija","NULL","Biskupija",16.2226592,44.0169772
+"275","Ivosevci / Burnum","NULL","Promina",16.0072244,44.0160408
+"276","Ivosevci / Burnum","NULL","Gračac",16.0072244,44.0160408
+"277","Ivosevci / Burnum","NULL","Biskupija",16.0072244,44.0160408
+"278","Ivosevci / Burnum","NULL","Kijevo",16.0072244,44.0160408
+"279","Asseria","Asseria","Benkovac",15.6844,44.0103
+"280","Benkovac / Asseria","Asseria","Benkovac",15.6844,44.0103
+"281","Benkovac / Asseria","Asseria","Benkovac, bei",15.6844,44.0103
+"282","Bukovic","Asseria","Benkovac",15.6844,44.0103
+"283","Burnum","Asseria","Benkovac",15.6844,44.0103
+"284","Dobropoljci","Asseria","Benkovac",15.6844,44.0103
+"285","Gornja Bukovica","Asseria","Benkovac",15.6844,44.0103
+"286","Gradina di Perusic","Asseria","Benkovac",15.6844,44.0103
+"287","Podgrade / Asseria","Asseria","Benkovac",15.6844,44.0103
+"288","Podgrade / Asseria","NULL","Benkovac",15.6844,44.0103
+"289","Podgrade / Asseria","Asseria - Corinium","Obrovac",15.6844,44.0103
+"290","Solin / Salona","Salonae","Split",15.6844,44.0103
+"291","Solin / Salona","Asseria","Venezia",15.6844,44.0103
+"292",NA,"Asseria","Benkovac",15.6844,44.0103
+"293","Brestovsko","NULL","Kiseljak",18.0235889,44.0038431
+"294","Dobropoljci","Alveria","Lišane Ostrovičke",15.8139,43.9937
+"295","Ostrovica / Alveria","Alveria","Lišane Ostrovičke",15.8139,43.9937
+"296","Podgrade / Asseria","Alveria","Lišane Ostrovičke",15.8139,43.9937
+"297","Skradin / Scardona","Alveria","Lišane Ostrovičke",15.8139,43.9937
+"298","Vina","Hedum Castellum Daesitiatium","Breza",18.2782592,43.9902346
+"299","Kistanje / Burnum","NULL","Kistanje - Lišane Ostrovičke, zwischen",15.9653321,43.9814264
+"300","Otinovci / Ad Matricem / Delminium","NULL","Kupres",17.3082922,43.9793723
+"301","Kijevo","NULL","Kijevo",16.3573198,43.9793545
+"302","Orlic","NULL","Biskupija",16.233824,43.9751619
+"303","Puljane / Pugliane / Burnum","NULL","Promina",16.032173,43.9743322
+"304","Tubici","NULL","Kosjerić",19.9564933,43.9733296
+"305","Peci","NULL","Bosansko Grahovo",19.4471161,43.9677515
+"306","Arilje","Municipium Malvesiatium","Arilje",19.5333,43.9667
+"307","Bajina Basta","Municipium Malvesiatium","Bajina Bašta",19.5333,43.9667
+"308","Cacak / Malvesiatium","Municipium Malvesiatium","Lučani",19.5333,43.9667
+"309","Cacak / Malvesiatium","Municipium Malvesiatium","Čačak",19.5333,43.9667
+"310","Cacak / Malvesiatium","Municipium Malvesatium","Čačak",19.5333,43.9667
+"311","Crvica","Municipium Malvesiatium","Bajina Bašta",19.5333,43.9667
+"312","Drazinovici","Municipium Malvesiatium","Požega",19.5333,43.9667
+"313","Fakovici / Domavi","Municipium Malvesiatium","Bratunac",19.5333,43.9667
+"314","Gorobilje","Municipium Malvesiatium","Požega",19.5333,43.9667
+"315","Gradina / Domavium","Municipium Malvesiatium","Arilje, bei",19.5333,43.9667
+"316","Gradina / Domavium","Municipium Malvesiatium","Srebrenica",19.5333,43.9667
+"317","Jezevica / Municipium Malvesatium","Municipium Malvesiatium","Požega",19.5333,43.9667
+"318","Karan","Capedunum","Užice",19.5333,43.9667
+"319","Lijesce / Municipium Malvesatium","Municipium Malvesiatium","Srebrenica",19.5333,43.9667
+"320","Negrisori / Municipium Malvesatium","Municipium Malvesiatium","Lučani",19.5333,43.9667
+"321","Pozega","Municipium Malvesiatium","Požega",19.5333,43.9667
+"322","Pozega","Capedunum","Užice",19.5333,43.9667
+"323","Prilipac","Municipium Malvesiatium","Požega",19.5333,43.9667
+"324","Rudo / Municipium Malvesatium","Municipium Malvesiatium","Rudo",19.5333,43.9667
+"325","Skelani / Municipium Malvesatium","Municipium Malvesiatium","Srebrenica",19.5333,43.9667
+"326","Tuckovo","Municipium Malvesiatium","Požega",19.5333,43.9667
+"327","Visibaba","Municipium Malvesiatium","Požega",19.5333,43.9667
+"328","Vrutci","Capedunum","Užice",19.5333,43.9667
+"329","Zljebac","Municipium Malvesiatium","Bratunac",19.5333,43.9667
+"330",NA,"Municipium Malvesiatium","Srebrenica",19.5333,43.9667
+"331","Podastinje","NULL","Kiseljak",18.0791069,43.9586303
+"332","Mratovo / Burnum","NULL","Promina",16.0454253,43.9559481
+"333","Kotlusa","NULL","Civljane",16.4032543,43.9525497
+"334","Visnjica / Singidunum","NULL","Kiseljak",18.0402685,43.9494237
+"335","Kiseljak","NULL","Kiseljak",18.0782775,43.9438172
+"336","?","Iader","Zadar",15.4483,43.9393
+"337","Biograd na Moru / Zaravecchia / Nedinum","Iader","Biograd na Moru",15.4483,43.9393
+"338","Burnum","Iader","Biograd na Moru",15.4483,43.9393
+"339","Galovac / Iader","Iader","Galovac",15.4483,43.9393
+"340","Nadin / Nedinum","Iader","Biograd na Moru, bei",15.4483,43.9393
+"341","Nadin / Nedinum","Iader","Biograd na Moru",15.4483,43.9393
+"342","Podgrade / Asseria","Iader","Biograd na Moru",15.4483,43.9393
+"343","Risan / Risano / Risinium","Iader","Zadar",15.4483,43.9393
+"344","Zadar / Iader","Iader","Zadar",15.4483,43.9393
+"345","Zadar / Iader","Iader","Zadar, bei",15.4483,43.9393
+"346","Zadar / Iader","Iader","Zemunik Donji",15.4483,43.9393
+"347","Zadar / Iader","Iader","Bibinje",15.4483,43.9393
+"348","Zadar / Iader","Iader","Kali",15.4483,43.9393
+"349",NA,"Iader","Zadar",15.4483,43.9393
+"350","Uzdolje","NULL","Biskupija",16.1966494,43.9386349
+"351","Gornji Vakuf-Uskoplje","NULL","Gornji Vakuf-Uskoplje",17.583559,43.9385698
+"352","Vinalic","NULL","Vrlika",16.4361898,43.9306553
+"353","Bribir / Bribirska Glavica / Varvaria","NULL","Skradin",15.8398106,43.9214921
+"354","Vrlika / Vrlica / Salona","NULL","Vrlika",16.3977809,43.9096687
+"355","Vrlika / Vrlica / Salona","NULL","Civljane",16.3977809,43.9096687
+"356","Vrlika / Vrlica / Salona","Salonae","Vrlika",16.3977809,43.9096687
+"357","Vrlika / Vrlica / Salona","NULL","Kijevo",16.3977809,43.9096687
+"358","Krklic, Pakostane","NULL","Pakoštane",15.5061682,43.9082968
+"359","Gornji Muc / Andetrium","Promona","Drniš",16.2114,43.8955
+"360","Ivosevci / Burnum","Promona","Promina",16.2114,43.8955
+"361","Oklaj","Promona","Promina",16.2114,43.8955
+"362","Solin / Salona","Promona","Drniš",16.2114,43.8955
+"363","Tepljuh / Promona","Promona","Drniš",16.2114,43.8955
+"364","Tepljuh / Promona","Promona","Promina",16.2114,43.8955
+"365","Tepljuh / Promona","Ninia","Knin, bei",16.2114,43.8955
+"366","Vrlika / Vrlica / Salona","Promona","Drniš",16.2114,43.8955
+"367","Tepljuh / Promona","NULL","Gračac",16.2085222,43.8933717
+"368","Donji Rujani","NULL","Livno",16.7231516,43.8910198
+"369","Bratiskovci","NULL","Skradin",15.9051,43.8892
+"370","Bribir / Bribirska Glavica / Varvaria","Varvaria","Skradin",15.9051,43.8892
+"371","Ivosevci / Burnum","Varvaria","Skradin",15.9051,43.8892
+"372","Lastve, Bribir","Varvaria","Skradin",15.9051,43.8892
+"373","Nadin / Nedinum","Varvaria","Skradin",15.9051,43.8892
+"374","Planicnik","Varvaria","Skradin",15.9051,43.8892
+"375","Skradin / Scardona","Varvaria","Skradin",15.9051,43.8892
+"376",NA,"Varvaria","Skradin",15.9051,43.8892
+"377","Lipa / Delminium","NULL","Livno",16.7779,43.871
+"378","Listani / Lastani","Pelva","Livno",16.7779,43.871
+"379","Livno / Bariduum / Delminium","Pelva","Livno",16.7779,43.871
+"380",NA,"Pelva","Livno",16.7779,43.871
+"381","Kresevo","NULL","Kreševo",18.0486381,43.8683908
+"382","Mali Kablici / Delminium","NULL","Livno",16.9440416,43.8561788
+"383","Bioska","Capedunum","Užice",19.6639,43.8561
+"384","Uzice","Capedunum","Užice",19.6639,43.8561
+"385","Vrutci","Capedunum","Užice, bei",19.6639,43.8561
+"386",NA,"Capedunum","Užice",19.6639,43.8561
+"387","Dubravice / Scardona","NULL","Skradin",15.9415463,43.8521087
+"388","Sarajevo / Aquae S[]","NULL","Sarajevo, Novi Grad",18.3866868,43.8519774
+"389","Sarajevo / Aquae S[]","NULL","NULL",18.3866868,43.8519774
+"390","Sarajevo / Aquae S[]","NULL","Sarajevo, Centar",18.3866868,43.8519774
+"391","Sarajevo / Aquae S[]","NULL","Sarajevo, Novo Sarajevo / Centar",18.3866868,43.8519774
+"392","Otisic","NULL","Vrlika",16.4510202,43.8488797
+"393","Suhaca / Delminium","NULL","Livno",16.9737159,43.8406854
+"394","Bjelovac / Domavium","NULL","Bratunac",18.7169444,43.8369444
+"395","Blazuj","Aquae S[...]","Ilidža",18.2991,43.8313
+"396","Ilidza / Aquae S[]","Aquae S[---]","Ilidža",18.2991,43.8313
+"397","Luzani","Aquae S[---]","Ilidža",18.2991,43.8313
+"398","Sarajevo / Aquae S[]","Aquae S[---]","Ilidža",18.2991,43.8313
+"399","Livno / Bariduum / Delminium","NULL","Livno",17.0042416,43.8259136
+"400","Gradin / Sidrona","Colentum, insula","Murter-Kornati",15.595,43.8257
+"401","Hramina","Colentum, insula","Murter-Kornati",15.595,43.8257
+"402","Murter","Colentum, insula","Murter-Kornati",15.595,43.8257
+"403","Solin / Salona","Colentum, insula","Murter-Kornati",15.595,43.8257
+"404","Prozor / Prozor-Rama / Bistua Vetus","NULL","Prozor-Rama",17.6076793,43.8230831
+"405","?","Scardona","Skradin",15.9208,43.8227
+"406","Bribir / Bribirska Glavica / Varvaria","Scardona","Skradin",15.9208,43.8227
+"407","Roski slap","NULL","Skradin - Kistanje, zwischen",15.9208,43.8227
+"408","Skradin / Scardona","Scardona","Skradin",15.9208,43.8227
+"409","Skradin / Scardona","NULL","Skradin - Kistanje, zwischen",15.9208,43.8227
+"410","Skradin / Scardona","Scardona","Skradin, bei",15.9208,43.8227
+"411","Skradin / Scardona","Scardona; Tragurium","Skradin; Trogir",15.9208,43.8227
+"412","Hadzici","NULL","Hadžići",18.2025181,43.8226456
+"413","Skradin / Scardona","NULL","Tribunj",15.923372,43.8178655
+"414","Skradin / Scardona","NULL","Skradin",15.923372,43.8178655
+"415","Skradin / Scardona","NULL","Prokljan",15.923372,43.8178655
+"416","Prolog / In Alperio / Delminium","In Alperio","Livno",16.8082,43.8156
+"417","Raslina","NULL","Šibenik",15.8541589,43.8073218
+"418","Raslina","NULL","Skradin",15.8541589,43.8073218
+"419","Kornat, Otok","NULL","Murter-Kornati",15.3220745,43.805438
+"420","?","Municipium Magnum","Drniš",16.2988,43.8047
+"421","Baljci","Municipium Magnum","Ružić",16.2988,43.8047
+"422","Kljake / Municipium Magnum","Municipium Magnum","Drniš",16.2988,43.8047
+"423","Otavice / Municipium Magnum","Municipium Magnum","Ružić",16.2988,43.8047
+"424","Otavice / Municipium Magnum","NULL","Ružić",16.2988,43.8047
+"425","Ramljane / Municipium Magnum","Municipium Magnum","Muć",16.2988,43.8047
+"426","Ruzic / Balijna Glavica / Municipium Magnum","Municipium Magnum","Ružić",16.2988,43.8047
+"427","Ruzic / Balijna Glavica / Municipium Magnum","Municipium Magnum","Drniš",16.2988,43.8047
+"428","Ruzic / Balijna Glavica / Municipium Magnum","Municipium Magnum","Drniš - Ružić, zwischen",16.2988,43.8047
+"429","Skelani / Municipium Malvesatium","Municipium Magnum","Ružić",16.2988,43.8047
+"430","Umljanovic / Municipium Magnum","Municipium Magnum","Ružić",16.2988,43.8047
+"431","Vrlika / Vrlica / Salona","Municipium Magnum","Drniš",16.2988,43.8047
+"432","Scit","NULL","Prozor-Rama",17.5286451,43.8006148
+"433","Rogatica / Ris[]","NULL","Rogatica",19.0039015,43.7985694
+"434","Rogatica / Ris[]","Ris---","Rogatica",18.9996,43.7977
+"435","Mackat","NULL","Čajetina",19.7803537,43.792561
+"436","Pazaric","NULL","Hadžići",18.1520712,43.7874012
+"437","Visegrad / Municipium Malvesatium","NULL","Višegrad",19.2933519,43.7844137
+"438","Visegrad / Municipium Malvesatium","NULL","Rogatica",19.2933519,43.7844137
+"439","Mokronoge / Delminium","NULL","Drvar",17.2304025,43.7644984
+"440","Citluk / Aequum","NULL","Čitluk",16.6534966,43.7425382
+"441","Citluk / Aequum","NULL","Otok",16.6534966,43.7425382
+"442","Citluk / Aequum","Decimin","Dicmo",16.6534966,43.7425382
+"443","Citluk / Aequum","NULL","Vrlika",16.6534966,43.7425382
+"444","Citluk / Aequum","Aequum","Sinj",16.6547,43.7423
+"445","Citluk / Aequum","Aequum","Hrvace",16.6547,43.7423
+"446","Citluk / Aequum","Aequum","Sinj, bei",16.6547,43.7423
+"447","Gardun / Tilurium","Aequum - Tilurium, bei","Sinj",16.6547,43.7423
+"448","Hrvace","Aequum","Hrvace",16.6547,43.7423
+"449","Ruduse / Rudusa","Aequum","Sinj",16.6547,43.7423
+"450","Sinj / Osinium","Aequum","Sinj",16.6547,43.7423
+"451","Sinj / Osinium","Aequum","Sinj, bei",16.6547,43.7423
+"452","Sinj / Osinium","Aequum","Hrvace",16.6547,43.7423
+"453","Vrlika / Vrlica / Salona","Aequum","Hrvace",16.6547,43.7423
+"454",NA,"Aequum","Sinj",16.6547,43.7423
+"455","Sibenik / Rider","NULL","Šibenik",15.8964835,43.7337065
+"456","Borcani / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"457","Crvenice / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"458","Donji Brisnik / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"459","Kamenica / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"460","Letka / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"461","Lib / Delminium","Delminium","Tomislavgrad, bei",17.2302,43.7183
+"462","Mokronoge / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"463","Prisoje / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"464","Sarajlije / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"465","Stipanici / Stipanjici","Delminium","Tomislavgrad",17.2302,43.7183
+"466","Suica / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"467","Tomislavgrad / Duvno / Zupanjac / Delminium","Delminium","Tomislavgrad",17.2302,43.7183
+"468","Danilo / Rider","Rider","Šibenik",16.0486,43.7034
+"469","Danilo Gornje / Rider","Rider","Šibenik",16.0486,43.7034
+"470","Danilo Gornje / Rider","Rider","Šibenik, bei",16.0486,43.7034
+"471","Grusine, Sibenik","Rider","Šibenik",16.0486,43.7034
+"472","Sibenik / Rider","Rider","Šibenik",16.0486,43.7034
+"473",NA,"Rider","Šibenik",16.0486,43.7034
+"474","Lisicici","NULL","Konjic",17.8843332,43.6968033
+"475","Donja Trebimlja / Trebimlja","NULL","Ravno",16.5206,43.6922
+"476","Gornji Muc / Andetrium","Andetrium","Muć",16.5206,43.6922
+"477",NA,"Andetrium","Muć",16.5206,43.6922
+"478","Kokani","NULL","Dicmo",16.4930631,43.6912042
+"479","Prisoje / Delminium","Delminium","Tomislavgrad",17.0825198,43.6908323
+"480","Ostrozac","NULL","Jablanica",17.82552,43.6850325
+"481","Gorazde","NULL","Ustiprača",18.9765501,43.6673112
+"482","Gorazde","NULL","Goražde",18.9765501,43.6673112
+"483","Lipa / Delminium","NULL","Livno",17.3482759,43.6566752
+"484","Konjic","NULL","Konjic",17.9624801,43.6534733
+"485","Konjic","NULL","Konjic, bei",17.9624801,43.6534733
+"486","Konjic","NULL","Mostar",17.9624801,43.6534733
+"487","Polimlje","NULL","Bijelo Polje",19.3209528,43.6511643
+"488","Polimlje","NULL","Prijepolje",19.3209528,43.6511643
+"489","Polimlje","NULL","Nova Varoš",19.3209528,43.6511643
+"490","Lecevica / Salona","NULL","Lećevica",16.3359971,43.6416336
+"491","Polje Bijela","NULL","Konjic",17.9735051,43.6366575
+"492","Citluk / Aequum","Tilurium","Trilj",16.689,43.6139
+"493","Gardun / Tilurium","Tilurium","Trilj",16.689,43.6139
+"494","Solin / Salona","Tilurium","Trilj",16.689,43.6139
+"495","Tomislavgrad / Duvno / Zupanjac / Delminium","Tilurium","Trilj",16.689,43.6139
+"496","Trilj / Tilurium","Tilurium","Trilj",16.689,43.6139
+"497","Trilj / Tilurium","Tilurium","Trilj, bei",16.689,43.6139
+"498","Velic","Tilurium","Trilj",16.689,43.6139
+"499","Vojnic Sinjski / Tilurium","Tilurium","Trilj",16.689,43.6139
+"500",NA,"Tilurium","Trilj",16.689,43.6139
+"501","Cvitina / Cetina","NULL","Civljane",17.8331576,43.5974814
+"502","Priboj / Opstina Priboj","NULL","Priboj",19.5230742,43.5839721
+"503","Priboj / Opstina Priboj","NULL","Prijepolje",19.5230742,43.5839721
+"504","Ustikolina","NULL","Foča-Ustikolina",18.7896812,43.5835116
+"505","Borci","NULL","Konjic",18.018441,43.576834
+"506","Carevo","NULL","Jajce",18.976111,43.568889
+"507","Drvenik Veli / Drvenik","Tragurium","Trogir",16.524,43.5594
+"508","Seget Donji / Tragurium","Tragurium","Seget",16.524,43.5594
+"509","Solin / Salona","Tragurium","Trogir",16.524,43.5594
+"510","Solin / Salona","Salonae","Klis",16.524,43.5594
+"511","Trogir / Tragurium","Tragurium","Trogir",16.524,43.5594
+"512","Trogir / Tragurium","Tragurium","Seget",16.524,43.5594
+"513","Trogir / Tragurium","Tragurium","Trogir, bei",16.524,43.5594
+"514","Trogir / Tragurium","Tragurium","Marina",16.524,43.5594
+"515","Solin / Salona","Salonae","Solin",16.4919213,43.5441591
+"516","Solin / Salona","NULL","NULL",16.4919213,43.5441591
+"517","Solin / Salona","NULL","Omiš",16.4919213,43.5441591
+"518","Solin / Salona","Pharus","Stari Grad",16.4919213,43.5441591
+"519","Solin / Salona","Nareste","Dugi Rat",16.4919213,43.5441591
+"520","Solin / Salona","NULL","Split",16.4919213,43.5441591
+"521","Solin / Salona","NULL","Bosansko Grahovo",16.4919213,43.5441591
+"522","Solin / Salona","NULL","Baška Voda",16.4919213,43.5441591
+"523","Suplja crkva","NULL","Biskupija",16.4969241,43.5402396
+"524","Ravenna","Salonae","Solin",16.4743,43.5384
+"525","?","Salonae","Solin",16.4743,43.5384
+"526","?","Salonae","Split",16.4743,43.5384
+"527","Bihac / Raetinium","Salonae bei","Kaštela",16.4743,43.5384
+"528","Dugopolje / Salona","Salonae","Dugopolje",16.4743,43.5384
+"529","Gardun / Tilurium","Salonae","Dugopolje",16.4743,43.5384
+"530","Gardun / Tilurium","Salonae","Dicmo",16.4743,43.5384
+"531","Gornji Muc / Andetrium","Salonae","Klis",16.4743,43.5384
+"532","Gradina / Salona","Salonae","Solin",16.4743,43.5384
+"533","Grudine / Salona","Salonae","Solin",16.4743,43.5384
+"534","Kapljuc / Salona","Salonae","Solin",16.4743,43.5384
+"535","Kastel Gomilica","Salonae","Kaštela",16.4743,43.5384
+"536","Kastel Kambelovac / Castel Cambio","Salonae","Kaštela",16.4743,43.5384
+"537","Kastel Novi","Salonae","Kaštela",16.4743,43.5384
+"538","Kastel Sucurac / Salona","Salonae","Kaštela",16.4743,43.5384
+"539","Klapavice / Klapavica / Clissa","Salonae","Klis",16.4743,43.5384
+"540","Klis / Clissa","Salonae","Klis",16.4743,43.5384
+"541","Klis / Clissa","Salonae","Klis, bei",16.4743,43.5384
+"542","Klis / Clissa","Salonae","Solin",16.4743,43.5384
+"543","Konjsko / Clissa","Salonae","Klis",16.4743,43.5384
+"544","Manastirine / Salona","Salonae","Solin",16.4743,43.5384
+"545","Pazdigrad / Pazdigrada / Salona","Salonae","Split",16.4743,43.5384
+"546","Risan / Risano / Risinium","Salonae","Solin",16.4743,43.5384
+"547","Rupotine / Rupotina / Salona","Salonae","Solin",16.4743,43.5384
+"548","Skradin / Scardona","Salonae","Solin",16.4743,43.5384
+"549","Solin / Salona","Salonae","Split",16.4743,43.5384
+"550","Solin / Salona","Salonae","Solin",16.4743,43.5384
+"551","Solin / Salona","Salonae","Klis",16.4743,43.5384
+"552","Solin / Salona","Salonae","Kaštela",16.4743,43.5384
+"553","Solin / Salona","Salonae","Trogir",16.4743,43.5384
+"554","Solin / Salona","Salonae; Salonae bei","Solin; Split",16.4743,43.5384
+"555","Solin / Salona","Salonae","Klis, bei",16.4743,43.5384
+"556","Solin / Salona","Salonae","Solin, bei",16.4743,43.5384
+"557","Solin / Salona","Salonae","Dicmo",16.4743,43.5384
+"558","Solin / Salona","Salonae","Solin - Klis, zwischen",16.4743,43.5384
+"559","Solin / Salona","Salonae; Salonae","Solin",16.4743,43.5384
+"560","Split / Spalatum","Salonae","Split",16.4743,43.5384
+"561","Stobrec / Epetino / Epetium","Salonae","Podstrana",16.4743,43.5384
+"562","Stobrec / Epetino / Epetium","Salonae","Split",16.4743,43.5384
+"563","Trogir / Tragurium","Salonae","Klis",16.4743,43.5384
+"564","Trogir / Tragurium","Salonae","Kaštela",16.4743,43.5384
+"565","Vid / Narona","Salonae","Split",16.4743,43.5384
+"566","Vranjic / Vragnizza / Salona","Salonae","Solin",16.4743,43.5384
+"567","Zrnovnica / Salona","Salonae","Split",16.4743,43.5384
+"568",NA,"Salonae","Solin",16.4743,43.5384
+"569",NA,"Salonae","Split",16.4743,43.5384
+"570","Bihac / Raetinium","Siculi","Kaštela",16.3004,43.5306
+"571","Kastel Stafilic / Castel Stafileo / Tragurium","Siculi","Kaštela",16.3004,43.5306
+"572","Solin / Salona","Siculi","Kaštela",16.3004,43.5306
+"573","Trogir / Tragurium","Siculi","Kaštela",16.3004,43.5306
+"574","Trogir / Tragurium","Siculi","Kastela",16.3004,43.5306
+"575","Veli Bijac / Bijaci / Bijaca / Siculi","Siculi","Kaštela",16.3004,43.5306
+"576","Solin / Salona","Salonae","Split",16.447,43.5223
+"577","Trogir / Tragurium","NULL","NULL",16.2499724,43.516687
+"578","Trogir / Tragurium","Castellum Tariona","Marina",16.2499724,43.516687
+"579","Trogir / Tragurium","NULL","Lećevica",16.2499724,43.516687
+"580","Radoinja","NULL","Nova Varoš",19.7542834,43.5154829
+"581","Ocrkavlje / Municipium Splonistarum","NULL","Foča",18.6223041,43.5142306
+"582","Solin / Salona","Ad Dianam (Salonae)","Split",16.3891,43.5085
+"583","Glavaticevo","NULL","Konjic",18.1041299,43.5040612
+"584","Stobrec / Epetino / Epetium","NULL","Split",16.521326,43.50039
+"585","Ciovo, Otok / Boa","Boa, insula","Split",16.3388,43.4995
+"586","Trogir / Tragurium","Boa, insula","Trogir",16.3388,43.4995
+"587","Draga","Epetium","Split",16.5235,43.4987
+"588","Kamen / Municipium Salvium","Epetium","Split",16.5235,43.4987
+"589","Omis / Almissa / Oneum / Onaeum","Epetium","Split",16.5235,43.4987
+"590","Solin / Salona","Epetium","Split",16.5235,43.4987
+"591","Stobrec / Epetino / Epetium","Epetium","Split",16.5235,43.4987
+"592","Stobrec / Epetino / Epetium","Epetium","Podstrana",16.5235,43.4987
+"593","Visoka","Epetium","Split",16.5235,43.4987
+"594","Srinjine / Pituntium","NULL","Split",16.6062547,43.4936069
+"595","Podstrana / Pituntium","NULL","Dugi Rat",16.5498635,43.4877119
+"596","Podstrana / Pituntium","NULL","Split",16.5498635,43.4877119
+"597","Podstrana / Pituntium","NULL","Omiš",16.5498635,43.4877119
+"598","Omis / Almissa / Oneum / Onaeum","Pituntium","Podstrana",16.5681,43.4741
+"599","Perun","Pituntium","Podstrana, bei",16.5681,43.4741
+"600","Podstrana / Pituntium","Pituntium","Podstrana",16.5681,43.4741
+"601","Poljica-Brig / Brig","Pituntium","Podstrana",16.5681,43.4741
+"602","Solin / Salona","Pituntium","Podstrana",16.5681,43.4741
+"603","Srinjine / Pituntium","Pituntium","Podstrana",16.5681,43.4741
+"604","Stobrec / Epetino / Epetium","Pituntium","Podstrana",16.5681,43.4741
+"605","Donji Prolozac / Novae","NULL","Proložac",17.1534312,43.4703365
+"606","Nova Varos","NULL","Nova Varoš",19.8154494,43.4597045
+"607","Dzurovo","NULL","Prijepolje",19.6252327,43.4596534
+"608","Krug, Jesenice","Nareste","Dugi Rat",16.6289431,43.4592662
+"609","Imotski","NULL","Lovrec",17.2179703,43.4471115
+"610","Imotski","NULL","Proložac",17.2179703,43.4471115
+"611","Imotski","NULL","Imotski, bei",17.2179703,43.4471115
+"612","Imotski","NULL","Lokvičići",17.2179703,43.4471115
+"613","Omis / Almissa / Oneum / Onaeum","NULL","Dugi Rat",16.6913309,43.4447124
+"614","Omis / Almissa / Oneum / Onaeum","Laurento","Tučepi",16.6913309,43.4447124
+"615","Omis / Almissa / Oneum / Onaeum","NULL","Omiš",16.6913309,43.4447124
+"616","Omis / Almissa / Oneum / Onaeum","Nareste","Dugi Rat",16.6913309,43.4447124
+"617","?","Oneum","Omiš",16.7019,43.4422
+"618","Omis / Almissa / Oneum / Onaeum","Oneum","Omiš",16.7019,43.4422
+"619","Podstrana / Pituntium","Oneum","Omiš",16.7019,43.4422
+"620","Donji Vinjani","NULL","Posušje",17.254913,43.4295821
+"621","Gornja Brela","NULL","Brela",16.9171227,43.409082
+"622","Podbablje Gornje","Novae","Podbablje",17.1968,43.4057
+"623","Runovici / Runovic / Novae","Novae","Runovići",17.1968,43.4057
+"624","Runovici / Runovic / Novae","Novae","Podbablje",17.1968,43.4057
+"625","Runovici / Runovic / Novae","Novae","Zmijavci",17.1968,43.4057
+"626","Vrlika / Vrlica / Salona","Novae","Donji Proložac",17.1968,43.4057
+"627","Zmijavci","Novae","Zmijavci",17.1968,43.4057
+"628","Swischtow / Svishtov / Svistov / Staklen / Novae","Novae","Runovići",17.1968,43.4057
+"629","Sovici","NULL","Grude",17.3306923,43.4024187
+"630","Donje Selo / Solentia","NULL","Konjic",16.2605765,43.3996977
+"631","Donje Selo / Solentia","Solentia, insula","Šolta",16.2752,43.3972
+"632","Solin / Salona","Solentia, insula","Šolta",16.2752,43.3972
+"633","Solta, Otok / Solentia","Solentia, insula","Šolta, Insel",16.2752,43.3972
+"634","Solta, Otok / Solentia","Solentia, insula","Šolta",16.2752,43.3972
+"635","Prijepolje / Municipium Splonistarum","NULL","Prijepolje",19.6496772,43.3891969
+"636","Runovici / Runovic / Novae","NULL","Imotski, bei",17.2354538,43.38889
+"637","Runovici / Runovic / Novae","NULL","Proložac",17.2354538,43.38889
+"638","Seljane","NULL","Prijepolje",19.5667479,43.3760385
+"639","Seljasnica","NULL","Prijepolje",19.5922106,43.3716225
+"640","Kolovrat / Municipium Splonistarum","NULL","Prijepolje",19.626587,43.3691604
+"641","Baska Voda","NULL","Baška Voda",16.9482271,43.3582543
+"642","Pljevlja / Komini / Municipium Splonistarum","NULL","Prijepolje",19.3584715,43.3565611
+"643","Skrip / Brattia","NULL","Supetar",16.603408,43.3546077
+"644","Brac, Otok / Brattia","Brattia, insula","Pučišća",16.5444,43.3436
+"645","Brac, Otok / Brattia","Brattia, insula","Pučišća, bei",16.5444,43.3436
+"646","Brac, Otok / Brattia","Brattia, insula","Postira",16.5444,43.3436
+"647","Brac, Otok / Brattia","Brattia, insula","Pučišća - Postira, zwischen",16.5444,43.3436
+"648","Brac, Otok / Brattia","Brattia, insula","Brač, Insel",16.5444,43.3436
+"649","Brac, Otok / Brattia","Brattia, insula","Škrip",16.5444,43.3436
+"650","Brac, Otok / Brattia","Brattia, insula","Sutivan",16.5444,43.3436
+"651","Brac, Otok / Brattia","Brattia, insula","Nerežišća",16.5444,43.3436
+"652","Kornat, Otok","Brattia, insula","Splitska - Skrip, zwischen",16.5444,43.3436
+"653","Solin / Salona","Brattia, insula","Nerežišća",16.5444,43.3436
+"654","Babin Potok / Babispotok / Municipium Splonistarum","Municipium S[---]","Pljevlja",19.3204,43.3424
+"655","Cicje Polje","Municipium S[---]","Prijepolje - Pljevlja, zwischen",19.3204,43.3424
+"656","Dzamija / Domavium","Municipium S[---]","Pljevlja",19.3204,43.3424
+"657","Ilijino Brdo / Municipium Splonistarum","Municipium S[---]","Pljevlja",19.3204,43.3424
+"658","Kolovrat / Municipium Splonistarum","Municipium S[---]","Pljevlja",19.3204,43.3424
+"659","Otilovici","Municipium S[---]","Pljevlja",19.3204,43.3424
+"660","Pljevlja / Komini / Municipium Splonistarum","Municipium S[---]","Pljevlja",19.3204,43.3424
+"661","Mrduja","NULL","Milna",16.4099512,43.3385083
+"662","Donja Bijenja","NULL","Nevesinje",18.1597377,43.3370267
+"663","Zupa","NULL","Drvar",17.1125675,43.3369154
+"664","Promajna","NULL","Baška Voda",16.9737189,43.3348513
+"665","Povlja","Brattia, insula","Selca",16.8377033,43.3331922
+"666","Brac, Otok / Brattia","NULL","Supetar",16.654819,43.3239838
+"667","Brac, Otok / Brattia","NULL","Bol",16.654819,43.3239838
+"668","Rasici","Aufustianis","Grude",17.3588,43.3203
+"669","Tihaljina","Aufustianis","Grude",17.3588,43.3203
+"670","Makarska","Muccurum","Makarska",17.0178,43.2969
+"671","Runovici / Runovic / Novae","Muccurum","Makarska, bei",17.0178,43.2969
+"672","Vid / Narona","Muccurum","Makarska, bei",17.0178,43.2969
+"673","Cerin","NULL","Čitluk",17.6414199,43.2727063
+"674","Tucepi","Laurento","Tučepi",17.0580946,43.2651336
+"675","Blagaj","NULL","Novi Grad",17.8904391,43.2575855
+"676","Podgora","NULL","Podgora",17.0750713,43.2433472
+"677","Malo Polje / Domavium","NULL","Mostar",17.8843809,43.2418645
+"678","Vitina","NULL","Ljubuški",17.4773288,43.2403439
+"679","Brodarevo","NULL","Prijepolje",19.7176308,43.2309869
+"680","Proboj","NULL","Ljubuški",17.5226262,43.2299652
+"681","Bukovica / Domavium","NULL","Ljubovija",18.1138889,43.2286111
+"682","Dracevica","NULL","Ljubuški",17.5172138,43.2253241
+"683","Krehin Dvor / Krehundvor","NULL","Čitluk",17.7148646,43.2180292
+"684","Krehin Gradac","NULL","Čitluk",17.7145162,43.2110013
+"685","Gradina / Domavium","NULL","Posušje",18.4200399,43.2078027
+"686","Gradina / Domavium","NULL","Jasenice",18.4200399,43.2078027
+"687","Udreznje","NULL","Nevesinje",18.0896083,43.2056426
+"688","Martincev, Vrgorac","NULL","Vrgorac",17.3723608,43.2050358
+"689","Vrgorac / Vergorazza / Vergoratz","NULL","Vrgorac",17.3723608,43.2050358
+"690","Kutac","NULL","Ljubuški",17.5120379,43.2007125
+"691","Ljubuski / Mlade / Bigeste","NULL","Ljubuški",17.540558,43.1904758
+"692","Ljubuski / Mlade / Bigeste","NULL","Čitluk",17.540558,43.1904758
+"693","Zivogosce","NULL","Podgora",17.1605863,43.188147
+"694","Bigeste","NULL","Ljubuški",17.528889,43.182222
+"695","Bigeste","NULL","Velika Kladuša",17.528889,43.182222
+"696","Bigeste","Bigeste","Ljubuški",17.5271,43.1818
+"697","Bijaca / Biaca","Bigeste - Narona","Ljubuški",17.5271,43.1818
+"698","Hardomilje / Bigeste","Bigeste","Ljubuški",17.5271,43.1818
+"699","Humac / Bigeste","Bigeste","Ljubuški",17.5271,43.1818
+"700","Ljubuski / Mlade / Bigeste","Bigeste","Ljubuški, bei",17.5271,43.1818
+"701","Ljubuski / Mlade / Bigeste","Bigeste","Ljubuški",17.5271,43.1818
+"702","Pljevlja / Komini / Municipium Splonistarum","NULL","Ljubuški",17.5271,43.1818
+"703","Stobrec / Epetino / Epetium","Bigeste","Ljubuški",17.5271,43.1818
+"704","Trebizat","Bigeste","Ljubuški",17.5271,43.1818
+"705","Vid / Narona","Bigeste","Ljubuški",17.5271,43.1818
+"706","Vitalj, Otocac / Arupium","NULL","Ljubuški",17.5271,43.1818
+"707",NA,"NULL","Ljubuški",17.5271,43.1818
+"708","Scepan Krst","NULL","Berkovići",17.9766248,43.1761044
+"709","Hvar / Lesina / Pharia","Pharia, insula","Hvar, Insel",16.4428,43.1725
+"710","Hvar / Lesina / Pharia","Pharia, insula","Hvar",16.4428,43.1725
+"711","Hvar / Lesina / Pharia","Pharia, insula","Hvar, bei",16.4428,43.1725
+"712","Gacko","NULL","Gacko",18.5324678,43.1681651
+"713","Dol / Pharia","Pharus","Stari Grad",16.6434,43.1661
+"714","Hvar / Lesina / Pharia","Pharus","Stari Grad",16.6434,43.1661
+"715","Stari Grad / Argyruntum","Pharus","Stari Grad",16.6434,43.1661
+"716","Capljina / Ad Turres","Ad Turres","Čapljina",17.751,43.1604
+"717","Klepci","Ad Turres","Čapljina",17.751,43.1604
+"718","Mogorjelo","Ad Turres","Čapljina",17.751,43.1604
+"719","Surmanci","Ad Turres","Čapljina",17.751,43.1604
+"720","Svitava","Ad Turres","Čapljina",17.751,43.1604
+"721","Tasovcici / Narona / Ad Turres","Ad Turres","Čapljina",17.751,43.1604
+"722","Dabrica","NULL","Nevesinje",18.0012121,43.1425604
+"723","Zaostrog / Zastrogh","NULL","Gradac",17.2795401,43.1404702
+"724","Stari Ras / Ras","NULL","Novi Pazar",20.4155347,43.1282224
+"725","Dubrava / Diluntum","Diluntum","Stolac",17.8414,43.1138
+"726","Hodovo","Diluntum","Stolac",17.8414,43.1138
+"727","Prenj","Diluntum","Stolac",17.8414,43.1138
+"728","Stolac / Rotimlja / Megjina / Diluntum","Diluntum","Stolac",17.8414,43.1138
+"729","Stolac / Rotimlja / Megjina / Diluntum","Diluntum","Stolac, bei",17.8414,43.1138
+"730","Trijebanj","Diluntum","Stolac",17.8414,43.1138
+"731","Vid / Narona","NULL","Janjina",17.6258524,43.0804139
+"732","Vid / Narona","Nareste","Dugi Rat",17.6258524,43.0804139
+"733","Vid / Narona","NULL","Dugi Rat",17.6258524,43.0804139
+"734","Vid / Narona","NULL","Brela",17.6258524,43.0804139
+"735","Vid / Narona","NULL","Trebinje",17.6258524,43.0804139
+"736","?","Narona","Metković",17.625,43.0801
+"737","Crnici-Greda / Crnici","Narona","Čapljina",17.625,43.0801
+"738","Donja Bijenja","NULL","Nevesinje",17.625,43.0801
+"739","Dretelj","Ad Turres","Čapljina",17.625,43.0801
+"740","Gabela","Narona","Čapljina",17.625,43.0801
+"741","Janjina / Peljesac / Sabbioncello / Narona","Narona","Ston",17.625,43.0801
+"742","Klek","Narona","Slivno",17.625,43.0801
+"743","Metkovic / Narona","Narona","Metković",17.625,43.0801
+"744","Neum, Vranjevo Selo / Narona","Narona","Neum",17.625,43.0801
+"745","Orepak, Crnici","Narona","Čapljina",17.625,43.0801
+"746","Prud","Narona","Metković",17.625,43.0801
+"747","Risan / Risano / Risinium","Narona","Metković",17.625,43.0801
+"748","Vid / Narona","Narona","Metković",17.625,43.0801
+"749","Vid / Narona","Narona","Kula Norinska",17.625,43.0801
+"750","Vid / Narona","Narona","Opuzen",17.625,43.0801
+"751","Vid / Narona","Narona","Čapljina",17.625,43.0801
+"752","Vid / Narona","Narona","Janjina",17.625,43.0801
+"753","Dubrava / Diluntum","NULL","Omiš",17.958448,43.078729
+"754","Gradina / Domavium","Issa, insula","Vis",16.1865,43.0655
+"755","Vis / Issa","Issa, insula","Vis",16.1865,43.0655
+"756","Vis / Issa","Issa, insula","Vis, bei",16.1865,43.0655
+"757","Vis / Issa","Issa, insula","Komiža",16.1865,43.0655
+"758","Vid / Narona","Narona","Čapljina",17.6884,43.0645
+"759","Vid / Narona","Narona","Čapljina; Metković",17.6884,43.0645
+"760","Vis / Issa","NULL","Koper",16.1834976,43.0599322
+"761","Ploce / Amantia","NULL","Ploče",17.4360676,43.0524293
+"762","Bijelo Polje","NULL","Mostar",19.7469527,43.0337081
+"763","Bijelo Polje","NULL","Bijelo Polje",19.7469527,43.0337081
+"764","Fatnica","NULL","Bileća",18.3229637,43.0283751
+"765","Trpanj","NULL","Trpanj",17.2733543,43.0080442
+"766","Voljevac","NULL","Bijelo Polje",19.7819,43.0028
+"767","Viganj","NULL","Orebić",17.1022127,42.9820629
+"768","Korcula / Nigra Corcyra","NULL","Orebić",17.1359692,42.9617883
+"769","Korcula / Nigra Corcyra","Nigra Corcyra, insula","Korčula",17.1099,42.945
+"770","Korcula / Nigra Corcyra","Nigra Corcyra, insula","Blato",17.1099,42.945
+"771","Korcula / Nigra Corcyra","Nigra Corcyra, insula","Smokvica",17.1099,42.945
+"772","Korcula / Nigra Corcyra","Nigra Corcyra, insula","Korčula, bei",17.1099,42.945
+"773","Korcula / Nigra Corcyra","Nigra Corcyra, insula","Vela Luka",17.1099,42.945
+"774","Janjina / Peljesac / Sabbioncello / Narona","NULL","Janjina",17.4288843,42.925148
+"775","Gornja Bijela","NULL","Konjic",19.1515344,42.9030376
+"776","Donja Trebimlja / Trebimlja","NULL","Ravno",17.8708226,42.8848331
+"777","Hodilje","NULL","Ston",17.6897181,42.8566583
+"778","Ston","NULL","Ston",17.6962001,42.8383616
+"779","Panik / Leusinium","NULL","Bileća",18.4410799,42.7968707
+"780","Kosijerevo","NULL","Nikšić",18.4606607,42.7968403
+"781","Polace / Melite","Melite, insula","Mljet",17.377878,42.7854655
+"782","Kuside","NULL","Nikšić",18.8517867,42.776241
+"783","Niksic / Mons Nigia / Anderva","NULL","Ston",18.9488746,42.7739559
+"784","Niksic / Mons Nigia / Anderva","NULL","NULL",18.9488746,42.7739559
+"785","Lastovo / Lagosta / Ladesta","NULL","Lastovo",16.8945925,42.7675928
+"786","Lastovo / Lagosta / Ladesta","NULL","Vrlika",16.8945925,42.7675928
+"787","Buinjski Rijecani","Salthua","Nikšić",18.6462,42.7661
+"788","Duklja / Duklje / Rusevine / Doclea","Salthua","Nikšić",18.6462,42.7661
+"789","Mljet / Meleda / Melite","Melite, insula","Mljet",17.5463244,42.7459754
+"790","Ozrinici","NULL","Nikšić",18.9931849,42.7453689
+"791","Trsteno / Cannosa","NULL","Dubrovnik",17.9792767,42.7144589
+"792","Trebinje","NULL","Ravno",18.346882,42.7107972
+"793","Trebinje","NULL","Trebinje",18.346882,42.7107972
+"794","Lopud","NULL","Dubrovnik",17.9507753,42.6858671
+"795","Povija","NULL","Nikšić",19.0036379,42.6779284
+"796","Lucin Brijeg","NULL","Trebinje",18.439112,42.6471973
+"797","Cavtat / Epidaurum","Epidaurum","Konavle",18.2137,42.5848
+"798","Cavtat / Epidaurum","Epidaurum","Dubrovnik",18.2137,42.5848
+"799","Lovorno / Epidaurum","Epidaurum","Konavle",18.2137,42.5848
+"800","Smokovljani / Smocovljae","NULL","Dubrovačko primorje",18.2137,42.5848
+"801","Cavtat / Epidaurum","NULL","Konavle",18.2177461,42.5814314
+"802","Cavtat / Epidaurum","NULL","Ston",18.2177461,42.5814314
+"803","Risan / Risano / Risinium","Risinium","Kotor",18.6945,42.5164
+"804","Risan / Risano / Risinium","Risinum","Kotor",18.6945,42.5164
+"805","Risan / Risano / Risinium","NULL","Herceg Novi",18.6955649,42.5149792
+"806","Kotor / Acruvium","Risinium","Kotor",18.6969,42.5098
+"807","Ledenice","Risinium","Kotor",18.6969,42.5098
+"808","Perast / Risinium","Risinium","Kotor",18.6969,42.5098
+"809","Risan / Risano / Risinium","Risinium","Kotor",18.6969,42.5098
+"810",NA,"Risinium","Kotor",18.6969,42.5098
+"811","Duklja / Duklje / Rusevine / Doclea","Doclea","Podgorica",19.2615,42.469
+"812","Podgorica / Doclea","Doclea","Podgorica",19.2615,42.469
+"813",NA,"Doclea","Podgorica",19.2615,42.469
+"814","Duklja / Duklje / Rusevine / Doclea","NULL","Berane",19.2654984,42.4686384
+"815","Duklja / Duklje / Rusevine / Doclea","NULL","Danilovgrad",19.2654984,42.4686384
+"816","Brda / Acruvium","Acruvium","Tivat",18.689,42.4438
+"817","Budna / Butua","Acruvium","Tivat",18.689,42.4438
+"818","Kotor / Acruvium","Acruvium","Kotor",18.689,42.4438
+"819","Kotor / Acruvium","Acruvium","Kotor, bei",18.689,42.4438
+"820","Kotor / Acruvium","Acruvium","Tivat",18.689,42.4438
+"821","Prcanj / Acruvium","Acruvium","Kotor",18.689,42.4438
+"822","Prevlaka","Acruvium","Tivat",18.689,42.4438
+"823","Risan / Risano / Risinium","Acruvium","Kotor",18.689,42.4438
+"824","Risan / Risano / Risinium","Acruvium","Tivat",18.689,42.4438
+"825","Kotor / Acruvium","NULL","Konavle",18.7710437,42.4248515
+"826","Prevlaka","NULL","Konavle",18.5150678,42.4010696
+"827","Margegaj","NULL","Tropojë",20.0772378,42.3723673
+"828","Trgoviste","NULL","Novi Pazar",22.0825,42.3641667
+"829","Budva / Buthoe","Buthoe","Budva",18.8351,42.2789
+"830","Risan / Risano / Risinium","Buthoe","Budva",18.8351,42.2789
+"831","Koplik / Cinna","NULL","Malësi e Madhe",19.437214,42.2112922
+"832","Kalldrun","NULL","Malësi e Madhe",19.4107265,42.2043216
+"833","Brca","NULL","Travnik",19.0671192,42.1321157
+"834","Drisht","Scodra","Shkodra",19.5277,42.0743
+"835","Renc","Scodra","Shkodra",19.5277,42.0743
+"836","Shkoder / Shkodra / Skutari / Scodra","Scodra","Shkodra",19.5277,42.0743
+"837","Nange","NULL","Kukës",20.4164814,42.0105618
+"838","Vau i Dejes / Vau-Deja","NULL","Vau i Dejës",19.6399825,42.0074511
+"839","Melgushe e Madhe / Melgushe","NULL","Vau i Dejës",19.5166499,41.9894342
+"840","Kolesjan","NULL","Kukës",20.40036,41.9658928
+"841","Bushat","NULL","Kukës",19.5345484,41.9595458
+"842","Vig","NULL","Vau i Dejës",19.7333538,41.9299842
+"843","Lezhe / Lest / Lissus","Lissus","Lezha",19.6468,41.7797
+"844","Nikolara / Nikopoli / Nicopolis","NULL","NULL",20.7343319,39.0090835

@@ -87,6 +87,8 @@ ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
   labs(caption = "Based on data from LIRE v.3.0") +
   ggtitle("Temporal Distribution (864 military monuments)", subtitle = "Scaled density and histogram (weighted)")
 
+ggsave("output_images/LIRE_clean_corpus_scatter.jpeg", dpi = 300)
+
 ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
                aes(y = (..density.. * histogramscale))) +
