@@ -90,7 +90,7 @@ uncleanplot <-
 
 plot(uncleanplot)
 
-ggsave("output_images/LIRE_unclean_corpus_date.jpeg", dpi = 300)
+ggsave("output_images/chronological_distribution/LIRE_unclean_corpus_date.jpeg", dpi = 300)
 
 ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
@@ -150,7 +150,9 @@ ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
 
 plot(cleanplot)
 
-ggsave("output_images/LIRE_clean_corpus_date.jpeg", dpi = 300)
+ggsave("output_images/chronological_distribution/LIRE_clean_corpus_date.jpeg", dpi = 300)
+
+ggsave("output_images/chronological_distribution/LIRE_clean_corpus_date.jpeg", dpi = 300)
 
 ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
@@ -160,6 +162,7 @@ ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
   labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
   labs(caption = "Based on data from LIRE v.3.0 (clean provinces)") +
   ggtitle("Temporal Distribution (853 military monuments)", subtitle = "Scaled density and histogram (unweighted)")
+
 
 #compare clean and unclean provinces (weighted)
 doubletrouble <- grid.arrange(uncleanplot, cleanplot, ncol = 2)
@@ -176,7 +179,7 @@ ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
           subtitle = "Scaled density and histogram (weighted: step size 5)")+
   theme(panel.background = element_blank())
 
-ggsave("output_images/LIRE_clean_corpus_date_no_grid.jpeg", dpi = 300)
+ggsave("output_images/chronological_distribution/LIRE_clean_corpus_date_no_grid.jpeg", dpi = 300)
 
 # now compare with all Dalmatia
 ## check .4 has been run

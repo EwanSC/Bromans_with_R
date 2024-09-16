@@ -468,7 +468,7 @@ plot1 <-
 
 plot(plot1)
 
-ggsave("output_images/LIRE_corpus_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_corpus_scatter.jpeg", dpi = 300)
 
 LIRE_Dal_corpus_clean_place <- na.omit(LIRE_Dal_corpus_clean %>%
                                    select(findspot_ancient_clean,Longitude,Latitude) %>%
@@ -499,7 +499,7 @@ plot2 <-
 
 plot(plot2)
 
-ggsave("output_images/LIRE_clean_corpus_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_clean_corpus_scatter.jpeg", dpi = 300)
 
 ## create one for just relevant period (~200 CE cut off)
 LIRE_dated_corpus_place <- na.omit(LIRE_dated_corpus %>%
@@ -531,7 +531,7 @@ plot3 <-
 
 plot(plot3)
 
-ggsave("output_images/LIRE_dated_corpus_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_dated_corpus_scatter.jpeg", dpi = 300)
 
 LIRE_clean_dated_corpus_place <- na.omit(LIRE_clean_dated_corpus %>%
                                   select(findspot_ancient_clean,Longitude,Latitude) %>%
@@ -562,7 +562,7 @@ plot4 <-
 
 plot(plot4)
 
-ggsave("output_images/LIRE_clean_dated_corpus_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_clean_dated_corpus_scatter.jpeg", dpi = 300)
 
 # Now compare to all dalmatia
 LIRE_all_Dal <- LIRE_Dal %>%
@@ -667,7 +667,7 @@ plot5 <-
 
 plot(plot5)
 
-ggsave("output_images/LIRE_dal_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_dal_scatter.jpeg", dpi = 300)
 
 LIRE_all_Dal_clean_place <- na.omit(LIRE_all_Dal_clean %>%
                                 select(findspot_ancient_clean,Longitude,Latitude) %>%
@@ -697,7 +697,7 @@ plot6 <-
 
 plot(plot6)
 
-ggsave("output_images/LIRE_clean_dal_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_clean_dal_scatter.jpeg", dpi = 300)
 
 LIRE_all_Dal_dated_place <- na.omit(LIRE_all_Dal_dated %>%
                                       select(findspot_ancient_clean,Longitude,Latitude) %>%
@@ -728,7 +728,7 @@ plot7 <-
 
 plot(plot7)
 
-ggsave("output_images/LIRE_dated_dal_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_dated_dal_scatter.jpeg", dpi = 300)
 
 LIRE_all_Dal_clean_dated_place <- na.omit(LIRE_all_Dal_clean_dated %>%
                                 select(findspot_ancient_clean,Longitude,Latitude) %>%
@@ -759,27 +759,27 @@ plot8 <-
 
 plot(plot8)
 
-ggsave("output_images/LIRE_dated_clean_dal_scatter.jpeg", dpi = 300)
+ggsave("output_images/geographical_distribution/LIRE_dated_clean_dal_scatter.jpeg", dpi = 300)
 
 #now to combine https://www.geeksforgeeks.org/draw-multiple-ggplot2-plots-side-by-side/
 ## first, combine undated
 doubletrouble <- grid.arrange(plot1, plot5, ncol = 2)
 
-ggsave("output_images/LIRE_corpus_and_dal_scatter.pdf", doubletrouble, width = 11.7, height = 8.3)
-ggsave("output_images/LIRE_corpus_and_dal_scatter.jpeg", doubletrouble, dpi = 600)
+ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter.pdf", doubletrouble, width = 11.7, height = 8.3)
+ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter.jpeg", doubletrouble, dpi = 600)
 
 doubletroubler <- grid.arrange(plot2, plot6, ncol = 2)
 
-ggsave("output_images/dated_LIRE_clean_corpus_and_dal_scatter.pdf", doubletroubler, width = 11.7, height = 8.3)
-ggsave("output_images/dated_LIRE_clean_corpus_and_dal_scatter.jpeg", doubletroubler, dpi = 600)
+ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter.pdf", doubletroubler, width = 11.7, height = 8.3)
+ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter.jpeg", doubletroubler, dpi = 600)
 
 ## now to combine dated
 doubletroublest <- grid.arrange(plot3, plot7, ncol = 6)
 
-ggsave("output_images/LIRE_corpus_and_dal_scatter.pdf", doubletrouble, width = 11.7, height = 8.3)
-ggsave("output_images/LIRE_corpus_and_dal_scatter.jpeg", doubletrouble, dpi = 600)
+ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter.pdf", doubletrouble, width = 11.7, height = 8.3)
+ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter.jpeg", doubletrouble, dpi = 600)
 
 doubletroublester <- grid.arrange(plot4, plot8, ncol = 2)
 
-ggsave("output_images/dated_LIRE_clean_corpus_and_dal_scatter.pdf", doubletroubler, width = 11.7, height = 8.3)
-ggsave("output_images/dated_LIRE_clean_corpus_and_dal_scatter.jpeg", doubletroubler, dpi = 600)
+ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter.pdf", doubletroubler, width = 11.7, height = 8.3)
+ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter.jpeg", doubletroubler, dpi = 600)
