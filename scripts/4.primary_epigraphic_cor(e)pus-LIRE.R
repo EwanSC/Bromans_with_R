@@ -333,7 +333,7 @@ LIRE_dated_mil %>%
 LIRE_clean_dated_mil %>%
   count(type_of_monument_clean, type_of_inscription_clean)
 
-## remove unwanted monuemtn/inscription types
+## remove unwanted monument/inscription types
 
 LIRE_Dal_corpus <- LIRE_Dal_mil %>%
   filter(!type_of_monument_clean %in% c("architectural member",
@@ -396,6 +396,7 @@ LIRE_clean_dated_corpus <- LIRE_clean_dated_mil %>%
                                              "military diploma",
                                              "building/dedicatory inscription",
                                              "list"))
+
 #check data
 LIRE_Dal_corpus %>%
   count(type_of_monument_clean, type_of_inscription_clean)
@@ -420,6 +421,80 @@ LIRE_Dal_corpus$count<- 1
 LIRE_Dal_corpus_clean$count<- 1
 LIRE_dated_corpus$count<- 1
 LIRE_clean_dated_corpus$count<- 1
+
+# do same for all Dal
+LIRE_all_Dal <- LIRE_Dal %>%
+  filter(!type_of_monument_clean %in% c("architectural member",
+                                        "mile-/leaguestone", 
+                                        "tile", 
+                                        "instrumentum domesticum",
+                                        "table",
+                                        "instrumentum militare") 
+         & !type_of_inscription_clean %in% c("architectural member",
+                                             "remove building/dedicatory inscription", 
+                                             "honorific inscription", 
+                                             "boundary inscription", 
+                                             "mile-/leaguestone", 
+                                             "military diploma",
+                                             "building/dedicatory inscription",
+                                             "list"))
+
+LIRE_all_Dal_clean <- LIRE_Dal_clean %>%
+  filter(!type_of_monument_clean %in% c("architectural member",
+                                        "mile-/leaguestone", 
+                                        "tile", 
+                                        "instrumentum domesticum",
+                                        "table",
+                                        "instrumentum militare") 
+         & !type_of_inscription_clean %in% c("architectural member",
+                                             "remove building/dedicatory inscription", 
+                                             "honorific inscription", 
+                                             "boundary inscription", 
+                                             "mile-/leaguestone", 
+                                             "military diploma",
+                                             "building/dedicatory inscription",
+                                             "list"))
+
+LIRE_all_Dal_dated <- LIRE_Dal %>%
+  filter(!type_of_monument_clean %in% c("architectural member",
+                                        "mile-/leaguestone", 
+                                        "tile", 
+                                        "instrumentum domesticum",
+                                        "table",
+                                        "instrumentum militare") 
+         & !type_of_inscription_clean %in% c("architectural member",
+                                             "remove building/dedicatory inscription", 
+                                             "honorific inscription", 
+                                             "boundary inscription", 
+                                             "mile-/leaguestone", 
+                                             "military diploma",
+                                             "building/dedicatory inscription",
+                                             "list") 
+         & not_before %in% (-30:191) & not_after %in% (1:200)) %>%
+  arrange(not_after, not_before)
+
+LIRE_all_Dal_clean_dated <- LIRE_Dal_clean %>%
+  filter(!type_of_monument_clean %in% c("architectural member",
+                                        "mile-/leaguestone", 
+                                        "tile", 
+                                        "instrumentum domesticum",
+                                        "table",
+                                        "instrumentum militare") 
+         & !type_of_inscription_clean %in% c("architectural member",
+                                             "remove building/dedicatory inscription", 
+                                             "honorific inscription", 
+                                             "boundary inscription", 
+                                             "mile-/leaguestone", 
+                                             "military diploma",
+                                             "building/dedicatory inscription",
+                                             "list") 
+         & not_before %in% (-30:191) & not_after %in% (1:200)) %>%
+  arrange(not_after, not_before)
+
+LIRE_all_Dal$count<- 1
+LIRE_all_Dal_clean$count<- 1
+LIRE_all_Dal_dated$count<- 1
+LIRE_all_Dal_clean_dated$count<- 1
 
 #now to plot on scatter map
 ## create df for layer of key sites 
@@ -565,79 +640,6 @@ plot(plot4)
 ggsave("output_images/geographical_distribution/LIRE_clean_dated_corpus_scatter.jpeg", dpi = 300)
 
 # Now compare to all dalmatia
-LIRE_all_Dal <- LIRE_Dal %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list"))
-
-LIRE_all_Dal_clean <- LIRE_Dal_clean %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list"))
-
-LIRE_all_Dal_dated <- LIRE_Dal %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list") 
-         & not_before %in% (-30:191) & not_after %in% (1:200)) %>%
-          arrange(not_after, not_before)
-
-LIRE_all_Dal_clean_dated <- LIRE_Dal_clean %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list") 
-         & not_before %in% (-30:191) & not_after %in% (1:200)) %>%
-          arrange(not_after, not_before)
-
-LIRE_all_Dal$count<- 1
-LIRE_all_Dal_clean$count<- 1
-LIRE_all_Dal_dated$count<- 1
-LIRE_all_Dal_clean_dated$count<- 1
-
 LIRE_all_Dal_place <- na.omit(LIRE_all_Dal %>%
                                    select(findspot_ancient_clean,Longitude,Latitude) %>%
                                    group_by(findspot_ancient_clean) %>%

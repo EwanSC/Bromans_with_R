@@ -1,8 +1,30 @@
-cff-version: 1.0.0
-message: "If you use this software, please cite it as below."
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Data and analysis for ''Becoming-military' in Dalmatia and
+  beyond'
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
 authors:
-  - family-names: Coopey
-    given-names: Ewan Shanks
-    orcid: https://orcid.org/0000-0001-8633-6418
-title: "Bromans_with_R"
-url: "https://github.com/EwanSC/Bromans_with_R"
+  - given-names: Ewan S.
+    family-names: Coopey
+    orcid: 'https://orcid.org/0000-0001-8633-6418'
+identifiers:
+  - type: url
+    value: 'https://github.com/EwanSC/Bromans_with_R'
+abstract: >-
+  Repository for data collection, cleaning, and analysis for
+  the 2021-2025 PhD project '"Military-becoming" in Dalmatia
+  and beyond: An assemblage thinking framework for Roman
+  Archaeology'.
+keywords:
+  - latin epigraphy
+  - digital epigraphy
+  - Roman Empire
+  - Dalmatia
+  - Roman military
+license: CC-BY-4.0

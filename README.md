@@ -1,22 +1,22 @@
 # Bromans_with_R
-Repository for data collection, cleaning, and analysis for the 2021-2025 PhD project '"Military-becoming" in Dalmatia and beyond: An assemblage thinking framework for Roman Archaeology'
+Repository for data collection, cleaning, and analysis for the 2021-2025 PhD project "_Military-becoming_" _in Dalmatia and beyond: An assemblage thinking framework for Roman Archaeology_.
 
 ## Project description
 
 ## Overview
 
 ## Example outputs:
-![Scatter map of all locations where Roman epigraphy has been found in Dalmatia.](output_images/geographical_distribution/LIRE_clean_dal_scatter.jpeg)
+![Scatter map of all locations where Roman epigraphy has been found in Dalmatia](output_images/geographical_distribution/LIRE_clean_dal_scatter.jpeg)
 <figcaption> Scatter map of Roman inscribed monument density in Dalmatia. CC BY-SA 4.0</figcaption>
 
 <p> <p/>
 
-![scaled scatter map of the distribution of military monuments in roman dalmatia.](output_images/geographical_distribution/LIRE_clean_corpus_scatter.jpeg)
+![scaled scatter map of the distribution of military monuments in roman dalmatia](output_images/geographical_distribution/LIRE_clean_corpus_scatter.jpeg)
 <figcaption> Scatter map of Roman military epigraphic monuments in Dalmatia. CC BY-SA 4.0</figcaption>
 
 <p> <p/>
 
-![scaled density graph of the distribution of epigraphic monuments in dalmatia, with histograms. y axis is maximun number of monuments, x axis is the date in BCE/CE. there is first rise is 1st century, a peak in late 2nd, and a drop in early 4th CE.](output_images/epigraphic-distribution-dalmatia.jpeg)
+![scaled density graph of the distribution of epigraphic monuments in dalmatia with a histograms](output_images/chronological_distribution/epigraphic-distribution-dalmatia.jpeg)
 <figcaption> Scaled density graph of inscribed monuments in Dalmatia with histogram and 5 step size, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
 <br />
 
