@@ -16,8 +16,8 @@ Repository for data collection, cleaning, and analysis for the 2021-2025 PhD pro
 
 <p> <p/>
 
-![scaled density graph of the distribution of epigraphic monuments in dalmatia with a histograms](output_images/chronological_distribution/epigraphic-distribution-dalmatia.jpeg)
-<figcaption> Scaled density graph of inscribed monuments in Dalmatia with histogram and 5 step size, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
+![scaled density graph of the distribution of epigraphic monuments in dalmatia with a histograms](output_images/chronological_distribution/LIRE_clean_corpus_plot_histogram.jpeg)
+<figcaption> Scaled density graph of inscribed military monuments in Dalmatia with histogram, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
 <br />
 
 ## Thesis
