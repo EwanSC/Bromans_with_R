@@ -1,6 +1,6 @@
 # Primary_map
 # Ewan Coopey
-# created 17/12/2021 (uncertain)
+# created 17/12/2021
 # last edit: 29/08/2022
 # Download required data and shape files to make province of Dalmatia map for plotting
 # and test this map

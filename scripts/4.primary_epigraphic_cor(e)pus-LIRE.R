@@ -1,6 +1,6 @@
 #trying to use LIRE
 #started 5/9/2024
-# edited 6/09/2024
+# edited 16/09/2024
 
 library(dplyr)
 library(sqldf)

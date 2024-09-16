@@ -1,6 +1,6 @@
 # Plotting dates, LIRE
 # Made 6/9/24
-# Edited: 6/9/24
+# Edited: 16/9/24
 ### FIRST RUN /scripts/4.primary_epigraphic_cor(e)pus-LIRE.R
 # check dfs loaded from script 4, we will run both simultaneously 
 library(datplot)
@@ -52,10 +52,10 @@ ggplot(LIRE_Dal_corpus_steps, aes(x = DAT_step)) +
   geom_histogram(binwidth = 25, position = "dodge")
 
 LIRE_Dal_corpus_dens <- datsteps(LIRE_Dal_corpus_na, stepsize = 5)
-dens <- LIRE_Dal_corpus_dens
-dens <- scaleweight(LIRE_Dal_corpus_dens, var = "all")
-dens <- density(x = dens$DAT_step, weights = dens$weight)
-plot(dens)
+dens1 <- LIRE_Dal_corpus_dens
+dens1 <- scaleweight(LIRE_Dal_corpus_dens, var = "all")
+dens1 <- density(x = dens1$DAT_step, weights = dens1$weight)
+plot(dens1)
 
 LIRE_Dal_corpus_scale <- scaleweight(LIRE_Dal_corpus_dens, var = 2)
 
@@ -78,7 +78,8 @@ ggplot(data = LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
 
 histogramscale <- get.histogramscale(LIRE_Dal_corpus_scale)
 
-ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
+uncleanplot <- 
+  ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
                aes(y = (..density.. * histogramscale), weight = weight)) +
   geom_histogram(alpha = 0.5, binwidth = attributes(LIRE_Dal_corpus_scale)$stepsize,
@@ -87,7 +88,9 @@ ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
   labs(caption = "Based on data from LIRE v.3.0") +
   ggtitle("Temporal Distribution (864 military monuments)", subtitle = "Scaled density and histogram (weighted)")
 
-ggsave("output_images/LIRE_clean_corpus_scatter.jpeg", dpi = 300)
+plot(uncleanplot)
+
+ggsave("output_images/LIRE_unclean_corpus_date.jpeg", dpi = 300)
 
 ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
@@ -109,10 +112,10 @@ ggplot(LIRE_Dal_corpus_clean_steps, aes(x = DAT_step)) +
   geom_histogram(binwidth = 25, position = "dodge")
 
 LIRE_Dal_corpus_clean_dens <- datsteps(LIRE_Dal_corpus_clean_na, stepsize = 5)
-dens <- LIRE_Dal_corpus_clean_dens
-dens <- scaleweight(LIRE_Dal_corpus_clean_dens, var = "all")
-dens <- density(x = dens$DAT_step, weights = dens$weight)
-plot(dens)
+dens2 <- LIRE_Dal_corpus_clean_dens
+dens2 <- scaleweight(LIRE_Dal_corpus_clean_dens, var = "all")
+dens2 <- density(x = dens2$DAT_step, weights = dens2$weight)
+plot(dens2)
 
 LIRE_Dal_corpus_clean_scale <- scaleweight(LIRE_Dal_corpus_clean_dens, var = 2)
 
@@ -135,6 +138,7 @@ ggplot(data = LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
 
 histogramscale <- get.histogramscale(LIRE_Dal_corpus_clean_scale)
 
+cleanplot <-
 ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
                aes(y = (..density.. * histogramscale), weight = weight)) +
@@ -143,6 +147,10 @@ ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
   labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
   labs(caption = "Based on data from LIRE v.3.0 (clean provinces)") +
   ggtitle("Temporal Distribution (853 military monuments)", subtitle = "Scaled density and histogram (weighted)")
+
+plot(cleanplot)
+
+ggsave("output_images/LIRE_clean_corpus_date.jpeg", dpi = 300)
 
 ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
@@ -154,17 +162,9 @@ ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
   ggtitle("Temporal Distribution (853 military monuments)", subtitle = "Scaled density and histogram (unweighted)")
 
 #compare clean and unclean provinces (weighted)
-uncleanplot <- 
-ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
-  stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
-               aes(y = (..density.. * histogramscale), weight = weight)) +
-  geom_histogram(alpha = 0.5, binwidth = attributes(LIRE_Dal_corpus_scale)$stepsize,
-                 position = "dodge", colour = "black", fill = "darkorange4") +
-  labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
-  labs(caption = "Based on data from LIRE v.3.0") +
-  ggtitle("Temporal Distribution (864 military monuments)", subtitle = "Scaled density and histogram (weighted)")
+doubletrouble <- grid.arrange(uncleanplot, cleanplot, ncol = 2)
 
-cleanplot <- 
+# remove grid test(?)
 ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
   stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
                aes(y = (..density.. * histogramscale), weight = weight)) +
@@ -172,23 +172,11 @@ ggplot(LIRE_Dal_corpus_clean_scale, aes(x = DAT_step)) +
                  position = "dodge", colour = "black", fill = "darkorange4") +
   labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
   labs(caption = "Based on data from LIRE v.3.0 (clean provinces)") +
-  ggtitle("Temporal Distribution (853 military monuments)",
-          subtitle = "Scaled density and histogram (weighted with step size 5)")
-
-doubletrouble <- grid.arrange(uncleanplot, cleanplot, ncol = 2)
-
-# remove grid test(?)
-
-ggplot(LIRE_Dal_corpus_scale, aes(x = DAT_step)) +
-  stat_density(alpha = 0.5, position = "dodge", colour = "black", fill = "darkorange",
-               aes(y = (..density.. * histogramscale), weight = weight)) +
-  geom_histogram(alpha = 0.5, binwidth = attributes(LIRE_Dal_corpus_scale)$stepsize,
-                 position = "dodge", colour = "black", fill = "darkorange4") +
-  labs(y = "Maximum number of monuments per year", x = "Dating (BCE/CE") +
-  labs(caption = "Based on data from LIRE v.3.0") +
-  ggtitle("Temporal Distribution (864 military monuments)",
-          subtitle = "Scaled density and histogram (weighted with step size 5)") +
+  ggtitle("Temporal Distribution (853 military monuments)", 
+          subtitle = "Scaled density and histogram (weighted: step size 5)")+
   theme(panel.background = element_blank())
+
+ggsave("output_images/LIRE_clean_corpus_date_no_grid.jpeg", dpi = 300)
 
 # now compare with all Dalmatia
 ## check .4 has been run
@@ -217,10 +205,10 @@ LIRE_all_Dal_clean_na$date_mean <- (LIRE_all_Dal_clean_na$not_after + LIRE_all_D
 #need to do bigger step size
 #try 25 step size if takes too long?
 LIRE_all_Dal_dens <- datsteps(LIRE_all_Dal_na, stepsize = 5)
-dens <- LIRE_all_Dal_dens
-dens <- scaleweight(LIRE_all_Dal_dens, var = "all")
-dens <- density(x = dens$DAT_step, weights = dens$weight)
-plot(dens)
+dens3 <- LIRE_all_Dal_dens
+dens3 <- scaleweight(LIRE_all_Dal_dens, var = "all")
+dens3 <- density(x = dens3$DAT_step, weights = dens3$weight)
+plot(dens3)
 
 LIRE_all_Dal_scale <- scaleweight(LIRE_all_Dal_dens, var = 2)
 
@@ -237,12 +225,14 @@ ggplot(LIRE_all_Dal_scale, aes(x = DAT_step)) +
   ggtitle("Temporal Distribution (6508 monuments)", 
           subtitle = "Scaled density and histogram (weighted with step size 5)")
 
+plot(uncleanallplot)
+
 #plot clean provinces
 LIRE_all_Dal_clean_dens <- datsteps(LIRE_all_Dal_clean_na, stepsize = 5)
-dens <- LIRE_all_Dal_dens
-dens <- scaleweight(LIRE_all_Dal_clean_dens, var = "all")
-dens <- density(x = dens$DAT_step, weights = dens$weight)
-plot(dens)
+dens4 <- LIRE_all_Dal_dens
+dens4 <- scaleweight(LIRE_all_Dal_clean_dens, var = "all")
+dens4 <- density(x = dens4$DAT_step, weights = dens4$weight)
+plot(dens4)
 
 LIRE_all_Dal_clean_scale <- scaleweight(LIRE_all_Dal_clean_dens, var = 2)
 
@@ -258,8 +248,10 @@ cleanallplot <-
   labs(caption = "Based on data from LIRE v.3.0") +
   ggtitle("Temporal Distribution (6352 monuments)", subtitle = "Scaled density and histogram (weighted)")
 
+plot(cleanallplot)
+
 #combine
 doubletrouble <- grid.arrange(uncleanplot, uncleanallplot, ncol = 2)
-doubletrouble <- grid.arrange(cleanplot, cleanallplot, ncol = 2)
+doubletroubler <- grid.arrange(cleanplot, cleanallplot, ncol = 2)
 quadrupeltrouble <- grid.arrange(uncleanplot, cleanplot, uncleanallplot, cleanallplot, ncol = 4) #looks bad
 
