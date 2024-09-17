@@ -123,7 +123,8 @@ LIRE_Dal_mil <- sqldf("Select * from LIRE_Dal
                   OR findspot_modern_clean = 'Ljubuški'
                   ")
 
-write.csv(LIRE_Dal_mil, file = "data/LIRE_Dal_mil.csv")
+write.csv(LIRE_Dal_mil,
+          file = "output_tables/corpus/LIRE_Dalmatia_all_monuments_military.csv")
 
 LIRE_Dal_mil_clean <- sqldf("Select * from LIRE_Dal_clean
                   WHERE clean_text_interpretive_word 
@@ -185,7 +186,8 @@ LIRE_Dal_mil_clean <- sqldf("Select * from LIRE_Dal_clean
                   OR findspot_modern_clean = 'Ljubuški'
                   ")
 
-write.csv(LIRE_Dal_mil_clean, file = "data/LIRE_Dal_mil_clean_province.csv")
+write.csv(LIRE_Dal_mil_clean,
+          file = "output_tables/corpus/LIRE_clean_Dalmatia_all_monuments_military.csv")
 
 ##now dated
 LIRE_dated <- LIRE_Dal %>%
@@ -252,6 +254,9 @@ LIRE_dated_mil <- sqldf("Select * from LIRE_dated
                   OR findspot_modern_clean = 'Ljubuški'
                   ")
 
+write.csv(LIRE_dated_mil,
+          file = "output_tables/corpus/LIRE_Dalmatia_all_monuments_military_dated.csv")
+
 LIRE_clean_dated <- LIRE_Dal_clean %>%
   filter(not_before %in% (-30:191), not_after %in% (1:200)) %>%
   arrange(not_after, not_before)
@@ -315,6 +320,9 @@ LIRE_clean_dated_mil <- sqldf("Select * from LIRE_clean_dated
                   OR findspot_ancient_clean = 'Bigeste'
                   OR findspot_modern_clean = 'Ljubuški'
                   ")
+
+write.csv(LIRE_clean_dated_mil,
+          file = "output_tables/corpus/LIRE_clean_Dalmatia_all_monuments_military_dated.csv")
 
 # filter types
 ##show types and count
@@ -408,10 +416,14 @@ LIRE_clean_dated_corpus %>%
   count(type_of_monument_clean, type_of_inscription_clean)
 
 #save data
-write.csv(LIRE_Dal_corpus, file = "data/LIRE_corpus_monuments.csv")
-write.csv(LIRE_Dal_corpus_clean, file = "data/LIRE_clean_corpus_monuments.csv")
-write.csv(LIRE_dated_corpus, file = "data/LIRE_corpus_monuments_dated.csv")
-write.csv(LIRE_clean_dated_corpus, file = "data/LIRE_clean_corpus_monuments_dated.csv")
+write.csv(LIRE_Dal_corpus,
+          file = "output_tables/corpus/LIRE_thesis_corpus.csv")
+write.csv(LIRE_Dal_corpus_clean,
+          file = "output_tables/corpus/LIRE_clean_thesis_corpus.csv")
+write.csv(LIRE_dated_corpus,
+          file = "output_tables/corpus/LIRE_thesis_corpus_dated.csv")
+write.csv(LIRE_clean_dated_corpus,
+          file = "output_tables/corpus/LIRE_clean_thesis_corpus_dated.csv")
 
 #add value for count
 LIRE_Dal_corpus$count<- 1
@@ -487,6 +499,16 @@ LIRE_all_Dal_clean_dated <- LIRE_Dal_clean %>%
                                              "list") 
          & not_before %in% (-30:191) & not_after %in% (1:200)) %>%
   arrange(not_after, not_before)
+
+#save data
+write.csv(LIRE_all_Dal,
+          file = "output_tables/corpus/LIRE_thesis_Dalmatia.csv")
+write.csv(LIRE_all_Dal_clean,
+          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia.csv")
+write.csv(LIRE_all_Dal_dated,
+          file = "output_tables/corpus/LIRE_thesis_Dalmatia_dated.csv")
+write.csv(LIRE_all_Dal_clean_dated,
+          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia_dated.csv")
 
 LIRE_all_Dal$count<- 1
 LIRE_all_Dal_clean$count<- 1
