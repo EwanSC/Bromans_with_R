@@ -1,69 +1,73 @@
-#Getting and cleaning data from LIRE
+# getting corpus from cleaned LIRE data
 #started 5/9/2024
-# edited 17/09/2024
-
+# edited 19/09/2024
 library(dplyr)
 library(sqldf)
 library(arrow)
-library(ggplot2)
-library(sf)
-library(ggrepel)
-library("gridExtra")
 
-#get all data + vocab
-LIRE <-
-  read_parquet("https://zenodo.org/records/8431452/files/LIRE_v3-0.parquet?download=1")
+# get and read LIRE data (cleaned in /scripts/appendix.0-LIRE-data.R)
+# data as of 19/09/2024
+LIRE_Dal <-
+  read.csv("data/LIRE/LIRE_Dal.csv")
 
-LIRE_dictionary <-
-  read.csv("https://zenodo.org/records/8431452/files/LI_metadata.csv?download=1")
+LIRE_Dal_clean <-
+  read.csv("data/LIRE/LIRE_Dal_clean.csv")
 
-write.csv(LIRE_dictionary, file = "data/LIRE_dictionary.csv")
+# function to remove unwanted monument/inscription types
+clean_monument_types <- function(dataframe) {
+  library(dplyr)
+  clean_monument_types <- dataframe %>%
+    filter(!type_of_monument_clean %in% c("architectural member",
+                                          "mile-/leaguestone",
+                                          "tile",
+                                          "instrumentum domesticum",
+                                          "table",
+                                          "instrumentum militare")
+           & !type_of_inscription_clean %in% c("building/dedicatory inscription",
+                                               "honorific inscription",
+                                               "boundary inscription",
+                                               "mile-/leaguestone",
+                                               "military diploma",
+                                               "building/dedicatory inscription",
+                                               "list"))  
+  return(clean_monument_types)
+}
 
-#filter columns
-LIRE_filtered <- select(LIRE,
-                        "LIST-ID",
-                        "EDCS-ID",
-                        "EDH-ID",
-                        "not_before",
-                        "not_after",
-                        "inscription",
-                        "transcription",
-                        "clean_text_interpretive_word",
-                        "type_of_inscription_clean",
-                        "type_of_monument_clean",
-                        "province",
-                        "province_label_clean",
-                        "place",
-                        "findspot_ancient_clean",
-                        "findspot_modern_clean",
-                        "status_notation",
-                        "Latitude",
-                        "Longitude")
+#function to put within date parameter (Claudians - Antonines)
+within_date_range <- function(dataframe) {
+  library(dplyr)
+  within_date_range <- dataframe %>%
+    filter(not_before %in% (-30:192), not_after %in% (1:200)) %>%
+    arrange(not_after, not_before)
+  return(within_date_range)
+}
 
-#get only Dalmatia
-LIRE_Dal <- filter(LIRE_filtered, province == "Dalmatia")
-LIRE_Dal_clean <- filter(LIRE_filtered, province_label_clean == "Dalmatia")
+# run them on the data to make dated/undated base and cleaned base data
+LIRE_Dal <- clean_monument_types(LIRE_Dal) # old LIRE_all_Dal
+LIRE_Dal_clean <- clean_monument_types(LIRE_Dal_clean) #old LIRE_all_Dal_clean
+LIRE_Dal_dated <- within_date_range(LIRE_Dal_clean) # old LIRE_all_Dal_dated
+LIRE_Dal_dated_clean <- within_date_range(LIRE_Dal_clean) # old LIRE_all_Dal_clean_dated
 
-#clean places
-clean_LIRE_Dal_places <- sqldf("Select Distinct 
-                        place, findspot_ancient_clean, findspot_modern_clean,
-                        Longitude, Latitude 
-                        from LIRE_Dal
-                        order by 
-                            Latitude desc, 
-                            Longitude asc")
-clean_LIRE_Dal_clean_places <- sqldf("Select Distinct 
-                              place, 
-                              findspot_ancient_clean, 
-                              findspot_modern_clean,
-                              Longitude, Latitude 
-                              from LIRE_Dal_clean
-                              order by 
-                                Latitude desc, 
-                                Longitude asc")
+write.csv(LIRE_Dal,
+          file = "output_tables/corpus/LIRE_thesis_Dalmatia.csv")
+write.csv(LIRE_Dal_clean,
+          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia.csv")
+write.csv(LIRE_Dal_dated,
+          file = "output_tables/corpus/LIRE_thesis_Dalmatia_dated.csv")
+write.csv(LIRE_Dal_dated_clean,
+          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia_dated.csv")
 
-#now military (unclean, clean, dated)
-LIRE_Dal_mil <- sqldf("Select * from LIRE_Dal
+LIRE_Dal$count<- 1
+LIRE_Dal_clean$count<- 1
+LIRE_Dal_dated$count<- 1
+LIRE_Dal_dated_clean$count<- 1
+
+#make function for military (some based on place, others just key words and tags)
+## with places and key words
+load_military_terms_and_sites <- function(dataframe) {
+  library(sqldf)
+  library(dplyr)
+  loaded_military_terms_and_sites <- sqldf("Select * from dataframe
                   WHERE clean_text_interpretive_word 
                     LIKE '%legio%'
                   OR clean_text_interpretive_word 
@@ -122,11 +126,14 @@ LIRE_Dal_mil <- sqldf("Select * from LIRE_Dal
                   OR findspot_ancient_clean = 'Bigeste'
                   OR findspot_modern_clean = 'Ljubuški'
                   ")
+  return(loaded_military_terms_and_sites)
+}
 
-write.csv(LIRE_Dal_mil,
-          file = "output_tables/corpus/LIRE_Dalmatia_all_monuments_military.csv")
-
-LIRE_Dal_mil_clean <- sqldf("Select * from LIRE_Dal_clean
+##with just key words
+load_military_terms <- function(dataframe) {
+  library(sqldf)
+  library(dplyr)
+  load_military_terms <- sqldf("Select * from dataframe
                   WHERE clean_text_interpretive_word 
                     LIKE '%legio%'
                   OR clean_text_interpretive_word 
@@ -179,338 +186,52 @@ LIRE_Dal_mil_clean <- sqldf("Select * from LIRE_Dal_clean
                     LIKE '%option%'
                   or status_notation
                     LIKE '%milites%'
-                  OR findspot_ancient_clean = 'Tilurium'
-                  OR findspot_ancient_clean = 'Burnum'
-                  OR findspot_ancient_clean = 'Andetrium'
-                  OR findspot_ancient_clean = 'Bigeste'
-                  OR findspot_modern_clean = 'Ljubuški'
-                  ")
+                    ")
+  return(load_military_terms)
+}
 
-write.csv(LIRE_Dal_mil_clean,
-          file = "output_tables/corpus/LIRE_clean_Dalmatia_all_monuments_military.csv")
+#now run functions to make military corpus (unclean, clean, dated, key words and place, no places)
+LIRE_Dal_corpus <- load_military_terms_and_sites(LIRE_Dal)
+
+LIRE_Dal_corpus_no_place_filtering <- load_military_terms(LIRE_Dal)
+
+LIRE_Dal_corpus_clean <- load_military_terms_and_sites(LIRE_Dal_clean)
+
+LIRE_Dal_corpus_no_place_filtering_clean <- load_military_terms(LIRE_Dal_clean)
 
 ##now dated
-LIRE_dated <- LIRE_Dal %>%
-  filter(not_before %in% (-30:191), not_after %in% (1:200)) %>%
-  arrange(not_after, not_before)
+LIRE_dated_corpus <- load_military_terms_and_sites(LIRE_Dal_dated)
 
-LIRE_dated_mil <- sqldf("Select * from LIRE_dated
-                  WHERE clean_text_interpretive_word 
-                    LIKE '%legio%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%cohor%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%ala%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%alae%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%milit%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%eques%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%equit%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%duplicari%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%veteran%'
-                  or clean_text_interpretive_word
-                    LIKE '%centuri%'
-                  or clean_text_interpretive_word
-                    LIKE '%immun%'
-                  or clean_text_interpretive_word
-                    LIKE '%miles%'
-                  or clean_text_interpretive_word
-                    LIKE '%beneficiar%'
-                  or clean_text_interpretive_word
-                    LIKE '%tesserari%'
-                  or clean_text_interpretive_word
-                    LIKE '%signifer%'
-                  or clean_text_interpretive_word
-                    LIKE '%aquilifer%'
-                  or clean_text_interpretive_word
-                    LIKE '%imaginifer%'
-                  or clean_text_interpretive_word
-                    LIKE '%corniculari%'
-                  or clean_text_interpretive_word
-                    LIKE '%principalis%'
-                  or clean_text_interpretive_word
-                    LIKE '%primus pilus%'
-                  or clean_text_interpretive_word
-                    LIKE '%primo pilo%'
-                  or clean_text_interpretive_word
-                    LIKE '%primi pili%'
-                  or clean_text_interpretive_word
-                    LIKE '%praefectus castrorum%'
-                  or clean_text_interpretive_word
-                    LIKE '%optio %'
-                  or clean_text_interpretive_word
-                    LIKE '%option%'
-                  or status_notation
-                    LIKE '%milites%'
-                  OR findspot_ancient_clean = 'Tilurium'
-                  OR findspot_ancient_clean = 'Burnum'
-                  OR findspot_ancient_clean = 'Andetrium'
-                  OR findspot_ancient_clean = 'Bigeste'
-                  OR findspot_modern_clean = 'Ljubuški'
-                  ")
+LIRE_dated_corpus_no_place_filtering <- load_military_terms(LIRE_Dal_dated)
 
-write.csv(LIRE_dated_mil,
-          file = "output_tables/corpus/LIRE_Dalmatia_all_monuments_military_dated.csv")
+LIRE_dated_corpus_clean <- load_military_terms_and_sites(LIRE_Dal_dated_clean)
 
-LIRE_clean_dated <- LIRE_Dal_clean %>%
-  filter(not_before %in% (-30:191), not_after %in% (1:200)) %>%
-  arrange(not_after, not_before)
+LIRE_dated_corpus_no_place_filtering_clean <- load_military_terms(LIRE_Dal_dated_clean)
 
-LIRE_clean_dated_mil <- sqldf("Select * from LIRE_clean_dated
-                  WHERE clean_text_interpretive_word 
-                    LIKE '%legio%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%cohor%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%ala%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%alae%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%milit%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%eques%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%equit%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%duplicari%'
-                  OR clean_text_interpretive_word 
-                    LIKE '%veteran%'
-                  or clean_text_interpretive_word
-                    LIKE '%centuri%'
-                  or clean_text_interpretive_word
-                    LIKE '%immun%'
-                  or clean_text_interpretive_word
-                    LIKE '%miles%'
-                  or clean_text_interpretive_word
-                    LIKE '%beneficiar%'
-                  or clean_text_interpretive_word
-                    LIKE '%tesserari%'
-                  or clean_text_interpretive_word
-                    LIKE '%signifer%'
-                  or clean_text_interpretive_word
-                    LIKE '%aquilifer%'
-                  or clean_text_interpretive_word
-                    LIKE '%imaginifer%'
-                  or clean_text_interpretive_word
-                    LIKE '%corniculari%'
-                  or clean_text_interpretive_word
-                    LIKE '%principalis%'
-                  or clean_text_interpretive_word
-                    LIKE '%primus pilus%'
-                  or clean_text_interpretive_word
-                    LIKE '%primo pilo%'
-                  or clean_text_interpretive_word
-                    LIKE '%primi pili%'
-                  or clean_text_interpretive_word
-                    LIKE '%praefectus castrorum%'
-                  or clean_text_interpretive_word
-                    LIKE '%optio %'
-                  or clean_text_interpretive_word
-                    LIKE '%option%'
-                  or status_notation
-                    LIKE '%milites%'
-                  OR findspot_ancient_clean = 'Tilurium'
-                  OR findspot_ancient_clean = 'Burnum'
-                  OR findspot_ancient_clean = 'Andetrium'
-                  OR findspot_ancient_clean = 'Bigeste'
-                  OR findspot_modern_clean = 'Ljubuški'
-                  ")
-
-write.csv(LIRE_clean_dated_mil,
-          file = "output_tables/corpus/LIRE_clean_Dalmatia_all_monuments_military_dated.csv")
-
-# filter types
-##show types and count
-LIRE_Dal_mil %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-LIRE_Dal_mil_clean %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-LIRE_dated_mil %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-LIRE_clean_dated_mil %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-## remove unwanted monument/inscription types
-
-LIRE_Dal_corpus <- LIRE_Dal_mil %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone",
-                                        "tile",
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare")
-        & !type_of_inscription_clean %in% c("building/dedicatory inscription",
-                                            "honorific inscription",
-                                            "boundary inscription",
-                                            "mile-/leaguestone",
-                                            "military diploma",
-                                            "building/dedicatory inscription",
-                                            "list"))
-
-LIRE_Dal_corpus_clean <- LIRE_Dal_mil_clean %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone",
-                                        "tile",
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare")
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription",
-                                             "boundary inscription",
-                                             "mile-/leaguestone",
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list"))
-
-LIRE_dated_corpus <- LIRE_dated_mil %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone",
-                                        "tile",
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare")
-        & !type_of_inscription_clean %in% c("building/dedicatory inscription",
-                                            "honorific inscription",
-                                            "boundary inscription",
-                                            "mile-/leaguestone",
-                                            "military diploma",
-                                            "building/dedicatory inscription",
-                                            "list"))
-
-LIRE_clean_dated_corpus <- LIRE_clean_dated_mil %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone",
-                                        "tile",
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare")
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription",
-                                             "boundary inscription",
-                                             "mile-/leaguestone",
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list"))
-
-#check data
-LIRE_Dal_corpus %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-LIRE_Dal_corpus_clean %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-LIRE_dated_corpus %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-LIRE_clean_dated_corpus %>%
-  count(type_of_monument_clean, type_of_inscription_clean)
-
-#save data
+# saving data
 write.csv(LIRE_Dal_corpus,
           file = "output_tables/corpus/LIRE_thesis_corpus.csv")
+write.csv(LIRE_Dal_corpus_no_place_filtering,
+          file = "output_tables/corpus/LIRE_thesis_corpus_no_place_filter.csv")
 write.csv(LIRE_Dal_corpus_clean,
           file = "output_tables/corpus/LIRE_clean_thesis_corpus.csv")
+write.csv(LIRE_Dal_corpus_no_place_filtering_clean,
+          file = "output_tables/corpus/LIRE_clean_thesis_corpus_no_place_filter.csv")
 write.csv(LIRE_dated_corpus,
           file = "output_tables/corpus/LIRE_thesis_corpus_dated.csv")
-write.csv(LIRE_clean_dated_corpus,
+write.csv(LIRE_dated_corpus_no_place_filtering,
+          file = "output_tables/corpus/LIRE_thesis_corpus_dated_no_place_filter.csv")
+write.csv(LIRE_dated_corpus_clean,
           file = "output_tables/corpus/LIRE_clean_thesis_corpus_dated.csv")
+write.csv(LIRE_dated_corpus_no_place_filtering_clean,
+          file = "output_tables/corpus/LIRE_clean_thesis_corpus_dated_no_place_filter.csv")
 
 #add value for count
 LIRE_Dal_corpus$count<- 1
+LIRE_Dal_corpus_no_place_filtering$count<- 1
 LIRE_Dal_corpus_clean$count<- 1
+LIRE_Dal_corpus_no_place_filtering_clean$count<- 1
 LIRE_dated_corpus$count<- 1
-LIRE_clean_dated_corpus$count<- 1
-
-# do same for all Dal
-LIRE_all_Dal <- LIRE_Dal %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list"))
-
-LIRE_all_Dal_clean <- LIRE_Dal_clean %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list"))
-
-LIRE_all_Dal_dated <- LIRE_Dal %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list") 
-         & not_before %in% (-30:191) & not_after %in% (1:200)) %>%
-  arrange(not_after, not_before)
-
-LIRE_all_Dal_clean_dated <- LIRE_Dal_clean %>%
-  filter(!type_of_monument_clean %in% c("architectural member",
-                                        "mile-/leaguestone", 
-                                        "tile", 
-                                        "instrumentum domesticum",
-                                        "table",
-                                        "instrumentum militare") 
-         & !type_of_inscription_clean %in% c("architectural member",
-                                             "remove building/dedicatory inscription", 
-                                             "honorific inscription", 
-                                             "boundary inscription", 
-                                             "mile-/leaguestone", 
-                                             "military diploma",
-                                             "building/dedicatory inscription",
-                                             "list") 
-         & not_before %in% (-30:191) & not_after %in% (1:200)) %>%
-  arrange(not_after, not_before)
-
-#save data
-write.csv(LIRE_all_Dal,
-          file = "output_tables/corpus/LIRE_thesis_Dalmatia.csv")
-write.csv(LIRE_all_Dal_clean,
-          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia.csv")
-write.csv(LIRE_all_Dal_dated,
-          file = "output_tables/corpus/LIRE_thesis_Dalmatia_dated.csv")
-write.csv(LIRE_all_Dal_clean_dated,
-          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia_dated.csv")
-
-LIRE_all_Dal$count<- 1
-LIRE_all_Dal_clean$count<- 1
-LIRE_all_Dal_dated$count<- 1
-LIRE_all_Dal_clean_dated$count<- 1
+LIRE_dated_corpus_no_place_filtering$count<- 1
+LIRE_dated_corpus_clean$count<- 1
+LIRE_dated_corpus_no_place_filtering_clean$count<- 1

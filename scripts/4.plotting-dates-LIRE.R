@@ -10,14 +10,18 @@ library(sqldf)
 library(tidyverse)
 
 count(LIRE_Dal_corpus)
+count(LIRE_Dal_corpus_no_place_filtering)
 count(LIRE_Dal_corpus_clean)
-count(LIRE_all_Dal)
-count(LIRE_all_Dal_clean)
+count(LIRE_Dal_corpus_no_place_filtering_clean)
+count(LIRE_Dal)
+count(LIRE_Dal_clean)
 
 LIRE_Dal_corpus$variable <- "Military"
+LIRE_Dal_corpus_no_place_filtering <- "Military"
 LIRE_Dal_corpus_clean$variable <- "Military"
-LIRE_all_Dal$variable <- "All"
-LIRE_all_Dal_clean$variable <- "All"
+LIRE_Dal_corpus_no_place_filtering_clean <- "Military"
+LIRE_Dal$variable <- "All"
+LIRE_Dal_clean$variable <- "All"
 
 LIRE_Dal_corpus_dates <- na.omit(LIRE_Dal_corpus %>%
                                    select(`LIST-ID`,variable,not_before,not_after))
@@ -25,10 +29,16 @@ LIRE_Dal_corpus_dates <- na.omit(LIRE_Dal_corpus %>%
 LIRE_Dal_corpus_clean_dates <- na.omit(LIRE_Dal_corpus_clean %>%
                                          select(`LIST-ID`,variable,not_before,not_after))
 
-LIRE_all_Dal_dates <- na.omit(LIRE_all_Dal %>%
+LIRE_Dal_corpus_npf_dates <- na.omit(LIRE_Dal_corpus %>%
                                    select(`LIST-ID`,variable,not_before,not_after))
 
-LIRE_all_Dal_clean_dates <- na.omit(LIRE_all_Dal_clean %>%
+LIRE_Dal_corpus_npf_clean_dates <- na.omit(LIRE_Dal_corpus_clean %>%
+                                         select(`LIST-ID`,variable,not_before,not_after))
+
+LIRE_Dal_dates <- na.omit(LIRE_Dal %>%
+                                   select(`LIST-ID`,variable,not_before,not_after))
+
+LIRE_Dal_clean_dates <- na.omit(LIRE_Dal_clean %>%
                                    select(`LIST-ID`,variable,not_before,not_after))
 
 
@@ -36,21 +46,30 @@ LIRE_Dal_corpus_altered <- type.convert(LIRE_Dal_corpus_dates, as.is = TRUE)    
 LIRE_Dal_corpus_na <- na.omit(LIRE_Dal_corpus_altered)  #remove nulls
 LIRE_Dal_corpus_na                                      # Print updated data frame
 
-LIRE_Dal_corpus_clean_altered <- type.convert(LIRE_Dal_corpus_clean_dates, as.is = TRUE)    # Modify column classes
-LIRE_Dal_corpus_clean_na <- na.omit(LIRE_Dal_corpus_clean_altered) #remove nulls
-LIRE_Dal_corpus_clean_na                                           # Print updated data frame
+LIRE_Dal_corpus_clean_altered <- type.convert(LIRE_Dal_corpus_clean_dates, as.is = TRUE)    
+LIRE_Dal_corpus_clean_na <- na.omit(LIRE_Dal_corpus_clean_altered) 
+LIRE_Dal_corpus_clean_na
 
-LIRE_all_Dal_dates_altered <- type.convert(LIRE_all_Dal_dates, as.is = TRUE)    # Modify column classes
-LIRE_all_Dal_dates_na <- na.omit(LIRE_all_Dal_dates_altered) #remove nulls
-LIRE_all_Dal_dates_na                                           # Print updated data frame
+LIRE_Dal_corpus_npf_altered <- type.convert(LIRE_Dal_corpus_npf_dates, as.is = TRUE) 
+LIRE_Dal_corpus_npf_na <- na.omit(LIRE_Dal_corpus_npf_altered)
+LIRE_Dal_corpus_npf_na
 
-LIRE_all_Dal_clean_dates_altered <- type.convert(LIRE_all_Dal_clean_dates, as.is = TRUE)    # Modify column classes
-LIRE_all_Dal_clean_dates_na <- na.omit(LIRE_all_Dal_clean_dates_altered) #remove nulls
-LIRE_all_Dal_clean_dates_na                                           # Print updated data frame
+LIRE_Dal_corpus_npf_clean_altered <- type.convert(LIRE_Dal_corpus_npf_clean_dates, as.is = TRUE)
+LIRE_Dal_corpus_npf_clean_na <- na.omit(LIRE_Dal_corpus_npf_clean_altered)
+LIRE_Dal_corpus_npf_clean_na
 
+LIRE_all_Dal_dates_altered <- type.convert(LIRE_all_Dal_dates, as.is = TRUE) 
+LIRE_all_Dal_dates_na <- na.omit(LIRE_all_Dal_dates_altered)
+LIRE_all_Dal_dates_na
+
+LIRE_all_Dal_clean_dates_altered <- type.convert(LIRE_all_Dal_clean_dates, as.is = TRUE)
+LIRE_all_Dal_clean_dates_na <- na.omit(LIRE_all_Dal_clean_dates_altered) 
+LIRE_all_Dal_clean_dates_na
 
 LIRE_Dal_corpus_count <- count(LIRE_Dal_corpus_na)
+LIRE_Dal_corpus_npf_count <- count(LIRE_Dal_corpus_npf_na)
 LIRE_Dal_corpus_clean_count <- count(LIRE_Dal_corpus_clean_na)
+LIRE_Dal_corpus_npf_clean_count <- count(LIRE_Dal_corpus_npf_clean_na)
 LIRE_all_Dal_count <- count(LIRE_all_Dal_dates_na)
 LIRE_all_Dal_clean_count <- count(LIRE_all_Dal_clean_dates_na)
 

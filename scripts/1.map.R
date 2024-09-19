@@ -1,7 +1,7 @@
 # Map
 # Ewan Coopey
 # created 17/09/2024
-# last edit: 17/09/2024
+# last edit: 19/09/2024
 # Download required data and shape files to make province of Dalmatia map for plotting
 # testing and trouble-shooting found at 'scripts/old-2.primary_map-working-out-kinks.R'
 library(sf)
@@ -33,7 +33,7 @@ roman_roads <- st_read(
 
 # adding settlements from Pleiades https://pleiades.stoa.org/downloads
 roman_settlements <- st_read(
-  "data/Roman_settlements_pleiades.gpkg")
+  "data/mapping/Roman_settlements_pleiades.gpkg")
 
 # making base maps
 ggplot() + 
