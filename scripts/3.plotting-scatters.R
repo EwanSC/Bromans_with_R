@@ -72,8 +72,8 @@ plot1 <-
        caption = paste("n = ",
                        LIRE_Dal_corpus_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0.\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades.\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia") +
@@ -106,8 +106,8 @@ plot2 <-
        caption = paste("n = ",
                        LIRE_Dal_corpus_no_place_filtering_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0.\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades.\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
@@ -140,8 +140,8 @@ plot3 <-
        caption = paste("n = ",
                        LIRE_Dal_corpus_clean_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0 (Clean province = Dalmatia).\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades.\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
@@ -174,8 +174,8 @@ plot4 <-
        caption = paste("n = ",
                        LIRE_Dal_corpus_no_place_filtering_clean_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0 (Clean province = Dalmatia).\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades.\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
@@ -209,8 +209,8 @@ plot5 <-
        caption = paste("n = ",
                        LIRE_dated_corpus_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0.\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
@@ -243,8 +243,8 @@ plot6 <-
        caption = paste("n = ",
                        LIRE_dated_corpus_no_place_filtering_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0.\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
@@ -277,8 +277,8 @@ plot7 <-
        caption = paste("n = ",
                        LIRE_dated_corpus_clean_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0 (Clean province = Dalmatia).\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades.\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
@@ -311,8 +311,8 @@ plot8 <-
        caption = paste("n = ",
                        LIRE_dated_corpus_no_place_filtering_clean_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0 (Clean province = Dalmatia).\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades\n",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
@@ -372,8 +372,8 @@ plot9 <-
        caption = paste("n = ",
                        LIRE_Dal_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0.\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades"),
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
@@ -405,8 +405,8 @@ plot10 <-
        caption = paste("n = ",
                        LIRE_Dal_clean_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0 (Clean province = Dalmatia).\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades"),
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
@@ -438,8 +438,8 @@ plot11 <-
        caption = paste("n = ",
                        LIRE_Dal_dated_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0.\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades"),
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
@@ -471,8 +471,8 @@ plot12 <-
        caption = paste("n = ",
                        LIRE_Dal_dated_clean_n$n,
                        sep = "",
-                       ". Data from LIRE v.3.0 (Clean province = Dalmatia).\n",
-                       "Roads = DARMC. Provinces = AWMC. Settlements = Pleiades"),
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
