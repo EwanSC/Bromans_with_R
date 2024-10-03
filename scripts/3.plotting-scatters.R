@@ -16,9 +16,11 @@ library("gridExtra")
 # create df for layer of key sites 
 key_sites <- data.frame(findspot_ancient_clean=c("Tilurium",
                                                  "Salona", 
-                                                 "Burnum"),
-                        Longitude=c(16.7216523938 , 16.483426 , 16.025622),
-                        Latitude=c(43.609647549, 43.539561, 44.018914))
+                                                 "Burnum",
+                                                 "Narona",
+                                                 "Iader"),
+                        Longitude=c(16.7216523938, 16.483426, 16.025622, 17.598611, 15.223778),
+                        Latitude=c(43.609647549, 43.539561, 44.018914, 43.046389, 44.115501))
 
 print(key_sites)
 
@@ -65,8 +67,8 @@ plot1 <-
                   aes(x = Longitude,
                       y = Latitude,
                       label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25,-0.25,-0.25)) +
   labs(size = "Density", 
        caption = paste("n = ",
                        LIRE_Dal_corpus_n$n,
@@ -98,8 +100,8 @@ plot2 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density", 
        caption = paste("n = ",
                        LIRE_Dal_corpus_no_place_filtering_n$n,
@@ -131,8 +133,8 @@ plot3 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density", 
        caption = paste("n = ",
                        LIRE_Dal_corpus_clean_n$n,
@@ -164,8 +166,8 @@ plot4 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density", 
        caption = paste("n = ",
                        LIRE_Dal_corpus_no_place_filtering_clean_n$n,
@@ -198,8 +200,8 @@ plot5 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_dated_corpus_n$n,
@@ -231,8 +233,8 @@ plot6 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_dated_corpus_no_place_filtering_n$n,
@@ -264,8 +266,8 @@ plot7 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_dated_corpus_clean_n$n,
@@ -297,8 +299,8 @@ plot8 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_dated_corpus_no_place_filtering_clean_n$n,
@@ -357,8 +359,8 @@ plot9 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_n$n,
@@ -389,8 +391,8 @@ plot10 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_clean_n$n,
@@ -421,8 +423,8 @@ plot11 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_n$n,
@@ -453,8 +455,8 @@ plot12 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_clean_n$n,
@@ -486,8 +488,8 @@ plot13 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_clean_no_salona_n$n,
@@ -518,8 +520,8 @@ plot14 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_corpus_npf_clean_no_salona_n$n,
@@ -551,8 +553,8 @@ plot15 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_clean_no_salona_n$n,
@@ -583,8 +585,8 @@ plot16 <-
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
                                            y = Latitude,
                                            label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25)) +
+                  nudge_x = c(-2, -1.5, -1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_dated_corpus_npf_clean_no_salona_n$n,

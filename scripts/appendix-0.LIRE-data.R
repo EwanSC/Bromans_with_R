@@ -36,6 +36,12 @@ LIRE_filtered <- select(LIRE_all,
                         "status_notation",
                         "Latitude",
                         "Longitude")
+# fix zadar lat long
+LIRE_filtered$Longitude[LIRE_filtered$findspot_ancient_clean == 'Iader'
+                        & LIRE_filtered$findspot_modern_clean == 'Zadar'] <- "15.223778"
+
+LIRE_filtered$Latitude[LIRE_filtered$findspot_ancient_clean == 'Iader'
+                       & LIRE_filtered$findspot_modern_clean == 'Zadar'] <- "44.115501"
 
 #get only Dalmatia
 LIRE_Dal <- filter(LIRE_filtered, province == "Dalmatia")

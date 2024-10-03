@@ -235,7 +235,7 @@ LIRE_dated_corpus_npf_clean_no_salona <- LIRE_dated_corpus_no_place_filtering_cl
 ## now count monument types
 LIRE_Dal_corpus_types <- LIRE_Dal_corpus %>% 
   count(type_of_monument_clean, type_of_inscription_clean)
-IRE_Dal_corpus_no_place_filtering_types <- LIRE_Dal_corpus_no_place_filtering %>% 
+LIRE_Dal_corpus_no_place_filtering_types <- LIRE_Dal_corpus_no_place_filtering %>% 
   count(type_of_monument_clean, type_of_inscription_clean)
 LIRE_Dal_corpus_clean_types <- LIRE_Dal_corpus_clean %>% 
   count(type_of_monument_clean, type_of_inscription_clean)
