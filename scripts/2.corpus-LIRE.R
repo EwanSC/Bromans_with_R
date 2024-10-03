@@ -1,17 +1,18 @@
 # getting corpus from cleaned LIRE data
 #started 5/9/2024
-# edited 19/09/2024
+# edited 3/10/2024
 library(dplyr)
 library(sqldf)
 library(arrow)
 
 # get and read LIRE data (cleaned in /scripts/appendix.0-LIRE-data.R)
-# data as of 19/09/2024
+# and make NA values consistent
+# data as of 3/10/2024
 LIRE_Dal <-
-  read.csv("data/LIRE/LIRE_Dal.csv")
+  read.csv("data/LIRE/LIRE_Dal.csv", na = c("","NA","NULL",NULL))
 
 LIRE_Dal_clean <-
-  read.csv("data/LIRE/LIRE_Dal_clean.csv")
+  read.csv("data/LIRE/LIRE_Dal_clean.csv", na = c("","NA","NULL",NULL))
 
 # function to remove unwanted monument/inscription types
 clean_monument_types <- function(dataframe) {
@@ -29,7 +30,16 @@ clean_monument_types <- function(dataframe) {
                                                "mile-/leaguestone",
                                                "military diploma",
                                                "building/dedicatory inscription",
-                                               "list"))  
+                                               "list",
+                                               "seat inscription",
+                                               "public legal inscription",
+                                               "prayer",
+                                               "seat inscription",
+                                               "owner/artist inscription",
+                                               "identification inscription",
+                                               "assignation inscription",
+                                               "acclamation",
+                                               "calendar"))  
   return(clean_monument_types)
 }
 
@@ -61,6 +71,16 @@ LIRE_Dal$count<- 1
 LIRE_Dal_clean$count<- 1
 LIRE_Dal_dated$count<- 1
 LIRE_Dal_dated_clean$count<- 1
+
+## now count monument types
+LIRE_Dal_types <- LIRE_Dal %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_clean_types <- LIRE_Dal_clean %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_dated_types <- LIRE_Dal_dated %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_dated_clean_types <- LIRE_Dal_dated_clean %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
 
 #make function for military (some based on place, others just key words and tags)
 ## with places and key words
@@ -207,6 +227,24 @@ LIRE_dated_corpus_no_place_filtering <- load_military_terms(LIRE_Dal_dated)
 LIRE_dated_corpus_clean <- load_military_terms_and_sites(LIRE_Dal_dated_clean)
 
 LIRE_dated_corpus_no_place_filtering_clean <- load_military_terms(LIRE_Dal_dated_clean)
+
+## now count monument types
+LIRE_Dal_corpus_types <- LIRE_Dal_corpus %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+IRE_Dal_corpus_no_place_filtering_types <- LIRE_Dal_corpus_no_place_filtering %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_corpus_clean_types <- LIRE_Dal_corpus_clean %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_corpus_no_place_filtering_clean_types <- LIRE_Dal_corpus_no_place_filtering_clean %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_dated_corpus_types <- LIRE_dated_corpus %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_dated_corpus_no_place_filtering_types <- LIRE_dated_corpus_no_place_filtering %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_dated_corpus_clean_types <- LIRE_dated_corpus_clean %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_dated_corpus_no_place_filtering_clean_types <- LIRE_dated_corpus_no_place_filtering_clean %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
 
 # saving data
 write.csv(LIRE_Dal_corpus,

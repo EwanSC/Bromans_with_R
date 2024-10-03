@@ -4,8 +4,10 @@
 library(dplyr)
 library(sqldf)
 library(arrow)
+library(datplot)
+library(ggplot2)
 
-LIRE <-
+LIRE_all <-
   read_parquet("https://zenodo.org/records/8431452/files/LIRE_v3-0.parquet?download=1")
 
 LIRE_dictionary <-
@@ -14,7 +16,7 @@ LIRE_dictionary <-
 write.csv(LIRE_dictionary, file = "data/LIRE/LIRE_dictionary.csv")
 
 #filter columns
-LIRE_filtered <- select(LIRE,
+LIRE_filtered <- select(LIRE_all,
                         "LIST-ID",
                         "EDCS-ID",
                         "EDH-ID",
@@ -24,6 +26,7 @@ LIRE_filtered <- select(LIRE,
                         "transcription",
                         "clean_text_interpretive_word",
                         "type_of_inscription_clean",
+                        "type_of_inscription_auto",
                         "type_of_monument_clean",
                         "province",
                         "province_label_clean",

@@ -56,9 +56,8 @@ LIRE_Dal_corpus_n <- count(LIRE_Dal_corpus)
 
 plot1 <- 
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
   geom_sf(data = roman_settlements, colour = "grey30", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
@@ -73,11 +72,11 @@ plot1 <-
                        LIRE_Dal_corpus_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot1)
@@ -91,10 +90,9 @@ LIRE_Dal_corpus_no_place_filtering_n <- count(LIRE_Dal_corpus_no_place_filtering
 
 plot2 <- 
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
-  geom_sf(data = roman_settlements, colour = "black", alpha=0.6, size = 0.8) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_no_place_filtering_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
@@ -107,11 +105,11 @@ plot2 <-
                        LIRE_Dal_corpus_no_place_filtering_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot2)
@@ -125,10 +123,9 @@ LIRE_Dal_corpus_clean_n <- count(LIRE_Dal_corpus_clean)
 
 plot3 <- 
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
-  geom_sf(data = roman_settlements, colour = "black", alpha=0.6, size = 0.8) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_clean_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
@@ -141,11 +138,11 @@ plot3 <-
                        LIRE_Dal_corpus_clean_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot3)
@@ -159,10 +156,9 @@ LIRE_Dal_corpus_no_place_filtering_clean_n <- count(LIRE_Dal_corpus_no_place_fil
 
 plot4 <- 
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
-  geom_sf(data = roman_settlements, colour = "black", alpha=0.6, size = 0.8) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_no_place_filtering_clean_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
@@ -175,11 +171,11 @@ plot4 <-
                        LIRE_Dal_corpus_no_place_filtering_clean_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot4)
@@ -194,9 +190,8 @@ LIRE_dated_corpus_n <- count(LIRE_dated_corpus)
 
 plot5 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
   geom_sf(data = roman_settlements, colour = "grey30", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_dated_corpus_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
@@ -210,11 +205,11 @@ plot5 <-
                        LIRE_dated_corpus_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot5)
@@ -228,9 +223,8 @@ LIRE_dated_corpus_no_place_filtering_n <- count(LIRE_dated_corpus_no_place_filte
 
 plot6 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
   geom_sf(data = roman_settlements, colour = "grey30", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_dated_corpus_no_place_filtering_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
@@ -244,11 +238,11 @@ plot6 <-
                        LIRE_dated_corpus_no_place_filtering_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot6)
@@ -262,9 +256,8 @@ LIRE_dated_corpus_clean_n <- count(LIRE_dated_corpus_clean)
 
 plot7 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
   geom_sf(data = roman_settlements, colour = "grey30", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_dated_corpus_clean_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
@@ -278,11 +271,11 @@ plot7 <-
                        LIRE_dated_corpus_clean_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot7)
@@ -296,9 +289,8 @@ LIRE_dated_corpus_no_place_filtering_clean_n <- count(LIRE_dated_corpus_no_place
 
 plot8 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
   geom_sf(data = roman_settlements, colour = "grey30", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_dated_corpus_no_place_filtering_clean_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
@@ -312,11 +304,11 @@ plot8 <-
                        LIRE_dated_corpus_no_place_filtering_clean_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot8)
@@ -357,10 +349,9 @@ LIRE_Dal_n <- count(LIRE_Dal)
 
 plot9 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
-  geom_sf(data = roman_settlements, colour = "black", alpha=0.6, size = 0.8) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_ll, aes(size = n), alpha=0.8, colour = "#009E73") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
@@ -373,10 +364,10 @@ plot9 <-
                        LIRE_Dal_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot9)
@@ -390,10 +381,9 @@ LIRE_Dal_clean_n <- count(LIRE_Dal_clean)
 
 plot10 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
-  geom_sf(data = roman_settlements, colour = "black", alpha=0.6, size = 0.8) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_clean_ll, aes(size = n), alpha=0.8, colour = "#009E73") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
@@ -406,10 +396,10 @@ plot10 <-
                        LIRE_Dal_clean_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot10)
@@ -423,10 +413,9 @@ LIRE_Dal_dated_n <- count(LIRE_Dal_dated)
 
 plot11 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
-  geom_sf(data = roman_settlements, colour = "black", alpha=0.6, size = 0.8) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_ll, aes(size = n), alpha=0.8, colour = "#009E73") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
@@ -439,10 +428,10 @@ plot11 <-
                        LIRE_Dal_dated_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot11)
@@ -456,10 +445,9 @@ LIRE_Dal_dated_clean_n <- count(LIRE_Dal_dated_clean)
 
 plot12 <-
   ggplot() + 
-  geom_sf(data = world, color = "grey", fill = "lightgrey") + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
-  geom_sf(data = roman_69_provinces, colour = "black", size = 0.8) +
-  geom_sf(data = roman_settlements, colour = "black", alpha=0.6, size = 0.8) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_clean_ll, aes(size = n), alpha=0.8, colour = "#009E73") +
   geom_sf(data = key_sites_ll, colour = "black", size = 1) +
   geom_text_repel(data = key_sites_ll, aes(x = Longitude,
@@ -472,10 +460,10 @@ plot12 <-
                        LIRE_Dal_dated_clean_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Provinces = AWMC (ODbL).\nSettlements = Pleiades (CC-BY)."),
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(13, 21), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot12)
