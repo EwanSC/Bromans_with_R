@@ -76,12 +76,12 @@ plot1 <-
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot1)
 
-ggsave("output_images/geographical_distribution/LIRE_corpus_scatter.jpeg",
+ggsave("output_images/geographical_distribution/01.LIRE_corpus_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_corpus_no_place_filtering_ll <- dataframe_ll(LIRE_Dal_corpus_no_place_filtering)
@@ -109,12 +109,12 @@ plot2 <-
                        "Filtered by key words and tags."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot2)
 
-ggsave("output_images/geographical_distribution/LIRE_corpus_scatter_no_place_filter.jpeg",
+ggsave("output_images/geographical_distribution/02.LIRE_corpus_scatter_no_place_filter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_corpus_clean_ll <- dataframe_ll(LIRE_Dal_corpus_clean)
@@ -142,12 +142,12 @@ plot3 <-
                        "Filtered by key words, tags, and places."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot3)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_corpus_scatter.jpeg",
+ggsave("output_images/geographical_distribution/03.LIRE_clean_corpus_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_corpus_no_place_filtering_clean_ll <- dataframe_ll(LIRE_Dal_corpus_no_place_filtering_clean)
@@ -175,12 +175,12 @@ plot4 <-
                        "Filtered by key words and tags."),
                       title = "Distribution of military funerary and sacral monuments",
                       subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot4)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_corpus_scatter_no_place_filter.jpeg",
+ggsave("output_images/geographical_distribution/04.LIRE_clean_corpus_scatter_no_place_filter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 ## create one for just relevant period (~200 CE cut off)
@@ -209,12 +209,12 @@ plot5 <-
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot5)
 
-ggsave("output_images/geographical_distribution/LIRE_dated_corpus_scatter.jpeg",
+ggsave("output_images/geographical_distribution/05.LIRE_dated_corpus_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_dated_corpus_no_place_filtering_ll <- dataframe_ll(LIRE_dated_corpus_no_place_filtering)
@@ -242,12 +242,12 @@ plot6 <-
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot6)
 
-ggsave("output_images/geographical_distribution/LIRE_dated_corpus_scatter_no_place_filter.jpeg",
+ggsave("output_images/geographical_distribution/06.LIRE_dated_corpus_scatter_no_place_filter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_dated_corpus_clean_ll <- dataframe_ll(LIRE_dated_corpus_clean)
@@ -275,12 +275,12 @@ plot7 <-
                        "Filtered by key words, tags, and places."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot7)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_dated_corpus_scatter.jpeg",
+ggsave("output_images/geographical_distribution/07.LIRE_clean_dated_corpus_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_dated_corpus_no_place_filtering_clean_ll <- dataframe_ll(LIRE_dated_corpus_no_place_filtering_clean)
@@ -308,12 +308,12 @@ plot8 <-
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot8)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_dated_corpus_scatter_no_place_filter.jpeg",
+ggsave("output_images/geographical_distribution/08.LIRE_clean_dated_corpus_scatter_no_place_filter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 #save csv of plotted places
@@ -367,12 +367,12 @@ plot9 <-
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot9)
 
-ggsave("output_images/geographical_distribution/LIRE_dal_scatter.jpeg",
+ggsave("output_images/geographical_distribution/09.LIRE_dal_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_clean_ll <- dataframe_ll(LIRE_Dal_clean)
@@ -399,12 +399,12 @@ plot10 <-
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot10)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_dal_scatter.jpeg",
+ggsave("output_images/geographical_distribution/10.LIRE_clean_dal_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_dated_ll <- dataframe_ll(LIRE_Dal_dated)
@@ -431,12 +431,12 @@ plot11 <-
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot11)
 
-ggsave("output_images/geographical_distribution/LIRE_dated_dal_scatter.jpeg",
+ggsave("output_images/geographical_distribution/11.LIRE_dated_dal_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_dated_clean_ll <- dataframe_ll(LIRE_Dal_dated_clean)
@@ -463,12 +463,12 @@ plot12 <-
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot12)
 
-ggsave("output_images/geographical_distribution/LIRE_dated_clean_dal_scatter.jpeg",
+ggsave("output_images/geographical_distribution/12.LIRE_dated_clean_dal_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 # now for mapping without Salona
@@ -496,12 +496,12 @@ plot13 <-
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
                        title = "Distribution of funerary and sacral monuments",
                        subtitle = "Dalmatia (Outside Salona)") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot13)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_dal_scatter_no_salona.jpeg",
+ggsave("output_images/geographical_distribution/13.LIRE_clean_dal_scatter_no_salona.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_corpus_npf_clean_no_salona_ll <- dataframe_ll(LIRE_Dal_corpus_npf_clean_no_salona)
@@ -529,12 +529,12 @@ plot14 <-
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia (Outside Salona)") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot14)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_corpus_scatter_no_place_filter_no_salona.jpeg",
+ggsave("output_images/geographical_distribution/14.LIRE_clean_corpus_scatter_no_place_filter_no_salona.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_dated_clean_no_salona_ll <- dataframe_ll(LIRE_Dal_dated_clean_no_salona)
@@ -561,12 +561,12 @@ plot15 <-
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
        title = "Distribution of funerary and sacral monuments",
        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot15)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_dated_dal_scatter_no_salona.jpeg",
+ggsave("output_images/geographical_distribution/15.LIRE_clean_dated_dal_scatter_no_salona.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_dated_corpus_npf_clean_no_salona_ll <- dataframe_ll(LIRE_dated_corpus_npf_clean_no_salona)
@@ -594,12 +594,12 @@ plot16 <-
                        "Filtered by key words and tags."),
                        title = "Distribution of military funerary and sacral monuments",
                        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
 plot(plot16)
 
-ggsave("output_images/geographical_distribution/LIRE_clean_dated_corpus_scatter_no_place_filter_no_salona.jpeg",
+ggsave("output_images/geographical_distribution/16.LIRE_clean_dated_corpus_scatter_no_place_filter_no_salona.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 # now to save plotted places
@@ -615,34 +615,3 @@ write.csv(LIRE_Dal_dated_place,
 LIRE_Dal_dated_clean_place <- st_drop_geometry(LIRE_Dal_dated_clean_ll)
 write.csv(LIRE_Dal_dated_clean_place,
           file = "output_tables/corpus/places/LIRE_clean_thesis_dalmatia_dated.csv")
-
-#now to combine https://www.geeksforgeeks.org/draw-multiple-ggplot2-plots-side-by-side/
-## first, combine undated
-doubletrouble <- grid.arrange(plot1, plot9, ncol = 2)
-
-ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter.pdf",
-       doubletrouble, width = 11.7, height = 8.3)
-ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter.jpeg",
-       doubletrouble, width = 180, height = 140, unit = "mm", dpi = 600)
-
-doubletroubler <- grid.arrange(plot3, plot10, ncol = 2)
-
-ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter.pdf",
-       doubletroubler, width = 11.7, height = 8.3)
-ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter.jpeg",
-       doubletroubler, width = 180, height = 140, unit = "mm", dpi = 600)
-
-## now to combine dated
-doubletroublest <- grid.arrange(plot5, plot11, ncol = 2)
-
-ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter2.pdf",
-       doubletrouble, width = 11.7, height = 8.3)
-ggsave("output_images/geographical_distribution/LIRE_corpus_and_dal_scatter2.jpeg",
-       doubletrouble, width = 180, height = 140, unit = "mm", dpi = 600)
-
-doubletroublester <- grid.arrange(plot7, plot12, ncol = 2)
-
-ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter2.pdf",
-       doubletroubler, width = 11.7, height = 8.3)
-ggsave("output_images/geographical_distribution/dated_LIRE_clean_corpus_and_dal_scatter2.jpeg",
-       doubletroubler, width = 180, height = 140, unit = "mm", dpi = 600)

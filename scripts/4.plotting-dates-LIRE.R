@@ -1,7 +1,7 @@
 # Plotting dates, LIRE
 # Made 16/9/24
 # Edited: 16/9/24
-### FIRST RUN /scripts/2.corpuss-LIRE.R
+### FIRST RUN /scripts/2.corpus-LIRE.R
 ## using https://cran.r-project.org/web/packages/datplot/datplot.pdf
 ## and https://cran.r-project.org/web/packages/datplot/vignettes/how-to.html 
 library(dplyr)
@@ -70,7 +70,7 @@ LIRE_Dal_corpus_clean %>%
                        "Filtered by key words, tags, and places.\n",
                        "Method = Steinmann & Weissova 2021."))
 
-ggsave("output_images/chronological_distribution/LIRE_inscription_ranges_corpus.jpeg",
+ggsave("output_images/chronological_distribution/01.LIRE_inscription_ranges_corpus.jpeg",
        dpi = 600)
 
 LIRE_Dal_corpus_no_place_filtering_clean %>%
@@ -87,7 +87,7 @@ LIRE_Dal_corpus_no_place_filtering_clean %>%
                        "Filtered by key words and tags.\n",
                        "Method = Steinmann & Weissova 2021."))
 
-ggsave("output_images/chronological_distribution/LIRE_inscription_ranges_corpus_no_place_filter.jpeg",
+ggsave("output_images/chronological_distribution/02.LIRE_inscription_ranges_corpus_no_place_filter.jpeg",
        dpi = 600)
 
 LIRE_Dal_clean %>%
@@ -103,7 +103,7 @@ LIRE_Dal_clean %>%
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Cleaned province = Dalmatia).\n",
                        "Method = Steinmann & Weissova 2021."))
 
-ggsave("output_images/chronological_distribution/LIRE_inscription_ranges_Dalmatia.jpeg",
+ggsave("output_images/chronological_distribution/03.LIRE_inscription_ranges_Dalmatia.jpeg",
        dpi = 600)
 
 # now for weitghed density using datplot and 'clean' dfs
@@ -126,7 +126,7 @@ ggplot(data = LIRE_Dal_corpus_clean_scaled, aes(x = DAT_step, weight = weight)) 
                            attributes(LIRE_Dal_corpus_clean_scaled)$stepsize,
                            sep = ""))
 
-ggsave("output_images/chronological_distribution/LIRE_clean_corpus_plot.jpeg",
+ggsave("output_images/chronological_distribution/04.LIRE_clean_corpus_plot.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 LIRE_Dal_corpus_npf_clean_scaled <- scaleweight(datsteps(LIRE_Dal_corpus_npf_clean_na,
@@ -147,7 +147,7 @@ ggplot(data = LIRE_Dal_corpus_npf_clean_scaled, aes(x = DAT_step, weight = weigh
                         attributes(LIRE_Dal_corpus_npf_clean_scaled)$stepsize,
                         sep = ""))
 
-ggsave("output_images/chronological_distribution/LIRE_clean_corpus_plot_no_place_filter.jpeg",
+ggsave("output_images/chronological_distribution/05.LIRE_clean_corpus_plot_no_place_filter.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 LIRE_Dal_clean_scaled <- scaleweight(datsteps(LIRE_Dal_clean_na,
@@ -167,7 +167,7 @@ ggplot(data = LIRE_Dal_clean_scaled, aes(x = DAT_step, weight = weight)) +
                         attributes(LIRE_Dal_clean_scaled)$stepsize,
                         sep = ""))
 
-ggsave("output_images/chronological_distribution/LIRE_clean_dalmatia_plot.jpeg",
+ggsave("output_images/chronological_distribution/06.LIRE_clean_dalmatia_plot.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 # now for with a histogram
@@ -195,7 +195,7 @@ ggplot(LIRE_Dal_corpus_clean_scaled, aes(x = DAT_step)) +
                       attributes(LIRE_Dal_corpus_clean_scaled)$stepsize,
                       sep = ""))
 
-ggsave("output_images/chronological_distribution/LIRE_clean_corpus_plot_histogram.jpeg",
+ggsave("output_images/chronological_distribution/07.LIRE_clean_corpus_plot_histogram.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 ggplot(LIRE_Dal_corpus_npf_clean_scaled, aes(x = DAT_step)) +
@@ -215,7 +215,7 @@ ggplot(LIRE_Dal_corpus_npf_clean_scaled, aes(x = DAT_step)) +
                         attributes(LIRE_Dal_corpus_npf_clean_scaled)$stepsize,
                         sep = ""))
 
-ggsave("output_images/chronological_distribution/LIRE_clean_corpus_plot_histogram_no_place_filter.jpeg",
+ggsave("output_images/chronological_distribution/08.LIRE_clean_corpus_plot_histogram_no_place_filter.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 ggplot(LIRE_Dal_clean_scaled, aes(x = DAT_step)) +
@@ -234,7 +234,7 @@ ggplot(LIRE_Dal_clean_scaled, aes(x = DAT_step)) +
                         attributes(LIRE_Dal_corpus_clean_scaled)$stepsize,
                         sep = ""))
 
-ggsave("output_images/chronological_distribution/LIRE_clean_dalmatia_plot_histogram.jpeg",
+ggsave("output_images/chronological_distribution/09.LIRE_clean_dalmatia_plot_histogram.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 #now to compare
@@ -263,7 +263,7 @@ ggplot(data = LIRE_clean_both_scaled, aes(x = DAT_step, weight = weight,
                         attributes(LIRE_Dal_corpus_clean_scaled)$stepsize,
                         sep = ""))
        
-ggsave("output_images/chronological_distribution/LIRE_clean_dalmatia_corpus_plot.jpeg",
+ggsave("output_images/chronological_distribution/10.LIRE_clean_dalmatia_corpus_plot.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 LIRE_clean_both_npf <- rbind(LIRE_Dal_clean_na, LIRE_Dal_corpus_npf_clean_na)
@@ -291,5 +291,5 @@ ggplot(data = LIRE_clean_both_scaled_npf, aes(x = DAT_step, weight = weight,
                         attributes(LIRE_Dal_corpus_clean_scaled)$stepsize,
                         sep = ""))
 
-ggsave("output_images/chronological_distribution/LIRE_clean_dalmatia_corpus_plot_no_place_filter.jpeg",
+ggsave("output_images/chronological_distribution/11.LIRE_clean_dalmatia_corpus_plot_no_place_filter.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
