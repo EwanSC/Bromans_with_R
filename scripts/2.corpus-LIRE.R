@@ -212,21 +212,25 @@ load_military_terms <- function(dataframe) {
 
 #now run functions to make military corpus (unclean, clean, dated, key words and place, no places)
 LIRE_Dal_corpus <- load_military_terms_and_sites(LIRE_Dal)
-
 LIRE_Dal_corpus_no_place_filtering <- load_military_terms(LIRE_Dal)
-
 LIRE_Dal_corpus_clean <- load_military_terms_and_sites(LIRE_Dal_clean)
-
 LIRE_Dal_corpus_no_place_filtering_clean <- load_military_terms(LIRE_Dal_clean)
 
 ##now dated
 LIRE_dated_corpus <- load_military_terms_and_sites(LIRE_Dal_dated)
-
 LIRE_dated_corpus_no_place_filtering <- load_military_terms(LIRE_Dal_dated)
-
 LIRE_dated_corpus_clean <- load_military_terms_and_sites(LIRE_Dal_dated_clean)
-
 LIRE_dated_corpus_no_place_filtering_clean <- load_military_terms(LIRE_Dal_dated_clean)
+
+#filter clean dalmatia and military without Salona
+LIRE_Dal_clean_no_salona <- LIRE_Dal_clean %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_Dal_corpus_npf_clean_no_salona <- LIRE_Dal_corpus_no_place_filtering_clean %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_Dal_dated_clean_no_salona <- LIRE_Dal_dated_clean %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_dated_corpus_npf_clean_no_salona <- LIRE_dated_corpus_no_place_filtering_clean %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
 
 ## now count monument types
 LIRE_Dal_corpus_types <- LIRE_Dal_corpus %>% 
@@ -244,6 +248,14 @@ LIRE_dated_corpus_no_place_filtering_types <- LIRE_dated_corpus_no_place_filteri
 LIRE_dated_corpus_clean_types <- LIRE_dated_corpus_clean %>% 
   count(type_of_monument_clean, type_of_inscription_clean)
 LIRE_dated_corpus_no_place_filtering_clean_types <- LIRE_dated_corpus_no_place_filtering_clean %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_clean_no_salona_types <- LIRE_Dal_clean_no_salona %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_corpus_npf_clean_no_salona_types <- LIRE_Dal_corpus_npf_clean_no_salona %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_Dal_dated_clean_no_salona_types <- LIRE_Dal_dated_clean_no_salona %>% 
+  count(type_of_monument_clean, type_of_inscription_clean)
+LIRE_dated_corpus_npf_clean_no_salona_types <- LIRE_dated_corpus_npf_clean_no_salona %>% 
   count(type_of_monument_clean, type_of_inscription_clean)
 
 # saving data
@@ -263,6 +275,14 @@ write.csv(LIRE_dated_corpus_clean,
           file = "output_tables/corpus/LIRE_clean_thesis_corpus_dated.csv")
 write.csv(LIRE_dated_corpus_no_place_filtering_clean,
           file = "output_tables/corpus/LIRE_clean_thesis_corpus_dated_no_place_filter.csv")
+write.csv(LIRE_Dal_clean_no_salona,
+          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia_no_salona.csv")
+write.csv(LIRE_Dal_corpus_npf_clean_no_salona,
+          file = "output_tables/corpus/LIRE_clean_thesis_corpus_no_place_filter_no_salona.csv")
+write.csv(LIRE_Dal_dated_clean_no_salona,
+          file = "output_tables/corpus/LIRE_clean_thesis_Dalmatia_dated_no_salona.csv")
+write.csv(LIRE_dated_corpus_npf_clean_no_salona,
+          file = "output_tables/corpus/LIRE_clean_thesis_corpus_dated_no_place_filter_no_salona.csv")
 
 #add value for count
 LIRE_Dal_corpus$count<- 1

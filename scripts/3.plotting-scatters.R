@@ -471,6 +471,137 @@ plot(plot12)
 ggsave("output_images/geographical_distribution/LIRE_dated_clean_dal_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+# now for mapping without Salona
+LIRE_Dal_clean_no_salona_ll <- dataframe_ll(LIRE_Dal_clean_no_salona)
+
+LIRE_Dal_clean_no_salona_n <- count(LIRE_Dal_clean_no_salona)
+
+plot13 <-
+  ggplot() + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_clean_no_salona_ll, aes(size = n), alpha=0.8, colour = "#009E73") +
+  geom_sf(data = key_sites_ll, colour = "black", size = 1) +
+  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
+                                           y = Latitude,
+                                           label = findspot_ancient_clean), 
+                  nudge_x = c(-2, -1.5, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_clean_no_salona_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of funerary and sacral monuments",
+                       subtitle = "Dalmatia (Outside Salona)") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot13)
+
+ggsave("output_images/geographical_distribution/LIRE_clean_dal_scatter_no_salona.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_corpus_npf_clean_no_salona_ll <- dataframe_ll(LIRE_Dal_corpus_npf_clean_no_salona)
+
+LIRE_Dal_corpus_npf_clean_no_salona_n <- count(LIRE_Dal_corpus_npf_clean_no_salona)
+
+plot14 <-
+  ggplot() + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_corpus_npf_clean_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_ll, colour = "black", size = 1) +
+  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
+                                           y = Latitude,
+                                           label = findspot_ancient_clean), 
+                  nudge_x = c(-2, -1.5, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_corpus_npf_clean_no_salona_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+                       title = "Distribution of military funerary and sacral monuments",
+                       subtitle = "Dalmatia (Outside Salona)") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot14)
+
+ggsave("output_images/geographical_distribution/LIRE_clean_corpus_scatter_no_place_filter_no_salona.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_dated_clean_no_salona_ll <- dataframe_ll(LIRE_Dal_dated_clean_no_salona)
+
+LIRE_Dal_dated_clean_no_salona_n <- count(LIRE_Dal_dated_clean_no_salona)
+
+plot15 <-
+  ggplot() + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_dated_clean_no_salona_ll, aes(size = n), alpha=0.8, colour = "#009E73") +
+  geom_sf(data = key_sites_ll, colour = "black", size = 1) +
+  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
+                                           y = Latitude,
+                                           label = findspot_ancient_clean), 
+                  nudge_x = c(-2, -1.5, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_dated_clean_no_salona_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+       title = "Distribution of funerary and sacral monuments",
+       subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot15)
+
+ggsave("output_images/geographical_distribution/LIRE_clean_dated_dal_scatter_no_salona.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_dated_corpus_npf_clean_no_salona_ll <- dataframe_ll(LIRE_dated_corpus_npf_clean_no_salona)
+
+LIRE_dated_corpus_npf_clean_no_salona_n <- count(LIRE_dated_corpus_npf_clean_no_salona)
+
+plot16 <-
+  ggplot() + 
+  geom_sf(data = world, color = "grey", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "grey30", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_dated_corpus_npf_clean_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_ll, colour = "black", size = 1) +
+  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
+                                           y = Latitude,
+                                           label = findspot_ancient_clean), 
+                  nudge_x = c(-2, -1.5, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_dated_corpus_npf_clean_no_salona_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0) (Clean province = Dalmatia).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+                       title = "Distribution of military funerary and sacral monuments",
+                       subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 20), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot16)
+
+ggsave("output_images/geographical_distribution/LIRE_clean_dated_corpus_scatter_no_place_filter_no_salona.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
 # now to save plotted places
 LIRE_Dal_place <- st_drop_geometry(LIRE_Dal_ll)
 write.csv(LIRE_Dal_place,
