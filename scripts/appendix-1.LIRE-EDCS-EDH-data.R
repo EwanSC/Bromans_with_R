@@ -10,6 +10,7 @@ library(arrow)
 # LIRE
 LIRE_all <-
   read_parquet("https://zenodo.org/records/8431452/files/LIRE_v3-0.parquet?download=1")
+
 LIRE_Dalmatia <- filter(LIRE_all, province == "Dalmatia")
 
 # EDCS
@@ -33,7 +34,7 @@ count(EDCS_Dalmatia)
 count(EDH_Dalmatia)
 
 # count Salona
-count(filter(LIRE_Dalmatia, findspot_ancient_clean == "Salonae"))
+count(filter(LIRE_Dalmatia, findspot_ancient_clean == "Salonae" | place == "Solin / Salona"))
 count(filter(EDCS_Dalmatia, place == "Solin / Salona"))
 count(filter(EDH_Dalmatia, fo_antik %like% "Salonae"))
 

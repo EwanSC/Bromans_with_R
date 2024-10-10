@@ -1,28 +1,23 @@
 # appendix-LIRE-data
-#started 19/9/2024
-# last ran 19/09/2024
+# started 19/9/2024
+# last edited 10/10/2024
+# last ran 10/10/2024
 library(dplyr)
 library(sqldf)
 library(arrow)
 library(datplot)
 library(ggplot2)
 
-LIRE_all <-
+LIRE <-
   read_parquet("https://zenodo.org/records/8431452/files/LIRE_v3-0.parquet?download=1")
 
-LIRE_dictionary <-
-  read.csv("https://zenodo.org/records/8431452/files/LI_metadata.csv?download=1")
-
-write.csv(LIRE_dictionary, file = "data/LIRE/LIRE_dictionary.csv")
-
 #filter columns
-LIRE_filtered <- select(LIRE_all,
+LIRE_filtered <- select(LIRE,
                         "LIST-ID",
                         "EDCS-ID",
                         "EDH-ID",
                         "not_before",
                         "not_after",
-                        "inscription",
                         "transcription",
                         "clean_text_interpretive_word",
                         "type_of_inscription_clean",
@@ -44,8 +39,10 @@ LIRE_filtered$Latitude[LIRE_filtered$findspot_ancient_clean == 'Iader'
                        & LIRE_filtered$findspot_modern_clean == 'Zadar'] <- "44.115501"
 
 #get only Dalmatia
-LIRE_Dal <- filter(LIRE_filtered, province == "Dalmatia")
-LIRE_Dal_clean <- filter(LIRE_filtered, province_label_clean == "Dalmatia")
+LIRE_Dal_EDCS <- filter(LIRE_filtered, province == "Dalmatia")
+LIRE_Dal_EDH <- filter(LIRE_filtered, province_label_clean == "Dalmatia")
+LIRE_Dalmatia <- filter(LIRE_filtered, province_label_clean == "Dalmatia" | province == "Dalmatia")
 
-write.csv(LIRE_Dal, file = "data/LIRE/LIRE_Dal.csv")
-write.csv(LIRE_Dal_clean, file = "data/LIRE/LIRE_Dal_clean.csv")
+write.csv(LIRE_Dalmatia, file = "data/LIRE/LIRE_Dalmatia.csv")
+write.csv(LIRE_Dal_EDCS, file = "data/LIRE/LIRE_Dal_EDCS.csv")
+write.csv(LIRE_Dal_EDH, file = "data/LIRE/LIRE_Dal_EDH.csv")
