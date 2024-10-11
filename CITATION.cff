@@ -3,7 +3,7 @@ message: "If you use this dataset, please cite it as below"
 authors:
   - affiliation: "Macquarie University"
     family-names: "Coopey"
-    given-names: "Ewan S.""
+    given-names: "Ewan S."
     orcid: "https://orcid.org/0000-0001-8633-6418"
 url: "https://github.com/EwanSC/Bromans_with_R"
 title: "'Military-becoming' in Dalmatia and beyond: Data and analysis."
@@ -16,4 +16,3 @@ abstract:
   Archaeology'."
 version: "0.9.0"
 license: "GPL-3.0"
-
