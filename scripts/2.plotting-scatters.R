@@ -119,7 +119,7 @@ plot1 <-
                       label = findspot_ancient_clean), 
                   nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
                   nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
-  labs(size = "Density", 
+  labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_corpus_n$n,
                        sep = "",
