@@ -1,7 +1,6 @@
 # Plotting dates, LIRE
 # Made 16/9/24
-# Edited: 16/9/24
-### FIRST RUN /scripts/2.corpus-LIRE.R
+# Edited: 11/10/24
 ## using https://cran.r-project.org/web/packages/datplot/datplot.pdf
 ## and https://cran.r-project.org/web/packages/datplot/vignettes/how-to.html 
 library(dplyr)
@@ -9,7 +8,6 @@ library(datplot)
 library(ggplot2)
 library(sqldf)
 library(tidyverse)
-
 
 LIRE_Dal_corpus <-
   read.csv("output_tables/corpus/LIRE_corpus.csv")
