@@ -1,6 +1,6 @@
 # getting corpus from cleaned LIRE data
 # started 5/9/2024
-# edited 10/10/2024
+# edited 23/10/2024
 library(dplyr)
 library(sqldf)
 library(arrow)

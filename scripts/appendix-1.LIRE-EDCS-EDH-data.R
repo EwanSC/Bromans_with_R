@@ -41,6 +41,9 @@ EDH_all <-
 
 EDH_Dalmatia <- filter(EDH_all, provinz == "Dal")
 
+write.csv(EDH_Dalmatia,
+          file = "data/EDH/EDH_Dalmatia.csv")
+
 # count
 LIRE_Dalmatia_count <- count(LIRE_Dalmatia)
 EDCS_Dalmatia_count <- count(EDCS_Dalmatia)
