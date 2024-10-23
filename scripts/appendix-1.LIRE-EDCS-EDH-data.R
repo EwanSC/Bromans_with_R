@@ -121,29 +121,32 @@ LIRE_Dalmatia_place <- na.omit(LIRE_Dalmatia %>%
                                 crs = 4326, agr = "constant"))
 LIRE_Dalmatia_n <- count(LIRE_Dalmatia)
 
-ggplot() + 
-geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
-geom_sf(data = LIRE_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-geom_sf(data = imp_sites_ll, colour = "#000000", size = 1) +
-geom_text_repel(data = imp_sites_ll,
-                aes(x = Longitude,
-                    y = Latitude,
-                    label = findspot_ancient_clean),
-                nudge_x = c(-1, -1, -1), 
-                nudge_y = c(-0.25,-0.25,-0.25)) +
-labs(size = "Density",
-     caption = paste("n = ",
-                     LIRE_Dalmatia_n$n,
-                     sep = "",
-                     ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
-                     "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                     "Filtered by key words and tags"),
-                     title = "Distribution of inscriptions",
-                     subtitle = "LIRE") +
-coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
-theme_void()
+plot1 <-
+  ggplot() +
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") +
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = imp_sites_ll, colour = "#000000", size = 1) +
+  geom_text_repel(data = imp_sites_ll,
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c(-1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dalmatia_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags"),
+                       title = "Distribution of inscriptions",
+                       subtitle = "LIRE") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot1)
 
 ggsave("output_images/appendix-1/01.LIRE_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
@@ -166,29 +169,32 @@ EDCS_Dalmatia_place <- na.omit(EDCS_Dalmatia %>%
 
 EDCS_Dalmatia_n <- count(EDCS_Dalmatia)
 
-ggplot() + 
-geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
-geom_sf(data = EDCS_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-geom_sf(data = imp_sites_ll, colour = "#000000", size = 1) +
-geom_text_repel(data = imp_sites_ll,
-                aes(x = Longitude,
-                    y = Latitude,
-                    label = findspot_ancient_clean),
-                nudge_x = c(-1, -1, -1), 
-                nudge_y = c(-0.25,-0.25,-0.25)) +
-labs(size = "Density",
-     caption = paste("n = ",
-                     EDCS_Dalmatia_n$n,
-                     sep = "",
-                     ".\nEpigraphic data = EDCS.\n",
-                     "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                     "Filtered by key words and tags"),
-                     title = "Distribution of inscriptions",
-                     subtitle = "EDCS") +
-coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
-theme_void()
+plot2 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = EDCS_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = imp_sites_ll, colour = "#000000", size = 1) +
+  geom_text_repel(data = imp_sites_ll,
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c(-1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       EDCS_Dalmatia_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = EDCS.\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags"),
+                       title = "Distribution of inscriptions",
+                       subtitle = "EDCS") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot2)
 
 ggsave("output_images/appendix-1/02.EDCS_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
@@ -210,29 +216,38 @@ EDH_Dalmatia_place[c('latitude', 'longitude')] <- str_split_fixed(EDH_Dalmatia_p
 
 EDH_Dalmatia_n <- count(EDH_Dalmatia)
 
-ggplot() + 
-geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
-geom_sf(data = EDH_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-geom_sf(data = imp_sites_ll, colour = "#000000", size = 1) +
-geom_text_repel(data = imp_sites_ll,
-                aes(x = Longitude,
-                    y = Latitude,
-                    label = findspot_ancient_clean),
-                nudge_x = c(-1, -1, -1), 
-                nudge_y = c(-0.25,-0.25,-0.25)) +
-labs(size = "Density",
-     caption = paste("n = ",
-                     EDH_Dalmatia_n$n,
-                     sep = "",
-                     ".\nEpigraphic data = EDH (CC BY-SA 4.0).\n",
-                     "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                     "Filtered by key words and tags"),
-                     title = "Distribution of inscriptions",
-                     subtitle = "EDH") +
-coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
-theme_void()
+plot3 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = EDH_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = imp_sites_ll, colour = "#000000", size = 1) +
+  geom_text_repel(data = imp_sites_ll,
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c(-1, -1, -1), 
+                  nudge_y = c(-0.25,-0.25,-0.25)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       EDH_Dalmatia_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = EDH (CC BY-SA 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags"),
+                       title = "Distribution of inscriptions",
+                       subtitle = "EDH") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
 
-ggsave("output_images/appendix-1/02.EDH_scatter.jpeg",
+plot(plot3)
+
+ggsave("output_images/appendix-1/03.EDH_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
+
+## combine LIRE and EDH for comparison
+doubletrouble <- grid.arrange(plot1, plot3, ncol = 2)
+
+ggsave("output_images/appendix-1/04.LIRE_EDH_comparison.jpeg",
+       doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
