@@ -69,7 +69,7 @@ LIRE_Dal_corpus %>%
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Filtered by key words and tags.\n",
                        "Method = Steinmann & Weissova 2021.")) +
-   xlim(-50, 350)
+   scale_x_continuous(breaks = seq(0, 600, by = 50))
 
 ggsave("output_images/chronological_distribution/01.LIRE_corpus_inscription_ranges.jpeg",
        dpi = 600)
@@ -86,8 +86,8 @@ LIRE_Dal_corpus_place_filtering %>%
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Filtered by key words, tags, and places.\n",
-                       "Method = Steinmann & Weissova 2021.")) +
-  xlim(-50, 350)
+                       "Method = Steinmann & Weissova 2021."))  +
+  scale_x_continuous(breaks = seq(0, 600, by = 50))
 
 ggsave("output_images/chronological_distribution/02.LIRE_corpus_place_filter_inscription_ranges.jpeg",
        dpi = 600)
@@ -104,7 +104,7 @@ LIRE_Dal %>%
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Method = Steinmann & Weissova 2021.")) +
-  xlim(-50, 350)
+  scale_x_continuous(breaks = seq(0, 600, by = 50))
 
 ggsave("output_images/chronological_distribution/03.LIRE_Dalmatia_inscription_ranges.jpeg",
        dpi = 600)
@@ -121,7 +121,7 @@ LIRE_Dalmatia %>%
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Method = Steinmann & Weissova 2021.")) +
-  xlim(-50, 350)
+  scale_x_continuous(breaks = seq(0, 600, by = 50))
 
 ggsave("output_images/chronological_distribution/04.LIRE_Dalmatia_all_types_inscription_ranges.jpeg",
        dpi = 600)
@@ -130,7 +130,7 @@ ggsave("output_images/chronological_distribution/04.LIRE_Dalmatia_all_types_insc
 LIRE_Dal_corpus$DAT_mean <- (LIRE_Dal_corpus$not_after + LIRE_Dal_corpus$not_before) / 2
 
 ggplot(LIRE_Dal_corpus, aes(x = DAT_mean)) +
-  geom_histogram(binwidth = 25, position = "dodge", fill = "#FF8247", colour="#9F522E") +
+  geom_histogram(binwidth = 20, position = "dodge", fill = "#FF8247", colour="#9F522E") +
   labs(x = "Date (BCE/CE)", y = "Number of inscriptions",
        caption = paste("n = ",
                        LIRE_Dal_corpus_count$n,
@@ -139,8 +139,10 @@ ggplot(LIRE_Dal_corpus, aes(x = DAT_mean)) +
                        "Filtered by key words and tags."),
        title = "Chronological distribution of military funerary and sacral inscriptions",
        subtitle = paste("Using mean",
-                        "with a binwidth of 25")) +
-  xlim(-50, 350)
+                        "with a binwidth of 20")) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 20))
 
 ggsave("output_images/chronological_distribution/05.LIRE_corpus_mean_histogram.jpeg",
        dpi = 600)
@@ -148,7 +150,7 @@ ggsave("output_images/chronological_distribution/05.LIRE_corpus_mean_histogram.j
 LIRE_Dal_corpus_place_filtering$DAT_mean <- (LIRE_Dal_corpus_place_filtering$not_after + LIRE_Dal_corpus_place_filtering$not_before) / 2
 
 ggplot(LIRE_Dal_corpus_place_filtering, aes(x = DAT_mean)) +
-  geom_histogram(binwidth = 25, position = "dodge", fill = "#FF8247", colour="#9F522E") +
+  geom_histogram(binwidth = 20, position = "dodge", fill = "#FF8247", colour="#9F522E") +
   labs(x = "Date (BCE/CE)", y = "Number of inscriptions",
        caption = paste("n = ",
                        LIRE_Dal_corpus_place_filtering_count$n,
@@ -157,8 +159,10 @@ ggplot(LIRE_Dal_corpus_place_filtering, aes(x = DAT_mean)) +
                        "Filtered by key words, tags, and places."),
        title = "Chronological distribution of military funerary and sacral inscriptions",
        subtitle = paste("Using mean",
-                        "with a binwidth of 25")) +
-  xlim(-50, 350)
+                        "with a binwidth of 20")) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 20))
 
 ggsave("output_images/chronological_distribution/06.LIRE_corpus_place_filter_mean_histogram.jpeg",
        dpi = 600)
@@ -166,7 +170,7 @@ ggsave("output_images/chronological_distribution/06.LIRE_corpus_place_filter_mea
 LIRE_Dal$DAT_mean <- (LIRE_Dal$not_after + LIRE_Dal$not_before) / 2
 
 ggplot(LIRE_Dal, aes(x = DAT_mean)) +
-  geom_histogram(binwidth = 25, position = "dodge", fill = "#3468d6", colour="#234183") +
+  geom_histogram(binwidth = 20, position = "dodge", fill = "#3468d6", colour="#234183") +
   labs(x = "Date (BCE/CE)", y = "Number of inscriptions",
        caption = paste("n = ",
                        LIRE_Dal_count$n,
@@ -174,8 +178,10 @@ ggplot(LIRE_Dal, aes(x = DAT_mean)) +
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
        title = "Chronological distribution of all funerary and sacral inscriptions",
        subtitle = paste("Using mean",
-                        "with a binwidth of 25")) +
-   xlim(-50, 350)
+                        "with a binwidth of 20")) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 20))
 
 ggsave("output_images/chronological_distribution/07.LIRE_Dalmatia_mean_histogramn.jpeg",
        dpi = 600)
@@ -183,7 +189,7 @@ ggsave("output_images/chronological_distribution/07.LIRE_Dalmatia_mean_histogram
 LIRE_Dalmatia$DAT_mean <- (LIRE_Dalmatia$not_after + LIRE_Dalmatia$not_before) / 2
 
 ggplot(LIRE_Dalmatia, aes(x = DAT_mean)) +
-  geom_histogram(binwidth = 25, position = "dodge", fill = "#3468d6", colour="#234183") +
+  geom_histogram(binwidth = 20, position = "dodge", fill = "#3468d6", colour="#234183") +
   labs(x = "Date (BCE/CE)", y = "Number of inscriptions",
        caption = paste("n = ",
                        LIRE_Dalmatia_count$n,
@@ -191,8 +197,10 @@ ggplot(LIRE_Dalmatia, aes(x = DAT_mean)) +
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
        title = "Chronological distribution of all inscriptions",
        subtitle = paste("Using mean",
-                        "with a binwidth of 25")) +
-  xlim(-50, 350)
+                        "with a binwidth of 20")) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 20))
 
 ggsave("output_images/chronological_distribution/08.LIRE_Dalmatia_all_types_mean_histogramn.jpeg",
        dpi = 600)
@@ -216,7 +224,9 @@ ggplot(data = LIRE_Dal_corpus_scaled, aes(x = DAT_step, weight = weight)) +
                            "with stepsize of ",
                            attributes(LIRE_Dal_corpus_scaled)$stepsize,
                            sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -242,7 +252,9 @@ ggplot(data = LIRE_Dal_corpus_place_filtering_scaled, aes(x = DAT_step, weight =
                         "with stepsize of ",
                         attributes(LIRE_Dal_corpus_place_filtering_scaled)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -267,7 +279,9 @@ ggplot(data = LIRE_Dal_scaled, aes(x = DAT_step, weight = weight)) +
                         "with stepsize of ",
                         attributes(LIRE_Dal_scaled)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -292,7 +306,9 @@ ggplot(data = LIRE_Dalmatia_scaled, aes(x = DAT_step, weight = weight)) +
                         "with stepsize of ",
                         attributes(LIRE_Dalmatia_scaled)$stepsize,
                         sep = "")) +
-  xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -301,7 +317,7 @@ ggplot(data = LIRE_Dalmatia_scaled, aes(x = DAT_step, weight = weight)) +
 ggsave("output_images/chronological_distribution/12.LIRE_Dalmatia_all_types_plot.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
-##now binwidth 15
+##now stepsize 15
 LIRE_Dal_corpus_scaled_15 <- scaleweight(datsteps(LIRE_Dal_corpus_na,
                                                      stepsize = 15),
                                             var = "all")
@@ -319,7 +335,9 @@ ggplot(data = LIRE_Dal_corpus_scaled_15, aes(x = DAT_step, weight = weight)) +
                            "with stepsize of ",
                            attributes(LIRE_Dal_corpus_scaled_15)$stepsize,
                            sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -345,7 +363,9 @@ ggplot(data = LIRE_Dal_corpus_place_filtering_scaled_15, aes(x = DAT_step, weigh
                         "with stepsize of ",
                         attributes(LIRE_Dal_corpus_place_filtering_scaled_15)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -370,7 +390,9 @@ ggplot(data = LIRE_Dal_scaled_15, aes(x = DAT_step, weight = weight)) +
                         "with stepsize of ",
                         attributes(LIRE_Dal_scaled_15)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -390,12 +412,14 @@ ggplot(data = LIRE_Dalmatia_scaled_15, aes(x = DAT_step, weight = weight)) +
                        LIRE_Dalmatia_count$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
-       title = "Chronological distribution of funerary and sacral inscriptions",
+       title = "Chronological distribution of all inscriptions",
        subtitle = paste("Using the weighted output of datsteps() ",
                         "with stepsize of ",
                         attributes(LIRE_Dalmatia_scaled_15)$stepsize,
                         sep = "")) +
-  xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -410,6 +434,7 @@ LIRE_Dal_corpus_scaled_histogramscale <- get.histogramscale(LIRE_Dal_corpus_scal
 LIRE_Dal_corpus_place_filtering_scaled_histogramscale <- get.histogramscale(LIRE_Dal_corpus_place_filtering_scaled)
 LIRE_Dal_scaled_histogram <- get.histogramscale(LIRE_Dal_scaled)
 LIRE_Dalmatia_scaled_histogram <- get.histogramscale(LIRE_Dalmatia_scaled)
+LIRE_Dalmatia_scaled_15_histogram <- get.histogramscale(LIRE_Dalmatia_scaled_15)
 
 ## plot with histogram
 ggplot(LIRE_Dal_corpus_scaled, aes(x = DAT_step)) +
@@ -429,7 +454,9 @@ ggplot(LIRE_Dal_corpus_scaled, aes(x = DAT_step)) +
                       "with stepsize of ",
                       attributes(LIRE_Dal_corpus_scaled)$stepsize,
                       sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -455,7 +482,9 @@ ggplot(LIRE_Dal_corpus_place_filtering_scaled, aes(x = DAT_step)) +
                         "with stepsize of ",
                         attributes(LIRE_Dal_corpus_place_filtering_scaled)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -479,7 +508,9 @@ ggplot(LIRE_Dal_scaled, aes(x = DAT_step)) +
                         "with stepsize of ",
                         attributes(LIRE_Dal_scaled)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
@@ -503,13 +534,41 @@ ggplot(LIRE_Dalmatia_scaled, aes(x = DAT_step)) +
                         "with stepsize of ",
                         attributes(LIRE_Dalmatia_scaled)$stepsize,
                         sep = "")) +
-  xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   )
 
 ggsave("output_images/chronological_distribution/20.LIRE_Dalmatia_all_types_histogram_plot.jpeg",
+       width = 180, height = 100, unit = "mm", dpi = 600)
+
+ggplot(LIRE_Dalmatia_scaled_15, aes(x = DAT_step)) +
+  geom_histogram(alpha = 0.8, binwidth = attributes(LIRE_Dalmatia_scaled_15)$stepsize,
+                 position = "dodge", colour = "#000000", fill = "#234183") +
+  stat_density(alpha = 0.8, position = "dodge", colour = "#000000", fill = "#3468d6",
+               aes(y = (after_stat(density) * LIRE_Dalmatia_scaled_15_histogram), weight = weight)) +
+  labs(x = "Date (BCE/CE)", y = "Density",
+       caption = paste("n = ",
+                       LIRE_Dalmatia_count$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
+       title = "Chronological distribution of funerary and sacral inscriptions",
+       subtitle = paste("Using the weighted output of datsteps() ",
+                        "with stepsize of ",
+                        attributes(LIRE_Dalmatia_scaled_15)$stepsize,
+                        sep = "")) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+ggsave("output_images/chronological_distribution/21.LIRE_Dalmatia_all_types_histogram_plot_15_ss.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 #now to compare
@@ -537,13 +596,15 @@ ggplot(data = LIRE_both_scaled, aes(x = DAT_step, weight = weight,
                         "with stepsize of ",
                         attributes(LIRE_both_scaled)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   )
 
-ggsave("output_images/chronological_distribution/21.LIRE_Dalmatia_corpus_plot.jpeg",
+ggsave("output_images/chronological_distribution/22.LIRE_Dalmatia_corpus_plot.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 LIRE_both_place_filtering <- rbind(LIRE_Dal_na, LIRE_Dal_corpus_place_filtering_na)
@@ -570,13 +631,15 @@ ggplot(data = LIRE_both_place_filtering_scaled, aes(x = DAT_step, weight = weigh
                         "with stepsize of ",
                         attributes(LIRE_both_place_filtering_scaled)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   )
 
-ggsave("output_images/chronological_distribution/22.LIRE_Dalmatia_corpus_place_filter_plot.jpeg",
+ggsave("output_images/chronological_distribution/23.LIRE_Dalmatia_corpus_place_filter_plot.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 # now with 15 stepsize, for comparison
@@ -602,13 +665,15 @@ ggplot(data = LIRE_both_scaled_15, aes(x = DAT_step, weight = weight,
                         "with stepsize of ",
                         attributes(LIRE_both_scaled_15)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   )
 
-ggsave("output_images/chronological_distribution/23.LIRE_Dalmatia_corpus_plot_stepsize_15.jpeg",
+ggsave("output_images/chronological_distribution/24.LIRE_Dalmatia_corpus_plot_stepsize_15.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
 LIRE_both_place_filtering_scaled_15 <- scaleweight(datsteps(LIRE_both_place_filtering, stepsize = 15),
@@ -633,11 +698,13 @@ ggplot(data = LIRE_both_place_filtering_scaled_15, aes(x = DAT_step, weight = we
                         "with stepsize of ",
                         attributes(LIRE_both_place_filtering_scaled_15)$stepsize,
                         sep = "")) +
-   xlim(-50, 350) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank()
   )
 
-ggsave("output_images/chronological_distribution/24.LIRE_Dalmatia_corpus_place_filter_plot_stepsize_15.jpeg",
+ggsave("output_images/chronological_distribution/25.LIRE_Dalmatia_corpus_place_filter_plot_stepsize_15.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
