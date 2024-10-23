@@ -114,7 +114,7 @@ LIRE_Dalmatia %>%
   ggplot(aes(x = timespan)) +
   geom_histogram(binwidth = 10, fill = "#3468d6", colour="#234183") +
   labs(title = "Inscription date range",
-       subtitle = "Dalmatia",
+       subtitle = "Dalmatia: all inscriptions",
        x = "Length of timespan (10 year bins)", y = "Number of inscriptions",
        caption = paste("n = ",
                        LIRE_Dalmatia_count$n,
