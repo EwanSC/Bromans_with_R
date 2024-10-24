@@ -134,10 +134,11 @@ plot1 <-
   geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_mil_ll,
-                  aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                              y = Latitude,
+                              label = findspot_ancient_clean), 
                   nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
                   nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
   labs(size = "Density",
@@ -171,10 +172,11 @@ plot2 <-
   geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_place_filtering_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_mil_ll,
-                  aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                              y = Latitude,
+                              label = findspot_ancient_clean), 
                   nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
                   nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
   labs(size = "Density", 
@@ -209,10 +211,11 @@ plot3 <-
   geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_corpus_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_mil_ll,
-                  aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                          y = Latitude,
+                          label = findspot_ancient_clean), 
                   nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
                   nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
   labs(size = "Density", 
@@ -247,10 +250,11 @@ plot4 <-
   geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_corpus_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_mil_ll,
-                  aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                              y = Latitude,
+                              label = findspot_ancient_clean), 
                   nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
                   nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
   labs(size = "Density",
@@ -284,7 +288,8 @@ plot5 <-
   geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_corpus_dated_place_filtering_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_mil_ll,
+  geom_label_repel(data = key_sites_mil_ll,
+                  fill = "white",
                   aes(x = Longitude,
                       y = Latitude,
                       label = findspot_ancient_clean), 
@@ -373,12 +378,13 @@ plot7 <-
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_ll,
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
                   aes(x = Longitude,
                       y = Latitude,
-                      label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1, -1, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
+                      label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_all_n$n,
@@ -409,11 +415,13 @@ plot8 <-
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
-                                           y = Latitude,
-                                           label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1, -1, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                  y = Latitude,
+                  label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_n$n,
@@ -456,11 +464,13 @@ plot9 <-
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
-                                           y = Latitude,
-                                           label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1, -1, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                  y = Latitude,
+                  label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_no_salona_n$n,
@@ -490,8 +500,15 @@ plot10 <-
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-  geom_sf(data = key_sites_ll, aes(colour = findspot_ancient_clean), size = 1) +
-       labs(size = "Density",
+  geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
+  geom_label_repel(data = key_sites_ll,
+                   fill = "white",
+                   aes(x = Longitude,
+                       y = Latitude,
+                       label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+  labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_all_no_salona_n$n,
                        sep = "",
@@ -521,10 +538,11 @@ plot11 <-
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_mil_ll,
-                  aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
+  geom_label_repel(data = key_sites_mil_ll,
+                   fill = "white",
+                 aes(x = Longitude,
+                       y = Latitude,
+                       label = findspot_ancient_clean), 
                   nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
                   nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
   labs(size = "Density",
@@ -558,11 +576,13 @@ plot12 <-
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
-                                           y = Latitude,
-                                           label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1, -1, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                  y = Latitude,
+                  label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_no_salona_n$n,
@@ -593,10 +613,11 @@ plot13 <-
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_dated_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_mil_ll,
-                  aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
+  geom_label_repel(data = key_sites_mil_ll,
+                   fill = "white",
+                   aes(x = Longitude,
+                       y = Latitude,
+                       label = findspot_ancient_clean), 
                   nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
                   nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
   labs(size = "Density",
@@ -649,12 +670,13 @@ plot14 <-
   geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
   geom_sf(data = EDH_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
-  geom_text_repel(data = key_sites_ll,
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
                   aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                  y = Latitude,
+                  label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density",
        caption = paste("n = ",
                        EDH_Dalmatia_n$n,
@@ -685,12 +707,13 @@ plot15 <-
   geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = EDH_Dalmatia_votive_epitaph_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
-  geom_text_repel(data = key_sites_ll,
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
                   aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                  y = Latitude,
+                  label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density", 
        caption = paste("n = ",
                        EDH_Dalmatia_votive_epitaph_n$n,
@@ -721,12 +744,13 @@ plot16 <-
   geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
   geom_sf(data = EDH_Dalmatia_epitaph_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
-  geom_text_repel(data = key_sites_ll,
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
                   aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                  y = Latitude,
+                  label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density",
        caption = paste("n = ",
                        EDH_Dalmatia_epitaph_n$n,
