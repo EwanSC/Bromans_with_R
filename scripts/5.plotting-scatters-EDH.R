@@ -209,3 +209,8 @@ doubletrouble <- grid.arrange(plot1, plot3, ncol = 2)
 
 ggsave("output_images/geographical_distribution/17.EDH_comparison.jpeg",
        doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
+
+doubletroubler <- grid.arrange(plot7, plot10, ncol = 2)
+
+ggsave("output_images/geographical_distribution/18.Dalmatia_all_types_Salona_comparison.jpeg",
+       doubletroubler, width = 240, height = 120, unit = "mm", dpi = 600)
