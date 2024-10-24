@@ -26,21 +26,42 @@ roman_settlements <- st_read(
   "data/mapping/Roman_settlements_pleiades.gpkg")
 
 # create df for layer of key sites 
-key_sites <- data.frame(findspot_ancient_clean=c("Tilurium",
-                                                 "Salona", 
-                                                 "Burnum",
+key_sites <- data.frame(findspot_ancient_clean=c("Salona",
                                                  "Narona",
-                                                 "Iader"),
-                        Longitude=c(16.7216523938,
-                                    16.483426,
-                                    16.025622,
-                                    17.598611,
-                                    15.223778),
-                        Latitude=c(43.609647549,
-                                   43.539561,
-                                   44.018914,
-                                   43.046389,
-                                   44.115501))
+                                                 "Iader",
+                                                 "Burnum",
+                                                 "Asseria",
+                                                 "Raetinium",
+                                                 "Rider",
+                                                 "Doclea",
+                                                 "M. Malvesiatium",
+                                                 "Tilurium",
+                                                 "M. S[---]",
+                                                 "Aequum"),
+                        Longitude=c(16.4743,
+                                    17.625,
+                                    15.223778,
+                                    15.9936,
+                                    15.6844,
+                                    15.9292,
+                                    16.0486,
+                                    19.2615,
+                                    19.5333,
+                                    16.689,
+                                    19.3204,
+                                    16.6547),
+                        Latitude=c(43.5384,
+                                   43.0801,
+                                   44.115501,
+                                   44.0317,
+                                   44.0103,
+                                   44.7885,
+                                   43.7034,
+                                   42.469,
+                                   43.9667,
+                                   43.6139,
+                                   43.3424,
+                                   43.7423))
 
 print(key_sites)
 
@@ -310,17 +331,18 @@ LIRE_Dal_n <- count(LIRE_Dal)
 
 plot6 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = world, color = "#e4e4e4", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#BEBEBE", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_ll,
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
                   aes(x = Longitude,
                       y = Latitude,
-                      label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1, -1, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
+                      label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_n$n,
@@ -455,7 +477,6 @@ plot(plot9)
 ggsave("output_images/geographical_distribution/09.LIRE_Dalmatia_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
-# now for mapping without Salona
 LIRE_Dal_all_no_salona <-
   read.csv("output_tables/corpus/LIRE_Dalmatia_all_types_no_salona.csv")
 
@@ -469,13 +490,8 @@ plot10 <-
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_text_repel(data = key_sites_ll, aes(x = Longitude,
-                                           y = Latitude,
-                                           label = findspot_ancient_clean), 
-                  nudge_x = c(-2, -1.5, -1, -1, -1), 
-                  nudge_y = c(-0.25,-0.25,-0.25, -0.25,-0.25)) +
-  labs(size = "Density",
+  geom_sf(data = key_sites_ll, aes(colour = findspot_ancient_clean), size = 1) +
+       labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_all_no_salona_n$n,
                        sep = "",
@@ -733,3 +749,10 @@ doubletrouble <- grid.arrange(plot7, plot14, ncol = 2)
 
 ggsave("output_images/geographical_distribution/17.LIRE_EDH_comparison.jpeg",
        doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
+
+## combine 7, 10
+
+doubletroubler <- grid.arrange(plot7, plot10, ncol = 2)
+
+ggsave("output_images/geographical_distribution/18.Dalmatia_all_types_Salona_comparison.jpeg",
+       doubletroubler, width = 240, height = 120, unit = "mm", dpi = 600)

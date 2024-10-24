@@ -105,7 +105,6 @@ dataframe_ll <- function(dataframe) {
   return(dataframe_ll)
 }
 
-
 # plot on map
 ## undated/dated corpora with and without place filtration
 LIRE_Dalmatia_ll <- dataframe_ll(LIRE_Dalmatia)
@@ -136,7 +135,7 @@ ggplot() +
   theme_void()
 
 ggsave("output_images/appendix-1/LIRE_Dalmatia_all_types_from_df.jpeg",
-       width = 180, height = 140, unit = "mm", dpi = 600)
+       doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
 
 LIRE_Dalmatia_csv <-
   read.csv("data/LIRE/LIRE_Dalmatia.csv")
@@ -169,4 +168,4 @@ ggplot() +
   theme_void()
 
 ggsave("output_images/appendix-1/LIRE_Dalmatia_all_types_from_csv.jpeg",
-       width = 180, height = 140, unit = "mm", dpi = 600)
+       doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
