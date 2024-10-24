@@ -95,7 +95,6 @@ dataframe_ll <- function(dataframe) {
 }
 
 # plot on map
-## undated/dated corpora with and without place filtration
 EDH_Dalmatia <-
   read.csv("output_tables/corpus/EDH/EDH_Dalmatia.csv")
 
@@ -129,7 +128,7 @@ plot1 <-
 
 plot(plot1)
 
-ggsave("output_images/geographical_distribution/11.EDH_Dalmatia_scatter.jpeg",
+ggsave("output_images/geographical_distribution/14.EDH_Dalmatia_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 EDH_Dalmatia_votive_epitaph <-
@@ -165,7 +164,7 @@ plot2 <-
 
 plot(plot2)
 
-ggsave("output_images/geographical_distribution/12.EDH_Dalmatia_funerary_sacral.jpeg",
+ggsave("output_images/geographical_distribution/15.EDH_Dalmatia_funerary_sacral.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 EDH_Dalmatia_epitaph <-
@@ -202,11 +201,11 @@ plot3 <-
 
 plot(plot3)
 
-ggsave("output_images/geographical_distribution/13.EDH_Dalmatia_epitaph.jpeg",
+ggsave("output_images/geographical_distribution16.EDH_Dalmatia_epitaph.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 ## combine 1 and 3 for comparison
 doubletrouble <- grid.arrange(plot1, plot3, ncol = 2)
 
-ggsave("output_images/geographical_distribution/14.LIRE_EDH_comparison.jpeg",
+ggsave("output_images/geographical_distribution/17.EDH_comparison.jpeg",
        doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
