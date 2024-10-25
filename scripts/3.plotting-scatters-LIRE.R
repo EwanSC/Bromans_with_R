@@ -25,8 +25,27 @@ roman_roads <- st_read(
 roman_settlements <- st_read(
   "data/mapping/Roman_settlements_pleiades.gpkg")
 
-# create df for layer of key sites 
-key_sites <- data.frame(findspot_ancient_clean=c("Salona",
+# create df for layer of key sites
+## one for lots of sites, one for military, one for forts and capital
+key_sites <- data.frame(findspot_ancient_clean=c("Tilurium",
+                                                  "Salona",
+                                                   "Burnum"),
+                            Longitude=c(16.7216523938,
+                                        16.483426,
+                                        16.025622),
+                            Latitude=c(43.609647549,
+                                       43.539561,
+                                       44.018914))
+
+print(key_sites)
+
+(key_sites_ll <- st_as_sf(key_sites,
+                              coords = c("Longitude",
+                                         "Latitude"),
+                              remove = FALSE,
+                              crs = 4326, agr = "constant"))
+
+dense_sites <- data.frame(findspot_ancient_clean=c("Salona",
                                                  "Narona",
                                                  "Iader",
                                                  "Burnum",
@@ -63,9 +82,9 @@ key_sites <- data.frame(findspot_ancient_clean=c("Salona",
                                    43.3424,
                                    43.7423))
 
-print(key_sites)
+print(dense_sites)
 
-(key_sites_ll <- st_as_sf(key_sites,
+(dense_sites_ll <- st_as_sf(dense_sites,
                           coords = c("Longitude",
                                      "Latitude"),
                           remove = FALSE,
@@ -74,21 +93,15 @@ print(key_sites)
 key_mil_sites <- data.frame(findspot_ancient_clean=c("Tilurium",
                                                      "Salona",
                                                      "Burnum",
-                                                     "Andetrium",
-                                                     "Bigeste",
-                                                     "M. Malvesiatium"),
+                                                     "Bigeste"),
                             Longitude=c(16.7216523938,
                                         16.483426,
                                         16.025622,
-                                        16.5206,
-                                        17.52710,
-                                        19.53330),
+                                        17.52710),
                             Latitude=c(43.609647549,
                                        43.539561,
                                        44.018914,
-                                       43.6922,
-                                       43.18180,
-                                       43.96670))
+                                       43.18180))
 
 print(key_mil_sites)
 
@@ -139,8 +152,8 @@ plot1 <-
                           aes(x = Longitude,
                               y = Latitude,
                               label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                  nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                  nudge_y = c(-1   , -0.5,   0,-1)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_corpus_n$n,
@@ -177,8 +190,8 @@ plot2 <-
                           aes(x = Longitude,
                               y = Latitude,
                               label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
   labs(size = "Density", 
        caption = paste("n = ",
                        LIRE_Dal_corpus_place_filtering_n$n,
@@ -216,8 +229,8 @@ plot3 <-
                           aes(x = Longitude,
                           y = Latitude,
                           label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
   labs(size = "Density", 
        caption = paste("n = ",
                        LIRE_Dal_all_corpus_n$n,
@@ -255,8 +268,8 @@ plot4 <-
                           aes(x = Longitude,
                               y = Latitude,
                               label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_corpus_dated_n$n,
@@ -293,8 +306,8 @@ plot5 <-
                   aes(x = Longitude,
                       y = Latitude,
                       label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                  nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                  nudge_y = c(-1   , -0.5,   0,-1)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_corpus_dated_place_filtering_n$n,
@@ -346,8 +359,8 @@ plot6 <-
                   aes(x = Longitude,
                       y = Latitude,
                       label = findspot_ancient_clean),
-                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
-                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_n$n,
@@ -383,8 +396,8 @@ plot7 <-
                   aes(x = Longitude,
                       y = Latitude,
                       label = findspot_ancient_clean),
-                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
-                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_all_n$n,
@@ -420,8 +433,8 @@ plot8 <-
                   aes(x = Longitude,
                   y = Latitude,
                   label = findspot_ancient_clean),
-                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
-                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_n$n,
@@ -463,8 +476,8 @@ plot9 <-
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_label_repel(data = key_sites_ll,
+  geom_sf(data = dense_sites_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = dense_sites_ll,
                   fill = "white",
                   aes(x = Longitude,
                   y = Latitude,
@@ -500,8 +513,8 @@ plot10 <-
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-  geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
-  geom_label_repel(data = key_sites_ll,
+  geom_sf(data = dense_sites_ll, colour = "#000000", size = 1) +
+  geom_label_repel(data = dense_sites_ll,
                    fill = "white",
                    aes(x = Longitude,
                        y = Latitude,
@@ -543,8 +556,8 @@ plot11 <-
                  aes(x = Longitude,
                        y = Latitude,
                        label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                 nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                 nudge_y = c(-1   , -0.5,   0,-1)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_corpus_no_salona_n$n,
@@ -575,8 +588,8 @@ plot12 <-
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_label_repel(data = key_sites_ll,
+  geom_sf(data = dense_sites_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = dense_sites_ll,
                   fill = "white",
                   aes(x = Longitude,
                   y = Latitude,
@@ -618,8 +631,8 @@ plot13 <-
                    aes(x = Longitude,
                        y = Latitude,
                        label = findspot_ancient_clean), 
-                  nudge_x = c(-1, -1.5, -1, -1.5, -1.5, 0.5), 
-                  nudge_y = c(-0.25,-0.5,-0.25,-0.25,-0.25, 1.5)) +
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_corpus_dated_no_salona_n$n,
@@ -675,15 +688,15 @@ plot14 <-
                   aes(x = Longitude,
                   y = Latitude,
                   label = findspot_ancient_clean),
-                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
-                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
   labs(size = "Density",
        caption = paste("n = ",
                        EDH_Dalmatia_n$n,
                        sep = "",
                        ".\nEpigraphic data = EDH (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
-       title = "Distribution of all inscribed monuments",
+       title = "Distribution of all inscribed inscriptions",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -712,15 +725,15 @@ plot15 <-
                   aes(x = Longitude,
                   y = Latitude,
                   label = findspot_ancient_clean),
-                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
-                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
   labs(size = "Density", 
        caption = paste("n = ",
                        EDH_Dalmatia_votive_epitaph_n$n,
                        sep = "",
                        ".\nEpigraphic data = EDH (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
-       title = "Distribution of funerary and sacral monuments",
+       title = "Distribution of funerary and sacral inscriptions",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -749,8 +762,8 @@ plot16 <-
                   aes(x = Longitude,
                   y = Latitude,
                   label = findspot_ancient_clean),
-                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
-                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
   labs(size = "Density",
        caption = paste("n = ",
                        EDH_Dalmatia_epitaph_n$n,
@@ -758,7 +771,7 @@ plot16 <-
                        ".\nEpigraphic data = EDH (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
-       title = "Distribution of funerary monuments",
+       title = "Distribution of funerary inscriptions",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
