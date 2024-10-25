@@ -6,13 +6,12 @@ authors:
     given-names: "Ewan S."
     orcid: "https://orcid.org/0000-0001-8633-6418"
 url: "https://github.com/EwanSC/Bromans_with_R"
-title: "'Military-becoming' in Dalmatia and beyond: Data and analysis."
+title: "'Roman archaeology with _agencements_': Data and analysis."
 type: data
 date-released: 11/10/2024
 abstract:
   "Repository for data collection, cleaning, and analysis for
-  the 2021-2025 PhD project 'Military-becoming' in Dalmatia
-  and beyond: An assemblage thinking framework for Roman
-  Archaeology'."
-version: "0.9.0"
+  the 2021-2025 PhD project 'Roman archaeology with _agencements_:
+  Assemblage thinking and the ‘military community’ in _Dalmatia_ and beyond.'."
+version: "0.9.1"
 license: "GPL-3.0"
