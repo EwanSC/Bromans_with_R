@@ -8,6 +8,7 @@ library(datplot)
 library(ggplot2)
 library(sqldf)
 library(tidyverse)
+library(RColorBrewer)
 
 LIRE_Dal_corpus <-
   read.csv("output_tables/corpus/LIRE_corpus.csv")
@@ -708,3 +709,49 @@ ggplot(data = LIRE_both_place_filtering_scaled_15, aes(x = DAT_step, weight = we
 
 ggsave("output_images/chronological_distribution/25.LIRE_Dalmatia_corpus_place_filter_plot_stepsize_15.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
+
+## now for differences based on type
+LIRE_Dalmatia_types <-
+  read.csv("data/LIRE/LIRE_Dalmatia.csv", na = c("","NA","NULL",NULL))
+
+LIRE_Dalmatia_types <- LIRE_Dalmatia_types %>%
+rename(variable = type_of_inscription_auto)
+
+LIRE_Dalmatia_types_na <- prepare_for_density(LIRE_Dalmatia_types)
+
+LIRE_Dalmatia_types_count <- count(LIRE_Dalmatia_types_na)
+
+LIRE_Dalmatia_types_scaled_15 <- scaleweight(datsteps(LIRE_Dalmatia_types_na,
+                                                stepsize = 15),
+                                       var = "all")
+
+ggplot(data = LIRE_Dalmatia_types_scaled_15,
+       aes(x = DAT_step, fill = variable, weight = weight)) +
+  geom_density(position = "fill", alpha = 0.3) +
+  scale_fill_manual(values = c('black','forestgreen', 'red2', 'orange', 'cornflowerblue', 
+                               'magenta', 'darkolivegreen4', 'indianred1', 'tan4', 'darkblue', 
+                               'mediumorchid1','firebrick4',  'yellowgreen', 'lightsalmon', 'tan3',
+                               "tan1",'darkgray', 'wheat4', '#DDAD4B', 'chartreuse', 
+                               'seagreen1', 'moccasin', 'mediumvioletred', 'seagreen','cadetblue1',
+                               "darkolivegreen1" ,"tan2" ,   "tomato3" , "#7CE3D8","gainsboro"),
+                    name = "Category") +
+    labs(x = "Date (BCE/CE)", y = "Relative type density",
+       caption = paste("n = ",
+                       LIRE_Dalmatia_types_count$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
+       title = "Chronological distribution of all inscription types",
+       subtitle = paste("Using the weighted output of datsteps() ",
+                        "with stepsize of ",
+                        attributes(LIRE_Dalmatia_types_scaled_15)$stepsize,
+                        sep = "")) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank() +
+      scale_fill_manual(name = "Type"))
+
+ggsave("output_images/chronological_distribution/26.LIRE_Dalmatia_types_all_types_stepsize_15.jpeg",
+       width = 211, height = 120, unit = "mm", dpi = 600)
