@@ -215,7 +215,7 @@ LIRE_Dal_all_corpus <-
 
 LIRE_Dal_all_corpus_ll <- dataframe_ll(LIRE_Dal_all_corpus)
 
-LIRE_Dal_all_corpus_n <- count(LIRE_Dal_corpus_place_filtering)
+LIRE_Dal_all_corpus_n <- count(LIRE_Dal_all_corpus)
 
 plot3 <- 
   ggplot() + 
@@ -696,7 +696,7 @@ plot14 <-
                        sep = "",
                        ".\nEpigraphic data = EDH (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
-       title = "Distribution of all inscribed inscriptions",
+       title = "Distribution of all inscriptions",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
