@@ -1,4 +1,4 @@
-#plot data on scatter maps
+# plot data on scatter maps
 # started 17/09/2024
 # edited 24/10/2024
 
@@ -781,7 +781,7 @@ plot(plot16)
 ggsave("output_images/geographical_distribution/16.EDH_Dalmatia_epitaph.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
-## combine 1 and 3 for comparison
+## combine 7 and 14 for comparison
 doubletrouble <- grid.arrange(plot7, plot14, ncol = 2)
 
 ggsave("output_images/geographical_distribution/17.LIRE_EDH_comparison.jpeg",
@@ -793,3 +793,9 @@ doubletroubler <- grid.arrange(plot7, plot10, ncol = 2)
 
 ggsave("output_images/geographical_distribution/18.Dalmatia_all_types_Salona_comparison.jpeg",
        doubletroubler, width = 240, height = 120, unit = "mm", dpi = 600)
+
+## combine 6 and 9 for comparison
+doubletroublest <- grid.arrange(plot6, plot9, ncol = 2)
+
+ggsave("output_images/geographical_distribution/19.Dalmatia_Salona_comparison.jpeg",
+       doubletroublest, width = 240, height = 120, unit = "mm", dpi = 600)
