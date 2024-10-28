@@ -729,10 +729,10 @@ ggplot(data = LIRE_Dalmatia_types_scaled_15,
   geom_density(position = "fill", alpha = 0.3) +
   scale_fill_manual(values = c('#000000','#228B22', '#EE0000', '#FFA500', '#6495ED', 
                                '#FF00FF', '#6E8B3D', '#FF6A6A', '#8B5A2B', '#00008B', 
-                               '#E066FF','#8B1A1A',  '#9ACD32', 'lightsalmon', 'tan3',
-                               "tan1",'darkgray', 'wheat4', '#DDAD4B', 'chartreuse', 
-                               'seagreen1', 'moccasin', 'mediumvioletred', 'seagreen','cadetblue1',
-                               "darkolivegreen1" ,"tan2" ,   "tomato3" , "#7CE3D8","gainsboro"),
+                               '#E066FF','#8B1A1A',  '#9ACD32', '#FFA07A', '#CD853F',
+                               "#FFA54F",'#A9A9A9', '#8B7E66', '#DDAD4B', '#7FFF00', 
+                               '#54FF9F', '#FFE4B5', '#C71585', '#2E8B57','#98F5FF',
+                               "#CAFF70" ,"#EE9A49" ,   "#CD4F39" , "#7CE3D8","#DCDCDC"),
                     name = "Category") +
     labs(x = "Date (BCE/CE)", y = "Relative type density",
        caption = paste("n = ",
@@ -749,8 +749,47 @@ ggplot(data = LIRE_Dalmatia_types_scaled_15,
     breaks = seq(-50, 350, by = 25)) +
   theme(
     axis.text.y = element_blank(),
-    axis.ticks.y = element_blank() +
-      scale_fill_manual(name = "Type"))
+    axis.ticks.y = element_blank())
 
 ggsave("output_images/chronological_distribution/26.LIRE_Dalmatia_types_all_types_stepsize_15.jpeg",
+       width = 211, height = 120, unit = "mm", dpi = 600)
+
+LIRE_corpus_types <-
+  read.csv("output_tables/corpus/undated/LIRE_corpus_all_types.csv")
+
+LIRE_corpus_types <- LIRE_corpus_types %>%
+rename(variable = type_of_inscription_auto)
+
+LIRE_corpus_types_na <- prepare_for_density(LIRE_corpus_types)
+
+LIRE_corpus_types_count <- count(LIRE_corpus_types_na)
+
+LIRE_corpus_types_scaled_15 <- scaleweight(datsteps(LIRE_corpus_types_na,
+                                                stepsize = 15),
+                                       var = "all")
+
+ggplot(data = LIRE_corpus_types_scaled_15,
+       aes(x = DAT_step, fill = variable, weight = weight)) +
+  geom_density(position = "fill", alpha = 0.3) +
+  scale_fill_manual(values = c('#000000','#FF8247', '#fcbfa3', '#d6d6d6', '#FF5100', 
+                               '#ffc400', '#fde8a1', '#866700', "#DCDCDC"),
+                    name = "Category") +
+    labs(x = "Date (BCE/CE)", y = "Relative type density",
+       caption = paste("n = ",
+                       LIRE_corpus_types_count$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
+       title = "Chronological distribution of military inscription types",
+       subtitle = paste("Using the weighted output of datsteps() ",
+                        "with stepsize of ",
+                        attributes(LIRE_corpus_types_scaled_15)$stepsize,
+                        sep = "")) +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank())
+
+ggsave("output_images/chronological_distribution/27.LIRE_corpus_types_all_types_stepsize_15.jpeg",
        width = 211, height = 120, unit = "mm", dpi = 600)

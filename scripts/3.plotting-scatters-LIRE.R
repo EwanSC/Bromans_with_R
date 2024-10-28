@@ -918,18 +918,18 @@ ggsave("output_images/geographical_distribution/19.EDH_Dalmatia_epitaph.jpeg",
 ## combine 8 and 16 for comparison
 doubletrouble <- grid.arrange(plot8, plot17, ncol = 2)
 
-ggsave("output_images/geographical_distribution/19.LIRE_EDH_comparison.jpeg",
+ggsave("output_images/geographical_distribution/20.LIRE_EDH_comparison.jpeg",
        doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
 
 ## combine 8, 12
 
 doubletroubler <- grid.arrange(plot8, plot12, ncol = 2)
 
-ggsave("output_images/geographical_distribution/20.Dalmatia_all_types_Salona_comparison.jpeg",
+ggsave("output_images/geographical_distribution/21.Dalmatia_all_types_Salona_comparison.jpeg",
        doubletroubler, width = 240, height = 120, unit = "mm", dpi = 600)
 
 ## combine 7 and 11 for comparison
 doubletroublest <- grid.arrange(plot7, plot11, ncol = 2)
 
-ggsave("output_images/geographical_distribution/21.Dalmatia_Salona_comparison.jpeg",
+ggsave("output_images/geographical_distribution/22.Dalmatia_Salona_comparison.jpeg",
        doubletroublest, width = 240, height = 120, unit = "mm", dpi = 600)
