@@ -132,9 +132,10 @@ dataframe_ll <- function(dataframe) {
 
 
 # plot on map
+#save csv of plotted places each
 ## undated/dated corpora with and without place filtration
 LIRE_Dal_corpus <-
-  read.csv("output_tables/corpus/LIRE_corpus.csv")
+  read.csv("output_tables/corpus/undated/LIRE_corpus.csv")
            
 LIRE_Dal_corpus_ll <- dataframe_ll(LIRE_Dal_corpus)
 
@@ -171,8 +172,12 @@ plot(plot1)
 ggsave("output_images/geographical_distribution/01.LIRE_corpus_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+LIRE_Dal_corpus_place <- st_drop_geometry(LIRE_Dal_corpus_ll)
+write.csv(LIRE_Dal_corpus_place,
+          file = "output_tables/corpus/places/LIRE_corpus_places_places.csv")
+
 LIRE_Dal_corpus_place_filtering <-
-  read.csv("output_tables/corpus/LIRE_corpus_place_filter.csv")
+  read.csv("output_tables/corpus/undated/LIRE_corpus_place_filter.csv")
 
 LIRE_Dal_corpus_place_filtering_ll <- dataframe_ll(LIRE_Dal_corpus_place_filtering)
 
@@ -209,9 +214,13 @@ plot(plot2)
 ggsave("output_images/geographical_distribution/02.LIRE_corpus_place_filter_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+LIRE_Dal_corpus_place_filtering_place <- st_drop_geometry(LIRE_Dal_corpus_place_filtering_ll)
+write.csv(LIRE_Dal_corpus_place_filtering_place,
+          file = "output_tables/corpus/places/LIRE_corpus_place_filter_places_places.csv")          
+
 ## all inscriptions types
 LIRE_Dal_all_corpus <-
-  read.csv("output_tables/corpus/LIRE_corpus_all_types.csv")
+  read.csv("output_tables/corpus/undated/LIRE_corpus_all_types.csv")
 
 LIRE_Dal_all_corpus_ll <- dataframe_ll(LIRE_Dal_all_corpus)
 
@@ -248,9 +257,13 @@ plot(plot3)
 ggsave("output_images/geographical_distribution/03.LIRE_all_types_corpus_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+LIRE_Dal_all_corpus_place <- st_drop_geometry(LIRE_Dal_all_corpus_ll)
+write.csv(LIRE_Dal_all_corpus_place,
+          file = "output_tables/corpus/places/LIRE_corpus_all_types_dated_places.csv")
+
 ## create one for just relevant period (~200 CE cut off)
 LIRE_corpus_dated <-
-  read.csv("output_tables/corpus/LIRE_corpus_dated.csv")
+  read.csv("output_tables/corpus/dated/LIRE_corpus_dated.csv")
 
 LIRE_corpus_dated_ll <- dataframe_ll(LIRE_corpus_dated)
 
@@ -287,8 +300,12 @@ plot(plot4)
 ggsave("output_images/geographical_distribution/04.LIRE_corpus_dated_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+LIRE_corpus_dated_place <- st_drop_geometry(LIRE_corpus_dated_ll)
+write.csv(LIRE_corpus_dated_place,
+          file = "output_tables/corpus/places/LIRE_corpus_dated_places.csv")
+
 LIRE_corpus_dated_place_filtering <-
-  read.csv("output_tables/corpus/LIRE_corpus_dated_place_filter.csv")
+  read.csv("output_tables/corpus/dated/LIRE_corpus_dated_place_filter.csv")
 
 LIRE_corpus_dated_place_filtering_ll <- dataframe_ll(LIRE_corpus_dated_place_filtering)
 
@@ -325,29 +342,62 @@ plot(plot5)
 ggsave("output_images/geographical_distribution/05.LIRE_corpus_dated_place_filter_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
-#save csv of plotted places
-LIRE_Dal_corpus_place <- st_drop_geometry(LIRE_Dal_corpus_ll)
-write.csv(LIRE_Dal_corpus_place,
-          file = "output_tables/corpus/places/LIRE_corpus_places.csv")
-LIRE_Dal_corpus_place_filtering_place <- st_drop_geometry(LIRE_Dal_corpus_place_filtering_ll)
-write.csv(LIRE_Dal_corpus_place_filtering_place,
-          file = "output_tables/corpus/places/LIRE_corpus_place_filter_places.csv")          
-LIRE_corpus_dated_place <- st_drop_geometry(LIRE_corpus_dated_ll)
-write.csv(LIRE_corpus_dated_place,
-          file = "output_tables/corpus/places/LIRE_corpus_dated.csv")
 LIRE_corpus_dated_place_filtering_place <- st_drop_geometry(LIRE_corpus_dated_place_filtering_ll)
 write.csv(LIRE_corpus_dated_place_filtering_place,
-          file = "output_tables/corpus/places/LIRE_corpus_dated_place_filter.csv")
+          file = "output_tables/corpus/places/LIRE_corpus_dated_place_filter_places.csv")
+
+## all inscriptions types dated
+LIRE_Dal_all_corpus_dated <-
+  read.csv("output_tables/corpus/dated/LIRE_corpus_all_types_dated.csv")
+
+LIRE_Dal_all_corpus_dated_ll <- dataframe_ll(LIRE_Dal_all_corpus_dated)
+
+LIRE_Dal_all_corpus_dated_n <- count(LIRE_Dal_all_corpus_dated)
+
+plot6 <- 
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_all_corpus_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                          y = Latitude,
+                          label = findspot_ancient_clean), 
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density", 
+       caption = paste("n = ",
+                       LIRE_Dal_all_corpus_dated_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+       title = "Distribution of all military inscriptions",
+       subtitle = "Dalmatia: Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot6)
+
+ggsave("output_images/geographical_distribution/06.LIRE_all_types_corpus_dated_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_all_corpus_dated_place <- st_drop_geometry(LIRE_Dal_all_corpus_dated_ll)
+write.csv(LIRE_Dal_all_corpus_dated_place,
+          file = "output_tables/corpus/places/LIRE_corpus_all_types_dated_places.csv")
 
 # Now compare to all Dalmatia
 LIRE_Dal <-
-  read.csv("output_tables/corpus/LIRE_Dalmatia_all_types.csv")
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types.csv")
 
 LIRE_Dal_ll <- dataframe_ll(LIRE_Dal)
 
 LIRE_Dal_n <- count(LIRE_Dal)
 
-plot6 <-
+plot7 <-
   ggplot() + 
   geom_sf(data = world, color = "#e4e4e4", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#BEBEBE", size = 0.6) +
@@ -372,19 +422,23 @@ plot6 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot6)
+plot(plot7)
 
-ggsave("output_images/geographical_distribution/06.LIRE_Dalmatia_scatter.jpeg",
+ggsave("output_images/geographical_distribution/07.LIRE_Dalmatia_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+LIRE_Dal_place <- st_drop_geometry(LIRE_Dal_ll)
+write.csv(LIRE_Dal_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_places.csv")
+
 LIRE_Dal_all <-
-  read.csv("output_tables/corpus/LIRE_Dalmatia_all_types.csv")
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types.csv")
 
 LIRE_Dal_all_ll <- dataframe_ll(LIRE_Dal_all)
 
 LIRE_Dal_all_n <- count(LIRE_Dal_all)
 
-plot7 <-
+plot8 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -409,19 +463,23 @@ plot7 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot7)
+plot(plot8)
 
-ggsave("output_images/geographical_distribution/07.LIRE_Dalmatia_all_types_scatter.jpeg",
+ggsave("output_images/geographical_distribution/08.LIRE_Dalmatia_all_types_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+LIRE_Dal_all_place <- st_drop_geometry(LIRE_Dal_all_ll)
+write.csv(LIRE_Dal_all_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_all_types_places.csv")
+
 LIRE_Dal_dated <-
-  read.csv("output_tables/corpus/LIRE_Dalmatia_dated.csv")
+  read.csv("output_tables/corpus/dated/LIRE_Dalmatia_dated.csv")
 
 LIRE_Dal_dated_ll <- dataframe_ll(LIRE_Dal_dated)
 
 LIRE_Dal_dated_n <- count(LIRE_Dal_dated)
 
-plot8 <-
+plot9 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -446,31 +504,65 @@ plot8 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot8)
+plot(plot9)
 
-ggsave("output_images/geographical_distribution/08.LIRE_Dalmatia_dated_scatter.jpeg",
+ggsave("output_images/geographical_distribution/09.LIRE_Dalmatia_dated_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
-# now to save plotted places
-LIRE_Dal_place <- st_drop_geometry(LIRE_Dal_ll)
-write.csv(LIRE_Dal_place,
-          file = "output_tables/corpus/places/LIRE_Dalmatia_places.csv")
-LIRE_Dal_all_place <- st_drop_geometry(LIRE_Dal_all_ll)
-write.csv(LIRE_Dal_all_place,
-          file = "output_tables/corpus/places/LIRE_Dalmatia_all_types_places.csv")
 LIRE_Dal_dated_place <- st_drop_geometry(LIRE_Dal_dated_ll)
 write.csv(LIRE_Dal_dated_place,
           file = "output_tables/corpus/places/LIRE_Dalmatia_dated_places.csv")
 
+LIRE_Dal_all_dated <-
+  read.csv("output_tables/corpus/dated/LIRE_Dalmatia_all_types_dated.csv")
+
+LIRE_Dal_all_dated_ll <- dataframe_ll(LIRE_Dal_all_dated)
+
+LIRE_Dal_all_dated_n <- count(LIRE_Dal_all_dated)
+
+plot10 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_all_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_all_dated_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of all inscriptions",
+                       subtitle = "Dalmatia: Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot10)
+
+ggsave("output_images/geographical_distribution/10.LIRE_Dalmatia_all_types_dated_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_all_dated_place <- st_drop_geometry(LIRE_Dal_all_dated_ll)
+write.csv(LIRE_Dal_all_dated_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_all_types_dated_places.csv")
+
 # now for mapping without Salona
 LIRE_Dal_no_salona <-
-  read.csv("output_tables/corpus/LIRE_Dalmatia_no_salona.csv")
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_no_salona.csv")
 
 LIRE_Dal_no_salona_ll <- dataframe_ll(LIRE_Dal_no_salona)
 
 LIRE_Dal_no_salona_n <- count(LIRE_Dal_no_salona)
 
-plot9 <-
+plot11 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -495,19 +587,19 @@ plot9 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot9)
+plot(plot11)
 
-ggsave("output_images/geographical_distribution/09.LIRE_Dalmatia_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/11.LIRE_Dalmatia_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_all_no_salona <-
-  read.csv("output_tables/corpus/LIRE_Dalmatia_all_types_no_salona.csv")
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types_no_salona.csv")
 
 LIRE_Dal_all_no_salona_ll <- dataframe_ll(LIRE_Dal_all_no_salona)
 
 LIRE_Dal_all_no_salona_n <- count(LIRE_Dal_all_no_salona)
 
-plot10 <-
+plot12 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -532,19 +624,19 @@ plot10 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot10)
+plot(plot12)
 
-ggsave("output_images/geographical_distribution/10.LIRE_Dalmatia_all_types_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/12.LIRE_Dalmatia_all_types_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_corpus_no_salona <-
-  read.csv("output_tables/corpus/LIRE_corpus_no_salona.csv")
+  read.csv("output_tables/corpus/undated/LIRE_corpus_no_salona.csv")
 
 LIRE_Dal_corpus_no_salona_ll <- dataframe_ll(LIRE_Dal_corpus_no_salona)
 
 LIRE_Dal_corpus_no_salona_n <- count(LIRE_Dal_corpus_no_salona)
 
-plot11 <-
+plot13 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -570,19 +662,57 @@ plot11 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot11)
+plot(plot13)
 
-ggsave("output_images/geographical_distribution/11.LIRE_corpus_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/13.LIRE_corpus_no_salona_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_all_corpus_no_salona <-
+  read.csv("output_tables/corpus/undated/LIRE_corpus_all_types_no_salona.csv")
+
+LIRE_Dal_all_corpus_no_salona_ll <- dataframe_ll(LIRE_Dal_all_corpus_no_salona)
+
+LIRE_Dal_all_corpus_no_salona_n <- count(LIRE_Dal_all_corpus_no_salona)
+
+plot14 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_all_corpus_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                   fill = "white",
+                 aes(x = Longitude,
+                       y = Latitude,
+                       label = findspot_ancient_clean), 
+                 nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                 nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_all_corpus_no_salona_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+                       title = "Distribution of all military inscriptions",
+                       subtitle = "Dalmatia (Outside Salona)") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot14)
+
+ggsave("output_images/geographical_distribution/14.LIRE_corpus_all_types_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_dated_no_salona <-
-  read.csv("output_tables/corpus/LIRE_Dalmatia_dated_no_salona.csv")
+  read.csv("output_tables/corpus/dated/LIRE_Dalmatia_dated_no_salona.csv")
 
 LIRE_Dal_dated_no_salona_ll <- dataframe_ll(LIRE_Dal_dated_no_salona)
 
 LIRE_Dal_dated_no_salona_n <- count(LIRE_Dal_dated_no_salona)
 
-plot12 <-
+plot15 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -607,19 +737,19 @@ plot12 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot12)
+plot(plot15)
 
-ggsave("output_images/geographical_distribution/12.LIRE_Dalmatia_dated_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/15.LIRE_Dalmatia_dated_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_corpus_dated_no_salona <-
-  read.csv("output_tables/corpus/LIRE_corpus_dated_no_salona.csv")
+  read.csv("output_tables/corpus/dated/LIRE_corpus_dated_no_salona.csv")
 
 LIRE_Dal_corpus_dated_no_salona_ll <- dataframe_ll(LIRE_Dal_corpus_dated_no_salona)
 
 LIRE_Dal_corpus_dated_no_salona_n <- count(LIRE_Dal_corpus_dated_no_salona)
 
-plot13 <-
+plot16 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -645,9 +775,9 @@ plot13 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot13)
+plot(plot16)
 
-ggsave("output_images/geographical_distribution/13.LIRE_corpus_dated_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/16.LIRE_corpus_dated_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 #now for EDH, for comparison
@@ -676,7 +806,7 @@ EDH_Dalmatia_ll <- dataframe_EDH_ll(EDH_Dalmatia)
 
 EDH_Dalmatia_n <- count(EDH_Dalmatia)
 
-plot14 <- 
+plot17 <- 
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -701,10 +831,14 @@ plot14 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot14)
+plot(plot17)
 
-ggsave("output_images/geographical_distribution/14.EDH_Dalmatia_scatter.jpeg",
+ggsave("output_images/geographical_distribution/17.EDH_Dalmatia_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
+
+EDH_Dalmatia_place <- st_drop_geometry(EDH_Dalmatia_ll)
+write.csv(EDH_Dalmatia_place,
+          file = "output_tables/corpus/EDH/places/EDH_Dalmatia_places.csv")
 
 EDH_Dalmatia_votive_epitaph <-
   read.csv("output_tables/corpus/EDH/EDH_Dalmatia_votive_epitaph.csv")
@@ -713,7 +847,7 @@ EDH_Dalmatia_votive_epitaph_ll <- dataframe_EDH_ll(EDH_Dalmatia_votive_epitaph)
 
 EDH_Dalmatia_votive_epitaph_n <- count(EDH_Dalmatia_votive_epitaph)
 
-plot15 <- 
+plot18 <- 
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -738,9 +872,9 @@ plot15 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot15)
+plot(plot18)
 
-ggsave("output_images/geographical_distribution/15.EDH_Dalmatia_funerary_sacral.jpeg",
+ggsave("output_images/geographical_distribution/18.EDH_Dalmatia_funerary_sacral.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 EDH_Dalmatia_epitaph <-
@@ -750,7 +884,7 @@ EDH_Dalmatia_epitaph_ll <- dataframe_EDH_ll(EDH_Dalmatia_epitaph)
 
 EDH_Dalmatia_epitaph_n <- count(EDH_Dalmatia_epitaph)
 
-plot16 <-
+plot19 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -776,26 +910,26 @@ plot16 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot16)
+plot(plot19)
 
-ggsave("output_images/geographical_distribution/16.EDH_Dalmatia_epitaph.jpeg",
+ggsave("output_images/geographical_distribution/19.EDH_Dalmatia_epitaph.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
-## combine 7 and 14 for comparison
-doubletrouble <- grid.arrange(plot7, plot14, ncol = 2)
+## combine 8 and 16 for comparison
+doubletrouble <- grid.arrange(plot8, plot17, ncol = 2)
 
-ggsave("output_images/geographical_distribution/17.LIRE_EDH_comparison.jpeg",
+ggsave("output_images/geographical_distribution/19.LIRE_EDH_comparison.jpeg",
        doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
 
-## combine 7, 10
+## combine 8, 12
 
-doubletroubler <- grid.arrange(plot7, plot10, ncol = 2)
+doubletroubler <- grid.arrange(plot8, plot12, ncol = 2)
 
-ggsave("output_images/geographical_distribution/18.Dalmatia_all_types_Salona_comparison.jpeg",
+ggsave("output_images/geographical_distribution/20.Dalmatia_all_types_Salona_comparison.jpeg",
        doubletroubler, width = 240, height = 120, unit = "mm", dpi = 600)
 
-## combine 6 and 9 for comparison
-doubletroublest <- grid.arrange(plot6, plot9, ncol = 2)
+## combine 7 and 11 for comparison
+doubletroublest <- grid.arrange(plot7, plot11, ncol = 2)
 
-ggsave("output_images/geographical_distribution/19.Dalmatia_Salona_comparison.jpeg",
+ggsave("output_images/geographical_distribution/21.Dalmatia_Salona_comparison.jpeg",
        doubletroublest, width = 240, height = 120, unit = "mm", dpi = 600)

@@ -11,11 +11,11 @@ library(tidyverse)
 library(RColorBrewer)
 
 LIRE_Dal_corpus <-
-  read.csv("output_tables/corpus/LIRE_corpus.csv")
+  read.csv("output_tables/corpus/undated/LIRE_corpus.csv")
 LIRE_Dal_corpus_place_filtering <-
-  read.csv("output_tables/corpus/LIRE_corpus_place_filter.csv")
+  read.csv("output_tables/corpus/undated/LIRE_corpus_place_filter.csv")
 LIRE_Dal <-
-  read.csv("output_tables/corpus/LIRE_Dalmatia.csv")
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia.csv")
 LIRE_Dalmatia <-
   read.csv("data/LIRE/LIRE_Dalmatia.csv", na = c("","NA","NULL",NULL))
 
@@ -25,7 +25,6 @@ count(LIRE_Dal)
 count(LIRE_Dalmatia)
 
 # distinguish between the two types by adding variable column
-
 LIRE_Dal_corpus$variable <- "Military"
 LIRE_Dal_corpus_place_filtering$variable <- "Military"
 LIRE_Dal$variable <- "All"
@@ -728,9 +727,9 @@ LIRE_Dalmatia_types_scaled_15 <- scaleweight(datsteps(LIRE_Dalmatia_types_na,
 ggplot(data = LIRE_Dalmatia_types_scaled_15,
        aes(x = DAT_step, fill = variable, weight = weight)) +
   geom_density(position = "fill", alpha = 0.3) +
-  scale_fill_manual(values = c('black','forestgreen', 'red2', 'orange', 'cornflowerblue', 
-                               'magenta', 'darkolivegreen4', 'indianred1', 'tan4', 'darkblue', 
-                               'mediumorchid1','firebrick4',  'yellowgreen', 'lightsalmon', 'tan3',
+  scale_fill_manual(values = c('#000000','#228B22', '#EE0000', '#FFA500', '#6495ED', 
+                               '#FF00FF', '#6E8B3D', '#FF6A6A', '#8B5A2B', '#00008B', 
+                               '#E066FF','#8B1A1A',  '#9ACD32', 'lightsalmon', 'tan3',
                                "tan1",'darkgray', 'wheat4', '#DDAD4B', 'chartreuse', 
                                'seagreen1', 'moccasin', 'mediumvioletred', 'seagreen','cadetblue1',
                                "darkolivegreen1" ,"tan2" ,   "tomato3" , "#7CE3D8","gainsboro"),
