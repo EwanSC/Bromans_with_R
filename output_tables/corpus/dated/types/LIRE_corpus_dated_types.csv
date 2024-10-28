@@ -1,7 +1,7 @@
-"","type_of_monument_clean","type_of_inscription_clean","n"
-"1","NULL","NULL",11
-"2","NULL","epitaph",143
-"3","NULL","votive inscription",7
+"","type_of_monument_clean","type_of_inscription_auto","n"
+"1","NULL","epitaph",143
+"2","NULL","votive inscription",7
+"3","NULL",NA,11
 "4","altar","epitaph",11
 "5","altar","votive inscription",29
 "6","base","epitaph",3
@@ -12,9 +12,10 @@
 "11","sarcophagus","epitaph",2
 "12","statue base","epitaph",2
 "13","statue base","votive inscription",3
-"14","stele","NULL",1
-"15","stele","epitaph",125
+"14","stele","epitaph",125
+"15","stele",NA,1
 "16","tabula","epitaph",31
 "17","tabula","votive inscription",5
 "18","urn","epitaph",4
-"19",NA,NA,15
+"19",NA,"epitaph",10
+"20",NA,"votive inscription",2
