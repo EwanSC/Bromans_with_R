@@ -1,6 +1,6 @@
 # plot data on scatter maps
 # started 17/09/2024
-# edited 24/10/2024
+# edited 29/10/2024
 
 # packages
 library(dplyr)
@@ -933,3 +933,9 @@ doubletroublest <- grid.arrange(plot7, plot11, ncol = 2)
 
 ggsave("output_images/geographical_distribution/22.Dalmatia_Salona_comparison.jpeg",
        doubletroublest, width = 240, height = 120, unit = "mm", dpi = 600)
+
+## combine 1 and 4 for comparison
+doubletroublestest <- grid.arrange(plot1, plot4, ncol = 2)
+
+ggsave("output_images/geographical_distribution/23.corpus_dated_undated_comparison.jpeg",
+       doubletroublestest, width = 240, height = 120, unit = "mm", dpi = 600)
