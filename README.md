@@ -7,7 +7,7 @@ Contemporary engagements with Roman army communities are effective for their bot
 ## Overview
 
 ## Example outputs:
-![scaled Bubble map of the distribution of inscribed monuments in roman dalmatia](output_images/geographical_distribution/07.LIRE_Dalmatia_all_types_scatter.jpeg)
+![scaled Bubble map of the distribution of inscribed monuments in roman dalmatia](output_images/geographical_distribution/08.LIRE_Dalmatia_all_types_scatter.jpeg)
 <figcaption> Bubble map of Latin inscriptions in _Dalmatia_. CC BY-SA 4.0</figcaption>
 <p> <p/>
 
@@ -21,6 +21,10 @@ Contemporary engagements with Roman army communities are effective for their bot
 
 ![scaled density graph of the distribution of Latin military funerary and sacral inscriptions](output_images/chronological_distribution/13.LIRE_corpus_plot_stepsize_15.jpeg)
 <figcaption> Scaled density graph of Latin military funerary and sacral inscriptions in _Dalmatia_, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
+<br />
+
+![scaled density graph of the distribution inscription types. some types, like epitaphs, are consistent throughout the period from 50 BCE to 350 CE, others, like boundary inscrpitions, are not.](output_images/chronological_distribution/26.LIRE_Dalmatia_types_all_types_stepsize_15.jpeg)
+<figcaption> Scaled _relative_ density graph of Latin inscription types in _Dalmatia_, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
 <br />
 
 ## Thesis
