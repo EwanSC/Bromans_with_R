@@ -84,7 +84,38 @@ dense_sites <- data.frame(findspot_ancient_clean=c("Salona",
 
 print(dense_sites)
 
-(dense_sites_ll <- st_as_sf(dense_sites,
+dense_sites_dated <- data.frame(findspot_ancient_clean = 
+                                  c("Tilurium",
+                                    "Salona",
+                                    "Burnum",
+                                    "Iader",
+                                    "Narona",
+                                    "Rider",
+                                    "Asseria",
+                                    "Aenona",
+                                    "Bigeste"),
+                                Longitude=c(16.7216523938,
+                                            16.483426,
+                                            16.025622,
+                                            15.223778,
+                                            17.625,
+                                            16.0486,
+                                            15.6844,
+                                            15.1842,
+                                            17.5271),
+                                Latitude=c(43.609647549,
+                                           43.539561,
+                                           44.018914,
+                                           44.115501,
+                                           43.0801,
+                                           43.7034,
+                                           44.0103,
+                                           44.2435,
+                                           43.1818))
+
+print(dense_sites_dated)
+
+(dense_sites_dated_ll <- st_as_sf(dense_sites_dated,
                           coords = c("Longitude",
                                      "Latitude"),
                           remove = FALSE,
@@ -289,9 +320,10 @@ plot4 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Filtered by key words and tags."),
+                       "Filtered by key words and tags.\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
                        title = "Distribution of military funerary and sacral inscriptions",
-                       subtitle = "Dalmatia: Julio-Claudians to Antonines") +
+                       subtitle = "Dalmatia: Julio-Claudians to Antonines)") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
@@ -331,7 +363,8 @@ plot5 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Filtered by key words, tags, and places."),
+                       "Filtered by key words, tags, and places.\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
                        title = "Distribution of military funerary and sacral inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -374,7 +407,8 @@ plot6 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Filtered by key words and tags."),
+                       "Filtered by key words and tags.\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
        title = "Distribution of all military inscriptions",
        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -491,14 +525,15 @@ plot9 <-
                   aes(x = Longitude,
                   y = Latitude,
                   label = findspot_ancient_clean),
-                  nudge_x = c( 0,     -1,  -1.5), 
-                  nudge_y = c(-1.25,-0.5, -0.25))+
+                  nudge_x = c( 0,  -1, -1.75,-1,    0, -0.5,0, -1,-0.75), 
+                  nudge_y = c(-1,-0.5, -0.25, 0,-0.75,-0.25,1,0.5,-0.75))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
                        title = "Distribution of funerary and sacral inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -526,20 +561,21 @@ plot10 <-
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_label_repel(data = key_sites_ll,
+  geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = dense_sites_dated_ll,
                   fill = "white",
                   aes(x = Longitude,
                       y = Latitude,
                       label = findspot_ancient_clean),
-                  nudge_x = c( 0,     -1,  -1.5), 
-                  nudge_y = c(-1.25,-0.5, -0.25))+
+                  nudge_x = c( 0,  -1, -1.75,-1,    0, -0.5,0, -1,-0.75), 
+                  nudge_y = c(-1,-0.5, -0.25, 0,-0.75,-0.25,1,0.5,-0.75))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_all_dated_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
                        title = "Distribution of all inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -731,7 +767,8 @@ plot15 <-
                        LIRE_Dal_dated_no_salona_n$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
        title = "Distribution of funerary and sacral inscriptions",
        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -769,7 +806,8 @@ plot16 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Filtered by key words and tags."),
+                       "Filtered by key words and tags.\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
                        title = "Distribution of military funerary and sacral inscriptions",
                        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
