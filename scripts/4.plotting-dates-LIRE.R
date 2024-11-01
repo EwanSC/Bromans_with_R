@@ -884,5 +884,5 @@ ggplot(data = LIRE_corpus_monu_types_scaled_15,
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank())
 
-ggsave("output_images/chronological_distribution/27.LIRE_corpus_all_types_monu_types_stepsize_15.jpeg",
+ggsave("output_images/chronological_distribution/29.LIRE_corpus_all_types_monu_types_stepsize_15.jpeg",
        width = 211, height = 120, unit = "mm", dpi = 600)
