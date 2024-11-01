@@ -360,6 +360,21 @@ LIRE_Dal_dated_inscr_types <- LIRE_Dal_dated %>%
 write.csv(LIRE_Dal_dated_inscr_types,
           file = "output_tables/corpus/dated/types/LIRE_Dalmatia_dated_inscr_types.csv")
 
+LIRE_Dal_all_dated_types <- LIRE_Dal_all_dated %>% 
+  count(type_of_monument_clean, type_of_inscription_auto)
+write.csv(LIRE_Dal_all_dated_types,
+          file = "output_tables/corpus/dated/types/LIRE_Dalmatia_all_types_dated_types.csv")
+
+LIRE_Dal_all_dated_monu_types <- LIRE_Dal_all_dated %>% 
+  count(type_of_monument_clean)
+write.csv(LIRE_Dal_all_dated_monu_types,
+          file = "output_tables/corpus/dated/types/LIRE_Dalmatia_all_types_dated_monu_types.csv")
+
+LIRE_Dal_all_dated_inscr_types <- LIRE_Dal_all_dated %>% 
+  count(type_of_inscription_auto)
+write.csv(LIRE_Dal_all_dated_inscr_types,
+          file = "output_tables/corpus/dated/types/LIRE_Dalmatia_all_types_dated_inscr_types.csv")
+
 LIRE_Dal_corpus_types <- LIRE_Dal_corpus %>% 
   count(type_of_monument_clean, type_of_inscription_auto)
 write.csv(LIRE_Dal_corpus_types,
@@ -434,3 +449,18 @@ LIRE_Dal_corpus_dated_place_filtering_inscr_types <- LIRE_Dal_corpus_dated_place
   count(type_of_inscription_auto)
 write.csv(LIRE_Dal_corpus_dated_place_filtering_inscr_types,
           file = "output_tables/corpus/dated/types/LIRE_corpus_dated_place_filter_inscr_types.csv")
+
+LIRE_Dal_all_corpus_dated_types <- LIRE_Dal_all_corpus_dated %>% 
+  count(type_of_monument_clean, type_of_inscription_auto)
+write.csv(LIRE_Dal_all_corpus_dated_types,
+          file = "output_tables/corpus/dated/types/LIRE_corpus_all _types_dated_types.csv")
+
+LIRE_Dal_all_corpus_dated_monu_types <- LIRE_Dal_all_corpus_dated %>% 
+  count(type_of_monument_clean)
+write.csv(LIRE_Dal_all_corpus_dated_monu_types,
+          file = "output_tables/corpus/dated/types/LIRE_corpus_all _types_dated_monu_types.csv")
+
+LIRE_Dal_all_corpus_dated_inscr_types <- LIRE_Dal_all_corpus_dated %>% 
+  count(type_of_inscription_auto)
+write.csv(LIRE_Dal_all_corpus_dated_inscr_types,
+          file = "output_tables/corpus/dated/types/LIRE_corpus_all _types_dated_inscr_types.csv")
