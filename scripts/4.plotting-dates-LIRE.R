@@ -235,6 +235,26 @@ ggplot(data = LIRE_Dal_corpus_scaled, aes(x = DAT_step, weight = weight)) +
 ggsave("output_images/chronological_distribution/09.LIRE_corpus_plot.jpeg",
        width = 180, height = 100, unit = "mm", dpi = 600)
 
+# Create a cumulative count of events https://www.geeksforgeeks.org/plotting-cumulative-counts-in-ggplot2-in-r/
+LIRE_Dal_corpus_scaled_cumulative <- LIRE_Dal_corpus_scaled %>%
+  arrange(DAT_step) %>%
+  mutate(cumulative_count = row_number())
+
+print(LIRE_Dal_corpus_scaled_cumulative)
+
+ggplot(LIRE_Dal_corpus_scaled_cumulative, aes(x = DAT_step, y = cumulative_count)) +
+  geom_line(color = "#FF8247", size = 1) +
+labs(title = "Cumulative Count of Events Over Time",
+     x = "Date",
+     y = "Cumulative Count") +
+  scale_x_continuous(
+    limits = c(-50, 350),
+    breaks = seq(-50, 350, by = 25)) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
 LIRE_Dal_corpus_place_filtering_scaled <- scaleweight(datsteps(LIRE_Dal_corpus_place_filtering_na,
                                                          stepsize = 25),
                                                 var = "all")
