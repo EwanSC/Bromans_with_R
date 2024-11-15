@@ -172,6 +172,9 @@ OLD_LIRE_Dal_corpus_all_places <- load_military_terms_and_sites(LIRE_Dal_all)
 OLD_LIRE_Dal_corpus <- load_military_terms(LIRE_Dal)
 OLD_LIRE_Dal_corpus_places <- load_military_terms_and_sites(LIRE_Dal)
 
+write.csv(OLD_LIRE_Dal_corpus,
+          file = "output_tables/drafts/OLD_LIRE_Dal_corpus.csv")
+
 # new
 new_military_terms <- function(dataframe) {
   library(sqldf)
