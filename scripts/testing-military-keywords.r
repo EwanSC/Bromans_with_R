@@ -1,7 +1,9 @@
 library(dplyr)
 library(sqldf)
+library(arsenal)
 
-LIRE_Dalmatia <-
+
+LIRE_Dal_all <-
   read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types.csv")
 
 LIRE_Dal_all_dated <-
@@ -163,3 +165,430 @@ load_military_terms_and_sites <- function(dataframe) {
                   ")
   return(loaded_military_terms_and_sites)
 }
+
+# test old 
+OLD_LIRE_Dal_corpus_all <- load_military_terms(LIRE_Dal_all)
+OLD_LIRE_Dal_corpus_all_places <- load_military_terms_and_sites(LIRE_Dal_all)
+OLD_LIRE_Dal_corpus <- load_military_terms(LIRE_Dal)
+OLD_LIRE_Dal_corpus_places <- load_military_terms_and_sites(LIRE_Dal)
+
+# new
+new_military_terms <- function(dataframe) {
+  library(sqldf)
+  library(dplyr)
+  new_military_terms <- sqldf("Select * from dataframe
+  WHERE clean_text_interpretive_word 
+                    LIKE '%actari%'
+                  or clean_text_interpretive_word
+                    LIKE '%adiutor%'
+                  or clean_text_interpretive_word
+                    LIKE '%aerarii%'
+                  or clean_text_interpretive_word
+                    LIKE '%ala%'
+                  or clean_text_interpretive_word
+                    LIKE '%aquilices%'
+                  or clean_text_interpretive_word
+                    LIKE '%aquilifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%arcuari%'
+                  or clean_text_interpretive_word
+                    LIKE '%armatura%'
+                  or clean_text_interpretive_word
+                    LIKE '%armorum%'
+                  or clean_text_interpretive_word
+                    LIKE '%artifices%'
+                  or clean_text_interpretive_word
+                    LIKE '%artifix%'
+                  or clean_text_interpretive_word
+                    LIKE '%baiulus%'
+                  or clean_text_interpretive_word
+                    LIKE '%ballistrari%'
+                  or clean_text_interpretive_word
+                    LIKE '%beneficiari%'
+                  or clean_text_interpretive_word
+                    LIKE '%bucinator%'
+                  or clean_text_interpretive_word
+                    LIKE '%bucularum%'
+                  or clean_text_interpretive_word
+                    LIKE '%capsari%'
+                  or clean_text_interpretive_word
+                    LIKE '%carpentari%'
+                  or clean_text_interpretive_word
+                    LIKE '%centurio%'
+                  or clean_text_interpretive_word
+                    LIKE '%centurio%'
+                  or clean_text_interpretive_word
+                    LIKE '%claviculari%'
+                  or clean_text_interpretive_word
+                    LIKE '%cohors%'
+                  or clean_text_interpretive_word
+                    LIKE '%cohort%'
+                  or clean_text_interpretive_word
+                    LIKE '%commentariensis%'
+                  or clean_text_interpretive_word
+                    LIKE '%cornicular%'
+                  or clean_text_interpretive_word
+                    LIKE '%cornicen%'
+                  or clean_text_interpretive_word
+                    LIKE '%armorum%'
+                  or clean_text_interpretive_word
+                    LIKE '%custos basilicae%'
+                  or clean_text_interpretive_word
+                    LIKE '%decurio%'
+                  or clean_text_interpretive_word
+                    LIKE '%discens%'
+                  or clean_text_interpretive_word
+                    LIKE '%discentes%'
+                  or clean_text_interpretive_word
+                    LIKE '%doctorfabrum%'
+                  or clean_text_interpretive_word
+                    LIKE '%duplicari%'
+                  or clean_text_interpretive_word
+                    LIKE '%duplari%'
+                  or clean_text_interpretive_word
+                    LIKE '%eques%'
+                  or clean_text_interpretive_word
+                    LIKE '%equit%'
+                  or clean_text_interpretive_word
+                    LIKE '%evocat%'
+                  or clean_text_interpretive_word
+                    LIKE '%exactus%'
+                  or clean_text_interpretive_word
+                    LIKE '%exceptor%'
+                  or clean_text_interpretive_word
+                    LIKE '%fabri%'
+                  or clean_text_interpretive_word
+                    LIKE '%ferrari%'
+                  or clean_text_interpretive_word
+                    LIKE '%frumentari%'
+                  or clean_text_interpretive_word
+                    LIKE '%gubernator%'
+                  or clean_text_interpretive_word
+                    LIKE '%hastiliari%'
+                  or clean_text_interpretive_word
+                    LIKE '%horologiarius%'
+                  or clean_text_interpretive_word
+                    LIKE '%imaginifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%immunis%'
+                  or clean_text_interpretive_word
+                    LIKE '%immun% cerari%'
+                  or clean_text_interpretive_word
+                    LIKE '%interpres%'
+                  or clean_text_interpretive_word
+                    LIKE '%lapidarii%'
+                  or clean_text_interpretive_word
+                    LIKE '%legio%'
+                  or clean_text_interpretive_word
+                    LIKE '%librari%'
+                  or clean_text_interpretive_word
+                    LIKE '%librator%'
+                  or clean_text_interpretive_word
+                    LIKE '%marsus%'
+                  or clean_text_interpretive_word
+                    LIKE '%medic%'
+                  or clean_text_interpretive_word
+                    LIKE '%mensor%'
+                  or clean_text_interpretive_word
+                    LIKE '%mensor%'
+                  or clean_text_interpretive_word
+                    LIKE '%miles%'
+                  or clean_text_interpretive_word
+                    LIKE '%milites%'
+                  or clean_text_interpretive_word
+                    LIKE '%militis%'
+                  or clean_text_interpretive_word
+                    LIKE '%militibus%'
+                  or clean_text_interpretive_word
+                    LIKE '%munifex%'
+                  or clean_text_interpretive_word
+                    LIKE '%munific%'
+                  or clean_text_interpretive_word
+                    LIKE '%optio%'
+                  or clean_text_interpretive_word
+                    LIKE '%plumbari%'
+                  or clean_text_interpretive_word
+                    LIKE '%pollio%'
+                  or clean_text_interpretive_word
+                    LIKE '%praeco%'
+                  or clean_text_interpretive_word
+                    LIKE '%praefect%'
+                  or clean_text_interpretive_word
+                    LIKE '%primi pili%'
+                  or clean_text_interpretive_word
+                    LIKE '%primo pilo%'
+                  or clean_text_interpretive_word
+                    LIKE '%primus pilus%'
+                  or clean_text_interpretive_word
+                    LIKE '%primipilus%'
+                  or clean_text_interpretive_word
+                    LIKE '%principalis%'
+                  or clean_text_interpretive_word
+                    LIKE '%principales%'
+                  or clean_text_interpretive_word
+                    LIKE '%quaestionari%'
+                  or clean_text_interpretive_word
+                    LIKE '%sagittari%'
+                  or clean_text_interpretive_word
+                    LIKE '%scandulari%'
+                  or clean_text_interpretive_word
+                    LIKE '%secutor%'
+                  or clean_text_interpretive_word
+                    LIKE '%sesquiplari%'
+                  or clean_text_interpretive_word
+                    LIKE '%signifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%singulari%'
+                  or clean_text_interpretive_word
+                    LIKE '%speculari%'
+                  or clean_text_interpretive_word
+                    LIKE '%speculator%'
+                  or clean_text_interpretive_word
+                    LIKE '%stator%'
+                  or clean_text_interpretive_word
+                    LIKE '%strator%'
+                  or clean_text_interpretive_word
+                    LIKE '%tablifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%tesserari%'
+                  or clean_text_interpretive_word
+                    LIKE '%tubari%'
+                  or clean_text_interpretive_word
+                    LIKE '%tubican%'
+                  or clean_text_interpretive_word
+                    LIKE '%turarium%'
+                  or clean_text_interpretive_word
+                    LIKE '%turma%'
+                  or clean_text_interpretive_word
+                    LIKE '%venator%'
+                  or clean_text_interpretive_word
+                    LIKE '%veteran%'
+                  or clean_text_interpretive_word
+                    LIKE '%veterinari%'
+                  or clean_text_interpretive_word
+                    LIKE '%vexillari%'
+                  or clean_text_interpretive_word
+                    LIKE '%victimari%'
+                  or status_notation
+                    LIKE '%milites%'
+                  ")
+  return(new_military_terms)
+}
+
+new_military_terms_and_sites <- function(dataframe) {
+  library(sqldf)
+  library(dplyr)
+  new_military_terms_and_sites <- sqldf("Select * from dataframe
+  WHERE clean_text_interpretive_word 
+                    LIKE '%actari%'
+                  or clean_text_interpretive_word
+                    LIKE '%adiutor%'
+                  or clean_text_interpretive_word
+                    LIKE '%aerarii%'
+                  or clean_text_interpretive_word
+                    LIKE '%ala%'
+                  or clean_text_interpretive_word
+                    LIKE '%aquilices%'
+                  or clean_text_interpretive_word
+                    LIKE '%aquilifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%arcuari%'
+                  or clean_text_interpretive_word
+                    LIKE '%armatura%'
+                  or clean_text_interpretive_word
+                    LIKE '%armorum%'
+                  or clean_text_interpretive_word
+                    LIKE '%artifices%'
+                  or clean_text_interpretive_word
+                    LIKE '%artifix%'
+                  or clean_text_interpretive_word
+                    LIKE '%baiulus%'
+                  or clean_text_interpretive_word
+                    LIKE '%ballistrari%'
+                  or clean_text_interpretive_word
+                    LIKE '%beneficiari%'
+                  or clean_text_interpretive_word
+                    LIKE '%bucinator%'
+                  or clean_text_interpretive_word
+                    LIKE '%bucularum%'
+                  or clean_text_interpretive_word
+                    LIKE '%capsari%'
+                  or clean_text_interpretive_word
+                    LIKE '%carpentari%'
+                  or clean_text_interpretive_word
+                    LIKE '%centurio%'
+                  or clean_text_interpretive_word
+                    LIKE '%centurio%'
+                  or clean_text_interpretive_word
+                    LIKE '%claviculari%'
+                  or clean_text_interpretive_word
+                    LIKE '%cohors%'
+                  or clean_text_interpretive_word
+                    LIKE '%cohort%'
+                  or clean_text_interpretive_word
+                    LIKE '%commentariensis%'
+                  or clean_text_interpretive_word
+                    LIKE '%cornicular%'
+                  or clean_text_interpretive_word
+                    LIKE '%cornicen%'
+                  or clean_text_interpretive_word
+                    LIKE '%armorum%'
+                  or clean_text_interpretive_word
+                    LIKE '%custos basilicae%'
+                  or clean_text_interpretive_word
+                    LIKE '%decurio%'
+                  or clean_text_interpretive_word
+                    LIKE '%discens%'
+                  or clean_text_interpretive_word
+                    LIKE '%discentes%'
+                  or clean_text_interpretive_word
+                    LIKE '%doctorfabrum%'
+                  or clean_text_interpretive_word
+                    LIKE '%duplicari%'
+                  or clean_text_interpretive_word
+                    LIKE '%duplari%'
+                  or clean_text_interpretive_word
+                    LIKE '%eques%'
+                  or clean_text_interpretive_word
+                    LIKE '%equit%'
+                  or clean_text_interpretive_word
+                    LIKE '%evocat%'
+                  or clean_text_interpretive_word
+                    LIKE '%exactus%'
+                  or clean_text_interpretive_word
+                    LIKE '%exceptor%'
+                  or clean_text_interpretive_word
+                    LIKE '%fabri%'
+                  or clean_text_interpretive_word
+                    LIKE '%ferrari%'
+                  or clean_text_interpretive_word
+                    LIKE '%frumentari%'
+                  or clean_text_interpretive_word
+                    LIKE '%gubernator%'
+                  or clean_text_interpretive_word
+                    LIKE '%hastiliari%'
+                  or clean_text_interpretive_word
+                    LIKE '%horologiarius%'
+                  or clean_text_interpretive_word
+                    LIKE '%imaginifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%immunis%'
+                  or clean_text_interpretive_word
+                    LIKE '%immun% cerari% '
+                  or clean_text_interpretive_word
+                    LIKE '%interpres%'
+                  or clean_text_interpretive_word
+                    LIKE '%lapidarii%'
+                  or clean_text_interpretive_word
+                    LIKE '%legio%'
+                  or clean_text_interpretive_word
+                    LIKE '%librari%'
+                  or clean_text_interpretive_word
+                    LIKE '%librator%'
+                  or clean_text_interpretive_word
+                    LIKE '%marsus%'
+                  or clean_text_interpretive_word
+                    LIKE '%medic%'
+                  or clean_text_interpretive_word
+                    LIKE '%mensor%'
+                  or clean_text_interpretive_word
+                    LIKE '%mensor%'
+                  or clean_text_interpretive_word
+                    LIKE '%miles%'
+                  or clean_text_interpretive_word
+                    LIKE '%milites%'
+                  or clean_text_interpretive_word
+                    LIKE '%militis%'
+                  or clean_text_interpretive_word
+                    LIKE '%militibus%'
+                  or clean_text_interpretive_word
+                    LIKE '%munifex%'
+                  or clean_text_interpretive_word
+                    LIKE '%munific%'
+                  or clean_text_interpretive_word
+                    LIKE '%optio%'
+                  or clean_text_interpretive_word
+                    LIKE '%plumbari%'
+                  or clean_text_interpretive_word
+                    LIKE '%pollio%'
+                  or clean_text_interpretive_word
+                    LIKE '%praeco%'
+                  or clean_text_interpretive_word
+                    LIKE '%praefect%'
+                  or clean_text_interpretive_word
+                    LIKE '%primi pili%'
+                  or clean_text_interpretive_word
+                    LIKE '%primo pilo%'
+                  or clean_text_interpretive_word
+                    LIKE '%primus pilus%'
+                  or clean_text_interpretive_word
+                    LIKE '%primipilus%'
+                  or clean_text_interpretive_word
+                    LIKE '%principalis%'
+                  or clean_text_interpretive_word
+                    LIKE '%principales%'
+                  or clean_text_interpretive_word
+                    LIKE '%quaestionari%'
+                  or clean_text_interpretive_word
+                    LIKE '%sagittari%'
+                  or clean_text_interpretive_word
+                    LIKE '%scandulari%'
+                  or clean_text_interpretive_word
+                    LIKE '%secutor%'
+                  or clean_text_interpretive_word
+                    LIKE '%sesquiplari%'
+                  or clean_text_interpretive_word
+                    LIKE '%signifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%singulari%'
+                  or clean_text_interpretive_word
+                    LIKE '%speculari%'
+                  or clean_text_interpretive_word
+                    LIKE '%speculator%'
+                  or clean_text_interpretive_word
+                    LIKE '%stator%'
+                  or clean_text_interpretive_word
+                    LIKE '%strator%'
+                  or clean_text_interpretive_word
+                    LIKE '%tablifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%tesserari%'
+                  or clean_text_interpretive_word
+                    LIKE '%tubari%'
+                  or clean_text_interpretive_word
+                    LIKE '%tubican%'
+                  or clean_text_interpretive_word
+                    LIKE '%turarium%'
+                  or clean_text_interpretive_word
+                    LIKE '%turma%'
+                  or clean_text_interpretive_word
+                    LIKE '%venator%'
+                  or clean_text_interpretive_word
+                    LIKE '%veteran%'
+                  or clean_text_interpretive_word
+                    LIKE '%veterinari%'
+                  or clean_text_interpretive_word
+                    LIKE '%vexillari%'
+                  or clean_text_interpretive_word
+                    LIKE '%victimari%'
+                  or status_notation
+                    LIKE '%milites%'
+                  or findspot_ancient_clean = 'Tilurium'
+                  or findspot_ancient_clean = 'Burnum'
+                  or findspot_ancient_clean = 'Andetrium'
+                  or findspot_ancient_clean = 'Bigeste'
+                  or findspot_modern_clean = 'Ljubuški'
+                  ")
+return(new_military_terms_and_sites)
+}
+
+# test new
+NEW_LIRE_Dal_corpus_all <- new_military_terms(LIRE_Dal_all)
+NEW_LIRE_Dal_corpus_all_places <- new_military_terms_and_sites(LIRE_Dal_all)
+NEW_LIRE_Dal_corpus <- new_military_terms(LIRE_Dal)
+NEW_LIRE_Dal_corpus_places <- new_military_terms_and_sites(LIRE_Dal)
+
+comparedf(NEW_LIRE_Dal_corpus,OLD_LIRE_Dal_corpus)
+
+write.csv(NEW_LIRE_Dal_corpus,
+          file = "output_tables/drafts/NEW_LIRE_Dal_corpus.csv")
