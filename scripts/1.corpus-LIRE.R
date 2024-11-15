@@ -11,9 +11,6 @@ library(arrow)
 LIRE_Dalmatia <-
   read.csv("data/LIRE/LIRE_Dalmatia.csv")
 
-# this cleaning is stuffing up plotting for some reason... line removed
-#, na = c("","NA","NULL",NULL)
-
 # function to remove unwanted monument/inscription types
 clean_monument_types <- function(dataframe) {
   library(dplyr)
@@ -43,6 +40,47 @@ clean_monument_types <- function(dataframe) {
   return(clean_monument_types)
 }
 
+# function to get epitaphs and nulls
+epitaph_na <- function(dataframe) {
+  library(dplyr)
+  epitaph_na <- dataframe %>%
+    filter(type_of_inscription_auto %in% c("epitaph",
+                                           "NULL",
+                                           NA))  
+  return(epitaph_na)
+}
+
+# function to get stelae and nulls
+stela_na <- function(dataframe) {
+  library(dplyr)
+  stela_na <- dataframe %>%
+    filter(type_of_monument_clean %in% c("stele",
+                                          "NULL",
+                                          NA))  
+  return(stela_na)
+}
+
+# function to get votive inscriptions and nulls
+votive_na <- function(dataframe) {
+  library(dplyr)
+  votive_na <- dataframe %>%
+    filter(type_of_inscription_auto %in% c("votive inscription",
+                                           "NULL",
+                                           NA))
+  return(votive_na)
+}
+
+# function to get altars and nulls
+altar_na <- function(dataframe) {
+  library(dplyr)
+  altar_na <- dataframe %>%
+    filter(type_of_monument_clean %in% c("altar",
+                                          "NULL",
+                                          NA))  
+  return(altar_na)
+}
+
+
 #function to put within date parameter (Claudians - Antonines)
 within_date_range <- function(dataframe) {
   library(dplyr)
@@ -53,25 +91,67 @@ within_date_range <- function(dataframe) {
 }
 
 # run them on the data to make dated/undated base and cleaned base data
-LIRE_Dal <- clean_monument_types(LIRE_Dalmatia)
-LIRE_Dal_dated <- within_date_range(LIRE_Dal)
-LIRE_Dal_all_dated <- within_date_range(LIRE_Dalmatia)
-
 LIRE_Dal_all <- LIRE_Dalmatia
 LIRE_Dal_all$count<- 1
 write.csv(LIRE_Dal_all,
           file = "output_tables/corpus/undated/LIRE_Dalmatia_all_types.csv")
-LIRE_Dal$count<- 1
-write.csv(LIRE_Dal,
-          file = "output_tables/corpus/undated/LIRE_Dalmatia.csv")
-LIRE_Dal_dated$count<- 1
-write.csv(LIRE_Dal_dated,
-          file = "output_tables/corpus/dated/LIRE_Dalmatia_dated.csv")
+
+LIRE_Dal_all_dated <- within_date_range(LIRE_Dalmatia)
 LIRE_Dal_all_dated$count<- 1
 write.csv(LIRE_Dal_all_dated,
           file = "output_tables/corpus/dated/LIRE_Dalmatia_all_types_dated.csv")
 
-# make function for filtering military monuments 
+LIRE_Dal <- clean_monument_types(LIRE_Dalmatia)
+LIRE_Dal$count<- 1
+write.csv(LIRE_Dal,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia.csv")
+
+LIRE_Dal_dated <- within_date_range(LIRE_Dal)
+LIRE_Dal_dated$count<- 1
+write.csv(LIRE_Dal_dated,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_dated.csv")
+
+LIRE_Dal_stela <- stela_na(LIRE_Dalmatia)
+LIRE_Dal_stela$count<- 1
+write.csv(LIRE_Dal_stela,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia_stela.csv")
+
+LIRE_Dal_Stela_dated <- within_date_range(LIRE_Dal_stela)
+LIRE_Dal_Stela_dated$count<- 1
+write.csv(LIRE_Dal_Stela_dated,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_stela_dated.csv")
+
+LIRE_Dal_epitaph <- epitaph_na(LIRE_Dalmatia)
+LIRE_Dal_epitaph$count<- 1
+write.csv(LIRE_Dal_epitaph,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia_epitaph.csv")
+
+LIRE_Dal_epitaph_dated <- within_date_range(LIRE_Dal_epitaph)
+LIRE_Dal_epitaph_dated$count<- 1
+write.csv(LIRE_Dal_epitaph_dated,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_epitaph_dated.csv")
+
+LIRE_Dal_votive <- votive_na(LIRE_Dalmatia)
+LIRE_Dal_votive$count<- 1
+write.csv(LIRE_Dal_votive,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia_votive.csv")
+
+LIRE_Dal_votive_dated <- within_date_range(LIRE_Dal_votive)
+LIRE_Dal_votive_dated$count<- 1
+write.csv(LIRE_Dal_votive_dated,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_votive_dated.csv")
+
+LIRE_Dal_altar <- altar_na(LIRE_Dalmatia)
+LIRE_Dal_altar$count<- 1
+write.csv(LIRE_Dal_altar,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia_altar.csv")
+
+LIRE_Dal_altar_dated <- within_date_range(LIRE_Dal_altar)
+LIRE_Dal_altar_dated$count<- 1
+write.csv(LIRE_Dal_altar_dated,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_altar_dated.csv")
+
+# make function for filtering military monuments
 # (some based on place, others just key words and tags)
 
 ##with just key words

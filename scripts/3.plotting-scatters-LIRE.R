@@ -519,14 +519,14 @@ plot9 <-
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
   geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
-  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
-  geom_label_repel(data = key_sites_ll,
-                  fill = "white",
-                  aes(x = Longitude,
-                  y = Latitude,
-                  label = findspot_ancient_clean),
-                  nudge_x = c( 0,  -1, -1.75,-1,    0, -0.5,0, -1,-0.75), 
-                  nudge_y = c(-1,-0.5, -0.25, 0,-0.75,-0.25,1,0.5,-0.75))+
+  geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = dense_sites_dated_ll,
+                   fill = "white",
+                   aes(x = Longitude,
+                       y = Latitude,
+                       label = findspot_ancient_clean),
+                   nudge_x = c( 0,  -1, -1.75,-1,    0, -0.5,0, -1,-0.75), 
+                   nudge_y = c(-1,-0.5, -0.25, 0,-0.75,-0.25,1,0.5,-0.75))+
   labs(size = "Density",
        caption = paste("n = ",
                        LIRE_Dal_dated_n$n,
