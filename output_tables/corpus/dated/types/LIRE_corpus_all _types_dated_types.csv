@@ -1,41 +1,38 @@
 "","type_of_monument_clean","type_of_inscription_auto","n"
 "1","NULL","boundary inscription",2
 "2","NULL","building/dedicatory inscription",4
-"3","NULL","epitaph",144
+"3","NULL","epitaph",128
 "4","NULL","honorific inscription",9
-"5","NULL","votive inscription",7
-"6","NULL",NA,11
+"5","NULL","votive inscription",6
+"6","NULL",NA,9
 "7","altar","building/dedicatory inscription",2
-"8","altar","epitaph",11
-"9","altar","votive inscription",29
+"8","altar","epitaph",7
+"9","altar","votive inscription",16
 "10","architectural member","building/dedicatory inscription",1
 "11","architectural member","honorific inscription",1
 "12","architectural member","owner/artist inscription",1
-"13","base","epitaph",3
+"13","base","epitaph",1
 "14","block","building/dedicatory inscription",4
 "15","cippus","boundary inscription",6
 "16","cliff","boundary inscription",2
 "17","cliff","epitaph",6
 "18","honorific/grave/votive column","epitaph",1
 "19","honorific/grave/votive column","votive inscription",1
-"20","instrumentum militare","owner/artist inscription",1
-"21","relief","votive inscription",1
-"22","sarcophagus","epitaph",2
-"23","statue base","epitaph",2
-"24","statue base","honorific inscription",10
-"25","statue base","votive inscription",3
-"26","stele","epitaph",125
-"27","stele",NA,1
-"28","table","identification inscription",1
-"29","tabula","boundary inscription",3
-"30","tabula","building/dedicatory inscription",7
-"31","tabula","epitaph",31
-"32","tabula","honorific inscription",1
-"33","tabula","military diploma",2
-"34","tabula","votive inscription",5
-"35","tile","owner/artist inscription",8
-"36","urn","epitaph",4
-"37",NA,"epitaph",10
-"38",NA,"honorific inscription",1
-"39",NA,"military diploma",2
-"40",NA,"votive inscription",2
+"20","statue base","epitaph",1
+"21","statue base","honorific inscription",10
+"22","statue base","votive inscription",2
+"23","stele","epitaph",114
+"24","stele",NA,1
+"25","table","identification inscription",1
+"26","tabula","boundary inscription",3
+"27","tabula","building/dedicatory inscription",7
+"28","tabula","epitaph",22
+"29","tabula","honorific inscription",1
+"30","tabula","military diploma",2
+"31","tabula","votive inscription",3
+"32","tile","owner/artist inscription",8
+"33","urn","epitaph",1
+"34",NA,"epitaph",8
+"35",NA,"honorific inscription",1
+"36",NA,"military diploma",2
+"37",NA,"votive inscription",1

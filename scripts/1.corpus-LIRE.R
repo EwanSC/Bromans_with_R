@@ -1,6 +1,6 @@
 # getting corpus from cleaned LIRE data
 # started 5/9/2024
-# edited 15/11/2024
+# edited 18/11/2024
 library(dplyr)
 library(sqldf)
 library(arrow)
@@ -41,51 +41,42 @@ clean_monument_types <- function(dataframe) {
 }
 
 # function to get epitaphs and nulls
-epitaph_na <- function(dataframe) {
+epitaphs <- function(dataframe) {
   library(dplyr)
-  epitaph_na <- dataframe %>%
-    filter(type_of_inscription_auto %in% c("epitaph",
-                                           "NULL",
-                                           NA))  
-  return(epitaph_na)
+  epitaphs <- dataframe %>%
+    filter(type_of_inscription_auto %in% c("epitaph"))
+  return(epitaphs)
 }
 
 # function to get stelae and nulls
-stela_na <- function(dataframe) {
+stelas <- function(dataframe) {
   library(dplyr)
-  stela_na <- dataframe %>%
-    filter(type_of_monument_clean %in% c("stele",
-                                          "NULL",
-                                          NA))  
-  return(stela_na)
+  stelas <- dataframe %>%
+    filter(type_of_monument_clean %in% c("stele"))
+  return(stelas)
 }
 
 # function to get votive inscriptions and nulls
-votive_na <- function(dataframe) {
+votives <- function(dataframe) {
   library(dplyr)
-  votive_na <- dataframe %>%
-    filter(type_of_inscription_auto %in% c("votive inscription",
-                                           "NULL",
-                                           NA))
-  return(votive_na)
+  votives <- dataframe %>%
+    filter(type_of_inscription_auto %in% c("votive inscription"))
+  return(votives)
 }
 
 # function to get altars and nulls
-altar_na <- function(dataframe) {
+altars <- function(dataframe) {
   library(dplyr)
-  altar_na <- dataframe %>%
-    filter(type_of_monument_clean %in% c("altar",
-                                          "NULL",
-                                          NA))  
-  return(altar_na)
+  altars <- dataframe %>%
+    filter(type_of_monument_clean %in% c("altar"))
+  return(altars)
 }
-
 
 #function to put within date parameter (Claudians - Antonines)
 within_date_range <- function(dataframe) {
   library(dplyr)
   within_date_range <- dataframe %>%
-    filter(not_before %in% (-35:192), not_after %in% (1:200)) %>%
+    filter(not_before %in% (-35:192), not_after %in% (1:199)) %>%
     arrange(not_after, not_before)
   return(within_date_range)
 }
@@ -111,17 +102,17 @@ LIRE_Dal_dated$count<- 1
 write.csv(LIRE_Dal_dated,
           file = "output_tables/corpus/dated/LIRE_Dalmatia_dated.csv")
 
-LIRE_Dal_stela <- stela_na(LIRE_Dalmatia)
+LIRE_Dal_stela <- stelas(LIRE_Dalmatia)
 LIRE_Dal_stela$count<- 1
 write.csv(LIRE_Dal_stela,
           file = "output_tables/corpus/undated/LIRE_Dalmatia_stela.csv")
 
-LIRE_Dal_Stela_dated <- within_date_range(LIRE_Dal_stela)
-LIRE_Dal_Stela_dated$count<- 1
-write.csv(LIRE_Dal_Stela_dated,
+LIRE_Dal_stela_dated <- within_date_range(LIRE_Dal_stela)
+LIRE_Dal_stela_dated$count<- 1
+write.csv(LIRE_Dal_stela_dated,
           file = "output_tables/corpus/dated/LIRE_Dalmatia_stela_dated.csv")
 
-LIRE_Dal_epitaph <- epitaph_na(LIRE_Dalmatia)
+LIRE_Dal_epitaph <- epitaphs(LIRE_Dalmatia)
 LIRE_Dal_epitaph$count<- 1
 write.csv(LIRE_Dal_epitaph,
           file = "output_tables/corpus/undated/LIRE_Dalmatia_epitaph.csv")
@@ -131,7 +122,7 @@ LIRE_Dal_epitaph_dated$count<- 1
 write.csv(LIRE_Dal_epitaph_dated,
           file = "output_tables/corpus/dated/LIRE_Dalmatia_epitaph_dated.csv")
 
-LIRE_Dal_votive <- votive_na(LIRE_Dalmatia)
+LIRE_Dal_votive <- votives(LIRE_Dalmatia)
 LIRE_Dal_votive$count<- 1
 write.csv(LIRE_Dal_votive,
           file = "output_tables/corpus/undated/LIRE_Dalmatia_votive.csv")
@@ -141,7 +132,7 @@ LIRE_Dal_votive_dated$count<- 1
 write.csv(LIRE_Dal_votive_dated,
           file = "output_tables/corpus/dated/LIRE_Dalmatia_votive_dated.csv")
 
-LIRE_Dal_altar <- altar_na(LIRE_Dalmatia)
+LIRE_Dal_altar <- altars(LIRE_Dalmatia)
 LIRE_Dal_altar$count<- 1
 write.csv(LIRE_Dal_altar,
           file = "output_tables/corpus/undated/LIRE_Dalmatia_altar.csv")
@@ -212,14 +203,71 @@ load_military_terms <- function(dataframe) {
                   or status_notation
                     LIKE '%milites%'
                     ")
-  return(load_military_terms)
+load_military_terms <- load_military_terms %>%
+  filter(!LIST.ID %in% c("468295",
+                    "468613",
+                    "468717",
+                    "468832",
+                    "469155",
+                    "469186",
+                    "469226",
+                    "469341",
+                    "469464",
+                    "469506",
+                    "469916",
+                    "470136",
+                    "470434",
+                    "470543",
+                    "470704",
+                    "470864",
+                    "471007",
+                    "471036",
+                    "471038",
+                    "471230",
+                    "471402",
+                    "471414",
+                    "471496",
+                    "471645",
+                    "471678",
+                    "471682",
+                    "471759",
+                    "471777",
+                    "471800",
+                    "471809",
+                    "471996",
+                    "472452",
+                    "472453",
+                    "472586",
+                    "472928",
+                    "472984",
+                    "473108",
+                    "473129",
+                    "473194",
+                    "473217",
+                    "473422",
+                    "473564",
+                    "473959",
+                    "474003",
+                    "474473",
+                    "474478",
+                    "474519",
+                    "474682",
+                    "474858",
+                    "474992",
+                    "475226",
+                    "475259",
+                    "475320",
+                    "475377",
+                    "475378",
+                    "500263"))
+return(load_military_terms)
 }
 
 ## with places and key words
 load_military_terms_and_sites <- function(dataframe) {
   library(sqldf)
   library(dplyr)
-  loaded_military_terms_and_sites <- sqldf("Select * from dataframe
+  load_military_terms_and_sites <- sqldf("Select * from dataframe
                   WHERE clean_text_interpretive_word 
                     LIKE '%legio%'
                   OR clean_text_interpretive_word 
@@ -278,7 +326,64 @@ load_military_terms_and_sites <- function(dataframe) {
                   OR findspot_ancient_clean = 'Bigeste'
                   OR findspot_modern_clean = 'Ljubuški'
                   ")
-  return(loaded_military_terms_and_sites)
+load_military_terms_and_sites <- load_military_terms_and_sites %>%
+  filter(!LIST.ID %in% c("468295",
+                    "468613",
+                    "468717",
+                    "468832",
+                    "469155",
+                    "469186",
+                    "469226",
+                    "469341",
+                    "469464",
+                    "469506",
+                    "469916",
+                    "470136",
+                    "470434",
+                    "470543",
+                    "470704",
+                    "470864",
+                    "471007",
+                    "471036",
+                    "471038",
+                    "471230",
+                    "471402",
+                    "471414",
+                    "471496",
+                    "471645",
+                    "471678",
+                    "471682",
+                    "471759",
+                    "471777",
+                    "471800",
+                    "471809",
+                    "471996",
+                    "472452",
+                    "472453",
+                    "472586",
+                    "472928",
+                    "472984",
+                    "473108",
+                    "473129",
+                    "473194",
+                    "473217",
+                    "473422",
+                    "473564",
+                    "473959",
+                    "474003",
+                    "474473",
+                    "474478",
+                    "474519",
+                    "474682",
+                    "474858",
+                    "474992",
+                    "475226",
+                    "475259",
+                    "475320",
+                    "475377",
+                    "475378",
+                    "500263"))
+return(load_military_terms_and_sites)
 }
 
 #now run functions to make military corpus (undated, dated, key words and place, no places)
@@ -304,6 +409,46 @@ LIRE_Dal_all_corpus_place_filtering$count<- 1
 write.csv(LIRE_Dal_all_corpus_place_filtering,
           file = "output_tables/corpus/undated/LIRE_corpus_all_types_place_filter.csv")
 
+LIRE_Dal_corpus_stela <- load_military_terms(LIRE_Dal_stela)
+LIRE_Dal_corpus_stela$count<- 1
+write.csv(LIRE_Dal_corpus_stela,
+          file = "output_tables/corpus/undated/LIRE_corpus_stela.csv")
+
+LIRE_Dal_corpus_stela_place_filtering <- load_military_terms_and_sites(LIRE_Dal_stela)
+LIRE_Dal_corpus_stela_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_stela_place_filtering,
+          file = "output_tables/corpus/undated/LIRE_corpus_stela_place_filter.csv")
+
+LIRE_Dal_corpus_epitaph <- load_military_terms(LIRE_Dal_epitaph)
+LIRE_Dal_corpus_epitaph$count<- 1
+write.csv(LIRE_Dal_corpus_epitaph,
+          file = "output_tables/corpus/undated/LIRE_corpus_epitaph.csv")
+
+LIRE_Dal_corpus_epitaph_place_filtering <- load_military_terms_and_sites(LIRE_Dal_epitaph)
+LIRE_Dal_corpus_epitaph_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_epitaph_place_filtering,
+          file = "output_tables/corpus/undated/LIRE_corpus_epitaph_place_filter.csv")
+
+LIRE_Dal_corpus_votive <- load_military_terms(LIRE_Dal_votive)
+LIRE_Dal_corpus_votive$count<- 1
+write.csv(LIRE_Dal_corpus_votive,
+          file = "output_tables/corpus/undated/LIRE_corpus_votive.csv")
+
+LIRE_Dal_corpus_votive_place_filtering <- load_military_terms_and_sites(LIRE_Dal_votive)
+LIRE_Dal_corpus_votive_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_votive_place_filtering,
+          file = "output_tables/corpus/undated/LIRE_corpus_votive_place_filter.csv")
+
+LIRE_Dal_corpus_altar <- load_military_terms(LIRE_Dal_altar)
+LIRE_Dal_corpus_altar$count<- 1
+write.csv(LIRE_Dal_corpus_altar,
+          file = "output_tables/corpus/undated/LIRE_corpus_altar.csv")
+
+LIRE_Dal_corpus_altar_place_filtering <- load_military_terms_and_sites(LIRE_Dal_altar)
+LIRE_Dal_corpus_altar_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_altar_place_filtering,
+          file = "output_tables/corpus/undated/LIRE_corpus_altar_place_filter.csv")
+
 ##now dated
 LIRE_Dal_corpus_dated <- load_military_terms(LIRE_Dal_dated)
 LIRE_Dal_corpus_dated$count<- 1
@@ -324,6 +469,46 @@ LIRE_Dal_all_corpus_dated_place_filtering <- load_military_terms_and_sites(LIRE_
 LIRE_Dal_all_corpus_dated_place_filtering$count<- 1
 write.csv(LIRE_Dal_all_corpus_dated_place_filtering,
           file = "output_tables/corpus/dated/LIRE_corpus_all_types_dated_place_filter.csv")
+
+LIRE_Dal_corpus_stela_dated <- load_military_terms(LIRE_Dal_stela_dated)
+LIRE_Dal_corpus_stela_dated$count<- 1
+write.csv(LIRE_Dal_corpus_stela_dated,
+          file = "output_tables/corpus/dated/LIRE_corpus_stela_dated.csv")
+
+LIRE_Dal_corpus_stela_dated_place_filtering <- load_military_terms_and_sites(LIRE_Dal_stela_dated)
+LIRE_Dal_corpus_stela_dated_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_stela_dated_place_filtering,
+          file = "output_tables/corpus/dated/LIRE_corpus_stela_dated_place_filter.csv")
+
+LIRE_Dal_corpus_epitaph_dated <- load_military_terms(LIRE_Dal_epitaph_dated)
+LIRE_Dal_corpus_epitaph_dated$count<- 1
+write.csv(LIRE_Dal_corpus_epitaph_dated,
+          file = "output_tables/corpus/dated/LIRE_corpus_epitaph_dated.csv")
+
+LIRE_Dal_corpus_epitaph_dated_place_filtering <- load_military_terms_and_sites(LIRE_Dal_epitaph_dated)
+LIRE_Dal_corpus_epitaph_dated_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_epitaph_dated_place_filtering,
+          file = "output_tables/corpus/dated/LIRE_corpus_epitaph_dated_place_filter.csv")
+
+LIRE_Dal_corpus_votive_dated <- load_military_terms(LIRE_Dal_votive_dated)
+LIRE_Dal_corpus_votive_dated$count<- 1
+write.csv(LIRE_Dal_corpus_votive_dated,
+          file = "output_tables/corpus/dated/LIRE_corpus_votive_dated.csv")
+
+LIRE_Dal_corpus_votive_dated_place_filtering <- load_military_terms_and_sites(LIRE_Dal_votive_dated)
+LIRE_Dal_corpus_votive_dated_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_votive_dated_place_filtering,
+          file = "output_tables/corpus/dated/LIRE_corpus_votive_dated_place_filter.csv")
+
+LIRE_Dal_corpus_altar_dated <- load_military_terms(LIRE_Dal_altar_dated)
+LIRE_Dal_corpus_altar_dated$count<- 1
+write.csv(LIRE_Dal_corpus_altar_dated,
+          file = "output_tables/corpus/dated/LIRE_corpus_altar_dated.csv")
+
+LIRE_Dal_corpus_altar_dated_place_filtering <- load_military_terms_and_sites(LIRE_Dal_altar_dated)
+LIRE_Dal_corpus_altar_dated_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_altar_dated_place_filtering,
+          file = "output_tables/corpus/dated/LIRE_corpus_altar_dated_place_filter.csv")
 
 ##filter clean dalmatia and military without Salona
 ##add value for count
@@ -361,6 +546,38 @@ LIRE_Dal_all_dated_no_salona$count<- 1
 write.csv(LIRE_Dal_all_dated_no_salona,
           file = "output_tables/corpus/dated/LIRE_Dalmatia_all_types_dated_no_salona.csv")
 
+LIRE_Dal_stela_no_salona <- LIRE_Dal_stela %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_Dal_stela_no_salona <- LIRE_Dal_stela_no_salona %>%
+  filter(!place %in% c("Solin / Salona"))
+LIRE_Dal_stela_no_salona$count<- 1
+write.csv(LIRE_Dal_stela_no_salona,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia_stela_no_salona.csv")
+
+LIRE_Dal_stela_dated_no_salona <- LIRE_Dal_stela_dated %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_Dal_stela_dated_no_salona <- LIRE_Dal_stela_dated_no_salona %>%
+  filter(!place %in% c("Solin / Salona"))
+LIRE_Dal_stela_dated_no_salona$count<- 1
+write.csv(LIRE_Dal_stela_dated_no_salona,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_stela_dated_no_salona.csv")
+
+LIRE_Dal_epitaph_no_salona <- LIRE_Dal_epitaph %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_Dal_epitaph_no_salona <- LIRE_Dal_epitaph_no_salona %>%
+  filter(!place %in% c("Solin / Salona"))
+LIRE_Dal_epitaph_no_salona$count<- 1
+write.csv(LIRE_Dal_epitaph_no_salona,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia_epitaph_no_salona.csv")
+
+LIRE_Dal_epitaph_dated_no_salona <- LIRE_Dal_epitaph_dated %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_Dal_epitaph_dated_no_salona <- LIRE_Dal_epitaph_dated_no_salona %>%
+  filter(!place %in% c("Solin / Salona"))
+LIRE_Dal_epitaph_dated_no_salona$count<- 1
+write.csv(LIRE_Dal_epitaph_dated_no_salona,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_epitaph_dated_no_salona.csv")
+
 LIRE_Dal_all_corpus_no_salona <- LIRE_Dal_all_corpus %>%
   filter(!findspot_ancient_clean %in% c("Salonae"))
 LIRE_Dal_all_corpus_no_salona <- LIRE_Dal_all_corpus_no_salona %>%
@@ -377,14 +594,6 @@ LIRE_Dal_corpus_no_salona$count<- 1
 write.csv(LIRE_Dal_corpus_no_salona,
           file = "output_tables/corpus/undated/LIRE_corpus_no_salona.csv")
 
-LIRE_Dal_corpus_dated_no_salona <- LIRE_Dal_corpus_dated %>%
-  filter(!findspot_ancient_clean %in% c("Salonae"))
-LIRE_Dal_corpus_dated_no_salona <- LIRE_Dal_corpus_dated_no_salona %>%
-  filter(!place %in% c("Solin / Salona"))
-LIRE_Dal_corpus_dated_no_salona$count<- 1
-write.csv(LIRE_Dal_corpus_dated_no_salona,
-          file = "output_tables/corpus/dated/LIRE_corpus_dated_no_salona.csv")
-
 LIRE_Dal_all_corpus_dated_no_salona <- LIRE_Dal_all_corpus_dated %>%
   filter(!findspot_ancient_clean %in% c("Salonae"))
 LIRE_Dal_all_corpus_dated_no_salona <- LIRE_Dal_all_corpus_dated_no_salona %>%
@@ -392,6 +601,14 @@ LIRE_Dal_all_corpus_dated_no_salona <- LIRE_Dal_all_corpus_dated_no_salona %>%
 LIRE_Dal_all_corpus_dated_no_salona$count<- 1
 write.csv(LIRE_Dal_all_corpus_dated_no_salona,
           file = "output_tables/corpus/dated/LIRE_corpus_all_types_dated_no_salona.csv")
+
+LIRE_Dal_corpus_dated_no_salona <- LIRE_Dal_corpus_dated %>%
+  filter(!findspot_ancient_clean %in% c("Salonae"))
+LIRE_Dal_corpus_dated_no_salona <- LIRE_Dal_corpus_dated_no_salona %>%
+  filter(!place %in% c("Solin / Salona"))
+LIRE_Dal_corpus_dated_no_salona$count<- 1
+write.csv(LIRE_Dal_corpus_dated_no_salona,
+          file = "output_tables/corpus/dated/LIRE_corpus_dated_no_salona.csv")
 
 # now count monument types
 ## save data

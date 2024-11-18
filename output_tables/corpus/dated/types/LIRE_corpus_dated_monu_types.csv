@@ -1,13 +1,11 @@
 "","type_of_monument_clean","n"
-"1","NULL",162
-"2","altar",40
-"3","base",3
+"1","NULL",143
+"2","altar",23
+"3","base",1
 "4","cliff",6
 "5","honorific/grave/votive column",2
-"6","relief",1
-"7","sarcophagus",2
-"8","statue base",5
-"9","stele",126
-"10","tabula",36
-"11","urn",4
-"12",NA,12
+"6","statue base",3
+"7","stele",115
+"8","tabula",25
+"9","urn",1
+"10",NA,9
