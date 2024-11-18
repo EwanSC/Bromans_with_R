@@ -2,7 +2,6 @@ library(dplyr)
 library(sqldf)
 library(arsenal)
 
-
 LIRE_Dal_all <-
   read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types.csv")
 
@@ -173,7 +172,7 @@ OLD_LIRE_Dal_corpus <- load_military_terms(LIRE_Dal)
 OLD_LIRE_Dal_corpus_places <- load_military_terms_and_sites(LIRE_Dal)
 
 write.csv(OLD_LIRE_Dal_corpus,
-          file = "output_tables/drafts/OLD_LIRE_Dal_corpus.csv")
+          file = "output_tables/appendices/OLD_LIRE_Dal_corpus.csv")
 
 # new
 new_military_terms <- function(dataframe) {
@@ -582,4 +581,256 @@ NEW_LIRE_Dal_corpus_places <- new_military_terms_and_sites(LIRE_Dal)
 comparedf(NEW_LIRE_Dal_corpus,OLD_LIRE_Dal_corpus)
 
 write.csv(NEW_LIRE_Dal_corpus,
-          file = "output_tables/drafts/NEW_LIRE_Dal_corpus.csv")
+          file = "output_tables/appendices/NEW_LIRE_Dal_corpus.csv")
+
+# manually after comparing, none of the new fields captured in 
+# NEW_LIRE_CORPUS.csv are relevant see testing_military_data_1.xlsx
+# now to remove irrelevant inscriptions
+
+##with just key words
+load_military <- function(dataframe) {
+  library(sqldf)
+  library(dplyr)
+  load_military <- sqldf("Select * from dataframe
+                  WHERE clean_text_interpretive_word 
+                    LIKE '%legio%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%cohor%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%ala%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%alae%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%milit%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%eques%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%equit%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%duplicari%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%veteran%'
+                  or clean_text_interpretive_word
+                    LIKE '%centuri%'
+                  or clean_text_interpretive_word
+                    LIKE '%immun%'
+                  or clean_text_interpretive_word
+                    LIKE '%miles%'
+                  or clean_text_interpretive_word
+                    LIKE '%beneficiar%'
+                  or clean_text_interpretive_word
+                    LIKE '%tesserari%'
+                  or clean_text_interpretive_word
+                    LIKE '%signifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%aquilifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%imaginifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%corniculari%'
+                  or clean_text_interpretive_word
+                    LIKE '%principalis%'
+                  or clean_text_interpretive_word
+                    LIKE '%primus pilus%'
+                  or clean_text_interpretive_word
+                    LIKE '%primo pilo%'
+                  or clean_text_interpretive_word
+                    LIKE '%primi pili%'
+                  or clean_text_interpretive_word
+                    LIKE '%praefectus castrorum%'
+                  or clean_text_interpretive_word
+                    LIKE '%optio %'
+                  or clean_text_interpretive_word
+                    LIKE '%option%'
+                  or status_notation
+                    LIKE '%milites%'
+                    ")
+load_military <- load_military %>%
+  filter(!LIST.ID %in% c("468295",
+                    "468613",
+                    "468717",
+                    "468832",
+                    "469155",
+                    "469186",
+                    "469226",
+                    "469341",
+                    "469464",
+                    "469506",
+                    "469916",
+                    "470136",
+                    "470434",
+                    "470543",
+                    "470704",
+                    "470864",
+                    "471007",
+                    "471036",
+                    "471038",
+                    "471230",
+                    "471402",
+                    "471414",
+                    "471496",
+                    "471645",
+                    "471678",
+                    "471682",
+                    "471759",
+                    "471777",
+                    "471800",
+                    "471809",
+                    "471996",
+                    "472452",
+                    "472453",
+                    "472586",
+                    "472928",
+                    "472984",
+                    "473108",
+                    "473129",
+                    "473194",
+                    "473217",
+                    "473422",
+                    "473564",
+                    "473959",
+                    "474003",
+                    "474473",
+                    "474478",
+                    "474519",
+                    "474682",
+                    "474858",
+                    "474992",
+                    "475226",
+                    "475259",
+                    "475320",
+                    "475377",
+                    "475378",
+                    "500263"))
+return(load_military)
+}
+
+load_military_with_sites <- function(dataframe) {
+  library(sqldf)
+  library(dplyr)
+  load_military_with_sites <- sqldf("Select * from dataframe
+                  WHERE clean_text_interpretive_word 
+                    LIKE '%legio%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%cohor%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%ala%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%alae%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%milit%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%eques%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%equit%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%duplicari%'
+                  OR clean_text_interpretive_word 
+                    LIKE '%veteran%'
+                  or clean_text_interpretive_word
+                    LIKE '%centuri%'
+                  or clean_text_interpretive_word
+                    LIKE '%immun%'
+                  or clean_text_interpretive_word
+                    LIKE '%miles%'
+                  or clean_text_interpretive_word
+                    LIKE '%beneficiar%'
+                  or clean_text_interpretive_word
+                    LIKE '%tesserari%'
+                  or clean_text_interpretive_word
+                    LIKE '%signifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%aquilifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%imaginifer%'
+                  or clean_text_interpretive_word
+                    LIKE '%corniculari%'
+                  or clean_text_interpretive_word
+                    LIKE '%principalis%'
+                  or clean_text_interpretive_word
+                    LIKE '%primus pilus%'
+                  or clean_text_interpretive_word
+                    LIKE '%primo pilo%'
+                  or clean_text_interpretive_word
+                    LIKE '%primi pili%'
+                  or clean_text_interpretive_word
+                    LIKE '%praefectus castrorum%'
+                  or clean_text_interpretive_word
+                    LIKE '%optio %'
+                  or clean_text_interpretive_word
+                    LIKE '%option%'
+                  or status_notation
+                    LIKE '%milites%'
+                  OR findspot_ancient_clean = 'Tilurium'
+                  OR findspot_ancient_clean = 'Burnum'
+                  OR findspot_ancient_clean = 'Andetrium'
+                  OR findspot_ancient_clean = 'Bigeste'
+                  OR findspot_modern_clean = 'Ljubuški'
+                  ")
+load_military_with_sites <- load_military_with_sites %>%
+  filter(!LIST.ID %in% c("468295",
+                    "468613",
+                    "468717",
+                    "468832",
+                    "469155",
+                    "469186",
+                    "469226",
+                    "469341",
+                    "469464",
+                    "469506",
+                    "469916",
+                    "470136",
+                    "470434",
+                    "470543",
+                    "470704",
+                    "470864",
+                    "471007",
+                    "471036",
+                    "471038",
+                    "471230",
+                    "471402",
+                    "471414",
+                    "471496",
+                    "471645",
+                    "471678",
+                    "471682",
+                    "471759",
+                    "471777",
+                    "471800",
+                    "471809",
+                    "471996",
+                    "472452",
+                    "472453",
+                    "472586",
+                    "472928",
+                    "472984",
+                    "473108",
+                    "473129",
+                    "473194",
+                    "473217",
+                    "473422",
+                    "473564",
+                    "473959",
+                    "474003",
+                    "474473",
+                    "474478",
+                    "474519",
+                    "474682",
+                    "474858",
+                    "474992",
+                    "475226",
+                    "475259",
+                    "475320",
+                    "475377",
+                    "475378",
+                    "500263"))
+return(load_military_with_sites)
+}
+
+LIRE_Dal_corpus_all <- load_military(LIRE_Dal_all)
+LIRE_Dal_corpus_all_places <- load_military_with_sites(LIRE_Dal_all)
+LIRE_Dal_corpus <- load_military(LIRE_Dal)
+LIRE_Dal_corpus_places <- load_military_with_sites(LIRE_Dal)
+
+write.csv(LIRE_Dal_corpus,
+          file = "output_tables/appendices/LIRE_Dal_corpus.csv")
