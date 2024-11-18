@@ -223,9 +223,7 @@ new_military_terms <- function(dataframe) {
                   or clean_text_interpretive_word
                     LIKE '%claviculari%'
                   or clean_text_interpretive_word
-                    LIKE '%cohors%'
-                  or clean_text_interpretive_word
-                    LIKE '%cohort%'
+                    LIKE '%cohor%'
                   or clean_text_interpretive_word
                     LIKE '%commentariensis%'
                   or clean_text_interpretive_word
@@ -297,11 +295,7 @@ new_military_terms <- function(dataframe) {
                   or clean_text_interpretive_word
                     LIKE '%miles%'
                   or clean_text_interpretive_word
-                    LIKE '%milites%'
-                  or clean_text_interpretive_word
-                    LIKE '%militis%'
-                  or clean_text_interpretive_word
-                    LIKE '%militibus%'
+                    LIKE '%milit%'
                   or clean_text_interpretive_word
                     LIKE '%munifex%'
                   or clean_text_interpretive_word
@@ -425,9 +419,7 @@ new_military_terms_and_sites <- function(dataframe) {
                   or clean_text_interpretive_word
                     LIKE '%claviculari%'
                   or clean_text_interpretive_word
-                    LIKE '%cohors%'
-                  or clean_text_interpretive_word
-                    LIKE '%cohort%'
+                    LIKE '%cohor%'
                   or clean_text_interpretive_word
                     LIKE '%commentariensis%'
                   or clean_text_interpretive_word
@@ -499,11 +491,7 @@ new_military_terms_and_sites <- function(dataframe) {
                   or clean_text_interpretive_word
                     LIKE '%miles%'
                   or clean_text_interpretive_word
-                    LIKE '%milites%'
-                  or clean_text_interpretive_word
-                    LIKE '%militis%'
-                  or clean_text_interpretive_word
-                    LIKE '%militibus%'
+                    LIKE '%milit%'
                   or clean_text_interpretive_word
                     LIKE '%munifex%'
                   or clean_text_interpretive_word
