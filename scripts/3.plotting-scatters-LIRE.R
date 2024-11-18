@@ -84,6 +84,12 @@ dense_sites <- data.frame(findspot_ancient_clean=c("Salona",
 
 print(dense_sites)
 
+(dense_sites_ll <- st_as_sf(dense_sites,
+                                  coords = c("Longitude",
+                                             "Latitude"),
+                                  remove = FALSE,
+                                  crs = 4326, agr = "constant"))
+
 dense_sites_dated <- data.frame(findspot_ancient_clean = 
                                   c("Tilurium",
                                     "Salona",
@@ -163,7 +169,7 @@ dataframe_ll <- function(dataframe) {
 
 
 # plot on map
-#save csv of plotted places each
+# save csv of plotted places each
 ## undated/dated corpora with and without place filtration
 LIRE_Dal_corpus <-
   read.csv("output_tables/corpus/undated/LIRE_corpus.csv")
@@ -292,7 +298,180 @@ LIRE_Dal_all_corpus_place <- st_drop_geometry(LIRE_Dal_all_corpus_ll)
 write.csv(LIRE_Dal_all_corpus_place,
           file = "output_tables/corpus/places/LIRE_corpus_all_types_dated_places.csv")
 
-## create one for just relevant period (~200 CE cut off)
+## stela
+LIRE_Dal_corpus_stela <-
+  read.csv("output_tables/corpus/undated/LIRE_corpus_stela.csv")
+
+LIRE_Dal_corpus_stela_ll <- dataframe_ll(LIRE_Dal_corpus_stela)
+
+LIRE_Dal_corpus_stela_n <- count(LIRE_Dal_corpus_stela)
+
+plot4 <- 
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_corpus_stela_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                          y = Latitude,
+                          label = findspot_ancient_clean), 
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density", 
+       caption = paste("n = ",
+                       LIRE_Dal_corpus_stela_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+       title = "Distribution of all military stelae",
+       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot4)
+
+ggsave("output_images/geographical_distribution/04.LIRE_corpus_stela_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_corpus_stela_place <- st_drop_geometry(LIRE_Dal_corpus_stela_ll)
+write.csv(LIRE_Dal_corpus_stela_place,
+          file = "output_tables/corpus/places/LIRE_corpus_stela_places.csv")
+
+## epitaphs
+LIRE_Dal_corpus_epitaph <-
+  read.csv("output_tables/corpus/undated/LIRE_corpus_epitaph.csv")
+
+LIRE_Dal_corpus_epitaph_ll <- dataframe_ll(LIRE_Dal_corpus_epitaph)
+
+LLIRE_Dal_corpus_epitaph_n <- count(LIRE_Dal_corpus_epitaph)
+
+plot5 <- 
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_corpus_epitaph_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                          y = Latitude,
+                          label = findspot_ancient_clean), 
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density", 
+       caption = paste("n = ",
+                       LLIRE_Dal_corpus_epitaph_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+       title = "Distribution of all military epitaphs",
+       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot5)
+
+ggsave("output_images/geographical_distribution/05.LIRE_corpus_epitaph_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_corpus_epitaph_place <- st_drop_geometry(LIRE_Dal_corpus_epitaph_ll)
+write.csv(LIRE_Dal_corpus_epitaph_place,
+          file = "output_tables/corpus/places/LIRE_corpus_epitaphs_places.csv")
+
+# votives
+LIRE_Dal_corpus_votive <-
+  read.csv("output_tables/corpus/undated/LIRE_corpus_votive.csv")
+
+LIRE_Dal_corpus_votive_ll <- dataframe_ll(LIRE_Dal_corpus_votive)
+
+LLIRE_Dal_corpus_votive_n <- count(LIRE_Dal_corpus_votive)
+
+plot6 <- 
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_corpus_votive_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                          y = Latitude,
+                          label = findspot_ancient_clean), 
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density", 
+       caption = paste("n = ",
+                       LLIRE_Dal_corpus_votive_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+       title = "Distribution of all military votives",
+       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot6)
+
+ggsave("output_images/geographical_distribution/06.LIRE_corpus_votive_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_corpus_votive_place <- st_drop_geometry(LIRE_Dal_corpus_epitaph_ll)
+write.csv(LIRE_Dal_corpus_votive_place,
+          file = "output_tables/corpus/places/LIRE_corpus_votive_places.csv")
+
+# altars
+LIRE_Dal_corpus_altar <-
+  read.csv("output_tables/corpus/undated/LIRE_corpus_altar.csv")
+
+LIRE_Dal_corpus_altar_ll <- dataframe_ll(LIRE_Dal_corpus_altar)
+
+LLIRE_Dal_corpus_altar_n <- count(LIRE_Dal_corpus_altar)
+
+plot7 <- 
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_corpus_altar_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                          fill = "white",
+                          aes(x = Longitude,
+                          y = Latitude,
+                          label = findspot_ancient_clean), 
+                   nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                   nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density", 
+       caption = paste("n = ",
+                       LLIRE_Dal_corpus_altar_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags."),
+       title = "Distribution of all military altars",
+       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot7)
+
+ggsave("output_images/geographical_distribution/07.LIRE_corpus_altar_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_corpus_altar_place <- st_drop_geometry(LIRE_Dal_corpus_epitaph_ll)
+write.csv(LIRE_Dal_corpus_altar_place,
+          file = "output_tables/corpus/places/LIRE_corpus_altar_places.csv")
+
+## create one for just relevant period for corpus and 
+# stela/epitaph (~199 CE cut off)
 LIRE_corpus_dated <-
   read.csv("output_tables/corpus/dated/LIRE_corpus_dated.csv")
 
@@ -300,7 +479,7 @@ LIRE_corpus_dated_ll <- dataframe_ll(LIRE_corpus_dated)
 
 LIRE_corpus_dated_n <- count(LIRE_corpus_dated)
 
-plot4 <-
+plot8 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -321,63 +500,20 @@ plot4 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
-                       title = "Distribution of military funerary and sacral inscriptions",
-                       subtitle = "Dalmatia: Julio-Claudians to Antonines)") +
-  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
-  theme_void()
-
-plot(plot4)
-
-ggsave("output_images/geographical_distribution/04.LIRE_corpus_dated_scatter.jpeg",
-       width = 180, height = 140, unit = "mm", dpi = 600)
-
-LIRE_corpus_dated_place <- st_drop_geometry(LIRE_corpus_dated_ll)
-write.csv(LIRE_corpus_dated_place,
-          file = "output_tables/corpus/places/LIRE_corpus_dated_places.csv")
-
-LIRE_corpus_dated_place_filtering <-
-  read.csv("output_tables/corpus/dated/LIRE_corpus_dated_place_filter.csv")
-
-LIRE_corpus_dated_place_filtering_ll <- dataframe_ll(LIRE_corpus_dated_place_filtering)
-
-LIRE_corpus_dated_place_filtering_n <- count(LIRE_corpus_dated_place_filtering)
-
-plot5 <-
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
-  geom_sf(data = LIRE_corpus_dated_place_filtering_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
-  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
-  geom_label_repel(data = key_sites_mil_ll,
-                  fill = "white",
-                  aes(x = Longitude,
-                      y = Latitude,
-                      label = findspot_ancient_clean), 
-                  nudge_x = c(-0.25, -1.5,-1.5, 0), 
-                  nudge_y = c(-1   , -0.5,   0,-1)) +
-  labs(size = "Density",
-       caption = paste("n = ",
-                       LIRE_corpus_dated_place_filtering_n$n,
-                       sep = "",
-                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
-                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Filtered by key words, tags, and places.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
                        title = "Distribution of military funerary and sacral inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot5)
+plot(plot8)
 
-ggsave("output_images/geographical_distribution/05.LIRE_corpus_dated_place_filter_scatter.jpeg",
+ggsave("output_images/geographical_distribution/08.LIRE_corpus_dated_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
-LIRE_corpus_dated_place_filtering_place <- st_drop_geometry(LIRE_corpus_dated_place_filtering_ll)
-write.csv(LIRE_corpus_dated_place_filtering_place,
-          file = "output_tables/corpus/places/LIRE_corpus_dated_place_filter_places.csv")
+LIRE_corpus_dated_place <- st_drop_geometry(LIRE_corpus_dated_ll)
+write.csv(LIRE_corpus_dated_place,
+          file = "output_tables/corpus/places/LIRE_corpus_dated_places.csv")
 
 ## all inscriptions types dated
 LIRE_Dal_all_corpus_dated <-
@@ -387,7 +523,7 @@ LIRE_Dal_all_corpus_dated_ll <- dataframe_ll(LIRE_Dal_all_corpus_dated)
 
 LIRE_Dal_all_corpus_dated_n <- count(LIRE_Dal_all_corpus_dated)
 
-plot6 <- 
+plot9 <- 
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -408,20 +544,108 @@ plot6 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
        title = "Distribution of all military inscriptions",
        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot6)
+plot(plot9)
 
-ggsave("output_images/geographical_distribution/06.LIRE_all_types_corpus_dated_scatter.jpeg",
+ggsave("output_images/geographical_distribution/09.LIRE_all_types_corpus_dated_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_all_corpus_dated_place <- st_drop_geometry(LIRE_Dal_all_corpus_dated_ll)
 write.csv(LIRE_Dal_all_corpus_dated_place,
           file = "output_tables/corpus/places/LIRE_corpus_all_types_dated_places.csv")
+
+# stela
+LIRE_corpus_stela_dated <-
+  read.csv("output_tables/corpus/dated/LIRE_corpus_stela_dated.csv")
+
+LIRE_corpus_stela_dated_ll <- dataframe_ll(LIRE_corpus_stela_dated)
+
+LIRE_corpus_stela_dated_n <- count(LIRE_corpus_stela_dated)
+
+plot10 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_corpus_stela_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean), 
+                  nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                  nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_corpus_stela_dated_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags.\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       title = "Distribution of military stelae",
+                       subtitle = "Dalmatia: Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot10)
+
+ggsave("output_images/geographical_distribution/10.LIRE_corpus_stela_dated_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_corpus_stela_place <- st_drop_geometry(LIRE_corpus_stela_dated_ll)
+write.csv(LIRE_corpus_stela_place,
+          file = "output_tables/corpus/places/LIRE_corpus_stela_dated_places.csv")
+
+# epitaphs
+LIRE_corpus_epitaph_dated <-
+  read.csv("output_tables/corpus/dated/LIRE_corpus_epitaph_dated.csv")
+
+LIRE_corpus_epitaph_dated_ll <- dataframe_ll(LIRE_corpus_epitaph_dated)
+
+LIRE_corpus_epitaph_dated_n <- count(LIRE_corpus_epitaph_dated)
+
+plot11 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_corpus_epitaph_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
+  geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_mil_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean), 
+                  nudge_x = c(-0.25, -1.5,-1.5, 0), 
+                  nudge_y = c(-1   , -0.5,   0,-1)) +
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_corpus_epitaph_dated_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Filtered by key words and tags.\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       title = "Distribution of military epitaphs",
+                       subtitle = "Dalmatia: Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot11)
+
+ggsave("output_images/geographical_distribution/11.LIRE_corpus_epitaph_dated_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_corpus_epitaph_dated_place <- st_drop_geometry(LIRE_corpus_epitaph_dated_ll)
+write.csv(LIRE_corpus_epitaph_dated_place,
+          file = "output_tables/corpus/places/LIRE_corpus_epitaph_dated_places.csv")
 
 # Now compare to all Dalmatia
 LIRE_Dal <-
@@ -431,7 +655,7 @@ LIRE_Dal_ll <- dataframe_ll(LIRE_Dal)
 
 LIRE_Dal_n <- count(LIRE_Dal)
 
-plot7 <-
+plot12 <-
   ggplot() + 
   geom_sf(data = world, color = "#e4e4e4", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#BEBEBE", size = 0.6) +
@@ -456,15 +680,16 @@ plot7 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot7)
+plot(plot12)
 
-ggsave("output_images/geographical_distribution/07.LIRE_Dalmatia_scatter.jpeg",
+ggsave("output_images/geographical_distribution/12.LIRE_Dalmatia_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_place <- st_drop_geometry(LIRE_Dal_ll)
 write.csv(LIRE_Dal_place,
           file = "output_tables/corpus/places/LIRE_Dalmatia_places.csv")
 
+#all inscription types
 LIRE_Dal_all <-
   read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types.csv")
 
@@ -472,7 +697,7 @@ LIRE_Dal_all_ll <- dataframe_ll(LIRE_Dal_all)
 
 LIRE_Dal_all_n <- count(LIRE_Dal_all)
 
-plot8 <-
+plot13 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -497,15 +722,185 @@ plot8 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot8)
+plot(plot13)
 
-ggsave("output_images/geographical_distribution/08.LIRE_Dalmatia_all_types_scatter.jpeg",
+ggsave("output_images/geographical_distribution/13.LIRE_Dalmatia_all_types_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_all_place <- st_drop_geometry(LIRE_Dal_all_ll)
 write.csv(LIRE_Dal_all_place,
           file = "output_tables/corpus/places/LIRE_Dalmatia_all_types_places.csv")
 
+# stela
+LIRE_Dal_stela <-
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_stela.csv")
+
+LIRE_Dal_stela_ll <- dataframe_ll(LIRE_Dal_stela)
+
+LIRE_Dal_stela_n <- count(LIRE_Dal_stela)
+
+plot14 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_stela_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_stela_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of all stelae",
+                       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot14)
+
+ggsave("output_images/geographical_distribution/14.LIRE_Dalmatia_stela_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_stela_place <- st_drop_geometry(LIRE_Dal_stela_ll)
+write.csv(LIRE_Dal_stela_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_stela_places.csv")
+
+# epitaphs
+LIRE_Dal_epitaph <-
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_epitaph.csv")
+
+LIRE_Dal_epitaph_ll <- dataframe_ll(LIRE_Dal_epitaph)
+
+LIRE_Dal_epitaph_n <- count(LIRE_Dal_epitaph)
+
+plot15 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_epitaph_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_epitaph_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of all epitaphs",
+                       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot15)
+
+ggsave("output_images/geographical_distribution/15.LIRE_Dalmatia_epitaph_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_epitaph_place <- st_drop_geometry(LIRE_Dal_epitaph_ll)
+write.csv(LIRE_Dal_epitaph_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_epitaph_places.csv")
+
+# votives
+LIRE_Dal_votive <-
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_votive.csv")
+
+LIRE_Dal_votive_ll <- dataframe_ll(LIRE_Dal_votive)
+
+LIRE_Dal_votive_n <- count(LIRE_Dal_votive)
+
+plot16 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_votive_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_votive_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of all votives",
+                       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot16)
+
+ggsave("output_images/geographical_distribution/16.LIRE_Dalmatia_votive_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_votive_place <- st_drop_geometry(LIRE_Dal_votive_ll)
+write.csv(LIRE_Dal_votive_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_votive_places.csv")
+
+# altars
+LIRE_Dal_altar <-
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_altar.csv")
+
+LIRE_Dal_altar_ll <- dataframe_ll(LIRE_Dal_altar)
+
+LIRE_Dal_altar_n <- count(LIRE_Dal_altar)
+
+plot17 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_altar_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = key_sites_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c( 0,     -1,  -1.5), 
+                  nudge_y = c(-1.25,-0.5, -0.25))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_altar_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of all altars",
+                       subtitle = "Dalmatia") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot17)
+
+ggsave("output_images/geographical_distribution/17.LIRE_Dalmatia_altar_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_altar_place <- st_drop_geometry(LIRE_Dal_altar_ll)
+write.csv(LIRE_Dal_altar_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_altar_places.csv")
+
+# dated
+# sacral and funerary
 LIRE_Dal_dated <-
   read.csv("output_tables/corpus/dated/LIRE_Dalmatia_dated.csv")
 
@@ -513,7 +908,7 @@ LIRE_Dal_dated_ll <- dataframe_ll(LIRE_Dal_dated)
 
 LIRE_Dal_dated_n <- count(LIRE_Dal_dated)
 
-plot9 <-
+plot17 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -533,21 +928,22 @@ plot9 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
                        title = "Distribution of funerary and sacral inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot9)
+plot(plot17)
 
-ggsave("output_images/geographical_distribution/09.LIRE_Dalmatia_dated_scatter.jpeg",
+ggsave("output_images/geographical_distribution/17.LIRE_Dalmatia_dated_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_dated_place <- st_drop_geometry(LIRE_Dal_dated_ll)
 write.csv(LIRE_Dal_dated_place,
           file = "output_tables/corpus/places/LIRE_Dalmatia_dated_places.csv")
 
+#all inscriptions
 LIRE_Dal_all_dated <-
   read.csv("output_tables/corpus/dated/LIRE_Dalmatia_all_types_dated.csv")
 
@@ -555,7 +951,7 @@ LIRE_Dal_all_dated_ll <- dataframe_ll(LIRE_Dal_all_dated)
 
 LIRE_Dal_all_dated_n <- count(LIRE_Dal_all_dated)
 
-plot10 <-
+plot18 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -575,20 +971,106 @@ plot10 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
                        title = "Distribution of all inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot10)
+plot(plot18)
 
-ggsave("output_images/geographical_distribution/10.LIRE_Dalmatia_all_types_dated_scatter.jpeg",
+ggsave("output_images/geographical_distribution/18.LIRE_Dalmatia_all_types_dated_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 LIRE_Dal_all_dated_place <- st_drop_geometry(LIRE_Dal_all_dated_ll)
 write.csv(LIRE_Dal_all_dated_place,
           file = "output_tables/corpus/places/LIRE_Dalmatia_all_types_dated_places.csv")
+
+# epitaphs
+LIRE_Dal_epitaph_dated <-
+  read.csv("output_tables/corpus/dated/LIRE_Dalmatia_epitaph_dated.csv")
+
+LIRE_Dal_epitaph_dated_ll <- dataframe_ll(LIRE_Dal_epitaph_dated)
+
+LIRE_Dal_epitaph_dated_n <- count(LIRE_Dal_epitaph_dated)
+
+plot19 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_epitaph_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = dense_sites_dated_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c( 0,  -1, -1.75,-1,    0, -0.5,0, -1,-0.75), 
+                  nudge_y = c(-1,-0.5, -0.25, 0,-0.75,-0.25,1,0.5,-0.75))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_epitaph_dated_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       title = "Distribution of epitaphs",
+                       subtitle = "Dalmatia: Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot19)
+
+ggsave("output_images/geographical_distribution/19.LIRE_Dalmatia_epitaph_dated_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_epitaph_dated_place <- st_drop_geometry(LIRE_Dal_epitaph_dated_ll)
+write.csv(LIRE_Dal_epitaph_dated_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_epitaph_dated_places.csv")
+
+# stela
+LIRE_Dal_stela_dated <-
+  read.csv("output_tables/corpus/dated/LIRE_Dalmatia_stela_dated.csv")
+
+LIRE_Dal_stela_dated_ll <- dataframe_ll(LIRE_Dal_stela_dated)
+
+LIRE_Dal_stela_dated_n <- count(LIRE_Dal_stela_dated)
+
+plot20 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_stela_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
+  geom_label_repel(data = dense_sites_dated_ll,
+                  fill = "white",
+                  aes(x = Longitude,
+                      y = Latitude,
+                      label = findspot_ancient_clean),
+                  nudge_x = c( 0,  -1, -1.75,-1,    0, -0.5,0, -1,-0.75), 
+                  nudge_y = c(-1,-0.5, -0.25, 0,-0.75,-0.25,1,0.5,-0.75))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_stela_dated_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       title = "Distribution of stelae",
+                       subtitle = "Dalmatia: Julio-Claudians to Antonines") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot20)
+
+ggsave("output_images/geographical_distribution/20.LIRE_Dalmatia_stela_dated_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+LIRE_Dal_stela_dated_place <- st_drop_geometry(LIRE_Dal_stela_dated_ll)
+write.csv(LIRE_Dal_stela_dated_place,
+          file = "output_tables/corpus/places/LIRE_Dalmatia_stela_dated_places.csv")
 
 # now for mapping without Salona
 LIRE_Dal_no_salona <-
@@ -598,7 +1080,7 @@ LIRE_Dal_no_salona_ll <- dataframe_ll(LIRE_Dal_no_salona)
 
 LIRE_Dal_no_salona_n <- count(LIRE_Dal_no_salona)
 
-plot11 <-
+plot21 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -623,11 +1105,12 @@ plot11 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot11)
+plot(plot21)
 
-ggsave("output_images/geographical_distribution/11.LIRE_Dalmatia_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/21.LIRE_Dalmatia_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+# all inscriptions
 LIRE_Dal_all_no_salona <-
   read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types_no_salona.csv")
 
@@ -635,7 +1118,7 @@ LIRE_Dal_all_no_salona_ll <- dataframe_ll(LIRE_Dal_all_no_salona)
 
 LIRE_Dal_all_no_salona_n <- count(LIRE_Dal_all_no_salona)
 
-plot12 <-
+plot22 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -660,11 +1143,89 @@ plot12 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot12)
+plot(plot22)
 
-ggsave("output_images/geographical_distribution/12.LIRE_Dalmatia_all_types_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/22.LIRE_Dalmatia_all_types_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+# epitaphs
+LIRE_Dal_epitaph_no_salona <-
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_epitaph_no_salona.csv")
+
+LIRE_Dal_epitaph_no_salona_ll <- dataframe_ll(LIRE_Dal_epitaph_no_salona)
+
+LIRE_Dal_epitaph_no_salona_n <- count(LIRE_Dal_epitaph_no_salona)
+
+plot23 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_epitaph_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = dense_sites_ll, colour = "#000000", size = 1) +
+  geom_label_repel(data = dense_sites_ll,
+                   fill = "white",
+                   aes(x = Longitude,
+                       y = Latitude,
+                       label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_epitaph_no_salona_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of epitaphs",
+                       subtitle = "Dalmatia (Outside Salona)") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot23)
+
+ggsave("output_images/geographical_distribution/23.LIRE_Dalmatia_epitaph_types_no_salona_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+# stela
+LIRE_Dal_stela_no_salona <-
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_stela_no_salona.csv")
+
+LIRE_Dal_stela_no_salona_ll <- dataframe_ll(LIRE_Dal_stela_no_salona)
+
+LIRE_Dal_stela_no_salona_n <- count(LIRE_Dal_stela_no_salona)
+
+plot23 <-
+  ggplot() + 
+  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = LIRE_Dal_stela_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
+  geom_sf(data = dense_sites_ll, colour = "#000000", size = 1) +
+  geom_label_repel(data = dense_sites_ll,
+                   fill = "white",
+                   aes(x = Longitude,
+                       y = Latitude,
+                       label = findspot_ancient_clean),
+                  nudge_x = c(-1.25,    0,-0.75,-1.25,-1,   0,  -1,1,0.25,-0.75,1,1), 
+                  nudge_y = c(-0.75,-0.75, 0.25, -0.5, 0,0.75,-0.5,0,1.25,   -1,0,1))+
+  labs(size = "Density",
+       caption = paste("n = ",
+                       LIRE_Dal_stela_no_salona_n$n,
+                       sep = "",
+                       ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
+                       "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY)."),
+                       title = "Distribution of stela",
+                       subtitle = "Dalmatia (Outside Salona)") +
+  coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
+  theme_void()
+
+plot(plot23)
+
+ggsave("output_images/geographical_distribution/23.LIRE_Dalmatia_stela_types_no_salona_scatter.jpeg",
+       width = 180, height = 140, unit = "mm", dpi = 600)
+
+# military inscriptions
+# sacral and funerary
 LIRE_Dal_corpus_no_salona <-
   read.csv("output_tables/corpus/undated/LIRE_corpus_no_salona.csv")
 
@@ -672,7 +1233,7 @@ LIRE_Dal_corpus_no_salona_ll <- dataframe_ll(LIRE_Dal_corpus_no_salona)
 
 LIRE_Dal_corpus_no_salona_n <- count(LIRE_Dal_corpus_no_salona)
 
-plot13 <-
+plot24 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -698,11 +1259,12 @@ plot13 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot13)
+plot(plot24)
 
-ggsave("output_images/geographical_distribution/13.LIRE_corpus_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/24.LIRE_corpus_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+#all
 LIRE_Dal_all_corpus_no_salona <-
   read.csv("output_tables/corpus/undated/LIRE_corpus_all_types_no_salona.csv")
 
@@ -710,7 +1272,7 @@ LIRE_Dal_all_corpus_no_salona_ll <- dataframe_ll(LIRE_Dal_all_corpus_no_salona)
 
 LIRE_Dal_all_corpus_no_salona_n <- count(LIRE_Dal_all_corpus_no_salona)
 
-plot14 <-
+plot25 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -736,11 +1298,12 @@ plot14 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot14)
+plot(plot25)
 
-ggsave("output_images/geographical_distribution/14.LIRE_corpus_all_types_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/25.LIRE_corpus_all_types_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+# non-military/all
 LIRE_Dal_dated_no_salona <-
   read.csv("output_tables/corpus/dated/LIRE_Dalmatia_dated_no_salona.csv")
 
@@ -748,7 +1311,7 @@ LIRE_Dal_dated_no_salona_ll <- dataframe_ll(LIRE_Dal_dated_no_salona)
 
 LIRE_Dal_dated_no_salona_n <- count(LIRE_Dal_dated_no_salona)
 
-plot15 <-
+plot26 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -768,17 +1331,18 @@ plot15 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
        title = "Distribution of funerary and sacral inscriptions",
        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot15)
+plot(plot26)
 
-ggsave("output_images/geographical_distribution/15.LIRE_Dalmatia_dated_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/26.LIRE_Dalmatia_dated_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
+#military sacral funerary
 LIRE_Dal_corpus_dated_no_salona <-
   read.csv("output_tables/corpus/dated/LIRE_corpus_dated_no_salona.csv")
 
@@ -786,7 +1350,7 @@ LIRE_Dal_corpus_dated_no_salona_ll <- dataframe_ll(LIRE_Dal_corpus_dated_no_salo
 
 LIRE_Dal_corpus_dated_no_salona_n <- count(LIRE_Dal_corpus_dated_no_salona)
 
-plot16 <-
+plot27 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -807,15 +1371,15 @@ plot16 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1 /200 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
                        title = "Distribution of military funerary and sacral inscriptions",
                        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot16)
+plot(plot27)
 
-ggsave("output_images/geographical_distribution/16.LIRE_corpus_dated_no_salona_scatter.jpeg",
+ggsave("output_images/geographical_distribution/27.LIRE_corpus_dated_no_salona_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 #now for EDH, for comparison
@@ -844,7 +1408,7 @@ EDH_Dalmatia_ll <- dataframe_EDH_ll(EDH_Dalmatia)
 
 EDH_Dalmatia_n <- count(EDH_Dalmatia)
 
-plot17 <- 
+plot28 <- 
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -869,9 +1433,9 @@ plot17 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot17)
+plot(plot28)
 
-ggsave("output_images/geographical_distribution/17.EDH_Dalmatia_scatter.jpeg",
+ggsave("output_images/geographical_distribution/28.EDH_Dalmatia_scatter.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 EDH_Dalmatia_place <- st_drop_geometry(EDH_Dalmatia_ll)
@@ -885,7 +1449,7 @@ EDH_Dalmatia_votive_epitaph_ll <- dataframe_EDH_ll(EDH_Dalmatia_votive_epitaph)
 
 EDH_Dalmatia_votive_epitaph_n <- count(EDH_Dalmatia_votive_epitaph)
 
-plot18 <- 
+plot29 <- 
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -910,9 +1474,9 @@ plot18 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot18)
+plot(plot29)
 
-ggsave("output_images/geographical_distribution/18.EDH_Dalmatia_funerary_sacral.jpeg",
+ggsave("output_images/geographical_distribution/29.EDH_Dalmatia_funerary_sacral.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
 EDH_Dalmatia_epitaph <-
@@ -922,7 +1486,7 @@ EDH_Dalmatia_epitaph_ll <- dataframe_EDH_ll(EDH_Dalmatia_epitaph)
 
 EDH_Dalmatia_epitaph_n <- count(EDH_Dalmatia_epitaph)
 
-plot19 <-
+plot30 <-
   ggplot() + 
   geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
   geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
@@ -948,32 +1512,50 @@ plot19 <-
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
 
-plot(plot19)
+plot(plot30)
 
-ggsave("output_images/geographical_distribution/19.EDH_Dalmatia_epitaph.jpeg",
+ggsave("output_images/geographical_distribution/30.EDH_Dalmatia_epitaph.jpeg",
        width = 180, height = 140, unit = "mm", dpi = 600)
 
-## combine 8 and 16 for comparison
-doubletrouble <- grid.arrange(plot8, plot17, ncol = 2)
+## combine 13 and 28 for comparison
+doubletrouble <- grid.arrange(plot13, plot28, ncol = 2)
 
-ggsave("output_images/geographical_distribution/20.LIRE_EDH_comparison.jpeg",
+ggsave("output_images/geographical_distribution/31.LIRE_EDH_comparison.jpeg",
        doubletrouble, width = 240, height = 120, unit = "mm", dpi = 600)
 
-## combine 8, 12
+## combine 13, 22
 
-doubletroubler <- grid.arrange(plot8, plot12, ncol = 2)
+doubletroubler <- grid.arrange(plot13, plot22, ncol = 2)
 
-ggsave("output_images/geographical_distribution/21.Dalmatia_all_types_Salona_comparison.jpeg",
+ggsave("output_images/geographical_distribution/32.Dalmatia_all_types_Salona_comparison.jpeg",
        doubletroubler, width = 240, height = 120, unit = "mm", dpi = 600)
 
-## combine 7 and 11 for comparison
-doubletroublest <- grid.arrange(plot7, plot11, ncol = 2)
+## combine 12 and 21 for comparison
+doubletroublest <- grid.arrange(plot12, plot21, ncol = 2)
 
-ggsave("output_images/geographical_distribution/22.Dalmatia_Salona_comparison.jpeg",
+ggsave("output_images/geographical_distribution/33.Dalmatia_Salona_comparison.jpeg",
        doubletroublest, width = 240, height = 120, unit = "mm", dpi = 600)
 
-## combine 1 and 4 for comparison
-doubletroublestest <- grid.arrange(plot1, plot4, ncol = 2)
+## combine 1 and 8 for comparison
+doubletroublestest <- grid.arrange(plot1, plot8, ncol = 2)
 
-ggsave("output_images/geographical_distribution/23.corpus_dated_undated_comparison.jpeg",
+ggsave("output_images/geographical_distribution/34.corpus_dated_undated_comparison.jpeg",
+       doubletroublestest, width = 240, height = 120, unit = "mm", dpi = 600)
+
+## combine 3 and 9 for comparison
+doubletroublestest <- grid.arrange(plot3, plot9, ncol = 2)
+
+ggsave("output_images/geographical_distribution/35.corpus_dated_undated_all_types_comparison.jpeg",
+       doubletroublestest, width = 240, height = 120, unit = "mm", dpi = 600)
+
+## combine 4 and 10 for comparison
+doubletroublestest <- grid.arrange(plot4, plot10, ncol = 2)
+
+ggsave("output_images/geographical_distribution/36.corpus_dated_undated_stela_comparison.jpeg",
+       doubletroublestest, width = 240, height = 120, unit = "mm", dpi = 600)
+
+## combine 5 and 11 for comparison
+doubletroublestest <- grid.arrange(plot5, plot11, ncol = 2)
+
+ggsave("output_images/geographical_distribution/37.corpus_dated_undated_epitaph_comparison.jpeg",
        doubletroublestest, width = 240, height = 120, unit = "mm", dpi = 600)
