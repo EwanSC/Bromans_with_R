@@ -584,7 +584,7 @@ write.csv(NEW_LIRE_Dal_corpus,
           file = "output_tables/appendices/NEW_LIRE_Dal_corpus.csv")
 
 # manually after comparing, none of the new fields captured in 
-# NEW_LIRE_CORPUS.csv are relevant see testing_military_data_1.xlsx
+# NEW_LIRE_CORPUS.csv are relevant see suppl/testing_military_data_1.xlsx
 # now to remove irrelevant inscriptions
 
 ##with just key words
