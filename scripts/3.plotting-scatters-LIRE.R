@@ -1,6 +1,6 @@
 # plot data on scatter maps
 # started 17/09/2024
-# edited 18/11/2024
+# edited 19/11/2024
 
 # packages
 library(dplyr)
@@ -180,9 +180,9 @@ LIRE_Dal_corpus_n <- count(LIRE_Dal_corpus)
 
 plot1 <- 
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -221,10 +221,10 @@ LIRE_Dal_corpus_place_filtering_ll <- dataframe_ll(LIRE_Dal_corpus_place_filteri
 LIRE_Dal_corpus_place_filtering_n <- count(LIRE_Dal_corpus_place_filtering)
 
 plot2 <- 
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  ggplot() +  
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_place_filtering_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -264,10 +264,10 @@ LIRE_Dal_all_corpus_ll <- dataframe_ll(LIRE_Dal_all_corpus)
 LIRE_Dal_all_corpus_n <- count(LIRE_Dal_all_corpus)
 
 plot3 <- 
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  ggplot() +  
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_corpus_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -284,7 +284,7 @@ plot3 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words, tags, and places."),
-       title = "Distribution of all military inscriptions",
+       title = "Distribution of military inscriptions",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -307,10 +307,10 @@ LIRE_Dal_corpus_stela_ll <- dataframe_ll(LIRE_Dal_corpus_stela)
 LIRE_Dal_corpus_stela_n <- count(LIRE_Dal_corpus_stela)
 
 plot4 <- 
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  ggplot() +  
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_stela_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -327,7 +327,7 @@ plot4 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
-       title = "Distribution of all military stelae",
+       title = "Distribution of military stelae",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -350,10 +350,10 @@ LIRE_Dal_corpus_epitaph_ll <- dataframe_ll(LIRE_Dal_corpus_epitaph)
 LLIRE_Dal_corpus_epitaph_n <- count(LIRE_Dal_corpus_epitaph)
 
 plot5 <- 
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  ggplot() +  
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_epitaph_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -370,7 +370,7 @@ plot5 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
-       title = "Distribution of all military epitaphs",
+       title = "Distribution of military epitaphs",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -393,10 +393,10 @@ LIRE_Dal_corpus_votive_ll <- dataframe_ll(LIRE_Dal_corpus_votive)
 LLIRE_Dal_corpus_votive_n <- count(LIRE_Dal_corpus_votive)
 
 plot6 <- 
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  ggplot() +  
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_votive_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -413,7 +413,7 @@ plot6 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
-       title = "Distribution of all military votives",
+       title = "Distribution of military votives",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -436,10 +436,10 @@ LIRE_Dal_corpus_altar_ll <- dataframe_ll(LIRE_Dal_corpus_altar)
 LLIRE_Dal_corpus_altar_n <- count(LIRE_Dal_corpus_altar)
 
 plot7 <- 
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  ggplot() +  
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_altar_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -456,7 +456,7 @@ plot7 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
-       title = "Distribution of all military altars",
+       title = "Distribution of military altars",
        subtitle = "Dalmatia") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -481,9 +481,9 @@ LIRE_corpus_dated_n <- count(LIRE_corpus_dated)
 
 plot8 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_corpus_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -524,10 +524,10 @@ LIRE_Dal_all_corpus_dated_ll <- dataframe_ll(LIRE_Dal_all_corpus_dated)
 LIRE_Dal_all_corpus_dated_n <- count(LIRE_Dal_all_corpus_dated)
 
 plot9 <- 
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  ggplot() +  
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_corpus_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -545,11 +545,11 @@ plot9 <-
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
                        "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
-       title = "Distribution of all military inscriptions",
+       title = "Distribution of military inscriptions",
        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
-
+  
 plot(plot9)
 
 ggsave("output_images/geographical_distribution/09.LIRE_all_types_corpus_dated_scatter.jpeg",
@@ -569,9 +569,9 @@ LIRE_corpus_stela_dated_n <- count(LIRE_corpus_stela_dated)
 
 plot10 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_corpus_stela_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -613,9 +613,9 @@ LIRE_corpus_epitaph_dated_n <- count(LIRE_corpus_epitaph_dated)
 
 plot11 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_corpus_epitaph_dated_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -649,7 +649,7 @@ write.csv(LIRE_corpus_epitaph_dated_place,
 
 # Now compare to all Dalmatia
 LIRE_Dal <-
-  read.csv("output_tables/corpus/undated/LIRE_Dalmatia_all_types.csv")
+  read.csv("output_tables/corpus/undated/LIRE_Dalmatia.csv")
 
 LIRE_Dal_ll <- dataframe_ll(LIRE_Dal)
 
@@ -657,9 +657,9 @@ LIRE_Dal_n <- count(LIRE_Dal)
 
 plot12 <-
   ggplot() + 
-  geom_sf(data = world, color = "#e4e4e4", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#BEBEBE", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_ll,
@@ -699,9 +699,9 @@ LIRE_Dal_all_n <- count(LIRE_Dal_all)
 
 plot13 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_ll,
@@ -741,9 +741,9 @@ LIRE_Dal_stela_n <- count(LIRE_Dal_stela)
 
 plot14 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_stela_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_ll,
@@ -783,9 +783,9 @@ LIRE_Dal_epitaph_n <- count(LIRE_Dal_epitaph)
 
 plot15 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_epitaph_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_ll,
@@ -825,9 +825,9 @@ LIRE_Dal_votive_n <- count(LIRE_Dal_votive)
 
 plot16 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_votive_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_ll,
@@ -867,9 +867,9 @@ LIRE_Dal_altar_n <- count(LIRE_Dal_altar)
 
 plot17 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_altar_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_ll,
@@ -910,9 +910,9 @@ LIRE_Dal_dated_n <- count(LIRE_Dal_dated)
 
 plot17 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = dense_sites_dated_ll,
@@ -953,9 +953,9 @@ LIRE_Dal_all_dated_n <- count(LIRE_Dal_all_dated)
 
 plot18 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = dense_sites_dated_ll,
@@ -996,9 +996,9 @@ LIRE_Dal_epitaph_dated_n <- count(LIRE_Dal_epitaph_dated)
 
 plot19 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_epitaph_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = dense_sites_dated_ll,
@@ -1039,9 +1039,9 @@ LIRE_Dal_stela_dated_n <- count(LIRE_Dal_stela_dated)
 
 plot20 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_stela_dated_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_dated_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = dense_sites_dated_ll,
@@ -1082,9 +1082,9 @@ LIRE_Dal_no_salona_n <- count(LIRE_Dal_no_salona)
 
 plot21 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = dense_sites_ll,
@@ -1120,9 +1120,9 @@ LIRE_Dal_all_no_salona_n <- count(LIRE_Dal_all_no_salona)
 
 plot22 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_ll, colour = "#000000", size = 1) +
   geom_label_repel(data = dense_sites_ll,
@@ -1158,9 +1158,9 @@ LIRE_Dal_epitaph_no_salona_n <- count(LIRE_Dal_epitaph_no_salona)
 
 plot23 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_epitaph_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_ll, colour = "#000000", size = 1) +
   geom_label_repel(data = dense_sites_ll,
@@ -1196,9 +1196,9 @@ LIRE_Dal_stela_no_salona_n <- count(LIRE_Dal_stela_no_salona)
 
 plot23 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_stela_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_ll, colour = "#000000", size = 1) +
   geom_label_repel(data = dense_sites_ll,
@@ -1235,9 +1235,9 @@ LIRE_Dal_corpus_no_salona_n <- count(LIRE_Dal_corpus_no_salona)
 
 plot24 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -1274,9 +1274,9 @@ LIRE_Dal_all_corpus_no_salona_n <- count(LIRE_Dal_all_corpus_no_salona)
 
 plot25 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_all_corpus_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -1293,7 +1293,7 @@ plot25 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags."),
-                       title = "Distribution of all military inscriptions",
+                       title = "Distribution of military inscriptions",
                        subtitle = "Dalmatia (Outside Salona)") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
   theme_void()
@@ -1313,9 +1313,9 @@ LIRE_Dal_dated_no_salona_n <- count(LIRE_Dal_dated_no_salona)
 
 plot26 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_dated_no_salona_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = dense_sites_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = dense_sites_ll,
@@ -1352,9 +1352,9 @@ LIRE_Dal_corpus_dated_no_salona_n <- count(LIRE_Dal_corpus_dated_no_salona)
 
 plot27 <-
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = LIRE_Dal_corpus_dated_no_salona_ll, aes(size = n), alpha=0.8, colour = "#FF8247") +
   geom_sf(data = key_sites_mil_ll, colour = "#000000", size = 0.5) +
   geom_label_repel(data = key_sites_mil_ll,
@@ -1410,9 +1410,9 @@ EDH_Dalmatia_n <- count(EDH_Dalmatia)
 
 plot28 <- 
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = EDH_Dalmatia_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
   geom_label_repel(data = key_sites_ll,
@@ -1451,9 +1451,9 @@ EDH_Dalmatia_votive_epitaph_n <- count(EDH_Dalmatia_votive_epitaph)
 
 plot29 <- 
   ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data =   roman_settlements, colour = "#6e6e6e", alpha=0.6, size = 0.8) +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = EDH_Dalmatia_votive_epitaph_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
   geom_label_repel(data = key_sites_ll,
@@ -1487,10 +1487,10 @@ EDH_Dalmatia_epitaph_ll <- dataframe_EDH_ll(EDH_Dalmatia_epitaph)
 EDH_Dalmatia_epitaph_n <- count(EDH_Dalmatia_epitaph)
 
 plot30 <-
-  ggplot() + 
-  geom_sf(data = world, color = "#BEBEBE", fill = "#e4e4e4") + 
-  geom_sf(data = roman_roads, colour = "#4D4D4D", size = 0.6) +
-  geom_sf(data = roman_settlements, colour = "#4D4D4D", alpha=0.6, size = 0.8) +
+  ggplot() +
+  geom_sf(data = world, color = "#c9c9c9", fill = "#e4e4e4") + 
+  geom_sf(data = roman_roads, colour = "#a1a1a1", size = 0.6) +
+  geom_sf(data = roman_settlements, colour = "#a1a1a1", alpha=0.6, size = 0.8) +
   geom_sf(data = EDH_Dalmatia_epitaph_ll, aes(size = n), alpha=0.8, colour = "#3468d6") +
   geom_sf(data = key_sites_ll, colour = "#000000", size = 1) +
   geom_label_repel(data = key_sites_ll,
