@@ -529,7 +529,7 @@ ggplot(data = LIRE_Dal_stela_scaled, aes(x = DAT_step, weight = weight)) +
   geom_density(alpha = 0.8, fill = "#3468d6") +
   labs(x = "Date (BCE/CE)", y = "Density",
        caption = paste("n = ",
-                       LIRE_Dal_epitaph_count$n,
+                       LIRE_Dal_stela_count$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
        title = "Chronological distribution of stelae",
