@@ -471,7 +471,7 @@ write.csv(LIRE_Dal_corpus_altar_place,
           file = "output_tables/corpus/places/LIRE_corpus_altar_places.csv")
 
 ## create one for just relevant period for corpus and 
-# stela/epitaph (~199 CE cut off)
+# stela/epitaph (~200 CE cut off)
 LIRE_corpus_dated <-
   read.csv("output_tables/corpus/dated/LIRE_corpus_dated.csv")
 
@@ -500,7 +500,7 @@ plot8 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of military funerary and sacral inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -544,7 +544,7 @@ plot9 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
        title = "Distribution of military inscriptions",
        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -588,7 +588,7 @@ plot10 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of military stelae",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -632,7 +632,7 @@ plot11 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of military epitaphs",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -928,7 +928,7 @@ plot17 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of funerary and sacral inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -971,7 +971,7 @@ plot18 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of all inscriptions",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -1014,7 +1014,7 @@ plot19 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of epitaphs",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -1057,7 +1057,7 @@ plot20 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of stelae",
                        subtitle = "Dalmatia: Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -1331,7 +1331,7 @@ plot26 <-
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
        title = "Distribution of funerary and sacral inscriptions",
        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +
@@ -1371,7 +1371,7 @@ plot27 <-
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0).\n",
                        "Roads = DARMC (CC BY-NC-SA 4.0). Settlements = Pleiades (CC-BY).\n",
                        "Filtered by key words and tags.\n",
-                       "Date ranges starting between 35 BCE/192 CE and ending 1/199 CE"),
+                       "Date ranges starting between 35 BCE/192 CE and ending 1/200 CE"),
                        title = "Distribution of military funerary and sacral inscriptions",
                        subtitle = "Dalmatia (Outside Salona): Julio-Claudians to Antonines") +
   coord_sf(default_crs = st_crs(4326), xlim = c(14, 21), ylim = c(41.5, 46)) +

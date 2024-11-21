@@ -1,16 +1,19 @@
 "","type_of_monument_clean","n"
-"1","NULL",158
-"2","altar",25
+"1","NULL",170
+"2","altar",40
 "3","architectural member",3
-"4","base",1
+"4","base",2
 "5","block",4
 "6","cippus",6
 "7","cliff",8
 "8","honorific/grave/votive column",2
-"9","statue base",13
-"10","stele",115
-"11","table",1
-"12","tabula",38
-"13","tile",8
-"14","urn",1
-"15",NA,12
+"9","instrumentum militare",1
+"10","relief",1
+"11","sarcophagus",2
+"12","statue base",13
+"13","stele",126
+"14","table",1
+"15","tabula",47
+"16","tile",8
+"17","urn",3
+"18",NA,15

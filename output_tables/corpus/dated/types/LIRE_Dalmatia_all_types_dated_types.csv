@@ -1,61 +1,66 @@
 "","type_of_monument_clean","type_of_inscription_auto","n"
 "1","NULL","boundary inscription",5
-"2","NULL","building/dedicatory inscription",34
-"3","NULL","epitaph",577
-"4","NULL","honorific inscription",46
+"2","NULL","building/dedicatory inscription",38
+"3","NULL","epitaph",677
+"4","NULL","honorific inscription",49
 "5","NULL","list",1
-"6","NULL","votive inscription",64
-"7","NULL",NA,60
+"6","NULL","votive inscription",72
+"7","NULL",NA,71
 "8","altar","building/dedicatory inscription",2
-"9","altar","epitaph",36
-"10","altar","votive inscription",123
+"9","altar","epitaph",53
+"10","altar","votive inscription",175
 "11","altar",NA,1
-"12","architectural member","building/dedicatory inscription",19
-"13","architectural member","epitaph",5
+"12","architectural member","building/dedicatory inscription",23
+"13","architectural member","epitaph",6
 "14","architectural member","honorific inscription",3
-"15","architectural member","list",1
-"16","architectural member","owner/artist inscription",1
-"17","architectural member","votive inscription",5
-"18","architectural member",NA,5
-"19","base","epitaph",2
-"20","block","building/dedicatory inscription",6
-"21","block","epitaph",1
-"22","cippus","boundary inscription",14
-"23","cippus","epitaph",2
-"24","cliff","boundary inscription",4
-"25","cliff","epitaph",9
-"26","cliff","votive inscription",1
-"27","grave monument","epitaph",2
-"28","honorific/grave/votive column","epitaph",2
-"29","honorific/grave/votive column","votive inscription",4
-"30","instrumentum domesticum","owner/artist inscription",1
-"31","mile-/leaguestone","mile-/leaguestone",11
-"32","relief","votive inscription",4
-"33","sarcophagus","epitaph",2
-"34","slab","epitaph",1
-"35","statue base","epitaph",2
-"36","statue base","honorific inscription",36
-"37","statue base","votive inscription",8
-"38","stele","boundary inscription",1
-"39","stele","epitaph",215
-"40","stele","votive inscription",1
-"41","stele",NA,1
-"42","table","identification inscription",1
-"43","tabula","assignation inscription",1
-"44","tabula","boundary inscription",6
-"45","tabula","building/dedicatory inscription",21
-"46","tabula","epitaph",107
-"47","tabula","honorific inscription",12
-"48","tabula","military diploma",2
-"49","tabula","votive inscription",15
-"50","tabula",NA,7
-"51","tile","owner/artist inscription",10
-"52","urn","epitaph",25
-"53",NA,"building/dedicatory inscription",2
-"54",NA,"epitaph",23
-"55",NA,"honorific inscription",5
-"56",NA,"identification inscription",7
-"57",NA,"military diploma",2
-"58",NA,"owner/artist inscription",6
-"59",NA,"votive inscription",3
-"60",NA,NA,20
+"15","architectural member","label",2
+"16","architectural member","list",1
+"17","architectural member","owner/artist inscription",1
+"18","architectural member","votive inscription",7
+"19","architectural member",NA,5
+"20","base","epitaph",5
+"21","base","votive inscription",1
+"22","block","building/dedicatory inscription",6
+"23","block","epitaph",1
+"24","block",NA,1
+"25","cippus","boundary inscription",15
+"26","cippus","epitaph",3
+"27","cliff","boundary inscription",5
+"28","cliff","epitaph",9
+"29","cliff","votive inscription",1
+"30","grave monument","epitaph",2
+"31","honorific/grave/votive column","epitaph",2
+"32","honorific/grave/votive column","votive inscription",5
+"33","instrumentum domesticum","owner/artist inscription",3
+"34","instrumentum militare","owner/artist inscription",1
+"35","mile-/leaguestone","mile-/leaguestone",11
+"36","relief","votive inscription",6
+"37","sarcophagus","epitaph",11
+"38","slab","epitaph",1
+"39","statue base","epitaph",4
+"40","statue base","honorific inscription",38
+"41","statue base","votive inscription",13
+"42","stele","boundary inscription",1
+"43","stele","epitaph",286
+"44","stele","honorific inscription",1
+"45","stele","votive inscription",2
+"46","stele",NA,1
+"47","table","identification inscription",1
+"48","tabula","assignation inscription",1
+"49","tabula","boundary inscription",6
+"50","tabula","building/dedicatory inscription",23
+"51","tabula","epitaph",150
+"52","tabula","honorific inscription",13
+"53","tabula","military diploma",2
+"54","tabula","votive inscription",18
+"55","tabula",NA,11
+"56","tile","owner/artist inscription",10
+"57","urn","epitaph",47
+"58",NA,"building/dedicatory inscription",2
+"59",NA,"epitaph",37
+"60",NA,"honorific inscription",6
+"61",NA,"identification inscription",9
+"62",NA,"military diploma",2
+"63",NA,"owner/artist inscription",9
+"64",NA,"votive inscription",8
+"65",NA,NA,21

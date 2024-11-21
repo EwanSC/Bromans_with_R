@@ -76,7 +76,7 @@ altars <- function(dataframe) {
 within_date_range <- function(dataframe) {
   library(dplyr)
   within_date_range <- dataframe %>%
-    filter(not_before %in% (-35:192), not_after %in% (1:199)) %>%
+    filter(not_before %in% (-35:192), not_after %in% (1:200)) %>%
     arrange(not_after, not_before)
   return(within_date_range)
 }
