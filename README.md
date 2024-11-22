@@ -8,19 +8,19 @@ Contemporary engagements with Roman army communities are effective for their bot
 
 ## Example outputs:
 ![scaled Bubble map of the distribution of inscribed monuments in roman dalmatia](output_images/geographical_distribution/13.LIRE_Dalmatia_all_types_scatter.jpeg)
-<figcaption> Bubble map of Latin inscriptions in _Dalmatia_. CC BY-SA 4.0</figcaption>
+<figcaption> Bubble map of Latin inscriptions in Dalmatia. CC BY-SA 4.0</figcaption>
 <p> <p/>
 
 ![scaled Bubble map of the distribution of inscribed military monuments in roman dalmatia](output_images/geographical_distribution/03.LIRE_all_types_corpus_scatter.jpeg)
-<figcaption> Bubble map of Latin military inscriptions in _Dalmatia_. CC BY-SA 4.0</figcaption>
+<figcaption> Bubble map of Latin military inscriptions in Dalmatia. CC BY-SA 4.0</figcaption>
 <p> <p/>
 
-![scaled density graph of the distribution of Latin military funerary and sacral inscriptions](output_images/chronological_distribution/14.LIRE_corpus_plot.jpeg)
-<figcaption> Scaled density graph of Latin military funerary and sacral inscriptions in _Dalmatia_, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
+![scaled density graph of the distribution of Latin military funerary and sacral inscriptions](output_images/chronological_distribution/11.LIRE_corpus_plot.jpeg)
+<figcaption> Scaled density graph of Latin military funerary and sacral inscriptions in Dalmatia, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
 <br />
 
-![scaled density graph of the distribution inscription types. some types, like epitaphs, are consistent throughout the period from 50 BCE to 350 CE, others, like boundary inscrpitions, are not.](output_images/chronological_distribution/30.LIRE_Dalmatia_types_altar_epitaph_diploma.jpeg)
-<figcaption> Scaled _relative_ density graph of votive, epitaph, and diploma inscriptions in _Dalmatia_, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
+![scaled density graph of the distribution inscription types.](output_images/chronological_distribution/28.LIRE_Dalmatia_types_altar_epitaph.jpeg)
+<figcaption> Scaled _relative_ density graph of votive and epitaphis inscriptions in Dalmatia, following Steinmann & Weissova 2021. CC BY-SA 4.0</figcaption> 
 <br />
 
 ## Thesis

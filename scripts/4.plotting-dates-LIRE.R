@@ -1000,4 +1000,4 @@ ggplot(LIRE_Dal_epitaph_corpus_cumulative, aes(x = DAT_mean, y = cumulative_coun
     breaks = seq(-50, 350, by = 25))
 
 ggsave("output_images/chronological_distribution/32.LIRE_corpus_epitaph_cumulative_plot.jpeg",
-       width = 180, height = 100, unit = "mm", dpi = 600)s
+       width = 180, height = 100, unit = "mm", dpi = 600)
