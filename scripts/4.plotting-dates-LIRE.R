@@ -825,8 +825,7 @@ ggsave("output_images/chronological_distribution/29.LIRE_Dalmatia_types_all_type
 #now just votive and epitaph and diploma
 LIRE_Dalmatia_select_inscr_types <- LIRE_Dalmatia_types %>%
     filter(variable %in% c("epitaph",
-                           "votive inscription",
-                           "military diploma"))
+                           "votive inscription"))
 
 LIRE_Dalmatia_select_inscr_types_na <- prepare_for_density(LIRE_Dalmatia_select_inscr_types)
 
@@ -839,16 +838,15 @@ LIRE_Dalmatia_select_inscr_types_scaled <- scaleweight(datsteps(LIRE_Dalmatia_se
 ggplot(data = LIRE_Dalmatia_select_inscr_types_scaled,
        aes(x = DAT_step, fill = variable, weight = weight)) +
   geom_density(alpha = 0.3) +
-  scale_fill_manual(values = c("votive inscription" = "#54FF9F",
-                                "epitaph" = '#FFE4B5',
-                                "military diploma" = '#EE0000'),
+  scale_fill_manual(values = c("votive inscription" = "#DCDCDC",
+                                "epitaph" = '#EE0000'),
                     name = "Category") +
     labs(x = "Date (BCE/CE)", y = "Relative type density",
        caption = paste("n = ",
                        LIRE_Dalmatia_select_inscr_types_count$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
-       title = "Chronological distribution of votive inscripitions, epitaphs, and diplomas",
+       title = "Chronological distribution of votive inscripitions and epitaphs",
        subtitle = paste("Using the weighted output of datsteps() ",
                         "with stepsize of ",
                         attributes(LIRE_Dalmatia_select_inscr_types_scaled)$stepsize,
@@ -860,7 +858,7 @@ ggplot(data = LIRE_Dalmatia_select_inscr_types_scaled,
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank())
 
-ggsave("output_images/chronological_distribution/30.LIRE_Dalmatia_types_altar_epitaph_diploma.jpeg",
+ggsave("output_images/chronological_distribution/30.LIRE_Dalmatia_types_altar_epitaph.jpeg",
        width = 211, height = 120, unit = "mm", dpi = 600)
 
 #military
@@ -907,8 +905,7 @@ ggsave("output_images/chronological_distribution/31.LIRE_corpus_types_all_types.
 #now just votive and epitaph and diploma
 LIRE_corpus_select_inscr_types <- LIRE_corpus_types %>%
     filter(variable %in% c("epitaph",
-                           "votive inscription",
-                           "military diploma"))
+                           "votive inscription"))
 
 LIRE_corpus_select_inscr_types_na <- prepare_for_density(LIRE_corpus_select_inscr_types)
 
@@ -922,15 +919,14 @@ ggplot(data = LIRE_corpus_select_inscr_types_scaled,
        aes(x = DAT_step, fill = variable, weight = weight)) +
   geom_density(alpha = 0.3) +
   scale_fill_manual(values = c("votive inscription" = "#DCDCDC",
-                                "epitaph" = '#FF8247',
-                                "military diploma" = '#fde8a1'),
+                                "epitaph" = '#FF8247'),
                     name = "Category") +
     labs(x = "Date (BCE/CE)", y = "Relative type density",
        caption = paste("n = ",
                        LIRE_corpus_select_inscr_types_count$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
-       title = "Chronological distribution of military votive inscripitions, epitaphs, and diplomas",
+       title = "Chronological distribution of military votive inscripitions and epitaphs",
        subtitle = paste("Using the weighted output of datsteps() ",
                         "with stepsize of ",
                         attributes(LIRE_corpus_select_inscr_types_scaled)$stepsize,
@@ -942,7 +938,7 @@ ggplot(data = LIRE_corpus_select_inscr_types_scaled,
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank())
 
-ggsave("output_images/chronological_distribution/32.LIRE_corpus_types_altar_epitaph_diploma.jpeg",
+ggsave("output_images/chronological_distribution/32.LIRE_corpus_types_altar_epitaph.jpeg",
        width = 211, height = 120, unit = "mm", dpi = 600)
 
 # monument types
@@ -997,7 +993,8 @@ ggsave("output_images/chronological_distribution/33.LIRE_Dalmatia_types_all_monu
 LIRE_Dalmatia_select_monu_types <- LIRE_Dalmatia_monu_types %>%
   filter(variable %in% c("altar",
                          "stele",
-                         "sarcophagus"))
+                         "sarcophagus",
+                         "tabula"))
 
 LIRE_Dalmatia_select_monu_types_na <- prepare_for_density(LIRE_Dalmatia_select_monu_types)
 
@@ -1012,14 +1009,15 @@ ggplot(data = LIRE_Dalmatia_select_monu_types_scaled,
   geom_density(alpha = 0.3) +
   scale_fill_manual(values = c("altar" = "#54FF9F",
                                "stele" = '#FFE4B5',
-                               "sarcophagus" = '#EE0000'),
+                               "sarcophagus" = '#EE0000',
+                               "tabula" ='#DCDCDC'),
                     name = "Category") +
     labs(x = "Date (BCE/CE)", y = "Relative type density",
        caption = paste("n = ",
                        LIRE_Dalmatia_select_monu_types_count$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
-       title = "Chronological distribution of altars, stelae, and sarcophagi",
+       title = "Chronological distribution of altars, stelae, sarcophagi, and tabulae",
        subtitle = paste("Using the weighted output of datsteps() ",
                         "with stepsize of ",
                         attributes(LIRE_Dalmatia_select_monu_types_scaled)$stepsize,
@@ -1031,7 +1029,7 @@ ggplot(data = LIRE_Dalmatia_select_monu_types_scaled,
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank())
 
-ggsave("output_images/chronological_distribution/34.LIRE_Dalmatia_types_altar_stela_sarcophagus.jpeg",
+ggsave("output_images/chronological_distribution/34.LIRE_Dalmatia_types_altar_stela_sarcophagus_tabula.jpeg",
        width = 211, height = 120, unit = "mm", dpi = 600)
 
 #military
@@ -1083,7 +1081,8 @@ ggsave("output_images/chronological_distribution/35.LIRE_corpus_all_types_monu_t
 LIRE_corpus_select_monu_types <- LIRE_corpus_monu_types %>%
   filter(variable %in% c("altar",
                          "stele",
-                         "sarcophagus"))
+                         "sarcophagus",
+                         "tabula"))
 
 LIRE_corpus_select_monu_types_na <- prepare_for_density(LIRE_corpus_select_monu_types)
 
@@ -1098,14 +1097,15 @@ ggplot(data = LIRE_corpus_select_monu_types_scaled,
   geom_density(alpha = 0.3) +
   scale_fill_manual(values = c("altar" = "#000000",
                                "stele" = "#FFA07A",
-                               "sarcophagus" = '#8B5A2B'),
+                               "sarcophagus" = '#8B5A2B',
+                               "tabula" = '#DCDCDC'),
                     name = "Category") +
     labs(x = "Date (BCE/CE)", y = "Relative type density",
        caption = paste("n = ",
                        LIRE_corpus_select_monu_types_count$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
-       title = "Chronological distribution of militar altars, stelae, and sarcophagi",
+       title = "Chronological distribution of militar altars, stelae, sarcophagi, and tabulae",
        subtitle = paste("Using the weighted output of datsteps() ",
                         "with stepsize of ",
                         attributes(LIRE_corpus_select_monu_types_scaled)$stepsize,
@@ -1117,7 +1117,7 @@ ggplot(data = LIRE_corpus_select_monu_types_scaled,
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank())
 
-ggsave("output_images/chronological_distribution/34.LIRE_corpus_types_altar_stela_sarcophagus.jpeg",
+ggsave("output_images/chronological_distribution/34.LIRE_corpus_types_altar_stela_sarcophagus_tabula.jpeg",
        width = 211, height = 120, unit = "mm", dpi = 600)
 
 # what about just votives?

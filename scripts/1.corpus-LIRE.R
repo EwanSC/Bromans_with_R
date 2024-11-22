@@ -40,7 +40,7 @@ clean_monument_types <- function(dataframe) {
   return(clean_monument_types)
 }
 
-# function to get epitaphs and nulls
+# function to get epitaphs 
 epitaphs <- function(dataframe) {
   library(dplyr)
   epitaphs <- dataframe %>%
@@ -48,7 +48,7 @@ epitaphs <- function(dataframe) {
   return(epitaphs)
 }
 
-# function to get stelae and nulls
+# function to get stelae 
 stelas <- function(dataframe) {
   library(dplyr)
   stelas <- dataframe %>%
@@ -56,7 +56,15 @@ stelas <- function(dataframe) {
   return(stelas)
 }
 
-# function to get votive inscriptions and nulls
+# function to get tabula 
+tabulas <- function(dataframe) {
+  library(dplyr)
+  tabulas <- dataframe %>%
+    filter(type_of_monument_clean %in% c("tabula"))
+  return(tabulas)
+}
+
+# function to get votive inscriptions 
 votives <- function(dataframe) {
   library(dplyr)
   votives <- dataframe %>%
@@ -64,7 +72,7 @@ votives <- function(dataframe) {
   return(votives)
 }
 
-# function to get altars and nulls
+# function to get altars 
 altars <- function(dataframe) {
   library(dplyr)
   altars <- dataframe %>%
@@ -111,6 +119,16 @@ LIRE_Dal_stela_dated <- within_date_range(LIRE_Dal_stela)
 LIRE_Dal_stela_dated$count<- 1
 write.csv(LIRE_Dal_stela_dated,
           file = "output_tables/corpus/dated/LIRE_Dalmatia_stela_dated.csv")
+
+LIRE_Dal_tabula <- tabulas(LIRE_Dalmatia)
+LIRE_Dal_tabula$count<- 1
+write.csv(LIRE_Dal_tabula,
+          file = "output_tables/corpus/undated/LIRE_Dalmatia_tabula.csv")
+
+LIRE_Dal_tabula_dated <- within_date_range(LIRE_Dal_tabula)
+LIRE_Dal_tabula_dated$count<- 1
+write.csv(LIRE_Dal_tabula_dated,
+          file = "output_tables/corpus/dated/LIRE_Dalmatia_tabula_dated.csv")
 
 LIRE_Dal_epitaph <- epitaphs(LIRE_Dalmatia)
 LIRE_Dal_epitaph$count<- 1
@@ -419,6 +437,16 @@ LIRE_Dal_corpus_stela_place_filtering$count<- 1
 write.csv(LIRE_Dal_corpus_stela_place_filtering,
           file = "output_tables/corpus/undated/LIRE_corpus_stela_place_filter.csv")
 
+LIRE_Dal_corpus_tabula <- load_military_terms(LIRE_Dal_tabula)
+LIRE_Dal_corpus_tabula$count<- 1
+write.csv(LIRE_Dal_corpus_tabula,
+          file = "output_tables/corpus/undated/LIRE_corpus_tabula.csv")
+
+LIRE_Dal_corpus_tabula_place_filtering <- load_military_terms_and_sites(LIRE_Dal_tabula)
+LIRE_Dal_corpus_tabula_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_tabula_place_filtering,
+          file = "output_tables/corpus/undated/LIRE_corpus_tabula_place_filter.csv")
+
 LIRE_Dal_corpus_epitaph <- load_military_terms(LIRE_Dal_epitaph)
 LIRE_Dal_corpus_epitaph$count<- 1
 write.csv(LIRE_Dal_corpus_epitaph,
@@ -479,6 +507,16 @@ LIRE_Dal_corpus_stela_dated_place_filtering <- load_military_terms_and_sites(LIR
 LIRE_Dal_corpus_stela_dated_place_filtering$count<- 1
 write.csv(LIRE_Dal_corpus_stela_dated_place_filtering,
           file = "output_tables/corpus/dated/LIRE_corpus_stela_dated_place_filter.csv")
+
+LIRE_Dal_corpus_tabula_dated <- load_military_terms(LIRE_Dal_tabula_dated)
+LIRE_Dal_corpus_tabula_dated$count<- 1
+write.csv(LIRE_Dal_corpus_tabula_dated,
+          file = "output_tables/corpus/dated/LIRE_corpus_tabula_dated.csv")
+
+LIRE_Dal_corpus_tabula_dated_place_filtering <- load_military_terms_and_sites(LIRE_Dal_tabula_dated)
+LIRE_Dal_corpus_tabula_dated_place_filtering$count<- 1
+write.csv(LIRE_Dal_corpus_tabula_dated_place_filtering,
+          file = "output_tables/corpus/dated/LIRE_corpus_tabula_dated_place_filter.csv")
 
 LIRE_Dal_corpus_epitaph_dated <- load_military_terms(LIRE_Dal_epitaph_dated)
 LIRE_Dal_corpus_epitaph_dated$count<- 1
