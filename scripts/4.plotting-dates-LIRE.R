@@ -972,7 +972,7 @@ ggplot(data = LIRE_corpus_select_monu_types_scaled,
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank())
 
-ggsave("output_images/chronological_distribution/31.LIRE_corpus_types_altar_stela_sarcophagus_tabula.jpeg",
+ggsave("output_images/chronological_distribution/31.LIRE_corpus_types_altar_stela_tabula.jpeg",
        width = 211, height = 120, unit = "mm", dpi = 600)
 
 # beta: trying to make cumulative graph
