@@ -1,6 +1,6 @@
 # Plotting dates, LIRE
 # Made 16/9/24
-# Edited: 20/11/24
+# Edited: 25/11/24
 ## using https://cran.r-project.org/web/packages/datplot/datplot.pdf
 ## and https://cran.r-project.org/web/packages/datplot/vignettes/how-to.html 
 library(dplyr)
@@ -938,7 +938,6 @@ LIRE_corpus_monu_types <- LIRE_corpus_monu_types %>%
 LIRE_corpus_select_monu_types <- LIRE_corpus_monu_types %>%
   filter(variable %in% c("altar",
                          "stele",
-                         "sarcophagus",
                          "tabula"))
 
 LIRE_corpus_select_monu_types_na <- prepare_for_density(LIRE_corpus_select_monu_types)
@@ -952,17 +951,16 @@ LIRE_corpus_select_monu_types_scaled <- scaleweight(datsteps(LIRE_corpus_select_
 ggplot(data = LIRE_corpus_select_monu_types_scaled,
        aes(x = DAT_step, fill = variable, weight = weight)) +
   geom_density(alpha = 0.3) +
-  scale_fill_manual(values = c("altar" = "#000000",
-                               "stele" = "#FFA07A",
-                               "sarcophagus" = '#8B5A2B',
-                               "tabula" = '#DCDCDC'),
+  scale_fill_manual(values = c("altar" = "#DCDCDC",
+                               "stele" = "#FF8247",
+                               "tabula" = '#000000'),
                     name = "Category") +
     labs(x = "Date (BCE/CE)", y = "Relative type density",
        caption = paste("n = ",
                        LIRE_corpus_select_monu_types_count$n,
                        sep = "",
                        ".\nEpigraphic data = LIRE v.3.0 (CC BY 4.0)."),
-       title = "Chronological distribution of militar altars, stelae, sarcophagi, and tabulae",
+       title = "Chronological distribution of military altars, stelae, sarcophagi, and tabulae",
        subtitle = paste("Using the weighted output of datsteps() ",
                         "with stepsize of ",
                         attributes(LIRE_corpus_select_monu_types_scaled)$stepsize,
